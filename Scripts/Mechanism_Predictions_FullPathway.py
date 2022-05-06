@@ -22,7 +22,7 @@ def defineArguments():
     
     parser.add_argument("--pkl-labels-file",dest="PklLabelsFile",required=True,help="PklLabelsFile")
     
-    parser.add_argument("--gutmgene-labels-file",dest="GutMGeneLabelsFile",required=True,help="GutMGeneLabelsFile")
+    parser.add_argument("--gutmgene-labels-file",dest="GutMGeneLabelsFile",required=False,help="GutMGeneLabelsFile")
     
     parser.add_argument("--pkl-identifiers-file",dest="PklIdentifiersFile",required=True,help="PklIdentifiersFile")
     
@@ -34,11 +34,13 @@ def defineArguments():
     #/Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant
     parser.add_argument("--mechanism-name",dest="MechanismName",required=True,help="MechanismName")
 
+    parser.add_argument("--search-type",dest="SearchType",required=False,default='OUT',help="SearchType")
+
     return parser
 
 
 ###Read in all files
-def process_files(triples_file,pkl_labels_file,gutmgene_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file):
+def process_files(triples_file,pkl_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file):
 
     #Read in triples file to list
     with open(triples_file, 'r') as f_in:
@@ -64,12 +66,6 @@ def process_files(triples_file,pkl_labels_file,gutmgene_labels_file,pkl_identifi
 
     labels_all = copy.deepcopy(labels)
 
-    gutmgene_labels = pd.read_csv(gutmgene_labels_file)
-
-    for i in range(len(gutmgene_labels)):
-        labels_all[gutmgene_labels.iloc[i].loc['Identifier']] = gutmgene_labels.iloc[i].loc['Label']
-
-
     #Read in identifiers file to dictionary
     f = open(pkl_identifiers_file)
     identifiers = json.load(f)
@@ -78,9 +74,19 @@ def process_files(triples_file,pkl_labels_file,gutmgene_labels_file,pkl_identifi
     edgelist_int = pd.read_csv(triples_integers_file, sep=" ")
 
     #Read in input nodes file as df
-    input_nodes = pd.read_csv(input_nodes_file, sep='|')
+    input_nodes = pd.read_csv(input_nodes_file, sep=',')
 
     return triples_list,labels_all,identifiers,edgelist_int,input_nodes
+
+def process_gutmgene_labels(labels_all,gutmgene_labels_file):
+
+    gutmgene_labels = pd.read_csv(gutmgene_labels_file)
+
+    for i in range(len(gutmgene_labels)):
+        labels_all[gutmgene_labels.iloc[i].loc['Identifier']] = gutmgene_labels.iloc[i].loc['Label']
+
+    return labels_all
+
 
 def generate_graph(triples_integers_file):
 
@@ -118,7 +124,7 @@ def weight_edges(g,triples_list,labels,weight_important_edges):
 
     return g
 
-def find_shortest_path(start_node,end_node,graph,g_nodes,identifiers,labels_all,triples_list,df,weights):
+def find_shortest_path(start_node,end_node,graph,g_nodes,identifiers,labels_all,triples_list,df,weights,search_type):
     
     node1 = str(identifiers[get_url(labels_all,start_node)])
     node2 = str(identifiers[get_url(labels_all,end_node)])
@@ -130,7 +136,7 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,identifiers,labels_all,
         w = None
 
     #list of nodes
-    path_nodes = graph.get_shortest_paths(v=node1, to=node2, weights=w, mode='OUT')
+    path_nodes = graph.get_shortest_paths(v=node1, to=node2, weights=w, mode=search_type)
 
     #When there is no connection in graph, path_nodes will equal 1 ([[]])
     if len(path_nodes[0]) != 0:
@@ -144,6 +150,11 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,identifiers,labels_all,
                     d['S'] = labels_all[triples_list[i][0]]
                     d['P'] = labels_all[triples_list[i][1]]
                     d['O'] = labels_all[triples_list[i][2]]
+                    df = df.append(d,ignore_index=True)
+                elif n1 == labels_all[triples_list[i][2]] and n2 == labels_all[triples_list[i][0]]:
+                    d['O'] = labels_all[triples_list[i][2]]
+                    d['P'] = labels_all[triples_list[i][1]]
+                    d['S'] = labels_all[triples_list[i][0]]
                     df = df.append(d,ignore_index=True)
             n1 = n2
 
@@ -204,13 +215,13 @@ def main():
 
     triples_file = args.TriplesFile
     pkl_labels_file = args.PklLabelsFile
-    gutmgene_labels_file = args.GutMGeneLabelsFile
     pkl_identifiers_file = args.PklIdentifiersFile
     triples_integers_file = args.TriplesIntegersFile
     input_nodes_file = args.InputNodesFile
     weight_important_edges = args.WeightImportantEdges
     mechanism_name = args.MechanismName
     output_dir = args.OutputDir
+    search_type = args.SearchType
 
     #Establish if edge weights are desired
     if weight_important_edges:
@@ -218,7 +229,11 @@ def main():
     else:
         weights = False
 
-    triples_list, labels_all, identifiers, edgelist_int, input_nodes = process_files(triples_file,pkl_labels_file,gutmgene_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file)
+    triples_list, labels_all, identifiers, edgelist_int, input_nodes = process_files(triples_file,pkl_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file)
+
+    if args.GutMGeneLabelsFile:
+        gutmgene_labels_file = args.GutMGeneLabelsFile
+        labels_all = process_gutmgene_labels(labels_all,gutmgene_labels_file)
 
     g, g_nodes = generate_graph(triples_integers_file)
 
@@ -242,7 +257,7 @@ def main():
 
         path_length_start = len(full_mechanism_df)
 
-        full_mechanism_df,result = find_shortest_path(i[0],i[1],g,g_nodes,identifiers,labels_all,triples_list,full_mechanism_df,weights)
+        full_mechanism_df,result = find_shortest_path(i[0],i[1],g,g_nodes,identifiers,labels_all,triples_list,full_mechanism_df,weights,search_type)
 
         results_list.append(result)
 
