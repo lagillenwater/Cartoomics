@@ -1,342 +1,372 @@
 import pandas as pd
 import numpy as np
-import re
+import argparse
 import pickle
-from rdflib import URIRef
+import time
 import networkx as nx
-import itertools
-import matplotlib.pyplot as plt
-import json
-from collections import Counter
+import cartoomics_util
+from cartoomics_util import *
+from importlib import reload
 
 
+# Collect the arguments for the program. 
+# Inputs
 
+def defineArguments():
+    parser=argparse.ArgumentParser(description = "Collect Inputs")
+    #parser.add_argument("--e", dest = "edgelist_file", required=True,help="edgelist pickle")
+    parser.add_argument("--p", dest = "KG_pkl", required=True,help="knowledge graph pickle")
+    return parser
 
-#### load in the COVID-19 knowledge graph, obtained from https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz
-#### COVID 19 knowledge graph, edges and node metadata
-def covid_input(edgelist, nodelist):
-	
 
-covid_edges = pd.read_table("../data/COVID/merged-kg_edges.tsv")
-covid_nodes = pd.read_table("../data/COVID/merged-kg_nodes.tsv")
-covid_nodes = covid_nodes[["id", "category", "name", "description"]]
-
-
-# create graph
-# directed or not?
+# interactive testing.....
+reload(cartoomics_util)
+from cartoomics_util import *
+graph = graphFromPickle("../data/covid_multi_di_graph.pkl")
+nodes = parseNodeData("../data/COVID/merged-kg_nodes.tsv")
+findNode("IL6", nodes) # ENSEMBL:ENSG00000136244
+findNode("cytokine storm", nodes) # HP:0033041
+findNode("TNF", nodes) # ENSEMBL:ENSG00000232810
+findNode("NFKB", nodes) #  ENSEMBL:ENSG00000109320 # ENSEMBL:ENSG00000077150 # subunits 1 & 2
+findNode("IKBKG", nodes) # NEMO # ENSEMBL:ENSG00000269335
+findNode("double stranded RNA", nodes) # GO:0039691
 
-covid_di = nx.from_pandas_edgelist(covid_edges,"subject", "object", "predicate", create_using=nx.MultiDiGraph())
-covid_un = nx.from_pandas_edgelist(covid_edges,"subject", "object", "predicate", create_using=nx.MultiGraph())
 
+def main():
+	#Generate argument parser and define arguments
+    parser = defineArguments()
+    args = parser.parse_args()
 
-#search the graph for nodes related to figure 1 in https://doi.org/10.1016/j.patter.2020.100155
-#identifiers = covid_nodes[covid_nodes["name"].str.contains("IL6",flags=re.IGNORECASE, na = False)|covid_nodes["description"].str.contains("IL6",flags=re.IGNORECASE, na = False)][["id","name", "description"]]
+    KG_pkl = args.KG_pkl
+    graph = graphFromPickle(KG_pkl)
+    print(nx.info(graph))
 
-input_features = ["UniProtKB:P19838",  "UniProtKB:P01375","UniProtKB:Q9BYF1", "UniProtKB:P05231","DrugCentral:4904", "DrugCentral:4974"] #  NFKB, TNF, adalimumab
-input_metadata = covid_nodes[covid_nodes["id"].isin(input_features)]
 
-#subpaths = list(nx.all_simple_paths(covid,input_features[0], input_features[2], cutoff = 5))
-#subpaths = [item for sublist in subpaths for item in sublist]
 
 
-# Find all paths between two nodes
-# Shortest paths
-# takes as an input the knowledge graph, the input features found in the KG, and the cutoff for path length
-# returns a nested list of path nodes
 
-def simple_paths_selection(kg,input_features, cutoff):
-	feature_simple_paths = list()
-	for i in range(0,len(input_features)):
-		print(i)
-		for j in range(0,len(input_features)):
-			print(j)
-			feature_simple_paths.append(list(nx.all_simple_paths(covid, input_features[i], input_features[j], cutoff = cutoff )))
-	feature_simple_paths = [item for sublist in feature_simple_paths for item in sublist]
-	return(feature_simple_paths)
+if __name__ == '__main__':
+    main()
 
 
+#covid_nodes = pd.read_table("../data/COVID/merged-kg_nodes.tsv")
+#covid_nodes = covid_nodes[["id", "category", "name", "description"]]
 
 
-# Annotation
-# Need to annotate the path nodes by the feature name, not just the identifier in the KG (e.g. 'UniProtKB:xxxxxx')
-# Takes as an input a nested list of paths and a pandas data frame containing the node metadata
-def path_features(paths, covid_nodes):
-	return_paths = list()
-	for i in paths:
-		tmp_path = [covid_nodes.loc[covid_nodes["id"] ==x]["name"].values[0] for x in i] 
-		# some of the paths contain NA values, should remove these
-		return_paths.append(tmp_path)
-	return(return_paths)
 
-# Need to annotate the path nodes by the feature type, not just the identifier in the KG (e.g. 'UniProtKB:xxxxxx')
-# Takes as an input a nested list of paths and a pandas data frame containing the node metadata
 
-def path_metadata(paths, covid_nodes):
-	return_paths = list()
-	for i in paths:
-		tmp_path = [covid_nodes.loc[covid_nodes["id"] ==x]["category"].values[0] for x in i]
-		return_paths.append(tmp_path)
-	return(return_paths)
 
-def get_metapath_di(paths, metadata, covid_edges):
-	metapaths = list()
-	for i in range(0, len(paths)):
-		tmp_path = paths[i]
-		tmp_meta = metadata[i]
-		metapath = []
-		tmp_subject = str.split(str.split(tmp_meta[0], '|')[0], ':')[1] 
-		tmp_predicate = str.split(covid_edges.loc[(covid_edges["subject"] == tmp_path[0])&(covid_edges["object"] == tmp_path[1] )]["predicate"].values[0],":")[1]
-		tmp_object = str.split(str.split(tmp_meta[1], '|')[0], ':')[1]
-		metapath.extend([tmp_subject,tmp_predicate, tmp_object])
-		for x in range(1,(len(tmp_path)-1)):
-			y = x+1
-			tmp_predicate = str.split(covid_edges.loc[(covid_edges["subject"] == tmp_path[x])&(covid_edges["object"] == tmp_path[y] )]["predicate"].values[0],":")[1]
-			tmp_object = str.split(str.split(tmp_meta[y], '|')[0], ':')[1]
-			metapath.extend([tmp_predicate, tmp_object])
-		metapaths.append(metapath)
-	return(metapaths)
 
 
 
-paths = simple_paths_selection(covid_di, input_features, 7)
-simple_names = path_features(paths, covid_nodes)
-metadata = path_metadata(paths)
-metapaths = get_metapath_di(paths, metadata, covid_edges)
+# #search the graph for nodes related to figure 1 in https://doi.org/10.1016/j.patter.2020.100155
+# #identifiers = covid_nodes[covid_nodes["name"].str.contains("IL6",flags=re.IGNORECASE, na = False)|covid_nodes["description"].str.contains("IL6",flags=re.IGNORECASE, na = False)][["id","name", "description"]]
 
-metapath_counts = Counter(str(e) for e in metapaths)
-metapath_counts = pd.DataFrame.from_dict(metapath_counts, orient = "index").reset_index()
-metapath_counts.to_csv("../data/covid_metapath_counts.csv")
+# input_features = ["UniProtKB:P19838",  "UniProtKB:P01375","UniProtKB:Q9BYF1", "UniProtKB:P05231","DrugCentral:4904", "DrugCentral:4974"] #  NFKB, TNF, adalimumab
+# input_metadata = covid_nodes[covid_nodes["id"].isin(input_features)]
 
-subpaths = [item for sublist in paths for item in sublist]
+# #subpaths = list(nx.all_simple_paths(covid,input_features[0], input_features[2], cutoff = 5))
+# #subpaths = [item for sublist in subpaths for item in sublist]
 
-tmp_subgraph = covid_di.subgraph(subpaths)
-tmp_edgelist = nx.to_pandas_edgelist(tmp_subgraph)
-tmp_edgelist["source_label"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].name.tolist()) for i in tmp_edgelist["source"]]
-tmp_edgelist["target_label"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].name.tolist()) for i in tmp_edgelist["target"]]
-tmp_edgelist["source_type"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].category.tolist()) for i in tmp_edgelist["source"]]
-tmp_edgelist["target_type"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].category.tolist()) for i in tmp_edgelist["target"]]
-tmp_edgelist["source_type"] = [i.split("|",1)[0] for i in tmp_edgelist['source_type']]
-tmp_edgelist["source_type"] = [i.split(":",1)[1] for i in tmp_edgelist['source_type']]
-tmp_edgelist["predicate"] = [i.split(":",1)[1] for i in tmp_edgelist['predicate']]
-tmp_edgelist["target_type"] = [i.split("|",1)[0] for i in tmp_edgelist['target_type']]
-tmp_edgelist["target_type"] = [i.split(":",1)[1] for i in tmp_edgelist['target_type']]
 
+# # Find all paths between two nodes
+# # Shortest paths
+# # takes as an input the knowledge graph, the input features found in the KG, and the cutoff for path length
+# # returns a nested list of path nodes
 
-tmp_edgelist.to_csv("../data/covid_di_edgelist.csv")
+# def simple_paths_selection(kg,input_features, cutoff):
+# 	feature_simple_paths = list()
+# 	for i in range(0,len(input_features)):
+# 		print(i)
+# 		for j in range(0,len(input_features)):
+# 			print(j)
+# 			feature_simple_paths.append(list(nx.all_simple_paths(covid, input_features[i], input_features[j], cutoff = cutoff )))
+# 	feature_simple_paths = [item for sublist in feature_simple_paths for item in sublist]
+# 	return(feature_simple_paths)
 
 
 
-metapath = []
 
-for x in range(0,len(tmp_edgelist)):
+# # Annotation
+# # Need to annotate the path nodes by the feature name, not just the identifier in the KG (e.g. 'UniProtKB:xxxxxx')
+# # Takes as an input a nested list of paths and a pandas data frame containing the node metadata
+# def path_features(paths, covid_nodes):
+# 	return_paths = list()
+# 	for i in paths:
+# 		tmp_path = [covid_nodes.loc[covid_nodes["id"] ==x]["name"].values[0] for x in i] 
+# 		# some of the paths contain NA values, should remove these
+# 		return_paths.append(tmp_path)
+# 	return(return_paths)
 
-metapath = metapath.append(tmp_edgelist.iloc[x,6]
+# # Need to annotate the path nodes by the feature type, not just the identifier in the KG (e.g. 'UniProtKB:xxxxxx')
+# # Takes as an input a nested list of paths and a pandas data frame containing the node metadata
 
+# def path_metadata(paths, covid_nodes):
+# 	return_paths = list()
+# 	for i in paths:
+# 		tmp_path = [covid_nodes.loc[covid_nodes["id"] ==x]["category"].values[0] for x in i]
+# 		return_paths.append(tmp_path)
+# 	return(return_paths)
 
+# def get_metapath_di(paths, metadata, covid_edges):
+# 	metapaths = list()
+# 	for i in range(0, len(paths)):
+# 		tmp_path = paths[i]
+# 		tmp_meta = metadata[i]
+# 		metapath = []
+# 		tmp_subject = str.split(str.split(tmp_meta[0], '|')[0], ':')[1] 
+# 		tmp_predicate = str.split(covid_edges.loc[(covid_edges["subject"] == tmp_path[0])&(covid_edges["object"] == tmp_path[1] )]["predicate"].values[0],":")[1]
+# 		tmp_object = str.split(str.split(tmp_meta[1], '|')[0], ':')[1]
+# 		metapath.extend([tmp_subject,tmp_predicate, tmp_object])
+# 		for x in range(1,(len(tmp_path)-1)):
+# 			y = x+1
+# 			tmp_predicate = str.split(covid_edges.loc[(covid_edges["subject"] == tmp_path[x])&(covid_edges["object"] == tmp_path[y] )]["predicate"].values[0],":")[1]
+# 			tmp_object = str.split(str.split(tmp_meta[y], '|')[0], ':')[1]
+# 			metapath.extend([tmp_predicate, tmp_object])
+# 		metapaths.append(metapath)
+# 	return(metapaths)
 
 
 
+# paths = simple_paths_selection(covid_di, input_features, 7)
+# simple_names = path_features(paths, covid_nodes)
+# metadata = path_metadata(paths)
+# metapaths = get_metapath_di(paths, metadata, covid_edges)
 
-subpaths = [item for sublist in feature_simple_paths for item in sublist]
+# metapath_counts = Counter(str(e) for e in metapaths)
+# metapath_counts = pd.DataFrame.from_dict(metapath_counts, orient = "index").reset_index()
+# metapath_counts.to_csv("../data/covid_metapath_counts.csv")
 
+# subpaths = [item for sublist in paths for item in sublist]
 
+# tmp_subgraph = covid_di.subgraph(subpaths)
+# tmp_edgelist = nx.to_pandas_edgelist(tmp_subgraph)
+# tmp_edgelist["source_label"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].name.tolist()) for i in tmp_edgelist["source"]]
+# tmp_edgelist["target_label"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].name.tolist()) for i in tmp_edgelist["target"]]
+# tmp_edgelist["source_type"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].category.tolist()) for i in tmp_edgelist["source"]]
+# tmp_edgelist["target_type"] = [' '.join(covid_nodes.loc[covid_nodes["id"] ==i].category.tolist()) for i in tmp_edgelist["target"]]
+# tmp_edgelist["source_type"] = [i.split("|",1)[0] for i in tmp_edgelist['source_type']]
+# tmp_edgelist["source_type"] = [i.split(":",1)[1] for i in tmp_edgelist['source_type']]
+# tmp_edgelist["predicate"] = [i.split(":",1)[1] for i in tmp_edgelist['predicate']]
+# tmp_edgelist["target_type"] = [i.split("|",1)[0] for i in tmp_edgelist['target_type']]
+# tmp_edgelist["target_type"] = [i.split(":",1)[1] for i in tmp_edgelist['target_type']]
 
 
-# create sub graph based on predecessors
-covid_sub = covid.subgraph(subpaths)
+# tmp_edgelist.to_csv("../data/covid_di_edgelist.csv")
 
-# convert to table
-covid_sub_edgelist = nx.to_pandas_edgelist(covid_sub)
-covid_sub_edgelist.head(3)
-covid_sub_edgelist["source_label"] = [covid_nodes.loc[covid_nodes["id"] ==i].name.tolist() for i in covid_sub_edgelist["source"]]
-covid_sub_edgelist["target_label"] = [covid_nodes.loc[covid_nodes["id"] ==i].name.tolist() for i in covid_sub_edgelist["target"]]
-covid_sub_edgelist["source_type"] = [covid_nodes.loc[covid_nodes["id"] ==i].category.tolist() for i in covid_sub_edgelist["source"]]
 
-covid_sub_edgelist["target_type"] = [covid_nodes.loc[covid_nodes["id"] ==i].category.tolist() for i in covid_sub_edgelist["target"]]
-covid_sub_edgelist[["source_label", "predicate", "target_label"]]
 
+# metapath = []
 
+# for x in range(0,len(tmp_edgelist)):
 
-# output for cytoscape
-covid_sub_edgelist.to_csv("../data/covid_feature_edgelist.csv", sep=";")
+# metapath = metapath.append(tmp_edgelist.iloc[x,6]
 
 
 
-all_simple_edge_paths = list()
-for i in input_features[0:3]:
-	print(i)
-	for j in input_features[0:3]:
-		print(j)
-		all_simple_edge_paths.append(list(nx.all_simple_edge_paths(covid_sub, i, j, cutoff = 4)))
 
 
-edge_paths = [item for sublist in all_simple_edge_paths for item in sublist]
-subpaths = [item for sublist in feature_simple_paths for item in sublist]
 
+# subpaths = [item for sublist in feature_simple_paths for item in sublist]
 
 
 
 
+# # create sub graph based on predecessors
+# covid_sub = covid.subgraph(subpaths)
 
+# # convert to table
+# covid_sub_edgelist = nx.to_pandas_edgelist(covid_sub)
+# covid_sub_edgelist.head(3)
+# covid_sub_edgelist["source_label"] = [covid_nodes.loc[covid_nodes["id"] ==i].name.tolist() for i in covid_sub_edgelist["source"]]
+# covid_sub_edgelist["target_label"] = [covid_nodes.loc[covid_nodes["id"] ==i].name.tolist() for i in covid_sub_edgelist["target"]]
+# covid_sub_edgelist["source_type"] = [covid_nodes.loc[covid_nodes["id"] ==i].category.tolist() for i in covid_sub_edgelist["source"]]
 
-# Problem, the paths always go through subclass nodes. removing the subclass nodes greatly reduces the graph. 
-# current solution, weight these nodes more to avoid going through these paths
+# covid_sub_edgelist["target_type"] = [covid_nodes.loc[covid_nodes["id"] ==i].category.tolist() for i in covid_sub_edgelist["target"]]
+# covid_sub_edgelist[["source_label", "predicate", "target_label"]]
 
-# pkl_int["weight"] = 1
 
-# def upweight (df, predicate, weight, value):
-# 	df[weight] = np.where(df[weight] != 1, 99,df[weight])
-# 	df[weight] = np.where(df[predicate] == value, 99,df[weight])
-# 	return df
 
+# # output for cytoscape
+# covid_sub_edgelist.to_csv("../data/covid_feature_edgelist.csv", sep=";")
 
-# pkl_int = upweight(pkl_int,"predicate", "weight", 2)
-# pkl_int = upweight(pkl_int,"predicate", "weight", 10)
-# pkl_int = upweight(pkl_int,"predicate", "weight", 5)
 
 
+# all_simple_edge_paths = list()
+# for i in input_features[0:3]:
+# 	print(i)
+# 	for j in input_features[0:3]:
+# 		print(j)
+# 		all_simple_edge_paths.append(list(nx.all_simple_edge_paths(covid_sub, i, j, cutoff = 4)))
 
 
-# identifying the degree sequence in the covid graph
-degree_sequence = sorted((d for n, d in covid.degree()), reverse=True)
-dmax = max(degree_sequence)
+# edge_paths = [item for sublist in all_simple_edge_paths for item in sublist]
+# subpaths = [item for sublist in feature_simple_paths for item in sublist]
 
-fig = plt.figure("Degree of a KG-COVID", figsize=(8, 8))
-# Create a gridspec for adding subplots of different sizes
 
-ax1 = fig.add_subplot()
-ax1.plot(degree_sequence, "b-", marker="o")
-ax1.set_title("Degree Rank Plot")
-ax1.set_ylabel("Degree")
-ax1.set_xlabel("Rank")
 
 
-fig.tight_layout()
-plt.savefig("../data/covid-KG-degree.jpg")
 
 
-### Node dictionary
-node_dict = pickle.load(open('../data/current_owlnets/node_metadata_dict.pkl', 'rb'))
 
-### This is a nested dictionary, so need to get the separate nodes and relations for filtering 
-nodes = node_dict["nodes"]
-relations = node_dict["relations"]
-nodes_edges = {**nodes,**relations}
-dict(list(nodes_edges.items())[0:3])
+# # Problem, the paths always go through subclass nodes. removing the subclass nodes greatly reduces the graph. 
+# # current solution, weight these nodes more to avoid going through these paths
 
+# # pkl_int["weight"] = 1
 
+# # def upweight (df, predicate, weight, value):
+# # 	df[weight] = np.where(df[weight] != 1, 99,df[weight])
+# # 	df[weight] = np.where(df[predicate] == value, 99,df[weight])
+# # 	return df
 
-# Get graph OBO identifiers
-identifiers = pd.read_json("../data/current_owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_INSTANCE_purified_Triples_Integer_Identifier_Map.json", typ = "series")
-identifiers_frame = identifiers.to_frame()
-identifiers_frame["IRI"]  = identifiers_frame.index
-identifiers_frame["IRI"] = identifiers_frame["IRI"].str.replace("<|>","")
-identifiers_frame.head
-# identifiers_frame.shape
 
-#### getting the keys for the most recent metadata shared 4/12/21
-filtered_identifiers = identifiers_frame[identifiers_frame["IRI"].isin(nodes_edges.keys())]
-filtered_identifiers["Label"] =  [nodes_edges.get(key, "none")["Label"] for key in filtered_identifiers["IRI"]]
-filtered_identifiers["Description"] =  [nodes_edges.get(key, "none")["Description"] for key in filtered_identifiers["IRI"]]
-filtered_identifiers["Synonym"] =  [nodes_edges.get(key, "none")["Synonym"] for key in filtered_identifiers["IRI"]]
-filtered_identifiers["URI"] = filtered_identifiers["IRI"].apply(lambda x: URIRef(x))
-edges = filtered_identifiers[filtered_identifiers[0].isin(pkl_int["predicate"])][["Label",0]]
-edges.to_csv("../data/edges.csv")
+# # pkl_int = upweight(pkl_int,"predicate", "weight", 2)
+# # pkl_int = upweight(pkl_int,"predicate", "weight", 10)
+# # pkl_int = upweight(pkl_int,"predicate", "weight", 5)
 
 
-# convert to multigraph
-pkl_int = pkl_int[['subject', 'object', 'predicate']]
-pkl = nx.from_pandas_edgelist(pkl_int, 'subject', 'object', 'predicate',  create_using=nx.MultiGraph())
 
 
-# Identifying the features from https://www.frontiersin.org/articles/10.3389/fnins.2020.00670/pdf, Figure 2. 
-# Focus specifically on AKT, mTOR, and GSK-3-beta, autophagy, energy production, and oxidative stress
-IDs= filtered_identifiers[filtered_identifiers['Description'].str.contains("PI3 kinase",flags=re.IGNORECASE, na = False) & filtered_identifiers['IRI'].str.contains("gene",flags=re.IGNORECASE, na = False)]
-IDs[["Label",0]]
+# # identifying the degree sequence in the covid graph
+# degree_sequence = sorted((d for n, d in covid.degree()), reverse=True)
+# dmax = max(degree_sequence)
 
+# fig = plt.figure("Degree of a KG-COVID", figsize=(8, 8))
+# # Create a gridspec for adding subplots of different sizes
 
-# subset to these input_features
-features = [258976,74637,165173,24191,55841, 73148,55773, 19836, 4697, 7084,70190,51994,  4880 ]
-input_features = filtered_identifiers[filtered_identifiers[0].isin(features)]
-input_features[["Label", "Description"]]
+# ax1 = fig.add_subplot()
+# ax1.plot(degree_sequence, "b-", marker="o")
+# ax1.set_title("Degree Rank Plot")
+# ax1.set_ylabel("Degree")
+# ax1.set_xlabel("Rank")
 
 
-# # For all paths between features
-# paths = list()
+# fig.tight_layout()
+# plt.savefig("../data/covid-KG-degree.jpg")
+
+
+# ### Node dictionary
+# node_dict = pickle.load(open('../data/current_owlnets/node_metadata_dict.pkl', 'rb'))
+
+# ### This is a nested dictionary, so need to get the separate nodes and relations for filtering 
+# nodes = node_dict["nodes"]
+# relations = node_dict["relations"]
+# nodes_edges = {**nodes,**relations}
+# dict(list(nodes_edges.items())[0:3])
+
+
+
+# # Get graph OBO identifiers
+# identifiers = pd.read_json("../data/current_owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_INSTANCE_purified_Triples_Integer_Identifier_Map.json", typ = "series")
+# identifiers_frame = identifiers.to_frame()
+# identifiers_frame["IRI"]  = identifiers_frame.index
+# identifiers_frame["IRI"] = identifiers_frame["IRI"].str.replace("<|>","")
+# identifiers_frame.head
+# # identifiers_frame.shape
+
+# #### getting the keys for the most recent metadata shared 4/12/21
+# filtered_identifiers = identifiers_frame[identifiers_frame["IRI"].isin(nodes_edges.keys())]
+# filtered_identifiers["Label"] =  [nodes_edges.get(key, "none")["Label"] for key in filtered_identifiers["IRI"]]
+# filtered_identifiers["Description"] =  [nodes_edges.get(key, "none")["Description"] for key in filtered_identifiers["IRI"]]
+# filtered_identifiers["Synonym"] =  [nodes_edges.get(key, "none")["Synonym"] for key in filtered_identifiers["IRI"]]
+# filtered_identifiers["URI"] = filtered_identifiers["IRI"].apply(lambda x: URIRef(x))
+# edges = filtered_identifiers[filtered_identifiers[0].isin(pkl_int["predicate"])][["Label",0]]
+# edges.to_csv("../data/edges.csv")
+
+
+# # convert to multigraph
+# pkl_int = pkl_int[['subject', 'object', 'predicate']]
+# pkl = nx.from_pandas_edgelist(pkl_int, 'subject', 'object', 'predicate',  create_using=nx.MultiGraph())
+
+
+# # Identifying the features from https://www.frontiersin.org/articles/10.3389/fnins.2020.00670/pdf, Figure 2. 
+# # Focus specifically on AKT, mTOR, and GSK-3-beta, autophagy, energy production, and oxidative stress
+# IDs= filtered_identifiers[filtered_identifiers['Description'].str.contains("PI3 kinase",flags=re.IGNORECASE, na = False) & filtered_identifiers['IRI'].str.contains("gene",flags=re.IGNORECASE, na = False)]
+# IDs[["Label",0]]
+
+
+# # subset to these input_features
+# features = [258976,74637,165173,24191,55841, 73148,55773, 19836, 4697, 7084,70190,51994,  4880 ]
+# input_features = filtered_identifiers[filtered_identifiers[0].isin(features)]
+# input_features[["Label", "Description"]]
+
+
+# # # For all paths between features
+# # paths = list()
+# # for i in range(0,len(input_features)-1):
+# # 	print(i)
+# # 	for j in range(i+1, len(input_features)):
+# # 		print(j)
+# # 		paths.append(list(nx.shortest_path(pkl, input_features.iloc[i,0], input_features.iloc[j,0], "weight")))
+
+
+# # Just need to find paths represented in the knowledge graph
+# # AKT -> mTOR
+# pkl[features[0]]
+
+
+# # descendents 2 hops away
+# descendents = list()
+# for i in range(0,len(input_features)-1):
+# 	print(i)
+# 	descendents.append(list(nx.dfs_successors(pkl, features[i],2)))
+
+
+# descendents = [item for sublist in descendents for item in sublist]
+
+# pkl_descendents = pkl.subgraph(descendents)
+
+# ## Change graph to tabular form
+# pkl_desc_edgelist = nx.to_pandas_edgelist(G = pkl_descendents)
+
+# # filter interger pkl data
+# pkl_desc_edgelist["source_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["source"]]
+# pkl_desc_edgelist["target_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["target"]]
+# pkl_desc_edgelist["predicate_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["predicate"]]
+# pkl_desc_edgelist[["source_label", "target_label", "predicate_label"]]
+# pkl_desc_edgelist["original"] = np.where(pkl_desc_edgelist["source"].isin(list(input_features[0])), 1, 0)
+
+# # output for cytoscape
+# pkl_desc_edgelist.to_csv("../data/pkl_desc_edgelist.csv", sep = ";")
+
+
+
+
+# shortest_paths = list()
 # for i in range(0,len(input_features)-1):
 # 	print(i)
 # 	for j in range(i+1, len(input_features)):
 # 		print(j)
-# 		paths.append(list(nx.shortest_path(pkl, input_features.iloc[i,0], input_features.iloc[j,0], "weight")))
-
-
-# Just need to find paths represented in the knowledge graph
-# AKT -> mTOR
-pkl[features[0]]
-
-
-# descendents 2 hops away
-descendents = list()
-for i in range(0,len(input_features)-1):
-	print(i)
-	descendents.append(list(nx.dfs_successors(pkl, features[i],2)))
-
-
-descendents = [item for sublist in descendents for item in sublist]
-
-pkl_descendents = pkl.subgraph(descendents)
-
-## Change graph to tabular form
-pkl_desc_edgelist = nx.to_pandas_edgelist(G = pkl_descendents)
-
-# filter interger pkl data
-pkl_desc_edgelist["source_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["source"]]
-pkl_desc_edgelist["target_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["target"]]
-pkl_desc_edgelist["predicate_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_desc_edgelist["predicate"]]
-pkl_desc_edgelist[["source_label", "target_label", "predicate_label"]]
-pkl_desc_edgelist["original"] = np.where(pkl_desc_edgelist["source"].isin(list(input_features[0])), 1, 0)
-
-# output for cytoscape
-pkl_desc_edgelist.to_csv("../data/pkl_desc_edgelist.csv", sep = ";")
+# 		shortest_paths.append(list(nx.shortest_path(pkl, features[i], features[j] ,weight=lambda u, v, d: 10 if d[0]['predicate'] == 5 else 1)))
 
 
 
+# #test = nx.all_shortest_paths(pkl, features[0], features[7] ,weight=lambda u, v, d: 5 if d[0]['predicate'] == 5 else 1)
+# #subpaths = list(test)
 
-shortest_paths = list()
-for i in range(0,len(input_features)-1):
-	print(i)
-	for j in range(i+1, len(input_features)):
-		print(j)
-		shortest_paths.append(list(nx.shortest_path(pkl, features[i], features[j] ,weight=lambda u, v, d: 10 if d[0]['predicate'] == 5 else 1)))
+# # combine the lists of lists into a single list (for paths)
+# subpaths = [item for sublist in shortest_paths for item in sublist]
+# #subpaths = [item for sublist in subpaths for item in sublist]
 
+# len(subpaths)
 
+# # create subgraph of these nodes
+# pkl_sub = pkl.subgraph(subpaths)
 
-#test = nx.all_shortest_paths(pkl, features[0], features[7] ,weight=lambda u, v, d: 5 if d[0]['predicate'] == 5 else 1)
-#subpaths = list(test)
+# ## Change graph to tabular form
+# pkl_sub_edgelist = nx.to_pandas_edgelist(G = pkl_sub)
 
-# combine the lists of lists into a single list (for paths)
-subpaths = [item for sublist in shortest_paths for item in sublist]
-#subpaths = [item for sublist in subpaths for item in sublist]
-
-len(subpaths)
-
-# create subgraph of these nodes
-pkl_sub = pkl.subgraph(subpaths)
-
-## Change graph to tabular form
-pkl_sub_edgelist = nx.to_pandas_edgelist(G = pkl_sub)
-
-# filter interger pkl data
-pkl_sub_edgelist["source_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["source"]]
-pkl_sub_edgelist["target_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["target"]]
-pkl_sub_edgelist["predicate_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["predicate"]]
-pkl_sub_edgelist[["source_label", "target_label", "predicate_label"]]
-pkl_sub_edgelist["original"] = np.where(pkl_sub_edgelist["source"].isin(list(input_features[0])), 1, 0)
+# # filter interger pkl data
+# pkl_sub_edgelist["source_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["source"]]
+# pkl_sub_edgelist["target_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["target"]]
+# pkl_sub_edgelist["predicate_label"] = ["".join(filtered_identifiers.loc[filtered_identifiers[0] ==i].Label.tolist()) for i in pkl_sub_edgelist["predicate"]]
+# pkl_sub_edgelist[["source_label", "target_label", "predicate_label"]]
+# pkl_sub_edgelist["original"] = np.where(pkl_sub_edgelist["source"].isin(list(input_features[0])), 1, 0)
 
 
 
-# output for cytoscape
-pkl_sub_edgelist.to_csv("../data/pkl_sub_edgelist_updated.csv", sep=";")
+# # output for cytoscape
+# pkl_sub_edgelist.to_csv("../data/pkl_sub_edgelist_updated.csv", sep=";")
 
 
 
