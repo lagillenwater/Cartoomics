@@ -18,8 +18,8 @@ def defineArguments():
 
 def create_network(inputSif,inputNoa,filename):
 
-    sif_df = pd.read_csv(inputSif,sep='|')
-    sif_df.columns = ['source','interaction','target']
+    sif_cols = ['source','interaction','target']
+    sif_df = pd.read_csv(inputSif,sep='|',usecols = sif_cols)
     noa_df = pd.read_csv(inputNoa,sep='|')
     noa_df.columns = ['id','group']
 
