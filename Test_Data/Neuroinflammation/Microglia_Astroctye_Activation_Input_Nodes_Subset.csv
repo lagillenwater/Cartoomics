@@ -1,0 +1,10 @@
+Source,Target
+Toll-like receptor 4 (human),microglial cell activation
+lipopolysaccharide,CD14 molecule
+lipopolysaccharide,Toll-like receptor 4 (human)
+Toll-like receptor 4 (human),myeloid differentiation primary response protein MyD88 (human)
+myeloid differentiation primary response protein MyD88 (human),NF-kappaB p50/p65 complex (human)
+NF-kappaB p50/p65 complex (human),tumor necrosis factor alpha
+NF-kappaB p50/p65 complex (human),interleukin-6 (human)
+tumor necrosis factor alpha,Neuroinflammation
+interleukin-6 (human),Neuroinflammation
