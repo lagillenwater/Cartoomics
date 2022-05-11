@@ -2,9 +2,14 @@
 
 #Input a table of source and target nodes with their correspoding labels in PKL and generate the full pathway of triples. The Input nodes file format is: Source (PKL Node Label), Target (PKL Node Label), "|" delimited. Output will be 1 csv file of triples, 1 noa file of node attributes (Mechanism, Extra), and a Results file including the Path Length and result (exists, nonexistant) for each source/target pair. Input weighted edges as a string in the for of a list of edges, i.e. '[relationship_1, relationship_2]'
 
-#python Mechanism_Predictions_FullPathway.py --triples-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers_withGutMGene_withMicrobes.txt --triples-integers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt --pkl-labels-file /Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt --gutmgene-labels-file /Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv --pkl-identifiers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json --input-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Kynurenine_Pathway_Input_Nodes.csv --output-dir /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant
+#Cosine sim adjustment
+#python Mechanism_Predictions_FullPathway_SemanticActions.py --triples-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers_withGutMGene_withMicrobes.txt --triples-integers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt --pkl-labels-file /Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt --gutmgene-labels-file /Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv --pkl-identifiers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json --input-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Microglia_Astroctye_Activation_Input_Nodes_Subset.csv --output-dir /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Activation_CosineSimilarity_Unweighted --mechanism-name microglial_astroctye_activation_cs_subsetNodes --search-type all --embeddings-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3_node2vec_Embeddings42_0.emb
 
-#python Mechanism_Predictions_FullPathway.py --triples-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers_withGutMGene_withMicrobes.txt --triples-integers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt --pkl-labels-file /Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt --gutmgene-labels-file /Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv --pkl-identifiers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json --input-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/UpdatedPathway/Kynurenine_Pathway_Input_Nodes_Updated.csv --output-dir /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/UpdatedPathway/KynurenineUnweightedResult --mechanism-name Kynurenine_Pathway --original-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/kynurenine_pathway_original_pklv3.csv
+#PDP adjustment
+#python Mechanism_Predictions_FullPathway_SemanticActions.py --triples-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers_withGutMGene_withMicrobes.txt --triples-integers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt --pkl-labels-file /Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt --gutmgene-labels-file /Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv --pkl-identifiers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json --input-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Microglia_Astroctye_Activation_Input_Nodes_Subset.csv --output-dir /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Activation_PDP_Unweighted --mechanism-name microglial_astroctye_activation_pdp_subsetNodes --search-type all —-semantic-action pdp
+
+#Metapaths adjustment
+#python Mechanism_Predictions_FullPathway_SemanticActions.py --triples-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers_withGutMGene_withMicrobes.txt --triples-integers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt --pkl-labels-file /Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt --gutmgene-labels-file /Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv --pkl-identifiers-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json --input-nodes-file /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Microglia_Astroctye_Activation_Input_Nodes_Subset.csv --output-dir /Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/CartoomicsGrant/Neuroinflammation/Activation_PDP_Unweighted_Metapaths --mechanism-name microglial_astroctye_activation_pdp_subsetNodes --search-type all --semantic-action pdp --include-metapaths true
 
 import pandas as pd
 import csv
@@ -33,10 +38,9 @@ def defineArguments():
     parser.add_argument("--triples-integers-file",dest="TriplesIntegersFile",required=True,help="TriplesIntegersFile")
     #'/Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned_withGutMGene_withMicrobes.txt'
 
-    parser.add_argument("--pkl-microbiome-labels-file",dest="PklMicrobiomeLabelsFile",required=True,help="PklMicrobiomeLabelsFile")
-    #"/Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt"
-
-    #parser.add_argument("--gutmgene-labels-file",dest="GutMGeneLabelsFile",required=True,help="GutMGeneLabelsFile")
+    parser.add_argument("--pkl-labels-file",dest="PklLabelsFile",required=True,help="PklLabelsFile")
+    
+    parser.add_argument("--gutmgene-labels-file",dest="GutMGeneLabelsFile",required=False,help="GutMGeneLabelsFile")
     #'/Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv'
 
     parser.add_argument("--pkl-identifiers-file",dest="PklIdentifiersFile",required=True,help="PklIdentifiersFile")
@@ -80,16 +84,18 @@ def process_files(triples_file,pkl_microbiome_labels_file,pkl_identifiers_file,t
     triples_list = [ x for x in triples_list if "subject" not in x ]
     triples_list = [ x for x in triples_list if "Subject" not in x ]
 
-    labels_all = {}
+    labels = {}
 
-    with open(pkl_microbiome_labels_file) as f_in:
+    #Read in labels file to dictionary
+    with open(pkl_labels_file) as f_in:
         for line in f_in:
             vals = line.strip().split("\t")
             try:
-                #key, value = vals[2:4]
-                key, value = vals[0:2]
-                labels_all[key] = value
+                key, value = vals[2:4]
+                labels[key] = value
             except: pass
+            
+    labels_all = copy.deepcopy(labels)
 
     #Read in identifiers file to dictionary
     f = open(pkl_identifiers_file)
@@ -102,6 +108,15 @@ def process_files(triples_file,pkl_microbiome_labels_file,pkl_identifiers_file,t
     input_nodes = pd.read_csv(input_nodes_file, sep=',')  #'|')
 
     return triples_list,labels_all,identifiers,edgelist_int,input_nodes
+
+def process_gutmgene_labels(labels_all,gutmgene_labels_file):
+
+    gutmgene_labels = pd.read_csv(gutmgene_labels_file)
+
+    for i in range(len(gutmgene_labels)):
+        labels_all[gutmgene_labels.iloc[i].loc['Identifier']] = gutmgene_labels.iloc[i].loc['Label']
+
+    return labels_all
 
 def generate_graph(triples_integers_file):
 
@@ -461,8 +476,7 @@ def main():
     
 
     triples_file = args.TriplesFile
-    pkl_microbiome_labels_file = args.PklMicrobiomeLabelsFile
-    #gutmgene_labels_file = args.GutMGeneLabelsFile
+    pkl_labels_file = args.PklLabelsFile
     pkl_identifiers_file = args.PklIdentifiersFile
     triples_integers_file = args.TriplesIntegersFile
     input_nodes_file = args.InputNodesFile
@@ -481,8 +495,12 @@ def main():
     else:
         weights = False
 
-    triples_list, labels_all, identifiers, edgelist_int, input_nodes = process_files(triples_file,pkl_microbiome_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file)
+    triples_list, labels_all, identifiers, edgelist_int, input_nodes = process_files(triples_file,pkl_labels_file,pkl_identifiers_file,triples_integers_file,input_nodes_file)
 
+    if args.GutMGeneLabelsFile:
+        gutmgene_labels_file = args.GutMGeneLabelsFile
+        labels_all = process_gutmgene_labels(labels_all,gutmgene_labels_file)
+        
     g, g_nodes = generate_graph(triples_integers_file)
 
     if weights:
