@@ -30,9 +30,6 @@ def defineArguments():
     parser.add_argument("--pkl-microbiome-labels-file",dest="PklMicrobiomeLabelsFile",required=True,help="PklMicrobiomeLabelsFile")
     #"/Users/brooksantangelo/Documents/HunterLab/Exploration/PKL_v3/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt"
 
-    #parser.add_argument("--gutmgene-labels-file",dest="GutMGeneLabelsFile",required=True,help="GutMGeneLabelsFile")
-    #'/Users/brooksantangelo/Documents/Rotation2/Rocky/PKL_Additions/GutMGene/LabelTypes_gutMGene_URI_LABEL_MAP_contextual_manualRelationLabels.csv'
-
     parser.add_argument("--pkl-identifiers-file",dest="PklIdentifiersFile",required=True,help="PklIdentifiersFile")
     #'/Users/brooksantangelo/Documents/HunterLab/GutMGene_PKL/Output/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map_withGutMGene_withMicrobes.json'
 
