@@ -22,14 +22,102 @@ def defineArguments():
 # interactive testing.....
 reload(cartoomics_util)
 from cartoomics_util import *
-graph = graphFromPickle("../data/covid_multi_di_graph.pkl")
+graph = edgelistFromPickle("../data/covid_multi_graph.pkl")
 nodes = parseNodeData("../data/COVID/merged-kg_nodes.tsv")
-findNode("IL6", nodes) # ENSEMBL:ENSG00000136244
+
+### Need a way to interactively build this list that can be fed in to downstream algorithms in the commend line.
+findNode("IL6", nodes, ontology = "Uniprot") # UniProtKB:P05231
 findNode("cytokine storm", nodes) # HP:0033041
-findNode("TNF", nodes) # ENSEMBL:ENSG00000232810
-findNode("NFKB", nodes) #  ENSEMBL:ENSG00000109320 # ENSEMBL:ENSG00000077150 # subunits 1 & 2
-findNode("IKBKG", nodes) # NEMO # ENSEMBL:ENSG00000269335
+findNode("TNF", nodes, ontology = 'uniprot') # UniProtKB:P01375
+findNode("NFKB", nodes, ontology = "uniprot") #  UniProtKB:P19838
+findNode("IKBKG", nodes, ontology = "uniprot") # NEMO # UniProtKB:Q9Y6K9
 findNode("double stranded RNA", nodes) # GO:0039691
+findNode("ACE2", nodes, ontology = 'uniprot') # UniProtKB:Q9BYF1
+
+input_nodes = ["UniProtKB:P05231", "HP:0033041", "UniProtKB:P01375", "UniProtKB:P19838", "UniProtKB:Q9Y6K9", "GO:0039691", "UniProtKB:Q9BYF1"]
+
+###### Creating the graph interactively based on the inputs and alignment to the figure. 
+#### Also, would be good to be able to do this interactively with the command line. 
+
+
+
+### Starting with shortest path for search
+shortest_paths = []
+# ACE2 -> dsRNA
+shortest_paths.append(findPath(graph,"UniProtKB:Q9BYF1", "GO:0039691",search_type = "shortest")) 
+# dsRNA -> IKBKG
+shortest_paths.append(findPath(graph,"GO:0039691","UniProtKB:Q9Y6K9", search_type = "shortest"  ))
+# IKBKG -> NFKB 
+shortest_paths.append(findPath(graph,"GO:0039691","UniProtKB:P19838", search_type = "shortest"  ))
+# TNFA -> NFKB
+shortest_paths.append(findPath(graph,"UniProtKB:P01375","UniProtKB:P19838", search_type = "shortest"  ))
+# IL6 -> TNFA
+shortest_paths.append(findPath(graph,"UniProtKB:P05231", "UniProtKB:P01375", search_type = "shortest"  ))
+#NFKB -> IL6
+shortest_paths.append(findPath(graph,"UniProtKB:P19838","UniProtKB:P05231",  search_type = "shortest"  ))
+# IL6 -> cytokine storm
+shortest_paths.append(findPath(graph,"UniProtKB:P05231", "HP:0033041",  search_type = "shortest"  ))
+
+
+# combine lists
+subpaths = [item for sublist in shortest_paths for item in sublist]
+
+
+# create subgraph
+subgraph = graph.subgraph(subpaths)
+
+# create output for cytoscape
+paths1 = toSIF(subgraph, nodes)
+paths1.to_csv("../data/covid_paths1.csv", sep = "|", index = False)
+
+paths1_noa = toNOA(subpaths,nodes, input_nodes)
+paths1_noa.to_csv("../data/covid_paths1_attributes.noa", sep = "|", index = False)
+
+paths = nx.all_shortest_paths(graph,"UniProtKB:Q9BYF1", "GO:0039691" )
+
+
+
+### Starting with shortest path for search
+pdp_paths = []
+# ACE2 -> dsRNA
+pdp_paths.append(findPath(graph,"UniProtKB:Q9BYF1", "GO:0039691",search_type = "pdp")) 
+# dsRNA -> IKBKG
+pdp_paths.append(findPath(graph,"GO:0039691","UniProtKB:Q9Y6K9", search_type = "pdp"  ))
+# IKBKG -> NFKB 
+pdp_paths.append(findPath(graph,"GO:0039691","UniProtKB:P19838", search_type = "pdp"  ))
+# TNFA -> NFKB
+pdp_paths.append(findPath(graph,"UniProtKB:P01375","UniProtKB:P19838", search_type = "pdp"  ))
+# IL6 -> TNFA
+pdp_paths.append(findPath(graph,"UniProtKB:P05231", "UniProtKB:P01375", search_type = "pdp"  ))
+#NFKB -> IL6
+pdp_paths.append(findPath(graph,"UniProtKB:P19838","UniProtKB:P05231",  search_type = "pdp"  ))
+# IL6 -> cytokine storm
+pdp_paths.append(findPath(graph,"UniProtKB:P05231", "HP:0033041",  search_type = "pdp"  ))
+
+
+pdp_subgraph = createSubgraph(graph, pdp_paths)
+
+paths2 = toSIF(pdp_subgraph, nodes)
+paths2.to_csv("../Test_Data/covid_paths2.csv", sep = "|", index = False)
+
+paths2_noa = toNOA(pdp_paths,nodes,input_nodes)
+paths2_noa.to_csv("../Test_Data/covid_paths2_attributes.noa", sep = "|", index = False)
+
+
+
+### Adding on the drug neighbors
+drug_neighbors = drugNeighbors(graph,input_nodes)
+subpaths3 = pdp_paths + drug_neighbors
+
+drug_subgraph = createSubgraph(graph, subpaths3)
+
+paths3 = toSIF(drug_subgraph, nodes)
+paths3.to_csv("../Test_Data/covid_paths3.csv", sep = "|", index = False)
+
+paths3_noa = toNOA(drug_subgraph,nodes,input_nodes)
+paths3_noa.to_csv("../Test_Data/covid_paths3_attributes.noa", sep = "|", index = False)
+
+
 
 
 def main():
