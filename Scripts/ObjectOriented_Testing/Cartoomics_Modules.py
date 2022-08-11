@@ -124,4 +124,4 @@ class ShortestPathSearch:
             #Generate df
             df.columns = ['S','P','O']
 
-        return df2
+        return df
