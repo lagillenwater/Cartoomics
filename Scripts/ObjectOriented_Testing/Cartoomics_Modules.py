@@ -112,24 +112,8 @@ class ShortestPathSearch:
         #list of nodes
         path_nodes = graph.get_shortest_paths(v=node1, to=node2, weights=w, mode=search_type)
 
-        df = self.define_mechanism(g_nodes,identifiers,labels_all,triples_df,path_nodes,search_type)
+        df = self.define_mechanism(g_nodes,triples_df,path_nodes,search_type)
 
-        ''' #When there is no connection in graph, path_nodes will equal 1 ([[]])
-        if len(path_nodes[0]) != 0:
-            n1 = g_nodes[path_nodes[0][0]]
-            for i in range(1,len(path_nodes[0])):
-                n2 = g_nodes[path_nodes[0][i]]
-                if search_type.lower() == 'all':
-                    df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
-                    if len(df) == 0:
-                        df = triples_df.loc[(triples_df['Object'] == n1) & (triples_df['Subject'] == n2)]
-                elif search_type.lower() == 'out':
-                    df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
-                n1 = n2
-
-            #Generate df
-            df.columns = ['S','P','O']
-        '''
         return df
 
     def find_all_shortest_paths_igraph(self,start_node,end_node,graph,g_nodes,identifiers,labels_all,triples_df,weights,search_type):
@@ -149,33 +133,11 @@ class ShortestPathSearch:
         #list of nodes
         path_nodes = graph.get_all_shortest_paths(v=node1, to=node2, weights=w, mode=search_type)
 
-        mechanism_dfs = self.define_mechanism(g_nodes,identifiers,labels_all,triples_df,path_nodes,search_type)
-        '''
-        #Keep track of # of mechanisms generated for this node pair in file name
-        count = 1
-
-        #When there is no connection in graph, path_nodes will equal 1 ([[]])
-        if len(path_nodes[0]) != 0:
-            for p in range(len(path_nodes)):
-                n1 = g_nodes[path_nodes[p][0]]  
-                for i in range(1,len(path_nodes[p])):
-                    n2 = g_nodes[path_nodes[p][i]]
-                    if search_type.lower() == 'all':
-                        df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
-                        if len(df) == 0:
-                            df = triples_df.loc[(triples_df['Object'] == n1) & (triples_df['Subject'] == n2)]
-                    elif search_type.lower() == 'out':
-                        df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
-                    n1 = n2
-
-            #Generate df
-            df.columns = ['S','P','O']
-            mechanism_dfs['mech#_'+str(count)] = df
-            count += 1'''
-
+        mechanism_dfs = self.define_mechanism(g_nodes,triples_df,path_nodes,search_type)
+        
         return mechanism_dfs,path_nodes
 
-    def define_mechanism(self,g_nodes,identifiers,labels_all,triples_df,path_nodes,search_type):
+    def define_mechanism(self,g_nodes,triples_df,path_nodes,search_type):
 
         #Dict to store all dataframes of shortest mechanisms for this node pair
         mechanism_dfs = {}
@@ -189,11 +151,15 @@ class ShortestPathSearch:
                 for i in range(1,len(path_nodes[p])):
                     n2 = g_nodes[path_nodes[p][i]]
                     if search_type.lower() == 'all':
+                        #Try first direction which is n1 --> n2
                         df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
                         if len(df) == 0:
+                            #If no results, try second direction which is n2 --> n1
                             df = triples_df.loc[(triples_df['Object'] == n1) & (triples_df['Subject'] == n2)]
                     elif search_type.lower() == 'out':
+                        #Only try direction n1 --> n2
                         df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
+                    df = df.reset_index(drop=True)
                     n1 = n2
 
             #For shortest path search
@@ -280,7 +246,7 @@ class ShortestPathSearch:
     
         return embedding_array
 
-    def calc_cosine_sim(self,emb,path_nodes,g_nodes,identifiers,labels_all,triples_df,search_type):
+    def calc_cosine_sim(self,emb,path_nodes,g_nodes,triples_df,search_type):
 
         print(search_type)
 
@@ -303,14 +269,14 @@ class ShortestPathSearch:
                 cs += 1 - spatial.distance.cosine(e,target_emb)
             paths_total_cs.append(cs)
 
-        chosen_path_nodes_cs = self.select_path(paths_total_cs,path_nodes,g_nodes,identifiers,labels_all,triples_df,search_type)
+        chosen_path_nodes_cs = self.select_path(paths_total_cs,path_nodes)
 
         #Will only return 1 dataframe
-        df = self.define_mechanism(g_nodes,identifiers,labels_all,triples_df,chosen_path_nodes_cs,search_type)
+        df = self.define_mechanism(g_nodes,triples_df,chosen_path_nodes_cs,search_type)
 
         return df
 
-    def calc_pdp(self,path_nodes,graph,w,g_nodes,identifiers,labels_all,triples_df,search_type):
+    def calc_pdp(self,path_nodes,graph,w,g_nodes,triples_df,search_type):
 
         #List of pdp for each path in path_nodes, should be same length as path_nodes
         paths_pdp = []
@@ -324,14 +290,14 @@ class ShortestPathSearch:
 
             paths_pdp.append(pdp)
 
-        chosen_path_nodes_pdp = self.select_path(paths_pdp,path_nodes,g_nodes,identifiers,labels_all,triples_df,search_type)
+        chosen_path_nodes_pdp = self.select_path(paths_pdp,path_nodes)
 
         #Will only return 1 dataframe
-        df = self.define_mechanism(g_nodes,identifiers,labels_all,triples_df,chosen_path_nodes_pdp,search_type)
+        df = self.define_mechanism(g_nodes,triples_df,chosen_path_nodes_pdp,search_type)
 
         return df
 
-    def select_path(self,value_list,path_nodes,g_nodes,identifiers,labels_all,triples_df,search_type):
+    def select_path(self,value_list,path_nodes):
 
         #Get max cs from total_cs_path, use that idx of path_nodes then create mechanism
         max_index = value_list.index(max(value_list))
@@ -339,3 +305,13 @@ class ShortestPathSearch:
         chosen_path_nodes = [path_nodes[max_index]]
 
         return chosen_path_nodes
+
+    def convert_to_labels(self,df,labels_all):
+
+        for i in range(len(df)):
+            df.iloc[i].loc['S'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['S'],'Label'].values[0]
+            df.iloc[i].loc['P'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['P'],'Label'].values[0]
+            df.iloc[i].loc['O'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['O'],'Label'].values[0]
+
+        df = df.reset_index(drop=True)
+        return df
