@@ -54,13 +54,17 @@ print(dict_df)
 
 emb = pathObject.generate_graph_embeddings(triples_list_file,output_dir,node2vec_script_dir,embedding_dimensions)
 
-chosen_path_cs = pathObject.calc_cosine_sim(emb,path_nodes,g_nodes_igraph,identifiers,labels,triples_df,search_type)
+chosen_path_cs = pathObject.calc_cosine_sim(emb,path_nodes,g_nodes_igraph,triples_df,search_type)
+chosen_path_cs_labels = pathObject.convert_to_labels(chosen_path_cs,labels)
 
 print('cosine similarity')
 print(chosen_path_cs)
+print(chosen_path_cs_labels)
 
-chosen_path_pdp = pathObject.calc_pdp(path_nodes,g_igraph,pdp_weight,g_nodes_igraph,identifiers,labels,triples_df,search_type)
+chosen_path_pdp = pathObject.calc_pdp(path_nodes,g_igraph,pdp_weight,g_nodes_igraph,triples_df,search_type)
+chosen_path_pdp_labels = pathObject.convert_to_labels(chosen_path_pdp,labels)
 
 print('pdp')
 print(chosen_path_pdp)
+print(chosen_path_pdp_labels)
 
