@@ -69,7 +69,7 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
     if len(path_nodes) > 1:
         return mechanism_dfs
 
-def find_all_shortest_paths_igraph(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type):
+def find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type):
 
     node1 = get_uri(labels_all,start_node)
     node2 = get_uri(labels_all,end_node)
@@ -194,7 +194,7 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
 def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,node2vec_script_dir,embedding_dimensions):
 
-    path_nodes = find_all_shortest_paths_igraph(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
+    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
 
     e = Embeddings(triples_file,output_dir,node2vec_script_dir,embedding_dimensions)
     emb = e.generate_graph_embeddings()
@@ -205,11 +205,8 @@ def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
 def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight):
 
-    path_nodes = find_all_shortest_paths_igraph(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
+    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
 
     df = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type)
 
     return df
-
-
-
