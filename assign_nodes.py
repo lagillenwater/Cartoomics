@@ -11,7 +11,7 @@ def map_nodes(examples):
 	return(nodes)
 
 # Search through graph to find nodes based on input features
-def findNode(node_name, nodes, ontology = ""):
+def find_node(node_name, nodes, ontology = ""):
 	if ontology == "":
 		print(nodes[nodes["name"].str.contains(node_name,flags=re.IGNORECASE, na = False)|nodes["description"].str.contains(node_name,flags=re.IGNORECASE, na = False)][["id","name", "description"]])
 	else:
