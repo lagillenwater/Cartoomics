@@ -1,4 +1,4 @@
-from graph import PKLGraph
+from graph import KnowledgeGraph
 import pandas as pd
 import csv
 import json
