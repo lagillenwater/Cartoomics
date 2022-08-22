@@ -56,8 +56,3 @@ def search_nodes(nodes, kg):
 		user_nodes.append(user_input)
 	return(user_nodes)
 
-	
-
-
-
-
