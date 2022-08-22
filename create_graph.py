@@ -35,6 +35,6 @@ def create_pkl_graph(triples_file,labels_file):
     g_igraph,g_nodes_igraph = create_igraph_graph(triples_df,labels)
 
     # Created a PKL class instance
-    pkl_graph = PKLGraph(triples_df,labels,g_igraph,g_nodes_igraph)
+    pkl_graph = KnowledgeGraph(triples_df,labels,g_igraph,g_nodes_igraph)
 
     return pkl_graph
