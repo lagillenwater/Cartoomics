@@ -17,6 +17,7 @@ def subgraph_shortest_path(input_file,graph,g_nodes,labels_all,triples_df,weight
         all_paths.append(shortest_path_df)
 
     df = pd.concat(all_paths)
+    df.reset_index(drop=True, inplace=True)
 
     return df
 
@@ -33,6 +34,7 @@ def subgraph_prioritized_path_cs(input_file,graph,g_nodes,labels_all,triples_df,
         all_paths.append(cs_shortest_path_df)
 
     df = pd.concat(all_paths)
+    df.reset_index(drop=True, inplace=True)
 
     return df
 
@@ -49,5 +51,6 @@ def subgraph_prioritized_path_pdp(input_file,graph,g_nodes,labels_all,triples_df
         all_paths.append(cs_shortest_path_df)
 
     df = pd.concat(all_paths)
+    df.reset_index(drop=True, inplace=True)
 
     return df

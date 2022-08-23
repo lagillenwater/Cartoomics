@@ -10,13 +10,13 @@ from collections import defaultdict
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
 def get_uri(labels,value):
 
-    uri = labels.loc[labels['Label'] == value,'Identifier'].values[0]
+    uri = labels.loc[labels['label'] == value,'entity_uri'].values[0]
     
     return uri
 
 def get_label(labels,value):
 
-    label = labels.loc[labels['Identifier'] == value,'Label'].values[0]
+    label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
     
     return label
 
@@ -162,9 +162,9 @@ def select_path(value_list,path_nodes):
 def convert_to_labels(df,labels_all):
 
     for i in range(len(df)):
-        df.iloc[i].loc['S'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['S'],'Label'].values[0]
-        df.iloc[i].loc['P'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['P'],'Label'].values[0]
-        df.iloc[i].loc['O'] = labels_all.loc[labels_all['Identifier'] == df.iloc[i].loc['O'],'Label'].values[0]
+        df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S'],'label'].values[0]
+        df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P'],'label'].values[0]
+        df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O'],'label'].values[0]
 
     df = df.reset_index(drop=True)
     return df
