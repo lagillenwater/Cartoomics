@@ -1,5 +1,4 @@
 from graph_embeddings import Embeddings
-from paths import *
 import numpy as np
 import pandas as pd
 from scipy import spatial
@@ -43,13 +42,13 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
                 n2 = g_nodes[path_nodes[p][i]]
                 if search_type.lower() == 'all':
                     #Try first direction which is n1 --> n2
-                    df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
+                    df = triples_df.loc[(triples_df['subject'] == n1) & (triples_df['object'] == n2)]
                     if len(df) == 0:
                         #If no results, try second direction which is n2 --> n1
-                        df = triples_df.loc[(triples_df['Object'] == n1) & (triples_df['Subject'] == n2)]
+                        df = triples_df.loc[(triples_df['object'] == n1) & (triples_df['subject'] == n2)]
                 elif search_type.lower() == 'out':
                     #Only try direction n1 --> n2
-                    df = triples_df.loc[(triples_df['Subject'] == n1) & (triples_df['Object'] == n2)]
+                    df = triples_df.loc[(triples_df['subject'] == n1) & (triples_df['object'] == n2)]
                 df = df.reset_index(drop=True)
                 n1 = n2
 

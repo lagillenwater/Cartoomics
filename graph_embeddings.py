@@ -5,24 +5,32 @@ import json
 
 class Embeddings:
 
-    def __init__(self, triples_file,output_dir,node2vec_script_dir,embedding_dimensions):
+    def __init__(self, triples_file,output_dir,input_dir,embedding_dimensions):
         self.triples_file = triples_file
         self.output_dir = output_dir
-        self.node2vec_script_dir = node2vec_script_dir
+        self.input_dir = input_dir
         self.embedding_dimensions = embedding_dimensions
 
-    def generate_graph_embeddings(self):
-    
-        base_name = self.triples_file.split('/')[-1]
+    def check_file_existence(self,embeddings_file):
 
-        embeddings_file = base_name.split('.')[0] + '_node2vec_Embeddings' + str(self.embedding_dimensions) + '_None.emb'
-
-        #Check for existance of embeddings file
         exists = 'false'
         for fname in os.listdir(self.output_dir):
             if embeddings_file == fname:
-                emb = KeyedVectors.load_word2vec_format(self.output_dir + '/' + embeddings_file, binary=False)
                 exists = 'true'
+
+        return exists
+
+    def generate_graph_embeddings(self):
+
+        base_name = self.triples_file.split('/')[-1]
+    
+        embeddings_file = base_name.split('.')[0] + '_node2vec_Embeddings' + str(self.embedding_dimensions) + '.emb'
+
+        #Check for existence of embeddings file
+        exists = self.check_file_existence(embeddings_file)
+
+        if exists == 'true':
+            emb = KeyedVectors.load_word2vec_format(self.output_dir + '/' + embeddings_file, binary=False)
 
         #Only generate embeddings if file doesn't exist
         if exists == 'false':
@@ -68,11 +76,18 @@ class Embeddings:
 
                 f_out.close()
                 
-                os.chdir(self.node2vec_script_dir) 
+                os.chdir(self.input_dir) 
 
-                command = "python GutMGene_sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10"
+                command = "python sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10"
                 os.system(command.format(file_out,self.embedding_dimensions))
 
-                emb = KeyedVectors.load_word2vec_format(embeddings_file, binary=False)
+                exists = self.check_file_existence(embeddings_file)
+
+                #Check for existence of embeddings file and error if not
+                if exists == 'false':
+                    raise Exception('Embeddings file not generated in output directory: ' + self.output_dir + '/' + embeddings_file)   
+
+
+                emb = KeyedVectors.load_word2vec_format(self.output_dir + '/' + embeddings_file, binary=False)
 
         return emb
