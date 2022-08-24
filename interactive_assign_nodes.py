@@ -21,7 +21,8 @@ def main():
 
     u = read_user_input(user_example_file)
     n = unique_nodes(u)
-    search_nodes(n,g)
+    s = search_nodes(n,g,u)
+    print(s)
 
 
     #p = subgraph_prioritized_path_cs(input_file,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,node2vec_script_dir,embedding_dimensions)
