@@ -95,7 +95,6 @@ def search_nodes(nodes, kg, examples):
 	return(examples)
 
 
-<<<<<<< HEAD
 # Check if search input is in the list of integer_ids
 def node_in_search(found_nodes, user_input):
 	if user_input in list(found_nodes["integer_id"]):
@@ -105,12 +104,9 @@ def node_in_search(found_nodes, user_input):
 
 #subgraph_df is a dataframe with source,targe headers and | delimited
 def create_input_file(examples,output_dir):
-
     input_file = output_dir+"/_Input_Nodes_.csv"
-    examples = examples["source_label","target_label"]
+    examples = examples[["source_label","target_label"]]
     examples.columns = ["source", "target"]
     examples.to_csv(input_file, sep = "|", index = False)
 
 
-=======
->>>>>>> main
