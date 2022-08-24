@@ -16,7 +16,7 @@ def read_user_input(user_example_file):
 # Outputs:	nodes 			set of unique nodes
 def unique_nodes(examples):
 	# get unique node values
-	nodes = set(pd.melt(examples)["value"].values)
+	nodes = list(set(pd.melt(examples)["value"].values))
 	return(nodes)
 
 # Search through labels to find nodes based on input feature
@@ -30,7 +30,10 @@ def find_node(node, kg, ontology = ""):
 
 
 	if ontology == "":
-		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label","entity_uri", "description/definition"]]
+		if node.isupper(): #likely a gene or protein
+			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
+		else:
+			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label","entity_uri", "description/definition"]]
 	else:
 		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
 	return(results)
@@ -45,39 +48,66 @@ def search_nodes(nodes, kg, examples):
 	examples["target_label"] = ""
 	for node in nodes:
 		print("User Search Node: ", node)
-		found_nodes = find_node(node,kg)
-		
+		found_nodes = find_node(node,kg)		
 		nrow = found_nodes.shape[0]
+		print("Found", nrow, "features in KG")
+		user_input = ""
+		bad_input = True
 		if nrow < 20:
-			print(found_nodes.iloc[0:nrow,])
-			user_input = input("Input node integer_id: ")
-		else:
-			user_input = ""
-			bad_input = True
+			while(bad_input):
+				print(found_nodes.iloc[0:nrow,])
+				user_input = input("Input node integer_id: ")
+				try:
+					user_input = int(user_input)
+				except ValueError:
+					print("Input not an input_id.... try again")
+				else:
+					if node_in_search(found_nodes,user_input):
+						print("Input is an input_id")
+						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
+						bad_input = False
+					else:
+						print("Input not an input_id.... try again")
+		else:	
 			i = 0
 			while(bad_input):
 				high = min(nrow,(i+1)*20)
 				print(found_nodes.iloc[i*20:high,])
-				user_input = input("Input node integer_id or hit enter for the next 20 features: ")
-
-				if user_input in list(found_nodes["integer_id"]):
-					print("found it")
-					bad_input = False
-				elif user_input == int(user_input):
-					print("integer_id not found. Try again.")
+				user_input = input("Input node integer_id or 'f' for the next 20 features or 'b' for the previous 20: ")
+				try:
+					user_input = int(user_input)
+				except:
+					if user_input == 'f':
+						i+=1
+					elif user_input == 'b':
+						i-=1
+					else:
+						i+=1
 				else:
-					print("Next 20")
-					i+=1
-
-
-		# examples["source" == node]["source_label"] = node_label
-		# examples["target" == node]["target_label"] = node_label
-
+					if node_in_search(found_nodes,user_input):
+						print("Input is an input_id")
+						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
+						bad_input = False
+					else:
+						print("Input not an input_id.... try again")
+		examples.loc[examples["source"] == node,"source_label"] = node_label
+		examples.loc[examples["target"] == node,"target_label"] = node_label
 	return(examples)
 
-	
 
-# Map list 
+# Check if search input is in the list of integer_ids
+def node_in_search(found_nodes, user_input):
+	if user_input in list(found_nodes["integer_id"]):
+		return(True)
+	else:
+		return(False)
 
+#subgraph_df is a dataframe with source,targe headers and | delimited
+def create_input_file(examples,output_dir):
+
+    input_file = output_dir+"/_Input_Nodes_.csv"
+    examples = examples["source_label","target_label"]
+    examples.columns = ["source", "target"]
+    examples.to_csv(input_file, sep = "|", index = False)
 
 
