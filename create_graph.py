@@ -10,11 +10,26 @@ def process_pkl_files(triples_file,labels_file):
 
     triples_df = pd.read_csv(triples_file,sep = '	')
     triples_df.columns.str.lower()
+    
 
-    labels = pd.read_csv(labels_file, sep = '	')
-    labels.columns.str.lower()
+    #labels = pd.read_csv(labels_file, sep = '	')
+    #labels.columns.str.lower()
 
-    return triples_df,labels
+    labels_fwf = pd.read_fwf(labels_file)
+    print("The total number of labels is", len(all_labels))
+
+    '''extract the labels from the fwf_labels file.
+    This will extract the linsk without the "<>" on border on each string  ''' 
+    uri_labels = []
+    for i in labels_fwf.iloc[:,0]:
+        i = i.split('<')
+        i= i[1].split('>')
+        uri= "<" + str(i[0]) + ">"
+        uri_labels.append(uri)
+
+    return triples_df, uri_labels
+
+    #return triples_df,all_labels
 
 #Creates igraph object and a list of nodes
 def create_igraph_graph(edgelist_df,labels):
