@@ -10,6 +10,9 @@ from collections import defaultdict
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
 def get_uri(labels,value):
 
+    print(value)
+    print(labels.columns)
+
     uri = labels.loc[labels['label'] == value,'entity_uri'].values[0]
     
     return uri
