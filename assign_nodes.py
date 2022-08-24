@@ -60,14 +60,14 @@ def search_nodes(nodes, kg, examples):
 				try:
 					user_input = int(user_input)
 				except ValueError:
-					print("Input not an input_id.... try again")
+					print("Input not an integer_id.... try again")
 				else:
 					if node_in_search(found_nodes,user_input):
 						print("Input is an input_id")
 						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
 						bad_input = False
 					else:
-						print("Input not an input_id.... try again")
+						print("Input not an integer_id.... try again")
 		else:	
 			i = 0
 			while(bad_input):
@@ -85,11 +85,11 @@ def search_nodes(nodes, kg, examples):
 						i+=1
 				else:
 					if node_in_search(found_nodes,user_input):
-						print("Input is an input_id")
+						print("Input is an integer_id")
 						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
 						bad_input = False
 					else:
-						print("Input not an input_id.... try again")
+						print("Input not an integer_id.... try again")
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
 	return(examples)
