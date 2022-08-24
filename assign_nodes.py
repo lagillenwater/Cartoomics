@@ -95,6 +95,7 @@ def search_nodes(nodes, kg, examples):
 	return(examples)
 
 
+<<<<<<< HEAD
 # Check if search input is in the list of integer_ids
 def node_in_search(found_nodes, user_input):
 	if user_input in list(found_nodes["integer_id"]):
@@ -111,3 +112,5 @@ def create_input_file(examples,output_dir):
     examples.to_csv(input_file, sep = "|", index = False)
 
 
+=======
+>>>>>>> main
