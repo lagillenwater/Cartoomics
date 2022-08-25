@@ -36,7 +36,7 @@ The following files must exist in the input directory:
 |-----------------------------------|---------------------------------------------------|---------------------------------------------------
 | Triples file                      | txt file of all graph triples as <uri>, header is | PheKnowLator_v3.0.2_full_instance_relationsOnly_
 |                                   | <br>Subject, Predicate, Object (tab delimited)    | <br>OWLNETS_Triples_Identifiers                                                 
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
+|                                   |                                                   |                                                   
 | Labels file                       | txt file of graph labels with headers that at     | PheKnowLator_v3.0.2_full_instance_relationsOnly_
 |                                   | <br>least include Identifier (<uri>), Label (name)| <br>OWLNETS_NodeLabels
 |                                   | <br>(tab delimited?)                              |
