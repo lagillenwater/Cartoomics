@@ -35,11 +35,11 @@ The following files must exist in the input directory:
 | File                              | Assumptions                                       | Substring Required in Filename
 |-----------------------------------|---------------------------------------------------|---------------------------------------------------
 | Triples file                      | txt file of all graph triples as <uri>, header is | PheKnowLator_v3.0.2_full_instance_relationsOnly_
-|                                   | <br>Subject, Predicate, Object (tab delimited)    | <br>OWLNETS_Triples_Identifiers                                                 
+|                                   | Subject, Predicate, Object (tab delimited)        | OWLNETS_Triples_Identifiers                                                 
 |                                   |                                                   |                                                   
-| Labels file                       | txt file of graph labels with headers that at     | PheKnowLator_v3.0.2_full_instance_relationsOnly_
-|                                   | <br>least include Identifier (<uri>), Label (name)| <br>OWLNETS_NodeLabels
-|                                   | <br>(tab delimited?)                              |
+| Labels file                       | <br>txt file of graph labels with headers that at | <br>PheKnowLator_v3.0.2_full_instance_relationsOnly_
+|                                   | least include Identifier (<uri>), Label (name).   | OWLNETS_NodeLabels
+|                                   | (tab delimited?)                                  |
 |-----------------------------------|---------------------------------------------------|---------------------------------------------------
 | Input file                        | csv file of all node pairs that exist in original | _example_input
 |                                   | <br>pathway figure, header is source, target      |
