@@ -1,6 +1,7 @@
-from create_subgraph import subgraph_prioritized_path_cs
-from create_graph import create_pkl_graph
 from inputs import *
+from create_graph import create_pkl_graph
+from assign_nodes import *
+from create_subgraph import subgraph_prioritized_path_cs
 from visualize_subgraph import output_visualization
 
 def main():
@@ -11,11 +12,15 @@ def main():
     
     g = create_pkl_graph(triples_list_file,labels_file)
 
-    subgraph = subgraph_prioritized_path_cs(input_file,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions)
+    #Interactively assign node
+    u = read_user_input(input_file)
+    n = unique_nodes(u)
+    s = search_nodes(n,g,u)
+    create_input_file(s,output_dir)
 
-    print(subgraph)
+    subgraph = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,s,embedding_dimensions)
 
-    output_visualization(input_file,subgraph,output_dir)
+    output_visualization(s,subgraph,output_dir)
 
 if __name__ == '__main__':
     main()

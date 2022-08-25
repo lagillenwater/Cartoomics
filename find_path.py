@@ -31,40 +31,47 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
 
     #Dict to store all dataframes of shortest mechanisms for this node pair
     mechanism_dfs = {}
+
     #Keep track of # of mechanisms generated for this node pair in file name for all shortest paths
     count = 1 
 
     #When there is no connection in graph, path_nodes will equal 1 ([[]])
     if len(path_nodes[0]) != 0:
         for p in range(len(path_nodes)):
+            #Dataframe to append each triple to
+            full_df = pd.DataFrame()
             n1 = g_nodes[path_nodes[p][0]]  
             for i in range(1,len(path_nodes[p])):
                 n2 = g_nodes[path_nodes[p][i]]
                 if search_type.lower() == 'all':
                     #Try first direction which is n1 --> n2
                     df = triples_df.loc[(triples_df['subject'] == n1) & (triples_df['object'] == n2)]
+                    full_df = pd.concat([full_df,df])
                     if len(df) == 0:
                         #If no results, try second direction which is n2 --> n1
                         df = triples_df.loc[(triples_df['object'] == n1) & (triples_df['subject'] == n2)]
+                        full_df = pd.concat([full_df,df])
                 elif search_type.lower() == 'out':
                     #Only try direction n1 --> n2
                     df = triples_df.loc[(triples_df['subject'] == n1) & (triples_df['object'] == n2)]
-                df = df.reset_index(drop=True)
+                    full_df = pd.concat([full_df,df])
+                full_df = full_df.reset_index(drop=True)
                 n1 = n2
+            
+            #For all shortest path search
+            if len(path_nodes) > 1:
+                #Generate df
+                full_df.columns = ['S','P','O']
+                mechanism_dfs['mech#_'+str(count)] = full_df
+                count += 1
 
         #For shortest path search
         if len(path_nodes) == 1:
             #Generate df
-            df.columns = ['S','P','O']
-            return df
+            full_df.columns = ['S','P','O']
+            return full_df
 
-        #For all shortest path search
-        else:
-            #Generate df
-            df.columns = ['S','P','O']
-            mechanism_dfs['mech#_'+str(count)] = df
-            count += 1
-
+    #Return dictionary if all shortest paths search
     if len(path_nodes) > 1:
         return mechanism_dfs
 
@@ -191,11 +198,11 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
     return df
 
-def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,node2vec_script_dir,embedding_dimensions):
+def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions):
 
     path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
 
-    e = Embeddings(triples_file,output_dir,node2vec_script_dir,embedding_dimensions)
+    e = Embeddings(triples_file,output_dir,input_dir,embedding_dimensions)
     emb = e.generate_graph_embeddings()
 
     df = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)

@@ -39,7 +39,7 @@ def get_graph_files(input_dir):
     existence_dict = {
         'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
         'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
-        '_Input_Nodes':'false',
+        '_example_input':'false',
         'sparse_custom_node2vec_wrapper':'false',
         'nodevectors_node2vec':'false'
     }
@@ -51,7 +51,7 @@ def get_graph_files(input_dir):
                     triples_list_file = input_dir + '/' + fname
                 if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
                     labels_file = input_dir + '/' + fname
-                if k == '_Input_Nodes':
+                if k == '_example_input':
                     input_file = input_dir + '/' + fname
                 if k == 'sparse_custom_node2vec_wrapper':
                     node2vec_script = input_dir + '/' + fname

@@ -6,11 +6,9 @@ from py4cytoscape import gen_node_color_map
 from py4cytoscape import palette_color_brewer_d_RdBu
 
 #subgraph_df is a dataframe with S, P, O headers and | delimited
-def create_node_attributes(input_file,subgraph_df):
+def create_node_attributes(input_nodes_df,subgraph_df):
     
-    input_nodes = pd.read_csv(input_file,sep='|')
-    
-    original_nodes = unique_nodes(input_nodes)
+    original_nodes = unique_nodes(input_nodes_df)
         
     full_list = []
 
@@ -55,7 +53,7 @@ def create_sif_file(subgraph_df,output_dir):
 #subgraph_df is a dataframe with S, P, O headers and | delimited
 def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
 
-    png_file = output_dir+'Subgraph_Visualization.png'
+    png_file = output_dir+'/Subgraph_Visualization.png'
 
     #Update column names for cytoscape
     subgraph_df.columns = ['source','interaction','target']
@@ -63,6 +61,7 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
 
     p4c.create_network_from_data_frames(subgraph_attributes_df,subgraph_df,title='subgraph')
 
+    #Ensure no network exists named subgraph in Cytoscape or you will have to manually override before it can be output
     p4c.set_visual_style('BioPAX_SIF',network='subgraph')
 
     p4c.set_node_color_mapping(**gen_node_color_map('group', mapping_type='d',style_name='BioPAX_SIF'))
@@ -71,9 +70,10 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
     
     p4c.export_image(png_file,network='subgraph')
 
-def output_visualization(input_file,subgraph_df,output_dir):
+# Wrapper Function
+def output_visualization(input_nodes_df,subgraph_df,output_dir):
 
-    subgraph_attributes_df = create_node_attributes(input_file,subgraph_df)
+    subgraph_attributes_df = create_node_attributes(input_nodes_df,subgraph_df)
 
     create_noa_file(subgraph_attributes_df,output_dir)
 
