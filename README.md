@@ -18,6 +18,12 @@ This ReadMe currently describes the Cosine similarity Prioritization algorithm.
 The following software or software packages must be installed, as detailed in the requirements.txt:
 ```
 - Python (any version later than 3.6)
+- pandas (any version later than 1.4.2)
+- tqdm (any version later than 4.64.0)
+- numpy (any version later than 1.22.4)
+- scipy (any version later than 1.8.1)
+- argparse
+- re
 - python-igraph (any version later than 0.9.10)
 - gensim (any version later than 4.2.0)
 - py4cytoscape (any version later than 1.3.0)
@@ -39,7 +45,7 @@ The following files must exist in the input directory:
 The following values will be used if not otherwise specified:
 - embedding dimensions: embeddings of the knowledge graph will be generated using node2vec of dimension 128, unless otherwise specified
   --embedding-dimensions <int>
-- weights: edges will not be weighted unless otherwise specified. Any edges specified will be weighted lower/more important in the path search.
+- weights: edges will not be weighted unless otherwise specified. Any edges specified (where edge_1/edge_2 are labels from the input labels file) will be weighted lower/more important in the path search. 
   --weights "[edge_1, edge_2]"
 - search type: the shortest path algorithm used (contained within the python-igraph package) will search for paths in all directions, unless otherwise specified
   --search-type one
