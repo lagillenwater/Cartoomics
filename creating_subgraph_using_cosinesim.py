@@ -18,7 +18,7 @@ def main():
     s = search_nodes(n,g,u)
     create_input_file(s,output_dir)
 
-    subgraph = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,s,embedding_dimensions)
+    subgraph = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions)
 
     output_visualization(s,subgraph,output_dir)
 
