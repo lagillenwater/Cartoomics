@@ -35,15 +35,15 @@ The following files must exist in the input directory:
 | File                              | Assumptions                                       | Substring Required in Filename
 --------------------------------------------------------------------------------------------------------------------------------------------
 | Triples file                      | txt file of all graph triples as <uri>, header is | PheKnowLator_v3.0.2_full_instance_relationsOnly_
-                                      Subject, Predicate, Object (tab delimited)        | OWLNETS_Triples_Identifiers                                                 
+                                      <br>Subject, Predicate, Object (tab delimited)    | <br>OWLNETS_Triples_Identifiers                                                 
 --------------------------------------------------------------------------------------------------------------------------------------------
 | Labels file                       | txt file of graph labels with headers that at     | PheKnowLator_v3.0.2_full_instance_relationsOnly_
-                                      least include Identifier (<uri>), Label (name)    | OWLNETS_NodeLabels
-                                      (tab delimited?)                                  |
+                                      <br>least include Identifier (<uri>), Label (name)| <br>OWLNETS_NodeLabels
+                                      <br>(tab delimited?)                              |
 --------------------------------------------------------------------------------------------------------------------------------------------
 | Input file                        | csv file of all node pairs that exist in original | _example_input
-                                      pathway figure, header is source, target          |
-                                      (“|” delimited)                                   |
+                                      <br>pathway figure, header is source, target      |
+                                      <br>(“|” delimited)                               |
 --------------------------------------------------------------------------------------------------------------------------------------------
 | nodevectors_node2vec.py           | script                                            | nodevectors_node2vec.py
 --------------------------------------------------------------------------------------------------------------------------------------------
