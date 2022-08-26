@@ -68,7 +68,8 @@ To run the script, execute the following command once the input directory is pre
 ```
 python creating_subgraph_using_cosinesim.py --input-dir INPUTDIR --output-dir OUTPUTDIR
 ```
-*Note that the specified output directory must already exist
+**Note that the specified output directory must already exist**
+**Note that the output-dir should be in quotes**
  
 ## Expected Outputs
   
@@ -107,7 +108,7 @@ The creating_subgraph_using_cosinesim.py script will also generate the following
 - PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned
 - PheKnowLator_v3_node2vec_Embeddings<DIM>.emb (where <DIM> is the # dimensions specified)
   
-*Note if the above files already exist in the output directory when running the script, the embeddings will not be re-generated.
+*Note if the above files already exist in the output directory when running the script, the embeddings will not be re-generated.*
   
 
 
