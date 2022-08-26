@@ -73,6 +73,7 @@ To run the script, execute the following command once the input directory is pre
 python creating_subgraph_using_cosinesim.py --input-dir INPUTDIR --output-dir OUTPUTDIR
 ```
 **Note that the specified output directory must already exist**
+
 **Note that the output-dir should be in quotes**
  
 ## Expected Outputs
