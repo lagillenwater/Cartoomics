@@ -11,8 +11,9 @@ dependencies:
   - numpy=1.22.4
   - scipy=1.8.1
   - argparse
-  - py4cytoscape=1.3.0
   - regex
-  - csrgraph=0.1.28
-  - nodevectors=0.1.23
-  - igraph=0.9.10
+  - py4cytoscape=1.3.0
+  - pip:
+    - csrgraph=0.1.28
+    - nodevectors=0.1.23
+    - igraph=0.9.10
