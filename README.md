@@ -18,14 +18,11 @@ This ReadMe currently describes the Cosine similarity Prioritization algorithm.
 The following dependencies are listed in the environment.yml file, and installed in the installation step. This software has only been tested on Unix based OS systems, not Windows.
 ```
 Python>=3.8.3
-pandas>=1.4.2
 tqdm>=4.64.0
 gensim>=4.2.0
 numpy>=1.22.4
 scipy>=1.8.1
-argparse
 py4cytoscape>=1.3.0
-regex
 csrgraph>=0.1.28
 nodevectors>=0.1.23
 igraph>=0.9.10
@@ -37,13 +34,13 @@ igraph>=0.9.10
 git clone https://github.com/<git_username>/Cartoomics-Grant
 ```
 
-To create an environment with all dependencies and activate the environment, run the following commands:
+First install mamba, which will be used to create the environment. To create an environment with all dependencies and activate the environment, run the following commands:
 
 ```
-conda create -n Cartoomics
+mamba env create -f environment.yml
 conda activate Cartoomics
-pip install -r requirements.txt
 ```
+
 Ensure that Cytoscape (any version later than 3.8.0) is up and running before continuing.
 
 ## Running the Script
