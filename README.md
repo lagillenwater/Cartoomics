@@ -14,23 +14,34 @@ The path search algorithms available are:
 
 This ReadMe currently describes the Cosine similarity Prioritization algorithm.
 
-### Prerequisites
-The following software or software packages must be installed, as detailed in the requirements.txt:
+### Dependencies
+The following dependencies are listed in the environment.yml file, and installed in the installation step. This software has only been tested on Unix based OS systems, not Windows.
 ```
-- Python (any version later than 3.6)
-- pandas (any version later than 1.4.2)
-- tqdm (any version later than 4.64.0)
-- numpy (any version later than 1.22.4)
-- scipy (any version later than 1.8.1)
-- argparse
-- re
-- python-igraph (any version later than 0.9.10)
-- gensim (any version later than 4.2.0)
-- py4cytoscape (any version later than 1.3.0)
-- Cytoscape (any version later than 3.8.0)
+Python>=3.8.3
+tqdm>=4.64.0
+gensim>=4.2.0
+numpy>=1.22.4
+scipy>=1.8.1
+py4cytoscape>=1.3.0
+csrgraph>=0.1.28
+nodevectors>=0.1.23
+igraph>=0.9.10
 ```
 
-Ensure that Cytoscape is open and running on your computer before continuing.
+## Installation
+
+```
+git clone https://github.com/<git_username>/Cartoomics-Grant
+```
+
+First install mamba, which will be used to create the environment. To create an environment with all dependencies and activate the environment, run the following commands:
+
+```
+mamba env create -f environment.yml
+conda activate Cartoomics
+```
+
+Ensure that Cytoscape (any version later than 3.8.0) is up and running before continuing.
 
 ## Running the Script
 
@@ -57,7 +68,8 @@ To run the script, execute the following command once the input directory is pre
 ```
 python creating_subgraph_using_cosinesim.py --input-dir INPUTDIR --output-dir OUTPUTDIR
 ```
-*Note that the specified output directory must already exist
+**Note that the specified output directory must already exist**
+**Note that the output-dir should be in quotes**
  
 ## Expected Outputs
   
@@ -96,7 +108,7 @@ The creating_subgraph_using_cosinesim.py script will also generate the following
 - PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned
 - PheKnowLator_v3_node2vec_Embeddings<DIM>.emb (where <DIM> is the # dimensions specified)
   
-*Note if the above files already exist in the output directory when running the script, the embeddings will not be re-generated.
+*Note if the above files already exist in the output directory when running the script, the embeddings will not be re-generated.*
   
 
 
