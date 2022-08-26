@@ -51,6 +51,8 @@ The following files must exist in the input directory:
 
 <img width="994" alt="Screen Shot 2022-08-25 at 9 37 40 AM" src="https://user-images.githubusercontent.com/70932395/186709025-6eb4495d-6c12-4353-a1af-5626d835e4ea.png">
 
+Add the necessary files for the knowledge graph (Triples file and Labels file) to a directory that also contains all files in the Input_Files folder of this repository, and specify this as your input directory.
+
 ### Defaults
   
 The following values will be used if not otherwise specified:
