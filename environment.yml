@@ -5,16 +5,16 @@ channels:
   - default
 dependencies:
   - python=3.8.3
-  - conda-forge::python-igraph>=0.9.10
-  - conda-forge::tqdm>=4.64.0
-  - conda-forge::gensim>=4.2.0
-  - conda-forge::numpy>=1.22.4
-  - conda-forge::pandas>=1.4.2
-  - conda-forge::scipy>=1.8.1
-  - conda-forge::argparse
-  - conda-forge::regex>=2022.4.24
-  - conda-forge::pip>=20.0.2
+  - python-igraph
+  - tqdm
+  - gensim
+  - numpy
+  - pandas
+  - scipy
+  - argparse
+  - regex
+  - pip
   - pip:
-    - py4cytoscape=1.3.0
-    - csrgraph=0.1.28
-    - nodevectors=0.1.23
+    - py4cytoscape
+    - csrgraph
+    - nodevectors
