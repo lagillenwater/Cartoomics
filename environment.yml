@@ -4,7 +4,7 @@ channels:
   - anaconda
   - default
 dependencies:
-  - python=3.8.3
+  - python=3.8.*
   - python-igraph
   - tqdm
   - gensim
