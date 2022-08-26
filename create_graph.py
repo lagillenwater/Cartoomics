@@ -7,11 +7,11 @@ from igraph import *
 
 ###Read in all files, outputs triples and labels as a df
 def process_pkl_files(triples_file,labels_file):
-
-    triples_df = pd.read_csv(triples_file,sep = '	')
+    
+    triples_df = pd.read_csv(triples_file,sep = '	', quoting=csv.QUOTE_NONE)
     triples_df.columns.str.lower()
 
-    labels = pd.read_csv(labels_file, sep = '	')
+    labels = pd.read_csv(labels_file, sep = '	', quoting=csv.QUOTE_NONE)
     labels.columns.str.lower()
 
     return triples_df,labels
