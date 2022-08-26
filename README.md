@@ -19,7 +19,6 @@ The following dependencies are listed in the environment.yml file, and installed
 ```
 Python>=3.8.3
 pandas>=1.4.2
-python-igraph>=0.9.10
 tqdm>=4.64.0
 gensim>=4.2.0
 numpy>=1.22.4
@@ -31,17 +30,19 @@ csrgraph>=0.1.28
 nodevectors>=0.1.23
 igraph>=0.9.10
 ```
+
 ## Installation
 
 ```
 git clone https://github.com/<git_username>/Cartoomics-Grant
 ```
 
-To create an environment with all dependencies and activate the environment, run the following command:
+To create an environment with all dependencies and activate the environment, run the following commands:
 
 ```
-conda env create -f environment.yml
-conda activate cartoomics
+conda create -n Cartoomics
+conda activate Cartoomics
+pip install -r requirements.txt
 ```
 Ensure that Cytoscape (any version later than 3.8.0) is up and running before continuing.
 
