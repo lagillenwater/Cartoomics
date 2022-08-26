@@ -20,9 +20,9 @@ class CreateGraph:
     ###Read in all files, outputs triples and labels and integers edgelist as a df, and identifiers as a dict
     def process_pkl_files(self,triples_file,labels_file,identifiers_file,triples_integers_file):
 
-        triples_df = pd.read_csv(triples_file,sep = '	')
+        triples_df = pd.read_csv(triples_file,sep = '	', quoting=csv.QUOTE_NONE)
 
-        labels = pd.read_csv(labels_file, sep = '	')
+        labels = pd.read_csv(labels_file, sep = '	', quoting=csv.QUOTE_NONE)
 
         #Read in identifiers file to dictionary
         f = open(identifiers_file)
