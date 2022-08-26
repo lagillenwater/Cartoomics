@@ -1,0 +1,10 @@
+source|target
+insulin receptor|IRS1
+IRS1|PTEN
+PTEN|AKT
+AKT|Glucose Metabolism
+AKT|Oxidative Stress
+APP|Oxidative Stress
+APP|TNF alpha
+TNF alpha|IRS1
+APP|insulin receptor
