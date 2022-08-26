@@ -14,23 +14,36 @@ The path search algorithms available are:
 
 This ReadMe currently describes the Cosine similarity Prioritization algorithm.
 
-### Prerequisites
-The following software or software packages must be installed, as detailed in the requirements.txt:
+### Dependencies
+The following dependencies are listed in the environment.yml file, and installed in the installation step. This software has only been tested on Unix based OS systems, not Windows.
 ```
-- Python (any version later than 3.6)
-- pandas (any version later than 1.4.2)
-- tqdm (any version later than 4.64.0)
-- numpy (any version later than 1.22.4)
-- scipy (any version later than 1.8.1)
-- argparse
-- re
-- python-igraph (any version later than 0.9.10)
-- gensim (any version later than 4.2.0)
-- py4cytoscape (any version later than 1.3.0)
-- Cytoscape (any version later than 3.8.0)
+Python>=3.8.3
+pandas>=1.4.2
+python-igraph>=0.9.10
+tqdm>=4.64.0
+gensim>=4.2.0
+numpy>=1.22.4
+scipy>=1.8.1
+argparse
+py4cytoscape>=1.3.0
+regex
+csrgraph>=0.1.28
+nodevectors>=0.1.23
+igraph>=0.9.10
+```
+## Installation
+
+```
+git clone https://github.com/<git_username>/Cartoomics-Grant
 ```
 
-Ensure that Cytoscape is open and running on your computer before continuing.
+To create an environment with all dependencies and activate the environment, run the following command:
+
+```
+conda env create -f environment.yml
+conda activate cartoomics
+```
+Ensure that Cytoscape (any version later than 3.8.0) is up and running before continuing.
 
 ## Running the Script
 
