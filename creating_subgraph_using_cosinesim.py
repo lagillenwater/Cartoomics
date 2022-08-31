@@ -8,7 +8,7 @@ def main():
 
     input_dir,output_dir,embedding_dimensions,weights,search_type = generate_arguments()
 
-    triples_list_file,labels_file,input_file = get_graph_files(input_dir)
+    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir)
     
     g = create_pkl_graph(triples_list_file,labels_file)
 
