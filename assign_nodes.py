@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import os
 
 # set column number and width to display all information
 pd.set_option('display.max_rows', None)
@@ -27,8 +28,6 @@ def unique_nodes(examples):
 def find_node(node, kg, ontology = ""):
 	nodes = kg.labels_all
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology. 
-
-
 	if ontology == "":
 		if node.isupper(): #likely a gene or protein
 			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
@@ -110,3 +109,33 @@ def create_input_file(examples,output_dir):
     examples.to_csv(input_file, sep = "|", index = False)
 
 
+
+# Check if the input_nodes file already exists
+def check_input_existence(input_dir):
+    exists = 'false'
+    mapped_file = ''
+    for fname in os.listdir(input_dir):
+        if bool(re.match("_Input_Nodes_",fname)):
+            exists = 'true'
+            mapped_file = fname
+    return exists,mapped_file
+
+
+
+# Wrapper function
+def interactive_search_wrapper(input_dir,input_file, output_dir):
+    exists = check_input_existence(input_dir)
+    if(exists[0] == 'false'):
+        print('Interactive Node Search')
+        #Interactively assign node
+        u = read_user_input(input_file)
+        n = unique_nodes(u)
+        s = search_nodes(n,g,u)
+        create_input_file(s,output_dir)
+    else:
+        print('Node mapping file exists... moving to embedding creation')
+        mapped_file = input_dir + '/'+ exists[1]
+        s = pd.read_csv(mapped_file)
+    return(s)
+
+                              
