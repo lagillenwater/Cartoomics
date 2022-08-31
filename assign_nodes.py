@@ -31,11 +31,11 @@ def find_node(node, kg, ontology = ""):
 
 	if ontology == "":
 		if node.isupper(): #likely a gene or protein
-			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
+			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
 		else:
-			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label","entity_uri", "description/definition"]]
+			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label", "entity_uri"]]
 	else:
-		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
+		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
 	return(results)
 
 # Create a list of nodes for input
@@ -55,7 +55,7 @@ def search_nodes(nodes, kg, examples):
 		bad_input = True
 		if nrow < 20:
 			while(bad_input):
-				print(found_nodes.iloc[0:nrow,])
+				print(found_nodes.iloc[0:nrow,].to_string(index = False))
 				user_input = input("Input node integer_id: ")
 				try:
 					user_input = int(user_input)
@@ -72,7 +72,7 @@ def search_nodes(nodes, kg, examples):
 			i = 0
 			while(bad_input):
 				high = min(nrow,(i+1)*20)
-				print(found_nodes.iloc[i*20:high,])
+				print(found_nodes.iloc[i*20:high,].to_string(index = False))
 				user_input = input("Input node integer_id or 'f' for the next 20 features or 'b' for the previous 20: ")
 				try:
 					user_input = int(user_input)
