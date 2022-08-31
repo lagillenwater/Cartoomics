@@ -34,7 +34,7 @@ def generate_arguments():
 
     return input_dir,output_dir,embedding_dimensions,weights,search_type
 
-def get_graph_files(input_dir):
+def get_graph_files(input_dir,output_dir):
 
     existence_dict = {
         'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
@@ -65,5 +65,9 @@ def get_graph_files(input_dir):
     for k in existence_dict:
         if existence_dict[k] == 'false':
             raise Exception('Missing file in input directory: ' + k)
+
+    #Check for existence of output directory
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     return triples_list_file,labels_file,input_file
