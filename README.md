@@ -31,7 +31,7 @@ igraph>=0.9.10
 ## Installation
 
 ```
-git clone https://github.com/<git_username>/Cartoomics-Grant
+git clone https://github.com/bsantan/Cartoomics-Grant
 ```
 
 First install mamba, which will be used to create the environment. To create an environment with all dependencies and activate the environment, run the following commands:
