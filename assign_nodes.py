@@ -105,16 +105,16 @@ def node_in_search(found_nodes, user_input):
 def create_input_file(examples,output_dir):
     input_file = output_dir+"/_Input_Nodes_.csv"
     examples = examples[["source_label","target_label"]]
-    examples.columns = ["source", "target"]
+    #examples.columns = ["source", "target"]
     examples.to_csv(input_file, sep = "|", index = False)
 
 
 
 # Check if the input_nodes file already exists
-def check_input_existence(input_dir):
+def check_input_existence(output_dir):
     exists = 'false'
     mapped_file = ''
-    for fname in os.listdir(input_dir):
+    for fname in os.listdir(output_dir):
         if bool(re.match("_Input_Nodes_",fname)):
             exists = 'true'
             mapped_file = fname
@@ -123,18 +123,18 @@ def check_input_existence(input_dir):
 
 
 # Wrapper function
-def interactive_search_wrapper(input_dir,input_file, output_dir):
-    exists = check_input_existence(input_dir)
+def interactive_search_wrapper(g,user_input_file, output_dir):
+    exists = check_input_existence(output_dir)
     if(exists[0] == 'false'):
         print('Interactive Node Search')
         #Interactively assign node
-        u = read_user_input(input_file)
+        u = read_user_input(user_input_file)
         n = unique_nodes(u)
         s = search_nodes(n,g,u)
         create_input_file(s,output_dir)
     else:
         print('Node mapping file exists... moving to embedding creation')
-        mapped_file = input_dir + '/'+ exists[1]
+        mapped_file = output_dir + '/'+ exists[1]
         s = pd.read_csv(mapped_file)
     return(s)
 
