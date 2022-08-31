@@ -40,8 +40,8 @@ class Embeddings:
                 output_ints_map_location = self.output_dir + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')
 
                 with open(self.triples_file, 'r') as f_in:
-                    #Length matches original file length
-                    kg_data = set(tuple(x.split('\t')) for x in f_in.read().splitlines())
+                    #Length matches original file length, remove brackets from the URI
+                    kg_data = set(tuple(x.replace('>','').replace('<','').split('\t')) for x in f_in.read().splitlines())
                 f_in.close()
 
                 # map identifiers to integers
@@ -67,6 +67,9 @@ class Embeddings:
                 with open(output_ints_location) as f_in:
                     kg_data = [x.split('\t')[0::2] for x in f_in.read().splitlines()]
                 f_in.close()
+
+                print('node2vecInput_cleaned: ',kg_data)
+
 
                 file_out = self.output_dir + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
 
