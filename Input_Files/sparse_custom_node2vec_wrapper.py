@@ -9,7 +9,6 @@ import csrgraph as cg
 import nodevectors
 from nodevectors_node2vec import Node2Vec
 
-
 def main():
     parser = argparse.ArgumentParser(description='A wrapper for running Node2Vec on Very Large Graphs')
     parser.add_argument('-e', '--edgelist', help='Name/path to text file containing graph edge list', required=True)
@@ -37,7 +36,7 @@ def main():
     print('Context Window Size: {window_size}'.format(window_size=args.window))
     print('Save Random Walks with Node2Vec Model: {keep_walks}'.format(keep_walks=args.keep_walks))
     print('Save Gensim Node2Vec Model: {save_model}'.format(save_model=args.save_model))
-    print('Embedding output: {write_loc}'.format(write_loc=args.edgelist.split('.')[0] + '_node2vec_Embeddings' + str(args.dim) + "_" + str(args.iteration) + '.emb'))
+    print('Embedding output: {write_loc}'.format(write_loc=args.edgelist.split('.')[0] + '_node2vec_Embeddings' + str(args.dim) + '.emb'))
     print('\n#######################################################################\n')
 
     print('\n#### STEP 1: Convert Edge List to CSR Graph ####')
