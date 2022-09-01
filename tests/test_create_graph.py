@@ -110,8 +110,8 @@ class create_graph_test1(unittest.TestCase):
          foloow our expectations or not)'''
         
         #expected
-        '''the number of columns for the llabels file is 6'''
-        '''the number of columns for the llabels file is 3'''
+        '''the number of columns for the labels file is 6'''
+        '''the number of columns for the triples file is 3'''
         
         
         #actual
