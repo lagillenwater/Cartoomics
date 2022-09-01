@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import os
 
 # set column number and width to display all information
 pd.set_option('display.max_rows', None)
@@ -27,15 +28,13 @@ def unique_nodes(examples):
 def find_node(node, kg, ontology = ""):
 	nodes = kg.labels_all
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology. 
-
-
 	if ontology == "":
 		if node.isupper(): #likely a gene or protein
-			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
+			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
 		else:
-			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label","entity_uri", "description/definition"]]
+			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label", "entity_uri"]]
 	else:
-		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "description/definition"]]
+		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
 	return(results)
 
 # Create a list of nodes for input
@@ -55,7 +54,7 @@ def search_nodes(nodes, kg, examples):
 		bad_input = True
 		if nrow < 20:
 			while(bad_input):
-				print(found_nodes.iloc[0:nrow,])
+				print(found_nodes.iloc[0:nrow,].to_string(index = False))
 				user_input = input("Input node integer_id: ")
 				try:
 					user_input = int(user_input)
@@ -72,7 +71,7 @@ def search_nodes(nodes, kg, examples):
 			i = 0
 			while(bad_input):
 				high = min(nrow,(i+1)*20)
-				print(found_nodes.iloc[i*20:high,])
+				print(found_nodes.iloc[i*20:high,].to_string(index = False))
 				user_input = input("Input node integer_id or 'f' for the next 20 features or 'b' for the previous 20: ")
 				try:
 					user_input = int(user_input)
@@ -106,7 +105,37 @@ def node_in_search(found_nodes, user_input):
 def create_input_file(examples,output_dir):
     input_file = output_dir+"/_Input_Nodes_.csv"
     examples = examples[["source_label","target_label"]]
-    examples.columns = ["source", "target"]
+    #examples.columns = ["source", "target"]
     examples.to_csv(input_file, sep = "|", index = False)
 
 
+
+# Check if the input_nodes file already exists
+def check_input_existence(output_dir):
+    exists = 'false'
+    mapped_file = ''
+    for fname in os.listdir(output_dir):
+        if bool(re.match("_Input_Nodes_",fname)):
+            exists = 'true'
+            mapped_file = fname
+    return exists,mapped_file
+
+
+
+# Wrapper function
+def interactive_search_wrapper(g,user_input_file, output_dir):
+    exists = check_input_existence(output_dir)
+    if(exists[0] == 'false'):
+        print('Interactive Node Search')
+        #Interactively assign node
+        u = read_user_input(user_input_file)
+        n = unique_nodes(u)
+        s = search_nodes(n,g,u)
+        create_input_file(s,output_dir)
+    else:
+        print('Node mapping file exists... moving to embedding creation')
+        mapped_file = output_dir + '/'+ exists[1]
+        s = pd.read_csv(mapped_file)
+    return(s)
+
+                              
