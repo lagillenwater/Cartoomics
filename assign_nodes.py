@@ -104,7 +104,7 @@ def node_in_search(found_nodes, user_input):
 #subgraph_df is a dataframe with source,targe headers and | delimited
 def create_input_file(examples,output_dir):
     input_file = output_dir+"/_Input_Nodes_.csv"
-    examples = examples[["source_label","target_label"]]
+    #examples = examples[["source_label","target_label"]]
     #examples.columns = ["source", "target"]
     examples.to_csv(input_file, sep = "|", index = False)
 
@@ -135,7 +135,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir):
     else:
         print('Node mapping file exists... moving to embedding creation')
         mapped_file = output_dir + '/'+ exists[1]
-        s = pd.read_csv(mapped_file)
+        s = pd.read_csv(mapped_file, sep = "|")
     return(s)
 
                               
