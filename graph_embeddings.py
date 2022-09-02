@@ -2,6 +2,7 @@ import os
 from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 import json
+import re
 
 class Embeddings:
 
@@ -12,12 +13,12 @@ class Embeddings:
         self.embedding_dimensions = embedding_dimensions
 
     def check_file_existence(self,embeddings_file):
-
         exists = 'false'
         for fname in os.listdir(self.output_dir):
-            if embeddings_file == fname:
+            print(fname)
+            if bool(re.search("Embeddings", fname)):
+                print('match')
                 exists = 'true'
-
         return exists
 
     def generate_graph_embeddings(self):
@@ -25,9 +26,10 @@ class Embeddings:
         base_name = self.triples_file.split('/')[-1]
     
         embeddings_file = base_name.split('.')[0] + '_node2vec_Embeddings' + str(self.embedding_dimensions) + '.emb'
-
+       
         #Check for existence of embeddings file
         exists = self.check_file_existence(embeddings_file)
+        print(exists)
 
         if exists == 'true':
             emb = KeyedVectors.load_word2vec_format(self.output_dir + '/' + embeddings_file, binary=False)
@@ -68,7 +70,7 @@ class Embeddings:
                     kg_data = [x.split('\t')[0::2] for x in f_in.read().splitlines()]
                 f_in.close()
 
-                print('node2vecInput_cleaned: ',kg_data)
+                #print('node2vecInput_cleaned: ',kg_data)
 
 
                 file_out = self.output_dir + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
@@ -76,7 +78,6 @@ class Embeddings:
                 with open(file_out, 'w') as f_out:
                     for x in kg_data[1:]:
                         f_out.write(x[0] + ' ' + x[1] + '\n')
-
                 f_out.close()
                 
                 os.chdir(self.input_dir) 
