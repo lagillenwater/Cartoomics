@@ -21,6 +21,7 @@ def main():
     parser.add_argument('-k', '--window', help='Context window size', required=True)
     parser.add_argument('-w', '--keep_walks', help='Save the random walks', default=False)
     parser.add_argument('-m', '--save_model', help='Save Gensim node2vec model', default=False)
+    parser.add_argument('-o', '--output', help='Embedding File Output Location', default=False)
     args = parser.parse_args()
 
     # print user parameters to console
@@ -36,7 +37,7 @@ def main():
     print('Context Window Size: {window_size}'.format(window_size=args.window))
     print('Save Random Walks with Node2Vec Model: {keep_walks}'.format(keep_walks=args.keep_walks))
     print('Save Gensim Node2Vec Model: {save_model}'.format(save_model=args.save_model))
-    print('Embedding output: {write_loc}'.format(write_loc=args.edgelist.rsplit('/',1)[0] + '/'+'_node2vec_Embeddings' + str(args.dim) + '.emb'))
+    print('Embedding output: {write_loc}'.format(write_loc=args.output))
     print('\n#######################################################################\n')
 
     print('\n#### STEP 1: Convert Edge List to CSR Graph ####')
@@ -56,8 +57,8 @@ def main():
 
     print('\n#### STEP 3: Save Model Output and Embeddings ####')
     # save embeddings (gensim.KeyedVector format)
-    embeddings_file = edgelist.rsplit('/',1)[0] +'/'+ '_node2vec_Embeddings' + str(args.dim) + '.emb'
-    print(embeddings_file)
+    embeddings_file = args.output
+   # print(embeddings_file)
     g2v.save_vectors(embeddings_file)
 
     #if args.save_model:
