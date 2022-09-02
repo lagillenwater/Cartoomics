@@ -15,9 +15,9 @@ class Embeddings:
     def check_file_existence(self,embeddings_file):
         exists = 'false'
         for fname in os.listdir(self.output_dir):
-            print(fname)
+           # print(fname)
             if bool(re.search("Embeddings", fname)):
-                print('match')
+               # print('match')
                 exists = 'true'
         return exists
 
@@ -80,10 +80,11 @@ class Embeddings:
                         f_out.write(x[0] + ' ' + x[1] + '\n')
                 f_out.close()
                 
-                os.chdir(self.input_dir) 
+                
+                embeddings_out = self.output_dir + '/' + embeddings_file
 
-                command = "python sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10"
-                os.system(command.format(file_out,self.embedding_dimensions))
+                command = "python sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10 --output {}"
+                os.system(command.format(file_out,self.embedding_dimensions, embeddings_out ))
 
                 exists = self.check_file_existence(embeddings_file)
 

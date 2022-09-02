@@ -36,7 +36,7 @@ def main():
     print('Context Window Size: {window_size}'.format(window_size=args.window))
     print('Save Random Walks with Node2Vec Model: {keep_walks}'.format(keep_walks=args.keep_walks))
     print('Save Gensim Node2Vec Model: {save_model}'.format(save_model=args.save_model))
-    print('Embedding output: {write_loc}'.format(write_loc=args.edgelist.split('.')[0] + '_node2vec_Embeddings' + str(args.dim) + '.emb'))
+    print('Embedding output: {write_loc}'.format(write_loc=args.edgelist.rsplit('/',1)[0] + '/'+'_node2vec_Embeddings' + str(args.dim) + '.emb'))
     print('\n#######################################################################\n')
 
     print('\n#### STEP 1: Convert Edge List to CSR Graph ####')
@@ -56,7 +56,9 @@ def main():
 
     print('\n#### STEP 3: Save Model Output and Embeddings ####')
     # save embeddings (gensim.KeyedVector format)
-    g2v.save_vectors(args.edgelist.split('.')[0] + '_node2vec_Embeddings' + str(args.dim) + '.emb')
+    embeddings_file = edgelist.rsplit('/',1)[0] +'/'+ '_node2vec_Embeddings' + str(args.dim) + '.emb'
+    print(embeddings_file)
+    g2v.save_vectors(embeddings_file)
 
     #if args.save_model:
         # save node2vec model -- uses a lot of memory and takes a very long time to run on large graphs
