@@ -15,9 +15,7 @@ class Embeddings:
     def check_file_existence(self,embeddings_file):
         exists = 'false'
         for fname in os.listdir(self.output_dir):
-           # print(fname)
-            if bool(re.search("Embeddings", fname)):
-               # print('match')
+            if bool(re.search(embeddings_file, fname)):
                 exists = 'true'
         return exists
 
