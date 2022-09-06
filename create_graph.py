@@ -29,10 +29,6 @@ def create_igraph_graph(edgelist_df,labels):
 
     edgelist_df = edgelist_df[['subject', 'object', 'predicate']]
 
-#    uri_labels = labels[['Identifier']]
-# Different uri column in PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt. 
-   # uri_labels = labels[['entity_uri']] # is this line necessary??
-
     g = Graph.DataFrame(edgelist_df,directed=True,use_vids=False)
 
     g_nodes = g.vs()['name']
