@@ -41,7 +41,7 @@ def create_igraph_graph(edgelist_df,labels):
 
 # Wrapper function
 # Includes a "kg_type" parameter for graph type. Options include 'pkl' for PheKnowLator and 'kg-covid19' for KG-Covid19
-def create__graph(triples_file,labels_file, kg_type = "pkl"):
+def create_graph(triples_file,labels_file, kg_type = "pkl"):
     if kg_type == "pkl":
         triples_df,labels = process_pkl_files(triples_file,labels_file)
     elif kg_type == "kg-covid19":

@@ -1,5 +1,5 @@
 from inputs import *
-from create_graph import create_pkl_graph
+from create_graph import create_graph
 from assign_nodes import *
 from create_subgraph import subgraph_prioritized_path_cs
 from visualize_subgraph import output_visualization
@@ -12,7 +12,7 @@ def main():
     
     print("Creating knowledge graph object from inputs.....")
 
-    g = create_pkl_graph(triples_list_file,labels_file)
+    g = create_graph(triples_list_file,labels_file, "pkl")
 
     print("Mapping between user inputs and KG nodes.......")
     
