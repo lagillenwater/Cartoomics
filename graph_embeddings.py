@@ -29,7 +29,7 @@ class Embeddings:
        
         #Check for existence of embeddings file
         exists = self.check_file_existence(embeddings_file)
-        print(exists)
+        
 
         if exists == 'true':
             emb = KeyedVectors.load_word2vec_format(self.output_dir + '/' + embeddings_file, binary=False)
