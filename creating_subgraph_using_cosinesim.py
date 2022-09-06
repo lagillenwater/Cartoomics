@@ -6,13 +6,13 @@ from visualize_subgraph import output_visualization
 
 def main():
 
-    input_dir,output_dir,embedding_dimensions,weights,search_type = generate_arguments()
+    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type = generate_arguments()
 
-    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir)
+    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type)
     
     print("Creating knowledge graph object from inputs.....")
 
-    g = create_graph(triples_list_file,labels_file, "pkl")
+    g = create_graph(triples_list_file,labels_file, kg_type)
 
     print("Mapping between user inputs and KG nodes.......")
     
