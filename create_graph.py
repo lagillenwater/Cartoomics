@@ -31,7 +31,7 @@ def create_igraph_graph(edgelist_df,labels):
 
 #    uri_labels = labels[['Identifier']]
 # Different uri column in PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt. 
-    uri_labels = labels[['entity_uri']]
+   # uri_labels = labels[['entity_uri']] # is this line necessary??
 
     g = Graph.DataFrame(edgelist_df,directed=True,use_vids=False)
 
@@ -40,9 +40,14 @@ def create_igraph_graph(edgelist_df,labels):
     return g,g_nodes 
 
 # Wrapper function
-def create_pkl_graph(triples_file,labels_file):
-
-    triples_df,labels = process_pkl_files(triples_file,labels_file)
+# Includes a "kg_type" parameter for graph type. Options include 'pkl' for PheKnowLator and 'kg-covid19' for KG-Covid19
+def create__graph(triples_file,labels_file, kg_type = "pkl"):
+    if kg_type == "pkl":
+        triples_df,labels = process_pkl_files(triples_file,labels_file)
+    elif kg_type == "kg-covid19":
+        triples_df,labels = process_kg_covid19_files(triples_file,labels_file)
+    else:
+        raise Exception('Invalid graph type! Please set kg_type to "pkl" or "kg-covid19"')
 
     g_igraph,g_nodes_igraph = create_igraph_graph(triples_df,labels)
 
@@ -50,3 +55,18 @@ def create_pkl_graph(triples_file,labels_file):
     pkl_graph = KnowledgeGraph(triples_df,labels,g_igraph,g_nodes_igraph)
 
     return pkl_graph
+
+
+
+
+
+###Read in all kg_covid19 files, outputs triples and labels as a df
+def process_kg_covid19_files(triples_file,labels_file):
+    triples_df = pd.read_csv(triples_file,sep = '\t', usecols = ['subject', 'object', 'predicate'])
+    triples_df.columns.str.lower()
+
+    labels = pd.read_csv(labels_file, sep = '\t')
+    labels.columns.str.lower()
+
+    return triples_df,labels
+
