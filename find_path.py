@@ -202,11 +202,8 @@ def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
     path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
 
-    print("loading the inputs")
     e = Embeddings(triples_file,output_dir,input_dir,embedding_dimensions)
-    print("creating the embeddings")
     emb = e.generate_graph_embeddings()
-    print("embeddings created")
     df = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)
 
     return df
