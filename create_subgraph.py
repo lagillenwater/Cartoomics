@@ -3,6 +3,7 @@ from find_path import find_shortest_path
 from find_path import prioritize_path_cs
 from find_path import prioritize_path_pdp
 import pandas as pd
+from tqdm import tqdm
 
 def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type):
 
@@ -27,7 +28,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
 
     all_paths = []
 
-    for i in range(len(input_nodes_df)):
+    for i in tqdm(range(len(input_nodes_df))):
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         cs_shortest_path_df = prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions)
@@ -35,6 +36,8 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
 
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
+    #Remove duplicate edges
+    df = df.drop_duplicates(subset=['S','P','O'])
 
     return df
 
@@ -44,7 +47,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
 
     all_paths = []
 
-    for i in range(len(input_nodes_df)):
+    for i in tqdm(range(len(input_nodes_df))):
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         pdp_shortest_path_df = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight)
@@ -52,5 +55,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
 
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
+    #Remove duplicate edges
+    df = df.drop_duplicates(subset=['S','P','O'])
 
     return df
