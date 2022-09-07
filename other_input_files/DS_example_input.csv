@@ -1,0 +1,13 @@
+source|target
+IRS1|AKT
+AKT|MTOR
+AKT|GSK3B
+MTOR|Autophagy
+GSK3B|carbohydrate metabolism
+Autophagy|oxidative stress
+carbohydrate metablism|oxidative stress
+APP|amyloid beta
+Amyloid beta|oxidative stress
+amyloid beta|TNF
+TNF|IRS1
+
