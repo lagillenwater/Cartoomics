@@ -10,6 +10,8 @@ def define_arguments():
 
     parser.add_argument("--output-dir",dest="OutputDir",required=True,help="OutputDir")
 
+    parser.add_argument("--knowledge-graph",dest="KG",required=True,help="Knowledge Graph: either 'pkl' for PheKnowLator or 'kg-covid19' for KG-Covid19")
+
     ## Optional inputs
     parser.add_argument("--embedding-dimensions",dest="EmbeddingDimensions",required=False,default=128,help="EmbeddingDimensions")
 
@@ -28,36 +30,50 @@ def generate_arguments():
 
     input_dir = args.InputDir
     output_dir = args.OutputDir
+    kg_type = args.KG
     embedding_dimensions = args.EmbeddingDimensions
     weights = args.Weights
     search_type = args.SearchType
 
-    return input_dir,output_dir,embedding_dimensions,weights,search_type
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type
 
-def get_graph_files(input_dir,output_dir):
+def get_graph_files(input_dir,output_dir, kg_type):
 
-    existence_dict = {
-        'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
-        'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
-        '_example_input':'false',
-        'sparse_custom_node2vec_wrapper':'false',
-        'nodevectors_node2vec':'false'
-    }
+    if kg_type == "pkl":
+        existence_dict = {
+            'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
+            'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
+            '_example_input':'false',
+        }
 
-    for k in list(existence_dict.keys()):
-        for fname in os.listdir(input_dir):
-            if k in fname:
-                if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
-                    triples_list_file = input_dir + '/' + fname
-                if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
-                    labels_file = input_dir + '/' + fname
-                if k == '_example_input':
-                    input_file = input_dir + '/' + fname
-                if k == 'sparse_custom_node2vec_wrapper':
-                    node2vec_script = input_dir + '/' + fname
-                if k == 'nodevectors_node2vec':
-                    nodevectors_file = input_dir + '/' + fname
-                existence_dict[k] = 'true'
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(input_dir):
+                if k in fname:
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
+                        triples_list_file = input_dir + '/' + fname
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
+                        labels_file = input_dir + '/' + fname
+                    if k == '_example_input':
+                        input_file = input_dir + '/' + fname
+                    existence_dict[k] = 'true'
+
+    if kg_type == "kg-covid19":
+        existence_dict = {
+            'merged-kg_edges':'false',
+            'merged-kg_nodes':'false',
+            '_example_input':'false',
+        }
+
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(input_dir):
+                if k in fname:
+                    if k == 'merged-kg_edges':
+                        triples_list_file = input_dir + '/' + fname
+                    if k == 'merged-kg_nodes':
+                        labels_file = input_dir + '/' + fname
+                    if k == '_example_input':
+                        input_file = input_dir + '/' + fname
+                    existence_dict[k] = 'true'
 
     #Check for existence of all necessary files, error if not
 
