@@ -36,7 +36,6 @@ class assign_nodes_test1(unittest.TestCase):
         triples_df,labels = process_pkl_files(triples_file,labels_file)
         edgelist_df = triples_df
         g,g_nodes = create_igraph_graph(edgelist_df,labels)
-        g,g_nodes = create_igraph_graph(edgelist_df,labels)
         kg = create_pkl_graph(triples_file,labels_file)
         
         node  = "towards"
