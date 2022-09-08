@@ -70,7 +70,7 @@ The following values will be used if not otherwise specified:
 To run the script, execute the following command once the input directory is prepared:
   
 ```
-python creating_subgraph_using_cosinesim.py --input-dir INPUTDIR --output-dir OUTPUTDIR
+python creating_subgraph_using_cosinesim.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl
 ```
 **Note that the specified output directory must already exist**
 
