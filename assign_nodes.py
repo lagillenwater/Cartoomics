@@ -26,16 +26,15 @@ def unique_nodes(examples):
 #			ontology	specific ontology to restrict search of nodes
 
 def find_node(node, kg, ontology = ""):
-	nodes = kg.labels_all
-	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology. 
-	if ontology == "":
-		if node.isupper(): #likely a gene or protein
-			results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
-		else:
-			results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["integer_id","label", "entity_uri"]]
-	else:
-		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains(ontology,flags=re.IGNORECASE, na = False) ][["integer_id","label", "entity_uri"]]
-	return(results)
+    nodes = kg.labels_all
+	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
+    if node.isupper(): #likely a gene or protein
+        results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["label", "entity_uri"]]
+    else:
+        results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri"]]
+
+    return(results)
+                
 
 # Create a list of nodes for input
 
@@ -54,41 +53,30 @@ def search_nodes(nodes, kg, examples):
 		bad_input = True
 		if nrow < 20:
 			while(bad_input):
-				print(found_nodes.iloc[0:nrow,].to_string(index = False))
-				user_input = input("Input node integer_id: ")
-				try:
-					user_input = int(user_input)
-				except ValueError:
-					print("Input not an integer_id.... try again")
+				print(found_nodes.iloc[0:nrow,].to_string())
+				user_input = input("Input node'label': ")
+				if node_in_search(found_nodes,user_input):
+					node_label= user_input
+					bad_input = False
 				else:
-					if node_in_search(found_nodes,user_input):
-						print("Input is an input_id")
-						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
-						bad_input = False
-					else:
-						print("Input not an integer_id.... try again")
+					print("Input not in search results.... try again")
 		else:	
 			i = 0
 			while(bad_input):
 				high = min(nrow,(i+1)*20)
-				print(found_nodes.iloc[i*20:high,].to_string(index = False))
-				user_input = input("Input node integer_id or 'f' for the next 20 features or 'b' for the previous 20: ")
-				try:
-					user_input = int(user_input)
-				except:
-					if user_input == 'f':
-						i+=1
-					elif user_input == 'b':
-						i-=1
-					else:
-						i+=1
+				print(found_nodes.iloc[i*20:high,].to_string())
+				user_input = input("Input node 'label' or 'f' for the next 20 features or 'b' for the previous 20: ")
+				if user_input == 'f':
+					i+=1
+				elif user_input == 'b':
+					i-=1
 				else:
+					i+=1
 					if node_in_search(found_nodes,user_input):
-						print("Input is an integer_id")
-						node_label = found_nodes[found_nodes["integer_id"] == user_input]["label"].item()
+						node_label = user_input
 						bad_input = False
 					else:
-						print("Input not an integer_id.... try again")
+						print("Input not in search results.... try again")
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
 	return(examples)
@@ -96,7 +84,7 @@ def search_nodes(nodes, kg, examples):
 
 # Check if search input is in the list of integer_ids
 def node_in_search(found_nodes, user_input):
-	if user_input in list(found_nodes["integer_id"]):
+	if user_input in found_nodes[["label"]].values:
 		return(True)
 	else:
 		return(False)
