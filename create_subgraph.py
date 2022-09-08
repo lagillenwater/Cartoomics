@@ -19,6 +19,8 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
 
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
+    #Remove duplicate edges
+    df = df.drop_duplicates(subset=['S','P','O'])
 
     return df
 
