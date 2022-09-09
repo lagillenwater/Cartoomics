@@ -45,12 +45,20 @@ def search_nodes(nodes, kg, examples):
 	examples["source_label"] = ""
 	examples["target_label"] = ""
 	for node in nodes:
-		print("User Search Node: ", node)
-		found_nodes = find_node(node,kg)		
-		nrow = found_nodes.shape[0]
+		search_loop = True
+		while(search_loop):
+			print("User Search Node: ", node)
+			found_nodes = find_node(node,kg)
+			nrow = found_nodes.shape[0]
+			if nrow == 0:
+				print("No search terms returned")
+				node = input("Please try another input term: ")
+			else:
+				search_loop = False	
 		print("Found", nrow, "features in KG")
 		user_input = ""
 		bad_input = True
+	
 		if nrow < 20:
 			while(bad_input):
 				print(found_nodes.iloc[0:nrow,].to_string())
