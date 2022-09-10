@@ -29,7 +29,7 @@ def main():
 
     print("Outputting CS visualization......")
 
-    cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CS')
+    cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
 
     print("Finding subgraph using user input for PDP......")
 
