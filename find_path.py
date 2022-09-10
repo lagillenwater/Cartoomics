@@ -132,9 +132,9 @@ def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all):
 
     df = convert_to_labels(df,labels_all)
 
-    return df
+    return df,paths_total_cs
 
-def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type):
+def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all):
 
     #List of pdp for each path in path_nodes, should be same length as path_nodes
     paths_pdp = []
@@ -155,7 +155,7 @@ def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type):
 
     df = convert_to_labels(df,labels_all)
 
-    return df
+    return df,paths_pdp
 
 def select_path(value_list,path_nodes):
 
@@ -204,14 +204,14 @@ def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
     e = Embeddings(triples_file,output_dir,input_dir,embedding_dimensions)
     emb = e.generate_graph_embeddings()
-    df = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)
+    df,paths_total_cs = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)
 
-    return df
+    return df,paths_total_cs
 
 def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight):
 
     path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
 
-    df = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type)
+    df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all)
 
-    return df
+    return df,paths_pdp

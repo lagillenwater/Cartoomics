@@ -4,6 +4,7 @@ import csv
 import py4cytoscape as p4c
 from py4cytoscape import gen_node_color_map
 from py4cytoscape import palette_color_brewer_d_RdBu
+import os
 
 #subgraph_df is a dataframe with S, P, O headers and | delimited
 def create_node_attributes(input_nodes_df,subgraph_df):
@@ -36,6 +37,9 @@ def create_node_attributes(input_nodes_df,subgraph_df):
 def create_noa_file(subgraph_attribute_df,output_dir):
 
     noa_file = output_dir+"/Subgraph_attributes.noa"
+    #Check for existence of output directory
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     l = subgraph_attribute_df.values.tolist()
 
@@ -47,6 +51,9 @@ def create_noa_file(subgraph_attribute_df,output_dir):
 def create_sif_file(subgraph_df,output_dir):
 
     sif_file = output_dir+"/Subgraph.csv"
+    #Check for existence of output directory
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     subgraph_df.to_csv(sif_file,sep='|',index=False)
 
@@ -54,6 +61,9 @@ def create_sif_file(subgraph_df,output_dir):
 def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
 
     png_file = output_dir+'/Subgraph_Visualization.png'
+    #Check for existence of output directory
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     #Update column names for cytoscape
     subgraph_df.columns = ['source','interaction','target']
@@ -81,6 +91,7 @@ def output_visualization(input_nodes_df,subgraph_df,output_dir):
 
     create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
 
+    return subgraph_attributes_df
 
 
 
