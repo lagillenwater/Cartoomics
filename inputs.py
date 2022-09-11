@@ -19,6 +19,8 @@ def define_arguments():
 
     parser.add_argument("--search-type",dest="SearchType",required=False,default='all',help="SearchType")
 
+    parser.add_argument("--pdp-weight",dest="PdpWeight",required=False,default=0.4,help="PdpWeight")
+
     return parser
 
 # Wrapper function
@@ -34,8 +36,9 @@ def generate_arguments():
     embedding_dimensions = args.EmbeddingDimensions
     weights = args.Weights
     search_type = args.SearchType
+    pdp_weight = args.PdpWeight
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight
 
 def get_graph_files(input_dir,output_dir, kg_type):
 
