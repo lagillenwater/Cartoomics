@@ -7,15 +7,6 @@ import os
 
 def ranked_comparison(output_dir,**value_dfs):
 
-    '''df = pd.DataFrame()
-
-    for i in value_lists.items():
-        print(i)
-        print(i[1])
-        print(type(i[1]))
-        r = [sorted(i[1]).index(x) for x in i[1]]
-        df[i[0]] = r'''
-
     df = pd.DataFrame()
 
     for i in value_dfs.items():
@@ -200,14 +191,11 @@ def output_path_lists(output_dir,path_list,subgraph_algorithm):
 
     df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'.csv',sep=',',index=False)
 
-    '''#path_list = ','.join([str(i) for i in path_list])
-    path_array = np.asarray(path_list)
+ def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
 
-    #Output paths to evaluation folder for future eval
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    filename = output_folder+'/paths_list_'+subgraph_algorithm+'.txt'
-    np.savetxt(filename, path_array)'''
+    num_paths_df.to_csv(output_folder+'/num_paths_'+subgraph_algorithm+'.csv',sep=',',index=False)
