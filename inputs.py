@@ -15,7 +15,7 @@ def define_arguments():
     ## Optional inputs
     parser.add_argument("--embedding-dimensions",dest="EmbeddingDimensions",required=False,default=128,help="EmbeddingDimensions")
 
-    parser.add_argument("--weights",dest="Weights",required=False,default='None',help="Weights", type = bool, default = False)
+    parser.add_argument("--weights",dest="Weights",required=False,help="Weights", type = bool, default = False)
 
     parser.add_argument("--search-type",dest="SearchType",required=False,default='all',help="SearchType")
 
