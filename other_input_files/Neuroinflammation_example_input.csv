@@ -1,0 +1,10 @@
+source|target
+Toll-like receptor 4|microglial cell activation
+lipopolysaccharide|CD14
+lipopolysaccharide|Toll-like receptor 4
+Toll-like receptor 4|MyD88
+MyD88|NF-kappaB p50/p65 complex
+NF-kappaB p50/p65 complex|tumor necrosis factor alpha
+NF-kappaB p50/p65 complex|IL6
+tumor necrosis factor alpha|Neuroinflammation
+IL6|Neuroinflammation
