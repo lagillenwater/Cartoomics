@@ -25,22 +25,41 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
 
     return df
 
-def user_defined_edge_weights(triples_df, graph):
-    edges = set(triples_df.predicate)
-    print("### Unique Edges in Knowledge Graph ###")
-    print('\n'.join(edges))
-    still_adding = True
-    to_weight= []
-    print('\n')
-    print('Input the edges to avoid in the path search (if possible). When finished input "Done"')
-    while(still_adding):
-        user_input = input('Edge or "Done"')
-        if user_input == 'Done':
-            still_adding = False
-        else:
-            to_weight.append(user_input)
-    edges= graph.es['predicate']
-    graph.es['weight'] = [10 if x in to_weight else 1 for x in edges]
+# Have user define weights to upweight
+def user_defined_edge_weights(graph,kg_type ):
+    if kg_type == 'pkl':
+        edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
+        print("### Unique Edges in Knowledge Graph ###")
+        print('\n'.join(edges))
+        still_adding = True
+        to_weight= []
+        print('\n')
+        print('Input the edges to avoid in the path search (if possible). When finished input "Done."')
+        while(still_adding):
+            user_input = input('Edge or "Done": ')
+            if user_input == 'Done':
+                still_adding = False
+            else:
+                to_weight.append(user_input)
+        to_weight = graph.labels_all[graph.labels_all['label'].isin(to_weight)]['entity_uri'].tolist()
+
+    if kg_type == 'kg-covid19':
+        edges = set(triples_df.predicate)
+        print("### Unique Edges in Knowledge Graph ###")
+        print('\n'.join(edges))
+        still_adding = True
+        to_weight= []
+        print('\n')
+        print('Input the edges to avoid in the path search (if possible). When finished input "Done"')
+        while(still_adding):
+            user_input = input('Edge or "Done"')
+            if user_input == 'Done':
+                still_adding = False
+            else:
+                to_weight.append(user_input)
+
+    edges= graph.igraph.es['predicate']
+    graph.igraph.es['weight'] = [10 if x in to_weight else 1 for x in edges]
     return(graph)
     
 def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions):
