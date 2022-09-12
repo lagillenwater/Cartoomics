@@ -1,8 +1,9 @@
 from inputs import *
 from create_graph import create_graph
-from assign_nodes import *
+from assign_nodes import interactive_search_wrapper
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
+from create_subgraph import user_defined_edge_weights
 from visualize_subgraph import output_visualization
 from evaluation import *
 
@@ -22,6 +23,9 @@ def main():
 
     print("Mapping complete")
     print(s)
+
+    if weights == True:
+        g = user_defined_edge_weights(g,kg_type)
 
     print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
     
