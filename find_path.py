@@ -206,7 +206,7 @@ def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
     emb = e.generate_graph_embeddings()
     df,paths_total_cs = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)
 
-    return df,paths_total_cs
+    return path_nodes,df,paths_total_cs
 
 def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight):
 
@@ -214,4 +214,5 @@ def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,
 
     df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all)
 
-    return df,paths_pdp
+    return path_nodes,df,paths_pdp
+
