@@ -60,7 +60,7 @@ def process_kg_covid19_files(triples_file,labels_file):
     triples_df = pd.read_csv(triples_file,sep = '\t', usecols = ['subject', 'object', 'predicate'])
     triples_df.columns.str.lower()
 
-    labels = pd.read_csv(labels_file, sep = '\t', usecols = ['name','description','xrefs'])
-    labels.columns = ['label', 'description/definition','entity_uri']
+    labels = pd.read_csv(labels_file, sep = '\t', usecols = ['name','description','xrefs','synonym'])
+    labels.columns = ['label', 'description/definition','entity_uri','synonym']
 
     return triples_df,labels
