@@ -25,20 +25,22 @@ def edge_count(df_fig1, df_fig2, df_fig3):
     figure, axis = plt.subplots(3, 1)
     figure.set_size_inches(14.5, 14)
     
-    axis[0].bar(X_axis - 0.2, Y0, 0.4, label = 'cs')
-    axis[0].bar(X_axis + 0.2, Z0, 0.4, label = 'pdp')
+    axis[0].bar(np.arange(len(X0)) - 0.2, Y0, 0.4, label = 'cs')
+    axis[0].bar(np.arange(len(X0)) + 0.2, Z0, 0.4, label = 'pdp')
+    axis[0].set_xticks(np.arange(len(X0)), X0, rotation = 12, ha="right", fontsize=10)
     axis[0].set_title("Figure1")
     
     
-    axis[1].bar(X_axis - 0.2, Y1, 0.4, label = 'cs')
-    axis[1].bar(X_axis + 0.2, Z1, 0.4, label = 'pdp')
+    axis[1].bar(np.arange(len(X1)) - 0.2, Y1, 0.4, label = 'cs')
+    axis[1].bar(np.arange(len(X1)) + 0.2, Z1, 0.4, label = 'pdp')
+    axis[1].set_xticks(np.arange(len(X1)), X1, rotation = 12, ha="right", fontsize=10)
     axis[1].set_title("Figure2")
     
-    axis[2].bar(X_axis - 0.2, Y2, 0.4, label = 'cs')
-    axis[2].bar(X_axis + 0.2, Z2, 0.4, label = 'pdp')
+    axis[2].bar(np.arange(len(X2)) - 0.2, Y2, 0.4, label = 'cs')
+    axis[2].bar(np.arange(len(X2)) + 0.2, Z2, 0.4, label = 'pdp')
+    axis[2].set_xticks(np.arange(len(X2)), X2, rotation = 12, ha="right", fontsize=10)
     axis[2].set_title("Figure3")
     
-    plt.xticks(X_axis, X1, rotation = 45, ha="right")
     plt.xlabel("Edge Type")
     plt.ylabel("Number of edges")
     plt.suptitle("Number of unique edges found using CS and PDP", fontsize=30)
