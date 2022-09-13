@@ -191,7 +191,7 @@ def output_path_lists(output_dir,path_list,subgraph_algorithm):
 
     df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'.csv',sep=',',index=False)
 
- def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
+def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
 
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
