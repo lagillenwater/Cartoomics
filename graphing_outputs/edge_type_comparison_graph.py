@@ -5,20 +5,20 @@ import pandas as pd
 def edge_count(df_fig1, df_fig2, df_fig3):
     
     # define axis
-    cartton1 = pd.read_csv(df_fig1)
-    X0 = cartton1['Edge_Type']
-    Y0 = cartton1['cs']
-    Z0 = cartton1['pdp']
+    df_fig1 = pd.read_csv(df_fig1)
+    X0 = df_fig1['Edge_Type']
+    Y0 = df_fig1['cs']
+    Z0 = df_fig1['pdp']
     
-    cartton2 = pd.read_csv(df_fig2)
-    X1 = cartton2['Edge_Type']
-    Y1 = cartton2['cs']
-    Z1 = cartton2['pdp']
+    df_fig2 = pd.read_csv(df_fig2)
+    X1 = df_fig2['Edge_Type']
+    Y1 = df_fig2['cs']
+    Z1 = df_fig2['pdp']
     
-    cartoon3 = pd.read_csv(df_fig3)
-    X2 = cartoon3['Edge_Type']
-    Y2 = cartoon3['cs']
-    Z2 = cartoon3['pdp']
+    df_fig3 = pd.read_csv(df_fig3)
+    X2 = df_fig3['Edge_Type']
+    Y2 = df_fig3['cs']
+    Z2 = df_fig3['pdp']
       
     X_axis = np.arange(len(X1))
     
