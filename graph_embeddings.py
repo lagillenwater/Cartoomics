@@ -41,7 +41,7 @@ class Embeddings:
 
                 with open(self.triples_file, 'r') as f_in:
                     #Length matches original file length, remove brackets from the URI
-                    kg_data = set(tuple(x.replace('>','').replace('<','').split('\t')) for x in f_in.read().splitlines())
+                    kg_data = set(tuple(x.replace('>','').replace('<','').split('\t'))[0:3] for x in f_in.read().splitlines())
                 f_in.close()
 
                 # map identifiers to integers
