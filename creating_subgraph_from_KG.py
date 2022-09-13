@@ -3,7 +3,7 @@ from create_graph import create_graph
 from assign_nodes import interactive_search_wrapper
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
-from create_subgraph import user_defined_edge_weights
+from create_subgraph import user_defined_edge_exclusion
 from visualize_subgraph import output_visualization
 from evaluation import *
 
