@@ -27,16 +27,16 @@ def edge_count(df_fig1, df_fig2, df_fig3):
     
     axis[0].bar(X_axis - 0.2, Y0, 0.4, label = 'cs')
     axis[0].bar(X_axis + 0.2, Z0, 0.4, label = 'pdp')
-    axis[0].set_title("CS")
+    axis[0].set_title("Figure1")
     
     
     axis[1].bar(X_axis - 0.2, Y1, 0.4, label = 'cs')
     axis[1].bar(X_axis + 0.2, Z1, 0.4, label = 'pdp')
-    axis[1].set_title("PDP")
+    axis[1].set_title("Figure2")
     
     axis[2].bar(X_axis - 0.2, Y2, 0.4, label = 'cs')
     axis[2].bar(X_axis + 0.2, Z2, 0.4, label = 'pdp')
-    axis[2].set_title("Edge Exlusion")
+    axis[2].set_title("Figure3")
     
     plt.xticks(X_axis, X1, rotation = 45, ha="right")
     plt.xlabel("Edge Type")
