@@ -25,7 +25,7 @@ def main():
     print(s)
 
     if weights == True:
-        g = user_defined_edge_weights(g,kg_type)
+        g = user_defined_edge_exclusion(g,kg_type)
 
     print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
     
