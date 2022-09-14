@@ -123,7 +123,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         df_paths['target_node'] = [end_node]
         df_paths['num_paths'] = [len(path_nodes)]
         num_paths_df = pd.concat([num_paths_df,df_paths],axis=0)
-        #Output path list to file where index will match the pair# in the subgraph.csv
+        #Output path list to file where index will match the pair# in the _Input_Nodes_.csv
         output_path_lists(output_dir,paths_total_cs,'CosineSimilarity',i)
 
     df = pd.concat(all_paths)
