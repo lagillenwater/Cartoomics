@@ -1,0 +1,241 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+###Use dictionary to set appropriate figure names
+figure_names <- c(
+  'Neuroinflammation' = 'Figure 1c:\nNeuroinflammation',
+  'Covid19' = 'Figure 1a:\nCovid 19 Drugs',
+  'DS' = 'Figure 1b:\nInsulin Resistance'
+)
+
+```
+
+```{r}
+###Color panel used
+cbp1 <- c("#999999", "#E69F00", "#56B4E9", "#009E73",
+          "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+```
+
+
+```{r}
+library(ggplot2)
+library(tidyr)
+library(gridExtra)
+
+#Compares the unique edge types in each subgraph for cs/pdp, intent is to show this for each cartoon in a different figure
+
+output_figure_datasets <- function(output_dir,...) {
+  plots <- list()
+   
+  all_figures <- list(...)
+  
+  for (i in 1:length(all_figures)){
+    print(all_figures[[i]])
+    f <- paste(output_dir,'/Figures/',all_figures[i],'/Outputs/Evaluation_Files/edge_type_comparison.csv',sep="")
+    edge_type_comparison <- read.table(f, sep = ',', header = TRUE)
+    edge_type_comparison_long <- gather(edge_type_comparison,algorithm,count,pdp,cs,factor_key=TRUE)
+    
+    p <- ggplot(edge_type_comparison_long, aes(x=Edge_Type, y=count, fill=algorithm)) +
+      #theme_bw(base_size = 20) + scale_fill_grey() +  
+      geom_bar(stat='identity',position = position_dodge(),width = 0.4,colour="black") +
+      scale_fill_manual('Ranking Algorithm',labels=c('Path-Degree Product', 'Cosine Similarity'),values = cbp1) +
+      labs(title = figure_names[i],
+           x= 'Edge Type',
+           y='Count (Normalized)') + 
+    theme_bw() + theme(axis.text.x=element_text(vjust=0.6,angle = 45,size = 18), panel.border = element_blank(), panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),plot.title = element_text(hjust = 0.5),legend.text = element_text(size = 16),text = element_text(size = 20))
+    plots[[i]] = p
+  }
+  return(plots)
+}
+
+p <- output_figure_datasets(output_dir,'Neuroinflammation','Covid19','DS')
+
+
+do.call("grid.arrange", c(p, ncol=1))
+fig <- plot_grid(plotlist=p,ncol = 1)
+
+ggsave(paste(output_dir,"/Figures/edge_type_comparison.png",sep=''), plot = fig, width = 30, height = 40, units = "cm")
+
+
+
+```
+
+
+
+```{r}
+library(ggplot2)
+library(tidyr)
+
+#Compares the number of unique nodes in each subgraph for cs/pdp, intent is to show this for each cartoon in the same figure
+combine_figure_datasets <- function(output_dir,...) {
+  all_figures <- list(...)
+  num_nodes_comparison <- data.frame(matrix(ncol = 2, nrow = 0))
+  colnames(num_nodes_comparison) <- c('pdp','cs')
+  
+  for (i in all_figures){
+    f <- paste(output_dir,'/Figures/',i,'/Outputs/Evaluation_Files/num_nodes_comparison.csv',sep="")
+    df <- read.table(f, sep = ',', header = TRUE)
+    df$Figure <-rep(c(i),each=nrow(df))
+    num_nodes_comparison <- rbind(num_nodes_comparison, df)
+  }
+  num_nodes_comparison_long <- gather(num_nodes_comparison,algorithm,count,pdp,cs,factor_key=TRUE)
+  
+  return(num_nodes_comparison_long)
+}
+
+output_dir <- '/Users/brooksantangelo/Documents/HunterLab/Cartoomics'
+num_nodes_comparison_long <- combine_figure_datasets(output_dir,'Neuroinflammation','Covid19','DS')
+
+print(num_nodes_comparison_long)
+
+p <- ggplot(num_nodes_comparison_long, aes(x=Figure, y=count, fill=algorithm)) +
+  geom_bar(stat='identity',position = position_dodge(),width = 0.4,colour="black") +
+  #theme_bw(base_size = 20) +
+  scale_fill_manual('Ranking Algorithm',labels=c('Path-Degree Product', 'Cosine Similarity'),values = cbp1) +
+  scale_x_discrete(labels=c(figure_names['Covid19'],figure_names['DS'],figure_names['Neuroinflammation'])) +
+  #theme(axis.text.x=element_text(angle = 90)) +
+  labs(title = 'Number of Nodes per Subgraph',
+       x= 'Example Figure',
+       y='Total # Nodes') + 
+  theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),plot.title = element_text(hjust = 0.5))
+
+p
+
+ggsave(paste(output_dir,"/Figures/num_nodes_comparison.png",sep=''), plot = p, width = 20, height = 10, units = "cm")
+```
+
+
+```{r}
+#Compares the path length of all pairs in a subgraph, intent is to show this for each cartoon in the same figure
+path_length_comparison <- read.table('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/Figures/Neuroinflammation/Outputs/Evaluation_Files/path_length_comparison.csv', sep = ',', header = TRUE)
+
+path_length_comparison_long <- gather(path_length_comparison,algorithm,count,pdp,cs,factor_key=TRUE)
+
+#Combine multiple datasets for each figure
+combine_figure_datasets <- function(output_dir,...) {
+  all_figures <- list(...)
+  path_length_comparison <- data.frame(matrix(ncol = 2, nrow = 0))
+  colnames(path_length_comparison) <- c('pdp','cs')
+  
+  for (i in all_figures){
+    f <- paste(output_dir,'/Figures/',i,'/Outputs/Evaluation_Files/path_length_comparison.csv',sep="")
+    df <- read.table(f, sep = ',', header = TRUE)
+    df$Figure <-rep(c(i),each=nrow(df))
+    path_length_comparison <- rbind(path_length_comparison, df)
+  }
+  path_length_comparison_long <- gather(path_length_comparison,algorithm,count,pdp,cs,factor_key=TRUE)
+  
+  return(path_length_comparison_long)
+}
+
+output_dir <- '/Users/brooksantangelo/Documents/HunterLab/Cartoomics'
+path_length_comparison_long <- combine_figure_datasets(output_dir,'Neuroinflammation','Covid19','DS')
+
+
+
+p <- ggplot(path_length_comparison_long, aes(x=Figure, y=count, fill=algorithm)) +
+  geom_boxplot() +
+  scale_fill_manual('Ranking Algorithm',labels=c('Path-Degree Product', 'Cosine Similarity'),values = cbp1) +
+  scale_x_discrete(labels=c(figure_names['Covid19'],figure_names['DS'],figure_names['Neuroinflammation'])) +
+  geom_jitter(height = 0, width = 0.3, alpha=0.3) +
+  labs(title = 'Distribution of Path Length',
+       x= 'Example Figure',
+       y='Path Length') + 
+  theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),plot.title = element_text(hjust = 0.5))
+
+p
+
+ggsave(paste(output_dir,"/Figures/path_length_comparison.png",sep=''), plot = p, width = 20, height = 10, units = "cm")
+```
+
+
+
+```{r}
+#Compares the ranking of each path for a pair in each figure
+combine_figure_datasets <- function(output_dir,...) {
+  all_figures <- list(...)
+  ranked_comparison <- data.frame(matrix(ncol = 2, nrow = 0))
+  colnames(ranked_comparison) <- c('pdp','cs')
+  
+  for (i in all_figures){
+    f <- paste(output_dir,'/Figures/',i,'/Outputs/Evaluation_Files/ranked_comparison.csv',sep="")
+    df <- read.table(f, sep = ',', header = TRUE)
+    df$Figure <-rep(c(i),each=nrow(df))
+    ranked_comparison <- rbind(ranked_comparison, df)
+  }
+  return(ranked_comparison)
+}
+
+output_dir <- '/Users/brooksantangelo/Documents/HunterLab/Cartoomics'
+ranked_comparison <- combine_figure_datasets(output_dir,'Neuroinflammation','DS') #'Covid19'
+
+ranked_comparison$cs <-ranked_comparison$cs + 1
+ranked_comparison$pdp <-ranked_comparison$pdp + 1
+
+
+p <- ggplot(data = ranked_comparison, aes(x=cs, y=pdp, color=Figure)) +
+  geom_point() +
+  scale_color_manual('Example Figure',labels=c(figure_names['DS'],figure_names['Neuroinflammation']),values = cbp1) + #figure_names['Covid19']
+  geom_smooth(method = 'lm', se = FALSE) +
+  labs(title = 'Prioritization of All Shortest Paths',
+       x= 'Path Rank (Cosine Similarity)',
+       y='Path Rank (Path-Degree Product)') + 
+  theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),plot.title = element_text(hjust = 0.5))
+
+p
+
+ggsave(paste(output_dir,"/Figures/ranked_comparison_noCovid.png",sep=''), plot = p, width = 15, height = 10, units = "cm")
+
+
+```
+
+```{r}
+#Compares the unique intermediate node types in each subgraph for cs/pdp, intent is to show this for each cartoon in a different figure
+output_figure_datasets <- function(output_dir,...) {
+  plots <- list()
+   
+  all_figures <- list(...)
+  
+  for (i in 1:length(all_figures)){
+    print(all_figures[[i]])
+    f <- paste(output_dir,'/Figures/',all_figures[i],'/Outputs/Evaluation_Files/intermediate_nodes_comparison.csv',sep="")
+    print(f)
+    intermediate_nodes_comparison <- read.table(f, sep = ',', header = TRUE)
+    intermediate_nodes_comparison_long <- gather(intermediate_nodes_comparison,algorithm,count,pdp,cs,factor_key=TRUE)
+    
+    print(intermediate_nodes_comparison_long)
+    
+    p <- ggplot(intermediate_nodes_comparison_long, aes(x=Ontology_Type, y=count, fill=algorithm)) +
+      geom_bar(stat='identity',position = position_dodge(),width = 0.4,colour="black") +
+      scale_fill_manual('Ranking Algorithm',labels=c('Path-Degree Product', 'Cosine Similarity'),values = cbp1) +
+      labs(title = figure_names[i],
+           x= 'Ontology Type',
+           y='Count (Normalized)') + 
+      theme_bw() + theme(axis.text.x=element_text(vjust=0.6,angle = 45,size = 18), panel.border = element_blank(), panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),plot.title = element_text(hjust = 0.5),legend.text = element_text(size = 16),text = element_text(size = 20))
+    plots[[i]] = p
+  }
+  return(plots)
+}
+
+p <- output_figure_datasets(output_dir,'Neuroinflammation','Covid19','DS')
+
+fig <- plot_grid(plotlist=p,ncol = 1) 
+
+ggsave(paste(output_dir,"/Figures/intermediate_nodes_comparison.png",sep=''), plot = fig, width = 30, height = 40, units = "cm")
+```
+
+
+
+
