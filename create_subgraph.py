@@ -45,7 +45,7 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
         to_weight = graph.labels_all[graph.labels_all['label'].isin(to_weight)]['entity_uri'].tolist()
 
     if kg_type == 'kg-covid19':
-        edges = set(list(graph.igraph.es['predicate']))
+        edges = set(triples_df.predicate)
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
@@ -82,11 +82,11 @@ def user_defined_edge_exclusion(graph,kg_type ):
         to_drop = graph.labels_all[graph.labels_all['label'].isin(to_drop)]['entity_uri'].tolist()
         
     if kg_type == 'kg-covid19':
-        edges = set(list(graph.igraph.es['predicate']))
+        edges = graph.igraph
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
-        to_drop= []
+        to_weight= []
         print('\n')
         print('Input the edges to avoid in the path search (if possible). When finished input "Done"')
         while(still_adding):
@@ -123,14 +123,13 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         df_paths['target_node'] = [end_node]
         df_paths['num_paths'] = [len(path_nodes)]
         num_paths_df = pd.concat([num_paths_df,df_paths],axis=0)
+        #Output path list to file where index will match the pair# in the subgraph.csv
+        output_path_lists(output_dir,paths_total_cs,'CosineSimilarity',i)
 
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
     #Remove duplicate edges
     df = df.drop_duplicates(subset=['S','P','O'])
-
-    #Output path list to file
-    output_path_lists(output_dir,paths_total_cs,'CosineSimilarity')
 
     output_num_paths_pairs(output_dir,num_paths_df,'CosineSimilarity')
 
@@ -154,15 +153,13 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         df_paths['target_node'] = [end_node]
         df_paths['num_paths'] = [len(path_nodes)]
         num_paths_df = pd.concat([num_paths_df,df_paths],axis=0)
+        #Output path list to file where index will match the pair# in the _Input_Nodes_.csv
+        output_path_lists(output_dir,paths_pdp,'PDP',i)
 
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
     #Remove duplicate edges
     df = df.drop_duplicates(subset=['S','P','O'])
-
-    #Output path list to file
-    output_path_lists(output_dir,paths_pdp,'PDP')
-    print('output PDP list')
 
     output_num_paths_pairs(output_dir,num_paths_df,'PDP')
 
