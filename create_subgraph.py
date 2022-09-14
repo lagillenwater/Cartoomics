@@ -27,7 +27,7 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
     return df
 
 # Have user define weights to upweight
-def user_defined_edge_weights(graph,kg_type ):
+def user_defined_edge_weights(graph, triples_df,kg_type ):
     if kg_type == 'pkl':
         edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
         print("### Unique Edges in Knowledge Graph ###")
@@ -82,7 +82,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
         to_drop = graph.labels_all[graph.labels_all['label'].isin(to_drop)]['entity_uri'].tolist()
         
     if kg_type == 'kg-covid19':
-        edges = set(triples_df.predicate)
+        edges = graph.igraph
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
@@ -104,7 +104,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
 
 
     
-def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions):
+def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -117,7 +117,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,
-        search_type,triples_file,output_dir,input_dir,embedding_dimensions)
+        search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -136,7 +136,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
 
     return df,paths_total_cs
 
-def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,output_dir):
+def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,output_dir, kg_type):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -148,7 +148,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
-        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight)
+        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
