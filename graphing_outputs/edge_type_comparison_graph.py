@@ -43,7 +43,9 @@ def edge_count(df_fig1, df_fig2, df_fig3):
     
     plt.xlabel("Edge Type")
     plt.ylabel("Number of edges")
+    plt.subplots_adjust(hspace=0.5)
     plt.suptitle("Number of unique edges found using CS and PDP", fontsize=30)
+    plt.style.context('grayscale')
     
     for ax in axis.flat:
         ax.set(ylabel='Number of edges')
