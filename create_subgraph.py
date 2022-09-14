@@ -45,7 +45,7 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
         to_weight = graph.labels_all[graph.labels_all['label'].isin(to_weight)]['entity_uri'].tolist()
 
     if kg_type == 'kg-covid19':
-        edges = set(triples_df.predicate)
+        edges = set(list(graph.igraph.es['predicate']))
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
@@ -82,11 +82,11 @@ def user_defined_edge_exclusion(graph,kg_type ):
         to_drop = graph.labels_all[graph.labels_all['label'].isin(to_drop)]['entity_uri'].tolist()
         
     if kg_type == 'kg-covid19':
-        edges = graph.igraph
+        edges = set(list(graph.igraph.es['predicate']))
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
-        to_weight= []
+        to_drop= []
         print('\n')
         print('Input the edges to avoid in the path search (if possible). When finished input "Done"')
         while(still_adding):
