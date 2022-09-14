@@ -1,4 +1,3 @@
-
 from inputs import *
 from create_graph import create_graph
 from assign_nodes import *
@@ -28,7 +27,7 @@ def main():
 
     edge_types_df = edge_type_comparison(output_dir=output_dir,cs=subgraph_cs,pdp=subgraph_pdp)
 
-    intermediate_nodes_df = intermediate_nodes_comparison(output_dir,g.labels_all,cs=cs_noa_df,pdp=pdp_noa_df)
+    intermediate_nodes_df = intermediate_nodes_comparison(output_dir,g.labels_all,kg_type,cs=cs_noa_df,pdp=pdp_noa_df)
 
 if __name__ == '__main__':
     main()
