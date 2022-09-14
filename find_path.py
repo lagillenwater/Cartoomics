@@ -8,17 +8,24 @@ from collections import defaultdict
 
 
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
-def get_uri(labels,value):
+# kg_type adds functionality for kg-covid19
+def get_uri(labels,value, kg_type):
 
-    uri = labels.loc[labels['label'] == value,'entity_uri'].values[0]
+    if kg_type == 'pkl':
+        uri = labels.loc[labels['label'] == value,'entity_uri'].values[0]
+    if kg_type == 'kg-covid19':
+        uri = labels.loc[labels['label'] == value,'id'].values[0]
     
+        
     return uri
 
-def get_label(labels,value):
-
-    label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
-    
+def get_label(labels,value,kg_type):
+    if kg_type == 'pkl':
+        label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
+    if kg_type == 'kg-covid19':
+        label = labels.loc[labels['id'] == value,'label'].values[0]        
     return label
+
 
 
 def get_key(dictionary,value):
@@ -75,10 +82,12 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
     if len(path_nodes) > 1:
         return mechanism_dfs
 
-def find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type):
+def find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type):
 
-    node1 = get_uri(labels_all,start_node)
-    node2 = get_uri(labels_all,end_node)
+
+    node1 = get_uri(labels_all,start_node, kg_type)
+    node2 = get_uri(labels_all,end_node, kg_type)
+
 
     #Add weights if specified
     if weights:
@@ -104,7 +113,7 @@ def get_embedding(emb,node):
 
     return embedding_array
 
-def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all):
+def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_type):
 
     target_emb = get_embedding(emb,path_nodes[0][len(path_nodes[0])-1])
 
@@ -130,11 +139,11 @@ def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all):
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_cs,search_type)
 
-    df = convert_to_labels(df,labels_all)
+    df = convert_to_labels(df,labels_all,kg_type)
 
     return df,paths_total_cs
 
-def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all):
+def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_type):
 
     #List of pdp for each path in path_nodes, should be same length as path_nodes
     paths_pdp = []
@@ -153,7 +162,7 @@ def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all):
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_pdp,search_type)
 
-    df = convert_to_labels(df,labels_all)
+    df = convert_to_labels(df,labels_all,kg_type)
 
     return df,paths_pdp
 
@@ -166,22 +175,32 @@ def select_path(value_list,path_nodes):
 
     return chosen_path_nodes
 
-def convert_to_labels(df,labels_all):
+def convert_to_labels(df,labels_all,kg_type):
 
-    for i in range(len(df)):
-        df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S'],'label'].values[0]
-        df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P'],'label'].values[0]
-        df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O'],'label'].values[0]
+    if kg_type == 'pkl':
+        for i in range(len(df)):
+            df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S'],'label'].values[0]
+            df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P'],'label'].values[0]
+            df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O'],'label'].values[0]
+    if kg_type == 'kg-covid19':
+        for i in range(len(df)):
+            s_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['S'],'label'].values[0]
+            if s_label != "":
+                df.iloc[i].loc['S'] = s_label
+            df.iloc[i].loc['P'] = df.iloc[i].loc['P'].split(':')[-1]
+            o_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['O'],'label'].values[0]
+            if o_label != "":
+                df.iloc[i].loc['O'] = o_label 
 
     df = df.reset_index(drop=True)
     return df
 
 # Wrapper functions
 #Returns the path as a dataframe of S/P/O of all triples' labels within the path
-def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type):
+def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type):
 
-    node1 = get_uri(labels_all,start_node)
-    node2 = get_uri(labels_all,end_node)
+    node1 = get_uri(labels_all,start_node,kg_type)
+    node2 = get_uri(labels_all,end_node,kg_type)
 
     #Add weights if specified
     if weights:
@@ -194,25 +213,25 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
     df = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
 
-    df = convert_to_labels(df,labels_all)
+    df = convert_to_labels(df,labels_all,kg_type)
 
     return df
 
-def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions):
+def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions, kg_type):
 
-    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
+    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
 
-    e = Embeddings(triples_file,output_dir,input_dir,embedding_dimensions)
+    e = Embeddings(triples_file,output_dir,input_dir,embedding_dimensions, kg_type)
     emb = e.generate_graph_embeddings()
-    df,paths_total_cs = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all)
+    df,paths_total_cs = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type)
 
     return path_nodes,df,paths_total_cs
 
-def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight):
+def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
 
-    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all')
+    path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
 
-    df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all)
+    df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type)
 
     return path_nodes,df,paths_pdp
 

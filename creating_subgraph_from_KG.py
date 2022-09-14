@@ -29,7 +29,7 @@ def main():
 
     print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
     
-    subgraph_cs,path_total_cs = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions)
+    subgraph_cs,path_total_cs = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type)
 
     print("Outputting CS visualization......")
 
@@ -37,7 +37,7 @@ def main():
 
     print("Finding subgraph using user input for PDP......")
 
-    subgraph_pdp,path_pdp = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir)
+    subgraph_pdp,path_pdp = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type)
     
     print("Outputting PDP visualization......")
 
