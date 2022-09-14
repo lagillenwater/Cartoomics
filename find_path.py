@@ -100,6 +100,10 @@ def find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples
 
     #list of nodes
     path_nodes = graph.get_all_shortest_paths(v=node1, to=node2, weights=w, mode=search_type)
+    
+    #Remove duplicates for bidirectional nodes, only matters when search type=all for mode
+    path_nodes = list(set(tuple(x) for x in path_nodes))
+    path_nodes = [list(tup) for tup in path_nodes]
 
     #Dictionary of all triples that are shortest paths, not currently used
     mechanism_dfs = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
