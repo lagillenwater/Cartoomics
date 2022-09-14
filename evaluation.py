@@ -11,7 +11,7 @@ def ranked_comparison(output_dir,**value_dfs):
 
     for i in value_dfs.items():
         paths_list = list(i[1]['Value'])
-        r = [sorted(paths_list).index(x) for x in paths_list]
+        r = [sorted(paths_list,reverse=True).index(x) for x in paths_list]
         df[i[0]] = r
 
     output_folder = output_dir+'/Evaluation_Files'
@@ -66,9 +66,10 @@ def num_nodes_comparison(output_dir,**subgraph_dfs):
     df.to_csv(output_folder+'/num_nodes_comparison.csv',sep=',',index=False)
     return df
 
-def get_ontology_lables(noa_df,labels_all):
+def get_ontology_lables(noa_df,labels_all,kg_type):
 
-    ont_types = ['/CHEBI_','/PR_','/PW_','/gene','/MONDO_','/HP_','/VO_','/EFO_','NCBITaxon_','/GO_','/DOID_','/reactome','/SO_']
+    ont_types = ['/CHEBI_','/PR_','/PW_','/gene','/MONDO_','/HP_','/VO_','/EFO_','NCBITaxon_','/GO_','/DOID_','/reactome','/SO_',
+    'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.',]
 
     ont_labels = []
 
@@ -78,7 +79,7 @@ def get_ontology_lables(noa_df,labels_all):
     for i in range(len(noa_df)):
         ont_found = 'false'
         if noa_df.iloc[i].loc['Attribute'] == 'Extra':
-            uri = get_uri(labels_all,noa_df.iloc[i].loc['Node'])
+            uri = get_uri(labels_all,noa_df.iloc[i].loc['Node'],kg_type)
             num_intermediate_nodes += 1
             for j in ont_types:
                 if j in uri:
@@ -95,7 +96,7 @@ def get_ontology_lables(noa_df,labels_all):
     return ont_labels, counts, num_intermediate_nodes
 
 
-def intermediate_nodes_comparison(output_dir,labels_all,**noa_dfs):
+def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
 
     all_ont_labels = []
 
@@ -106,7 +107,7 @@ def intermediate_nodes_comparison(output_dir,labels_all,**noa_dfs):
     for nd in noa_dfs.items():
         n_df = nd[1]
         #Get unique ontology types from this subgraph, add to running list for each subgraph, counts not used here
-        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all)
+        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
         all_ont_labels.extend(ont_labels)
         
     #List of all unique ontology types from all subgraphs
@@ -115,7 +116,7 @@ def intermediate_nodes_comparison(output_dir,labels_all,**noa_dfs):
     #Get counts of each ontology type
     for nd in noa_dfs.items():
         n_df = nd[1]
-        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all)
+        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
         #Add any ontology types not already in subgraph
         for i in all_ont_labels:
             if i not in ont_labels:
