@@ -11,7 +11,7 @@ def ranked_comparison(output_dir,**value_dfs):
 
     for i in value_dfs.items():
         paths_list = list(i[1]['Value'])
-        r = [sorted(paths_list).index(x) for x in paths_list]
+        r = [sorted(paths_list,reverse=True).index(x) for x in paths_list]
         df[i[0]] = r
 
     output_folder = output_dir+'/Evaluation_Files'
