@@ -179,7 +179,7 @@ def get_subgraph_dfs(output_dir,subgraph_algorithm):
     return input_nodes,subgraph_df,noa_df,path_list
 
 
-def output_path_lists(output_dir,path_list,subgraph_algorithm):
+def output_path_lists(output_dir,path_list,subgraph_algorithm,idx):
 
     df = pd.DataFrame()
 
@@ -190,7 +190,7 @@ def output_path_lists(output_dir,path_list,subgraph_algorithm):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'.csv',sep=',',index=False)
+    df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv',sep=',',index=False)
 
 def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
 
