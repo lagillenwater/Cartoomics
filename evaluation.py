@@ -112,9 +112,14 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
         
     #List of all unique ontology types from all subgraphs
     all_ont_labels = np.unique(all_ont_labels)
+
+    #Add all unique ont labels to df
+    df['Ontology_Type'] = all_ont_labels
+    df.sort_values(by=['Ontology_Type'], ascending=(True),inplace=True)
         
     #Get counts of each ontology type
     for nd in noa_dfs.items():
+        values = []
         n_df = nd[1]
         ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
         #Add any ontology types not already in subgraph
@@ -125,10 +130,11 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
 
         #Normalize counts
         counts_norm = [i/num_intermediate_nodes for i in counts]
-        df['Ontology_Type'] = ont_labels
-        df[nd[0]] = counts_norm
-        #Sort ontology types so that counts line up for each
-        df.sort_values(by=['Ontology_Type'], ascending=(False),inplace=True)
+        onts_dict = {ont_labels[i]: counts_norm[i] for i in range(len(ont_labels))}
+        #Sort dict the same way as df is sorted
+        for key in sorted(onts_dict.keys()):
+            values.append(onts_dict[key])
+        df[nd[0]] = values
 
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
@@ -140,17 +146,44 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
 
 def edge_type_comparison(output_dir,**subgraph_dfs):
 
+    all_edge_labels = []
+
     df = pd.DataFrame()
 
+    #Get all possible edge types from all subgraphs given
     for sg in subgraph_dfs.items():
         sg_df = sg[1]
+        #Get unique edge types from this subgraph, add to running list for each subgraph, counts not used here
+        edge_labels, counts = np.unique(sg_df['P'], return_counts=True)
+        all_edge_labels.extend(edge_labels)
+        
+    #List of all unique ontology types from all subgraphs
+    all_edge_labels = np.unique(all_edge_labels)
 
-        ###Need to account for the fact that ont types will be different for each sg_df (i.e. values)
-        ###Need to divide by total # edges to normalize
-        values, counts = np.unique(sg_df['P'], return_counts=True)
+    #Add all unique edge labels to df
+    df['Edge_Type'] = all_edge_labels
+    df.sort_values(by=['Edge_Type'], ascending=(True),inplace=True)
+
+    for sg in subgraph_dfs.items():
+        values = []
+        sg_df = sg[1]
+
+        #Need to account for the fact that ont types will be different for each sg_df (i.e. values)
+        edge_labels, counts = np.unique(sg_df['P'], return_counts=True)
+        edge_labels = list(edge_labels)
+        counts = list(counts)
+        #Add any edge types not already in subgraph
+        for i in all_edge_labels:
+            if i not in edge_labels:
+                edge_labels.append(i)
+                counts.append(0)
+        #Normalize counts
         counts_norm = [i/len(sg_df['P']) for i in counts]
-        df['Edge_Type'] = values
-        df[sg[0]] = counts_norm
+        edge_dict = {edge_labels[i]: counts_norm[i] for i in range(len(edge_labels))}
+        #Sort dict the same way as df is sorted
+        for key in sorted(edge_dict.keys()):
+            values.append(edge_dict[key])
+        df[sg[0]] = values
 
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
