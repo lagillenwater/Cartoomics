@@ -213,6 +213,14 @@ cs,pdp
     |                   |             | 
     |                   |             |----Subgraph_visualization.png
     |                   |             |
+    |-------------------|-------------|----NearestNeighbors/
+    |                   |             |               |
+    |                   |             |               |----Subgraph.csv
+    |                   |             |               |
+    |                   |             |               |----Subgraph_attributes.noa
+    |                   |             |               |
+    |                   |             |               |----Subgraph_visualization.png
+    |                   |             |
     |-------------------|----Evaluation_Files/
     |                   |             |
     |                   |             |----edge_type_comparison.csv
