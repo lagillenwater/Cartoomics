@@ -255,7 +255,7 @@ def drugNeighbors(graph,nodes, kg_type):
                 path_labels = convert_to_labels(path_triples,graph.labels_all,kg_type)
                 neighbors.append(path_labels)
     all_neighbors = pd.concat(neighbors)
-    return(all_neighbors)
+    return all_neighbors
     
 
 
@@ -266,4 +266,4 @@ def drug_neighbors_wrapper(input_nodes_df, subgraph_df,graph,kg_type):
     for_input = pd.concat([all_neighbors[['S','O']],all_neighbors[['S','O']]],axis = 1)
     for_input.columns = ['source', 'target', 'source_label', 'target_label']
     updated_input_nodes_df = pd.concat([input_nodes_df, for_input])
-    return(updated_subgraph,updated_input_nodes_df)
+    return updated_input_nodes_df, updated_subgraph
