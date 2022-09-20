@@ -248,10 +248,15 @@ def drugNeighbors(graph,nodes, kg):
         tmp_nodes = graph.igraph.neighbors(node,mode = "in")
         tmp = graph.igraph.vs(tmp_nodes)['name']
         drug_neighbors = [i for i in tmp if re.search(r'Drug|Pharm',i)]
-        neighbors.append(drug_neighbors)
-    return(neighbors)
-
-
-# wrapper for outputting new subpgraph with neighbors
-def drugNeighborsWrapper(subgraph, kg):
+        if len(drug_neighbors) != 0:
+            for source in drug_neighbors:
+                path = graph.igraph.get_shortest_paths(v = source, to = node)
+                path_triples = define_path_triples(graph.igraph_nodes,graph.edgelist,path, 'all')
+                path_labels = convert_to_labels(path_triples,graph.labels_all,kg)
+                neighbors.append(path_labels)
+                print(node)
+    all_neighbors = pd.concat(neighbors)
+    return(all_neighbors)
     
+
+
