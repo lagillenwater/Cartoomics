@@ -37,6 +37,8 @@ git clone https://github.com/bsantan/Cartoomics-Grant
 First install mamba, which will be used to create the environment. To create an environment with all dependencies and activate the environment, run the following commands:
 
 ```
+conda install mamba
+
 mamba env create -f environment.yml
 conda activate Cartoomics
 ```
@@ -53,18 +55,27 @@ The following files must exist in the input directory:
 
 To access the v3 PheKnowLator knowledge graph, visit the GCS bucket: https://console.cloud.google.com/storage/browser/pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&project=pheknowlator&prefix=&forceOnObjectsSortingFiltering=false
 
+To access the kg-covid19 knowledge graph, visit the kg-covid19 Knowledge Graph Hub for the current tar.gz file (kg-covid-19.tar.gz):
+https://kg-hub.berkeleybop.io/kg-covid-19/current/index.html
+
 Add the necessary files for the knowledge graph (Triples file and Labels file) to a directory that also contains all files in the Input_Files folder of this repository, and specify this as your input directory.
 
 ### Defaults
   
 The following values will be used if not otherwise specified:
 - embedding dimensions: embeddings of the knowledge graph will be generated using node2vec of dimension 128, unless otherwise specified
-  --embedding-dimensions <int>
-- weights: edges will not be weighted unless otherwise specified. Any edges specified (where edge_1/edge_2 are labels from the input labels file) will be weighted lower/more important in the path search. 
-  --weights "[edge_1, edge_2]"
+  --embedding-dimensions <int> (Default 128)
+- weights: edges will not be weighted unless otherwise specified. When set to True, edges defined in an interactive search will be excluded from the path search. 
+  --weights True (Default False)
 - search type: the shortest path algorithm used (contained within the python-igraph package) will search for paths in all directions, unless otherwise specified
-  --search-type one
+  --search-type one (Default "all")
 
+Below is an example of running this with the PheKnowLator knowledge graph. To specify the kg-covid19 knowledge graph, update the following command:
+   
+```
+--knowledge-graph kg-covid19
+```
+  
 ### Command Line Argument: subgraph generation 
   
 To run the script, execute the following command once the input directory is prepared:
@@ -220,30 +231,3 @@ cs,pdp
 Below is a class diagram describing the architecture of this workflow.
   
 <img width="1017" alt="Screen Shot 2022-08-25 at 9 24 11 AM" src="https://user-images.githubusercontent.com/70932395/186705860-6982c26c-2b62-4dbc-9508-7f5de828849e.png">
-
-  
-  
-  
-  
-  
-<internal only>
-  
-
-| File                              | Assumptions                                       | Substring Required in Filename
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
-| Triples file                      | txt file of all graph triples as <uri>, header is | PheKnowLator_v3.0.2_full_instance_relationsOnly_
-|                                   | Subject, Predicate, Object (tab delimited)        | OWLNETS_Triples_Identifiers                                                 
-|                                   |                                                   |                                                   
-| Labels file                       | <br>txt file of graph labels with headers that at | <br>PheKnowLator_v3.0.2_full_instance_relationsOnly_
-|                                   | least include Identifier (<uri>), Label (name).   | OWLNETS_NodeLabels
-|                                   | (tab delimited?)                                  |
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
-| Input file                        | csv file of all node pairs that exist in original | _example_input
-|                                   | <br>pathway figure, header is source, target      |
-|                                   | <br>(“|” delimited)                               |
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
-| nodevectors_node2vec.py           | script                                            | nodevectors_node2vec.py
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
-| sparse_custom_node2vec_wrapper.py | script                                            | sparse_custom_node2vec_wrapper.py
-|-----------------------------------|---------------------------------------------------|---------------------------------------------------
-
