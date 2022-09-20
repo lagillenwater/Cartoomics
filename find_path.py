@@ -240,9 +240,9 @@ def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,
     return path_nodes,df,paths_pdp
 
 # expand nodes by drugs 1 hop away
-def drugNeighbors(graph,nodes, kg):
+def drugNeighbors(graph,nodes, kg_type):
     neighbors = []
-    if kg == 'kg-covid19':
+    if kg_type == 'kg-covid19':
         nodes = list(graph.labels_all[graph.labels_all['label'].isin(nodes)]['id'])
     for node in nodes:
         tmp_nodes = graph.igraph.neighbors(node,mode = "in")
@@ -252,11 +252,18 @@ def drugNeighbors(graph,nodes, kg):
             for source in drug_neighbors:
                 path = graph.igraph.get_shortest_paths(v = source, to = node)
                 path_triples = define_path_triples(graph.igraph_nodes,graph.edgelist,path, 'all')
-                path_labels = convert_to_labels(path_triples,graph.labels_all,kg)
+                path_labels = convert_to_labels(path_triples,graph.labels_all,kg_type)
                 neighbors.append(path_labels)
-                print(node)
     all_neighbors = pd.concat(neighbors)
     return(all_neighbors)
     
 
 
+def drug_neighbors_wrapper(input_nodes_df, subgraph_df,graph,kg_type):
+    subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
+    all_neighbors = drugNeighbors(graph,subgraph_nodes,kg_type)
+    updated_subgraph = pd.concat([subgraph_df,all_neighbors])
+    for_input = pd.concat([all_neighbors[['S','O']],all_neighbors[['S','O']]],axis = 1)
+    for_input.columns = ['source', 'target', 'source_label', 'target_label']
+    updated_input_nodes_df = pd.concat([input_nodes_df, for_input])
+    return(updated_subgraph,updated_input_nodes_df)
