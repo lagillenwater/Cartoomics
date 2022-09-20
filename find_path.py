@@ -4,7 +4,7 @@ import pandas as pd
 from scipy import spatial
 from scipy.spatial import distance
 from collections import defaultdict
-
+from assign_nodes import unique_nodes
 
 
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
@@ -239,3 +239,19 @@ def prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,
 
     return path_nodes,df,paths_pdp
 
+# expand nodes by drugs 1 hop away
+def drugNeighbors(graph,nodes, kg):
+    neighbors = []
+    if kg == 'kg-covid19':
+        nodes = list(graph.labels_all[graph.labels_all['label'].isin(nodes)]['id'])
+    for node in nodes:
+        tmp_nodes = graph.igraph.neighbors(node,mode = "in")
+        tmp = graph.igraph.vs(tmp_nodes)['name']
+        drug_neighbors = [i for i in tmp if re.search(r'Drug|Pharm',i)]
+        neighbors.append(drug_neighbors)
+    return(neighbors)
+
+
+# wrapper for outputting new subpgraph with neighbors
+def drugNeighborsWrapper(subgraph, kg):
+    
