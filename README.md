@@ -11,6 +11,7 @@ The path search algorithms available are:
 - Shortest Path Search: find the shortest path between each source and target node. A random path is chosen from paths of identical length, regardless if graph is weighted or unweighted. Thus, shortest path may not be identical each time. 
 - Cosine similarity Prioritization: prioritize all shortest paths between each source and target node by maximizing total cosine similarity of the start and all intermediate nodes to the target node in each path
 - Path Degree Product Prioritization: prioritize all shortest paths between each source and target node by maximizing path degree product of all nodes in each path
+- Edge Exclusion: remove specific semantic edge types from the paths for prioritization
 
 The program will output a subgraph generated using both the Cosine Similarity and Path-Degree Product algorithms.
 
