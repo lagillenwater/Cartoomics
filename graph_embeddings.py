@@ -93,7 +93,7 @@ class Embeddings:
 
                 #Check for existence of embeddings file and error if not
             if exists == 'false':
-                raise Exception('Embeddings file not generated in output directory: ' + self.output_dir + '/' + embeddings_file)   
+                raise Exception('Embeddings file not generated in input directory: ' + self.input_dir + '/' + embeddings_file)   
 
 
             emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + embeddings_file, binary=False)
