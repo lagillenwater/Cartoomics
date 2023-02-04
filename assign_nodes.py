@@ -64,6 +64,16 @@ def search_nodes(nodes, kg, examples):
 				print(found_nodes.iloc[0:nrow,].to_string())
 				user_input = input("Input node'label': ")
 				if node_in_search(found_nodes,user_input):
+					#Manage if there are 2 duplicate label names
+					if len(found_nodes[found_nodes['label'] == user_input][['label','id']]) > 1:
+						user_input = input("Input node 'id': ")
+						if node_id_in_search(found_nodes,user_input):
+							node_label = kg.labels_all.loc[kg.labels_all['id'] == user_input,'label'].values[0]
+							bad_input = False
+					else:
+						node_label= user_input
+						bad_input = False
+				elif node_in_labels(kg,user_input):
 					node_label= user_input
 					bad_input = False
 				else:
@@ -93,6 +103,22 @@ def search_nodes(nodes, kg, examples):
 # Check if search input is in the list of integer_ids
 def node_in_search(found_nodes, user_input):
 	if user_input in found_nodes[["label"]].values:
+		return(True)
+	else:
+		return(False)
+
+# Check if search input is in the list of integer_ids
+def node_id_in_search(found_nodes, user_input):
+	if user_input in found_nodes[["id"]].values:
+		return(True)
+	else:
+		return(False)
+
+# Check if search input is in the all nodes
+def node_in_labels(kg, user_input):
+	labels = kg.labels_all
+
+	if user_input in labels[["label"]].values:
 		return(True)
 	else:
 		return(False)
