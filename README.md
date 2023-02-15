@@ -201,7 +201,25 @@ cs,pdp
     |
     |---- Inputs/
     |         |
-    |     Outputs/
+    |         |---_example_input.csv
+    |         |
+    |         |---pkl
+    |         |    |      
+    |         |    |----nodes.csv
+    |         |    |
+    |         |    |----edges.csv
+    |         |    |
+    |         |    |----embeddings files (if generated)
+    |         |    |
+    |         |---kg-covid-19
+    |         |    |      
+    |         |    |----nodes.csv
+    |         |    |
+    |         |    |----edges.csv
+    |         |    |
+    |         |    |----embeddings files (if generated)
+    |         |    |
+    |---- Outputs/
     |         |
     |---------|--- _Input_Nodes_.csv
     |                   |
