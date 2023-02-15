@@ -52,12 +52,17 @@ def get_graph_files(input_dir,output_dir, kg_type):
         for k in list(existence_dict.keys()):
             for fname in os.listdir(input_dir):
                 if k in fname:
-                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
-                        triples_list_file = input_dir + '/' + fname
-                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
-                        labels_file = input_dir + '/' + fname
                     if k == '_example_input':
                         input_file = input_dir + '/' + fname
+                    existence_dict[k] = 'true'
+
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(input_dir + '/' + kg_type):
+                if k in fname:
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
+                        triples_list_file = input_dir + '/' + kg_type + '/' + fname
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
+                        labels_file = input_dir + '/' + kg_type + '/' + fname
                     existence_dict[k] = 'true'
 
     if kg_type == "kg-covid19":
@@ -70,12 +75,17 @@ def get_graph_files(input_dir,output_dir, kg_type):
         for k in list(existence_dict.keys()):
             for fname in os.listdir(input_dir):
                 if k in fname:
-                    if k == 'merged-kg_edges':
-                        triples_list_file = input_dir + '/' + fname
-                    if k == 'merged-kg_nodes':
-                        labels_file = input_dir + '/' + fname
                     if k == '_example_input':
                         input_file = input_dir + '/' + fname
+                    existence_dict[k] = 'true'
+
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(input_dir + '/' + kg_type):
+                if k in fname:
+                    if k == 'merged-kg_edges':
+                        triples_list_file = input_dir + '/' + kg_type + '/' + fname
+                    if k == 'merged-kg_nodes':
+                        labels_file = input_dir + '/' + kg_type + '/' + fname 
                     existence_dict[k] = 'true'
 
     #Check for existence of all necessary files, error if not
