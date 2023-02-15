@@ -64,11 +64,13 @@ def search_nodes(nodes, kg, examples):
 				print(found_nodes.iloc[0:nrow,].to_string())
 				user_input = input("Input node'label': ")
 				if node_in_search(found_nodes,user_input):
-					#Manage if there are 2 duplicate label names for both pkl and kg-covid19
-					if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
-						user_input = input("Input node 'entity_uri': ")
+
+					#Manage if there are 2 duplicate label names
+					if len(found_nodes[found_nodes['label'] == user_input][['label','id']]) > 1:
+						user_input = input("Input node 'id': ")
 						if node_id_in_search(found_nodes,user_input):
-							node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_input,'label'].values[0]
+							node_label = kg.labels_all.loc[kg.labels_all['id'] == user_input,'label'].values[0]
+
 							bad_input = False
 					else:
 						node_label= user_input
