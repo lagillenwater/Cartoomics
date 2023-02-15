@@ -12,35 +12,35 @@ class Embeddings:
         self.embedding_dimensions = embedding_dimensions
         self.kg_type = kg_type
 
-    def check_file_existence(self,embeddings_file):
+    def check_file_existence(self,kg_type,embeddings_file):
         exists = 'false'
-        for fname in os.listdir(self.input_dir):
+        for fname in os.listdir(self.input_dir + '/' + kg_type):
             if bool(re.search(embeddings_file, fname)):
                 exists = 'true'
         return exists
 
-    def generate_graph_embeddings(self):
+    def generate_graph_embeddings(self,kg_type):
 
         base_name = self.triples_file.split('/')[-1]
     
         embeddings_file = base_name.split('.')[0] + '_node2vec_Embeddings' + str(self.embedding_dimensions) + '.emb'
        
         #Check for existence of embeddings file
-        exists = self.check_file_existence(embeddings_file)
+        exists = self.check_file_existence(kg_type,embeddings_file)
         
 
         if exists == 'true':
-            emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + embeddings_file, binary=False)
+            emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)
 
         #Only generate embeddings if file doesn't exist
         if exists == 'false':
             if self.kg_type == 'pkl':
-                output_ints_location = self.input_dir + '/' + base_name.replace('Triples_Identifiers','Triples_Integers_node2vecInput')
-                output_ints_map_location = self.input_dir + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')
+                output_ints_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integers_node2vecInput')
+                output_ints_map_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')
             if self.kg_type == 'kg-covid19':
-                output_ints_location = self.input_dir + '/' + base_name.replace('edges','Triples_Integers_node2vecInput')
+                output_ints_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integers_node2vecInput')
 
-                output_ints_map_location = self.input_dir + '/' + base_name.replace('edges','Triples_Integer_Identifier_Map')
+                output_ints_map_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integer_Identifier_Map')
 
             with open(self.triples_file, 'r') as f_in:
                 if self.kg_type == 'pkl':
@@ -74,9 +74,9 @@ class Embeddings:
 
                 #print('node2vecInput_cleaned: ',kg_data)
             if self.kg_type == 'pkl':
-                file_out = self.input_dir + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
+                file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
             if self.kg_type == 'kg-covid19':
-                file_out = self.input_dir + '/' + base_name.replace('edges','Triples_node2vecInput_cleaned')                   
+                file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_node2vecInput_cleaned')                   
 
             with open(file_out, 'w') as f_out:
                 for x in kg_data[1:]:
@@ -84,18 +84,18 @@ class Embeddings:
                 f_out.close()
                 
                 
-            embeddings_out = self.input_dir + '/' + embeddings_file
+            embeddings_out = self.input_dir + '/' + self.kg_type + '/' + embeddings_file
 
             command = "python sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10 --output {}"
             os.system(command.format(file_out,self.embedding_dimensions, embeddings_out ))
 
-            exists = self.check_file_existence(embeddings_file)
+            exists = self.check_file_existence(kg_type,embeddings_file)
 
                 #Check for existence of embeddings file and error if not
             if exists == 'false':
-                raise Exception('Embeddings file not generated in input directory: ' + self.input_dir + '/' + embeddings_file)   
+                raise Exception('Embeddings file not generated in input directory: ' + self.input_dir + '/' + self.kg_type + '/' + embeddings_file)   
 
 
-            emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + embeddings_file, binary=False)
+            emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)
 
         return emb
