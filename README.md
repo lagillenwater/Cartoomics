@@ -50,7 +50,7 @@ Ensure that Cytoscape (any version later than 3.8.0) is up and running before co
 
 ### Input Directory
 
-The following files must exist in the input directory:
+The following files must exist in the input directory, in a folder named as is specified for the --knowledge-graph option:
 
 <img width="994" alt="Screen Shot 2022-08-25 at 9 37 40 AM" src="https://user-images.githubusercontent.com/70932395/186709025-6eb4495d-6c12-4353-a1af-5626d835e4ea.png">
 
@@ -202,7 +202,25 @@ cs,pdp
     |
     |---- Inputs/
     |         |
-    |     Outputs/
+    |         |---_example_input.csv
+    |         |
+    |         |---pkl
+    |         |    |      
+    |         |    |----nodes.csv
+    |         |    |
+    |         |    |----edges.csv
+    |         |    |
+    |         |    |----embeddings files (if generated)
+    |         |    |
+    |         |---kg-covid-19
+    |         |    |      
+    |         |    |----nodes.csv
+    |         |    |
+    |         |    |----edges.csv
+    |         |    |
+    |         |    |----embeddings files (if generated)
+    |         |    |
+    |---- Outputs/
     |         |
     |---------|--- _Input_Nodes_.csv
     |                   |
