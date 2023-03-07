@@ -66,10 +66,10 @@ def search_nodes(nodes, kg, examples):
 				if node_in_search(found_nodes,user_input):
 
 					#Manage if there are 2 duplicate label names
-					if len(found_nodes[found_nodes['label'] == user_input][['label','id']]) > 1:
+					if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
 						user_input = input("Input node 'id': ")
 						if node_id_in_search(found_nodes,user_input):
-							node_label = kg.labels_all.loc[kg.labels_all['id'] == user_input,'label'].values[0]
+							node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_input,'label'].values[0]
 
 							bad_input = False
 					else:
@@ -111,7 +111,7 @@ def node_in_search(found_nodes, user_input):
 
 # Check if search input is in the list of integer_ids
 def node_id_in_search(found_nodes, user_input):
-	if user_input in found_nodes[["id"]].values:
+	if user_input in found_nodes[["entity_uri"]].values:
 		return(True)
 	else:
 		return(False)
