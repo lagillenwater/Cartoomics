@@ -1,0 +1,1 @@
+{"uri3": 1, "R3": 2, "uri9": 3, "subject": 4, "predicate": 5, "object": 6, "uri5": 7, "R2": 8, "uri1": 9, "uri2": 10, "uri7": 11, "uri6": 12, "R5": 13, "uri10": 14, "R4": 15, "uri4": 16, "R1": 17, "uri8": 18}
