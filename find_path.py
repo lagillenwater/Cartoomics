@@ -47,7 +47,7 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
         for p in range(len(path_nodes)):
             #Dataframe to append each triple to
             full_df = pd.DataFrame()
-            n1 = g_nodes[path_nodes[p][0]]  
+            n1 = g_nodes[path_nodes[p][0]]
             for i in range(1,len(path_nodes[p])):
                 n2 = g_nodes[path_nodes[p][i]]
                 if search_type.lower() == 'all':
@@ -110,6 +110,12 @@ def find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples
     
     return path_nodes
 
+def convert_path_nodes(path_node,entity_map):
+
+    n = entity_map[path_node]
+
+    return n
+
 def get_embedding(emb,node):
 
     embedding_array = emb[str(node)]
@@ -117,9 +123,12 @@ def get_embedding(emb,node):
 
     return embedding_array
 
-def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_type):
+def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_type):
 
-    target_emb = get_embedding(emb,path_nodes[0][len(path_nodes[0])-1])
+
+    n1 = g_nodes[path_nodes[0][len(path_nodes[0])-1]]
+    n1_int = convert_path_nodes(n1,entity_map)
+    target_emb = get_embedding(emb,n1_int)
 
     #Dict of all embeddings to reuse if they exist
     embeddings = defaultdict(list)
@@ -130,11 +139,13 @@ def calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_
     for l in path_nodes:
         cs = 0
         for i in range(0,len(l)-1):
-            if l[i] not in list(embeddings.keys()):
-                e = get_embedding(emb,l[i])
-                embeddings[l[i]] = e
+            n1 = g_nodes[l[i]]
+            n1_int = convert_path_nodes(n1,entity_map)
+            if n1_int not in list(embeddings.keys()):
+                e = get_embedding(emb,n1_int)
+                embeddings[n1_int] = e
             else:
-                e = embeddings[l[i]]
+                embeddings[n1_int] = e
             cs += 1 - spatial.distance.cosine(e,target_emb)
         paths_total_cs.append(cs)
 
@@ -226,8 +237,8 @@ def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
     path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
-    emb = e.generate_graph_embeddings(kg_type)
-    df,paths_total_cs = calc_cosine_sim(emb,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type)
+    emb,entity_map = e.generate_graph_embeddings(kg_type)
+    df,paths_total_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type)
 
     return path_nodes,df,paths_total_cs
 
