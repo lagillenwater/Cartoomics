@@ -67,6 +67,7 @@ def manage_user_input(found_nodes,user_input,kg):
 			dup_node = True
 			while(dup_node):
 				user_id_input = input("Input node 'id': ")
+				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
 				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
@@ -102,6 +103,7 @@ def search_nodes(nodes, kg, examples):
 		i = 1
 		while(bad_input):
 			high = min(nrow,(i)*vals_per_page)
+			print(found_nodes.iloc[(i-1)*vals_per_page:high,].to_string())
 			user_input = input("Input node 'label' or 'f' for the next " + str(vals_per_page) + " features, 'b' for the previous " + str(vals_per_page) + ", or 'u' to update the node search term: ")
 			if user_input == 'f':
 				if (nrow / i ) > vals_per_page:
@@ -183,4 +185,5 @@ def interactive_search_wrapper(g,user_input_file, output_dir):
         mapped_file = output_dir + '/'+ exists[1]
         s = pd.read_csv(mapped_file, sep = "|")
     return(s)
-                         
+
+                              
