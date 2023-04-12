@@ -1,6 +1,7 @@
 import argparse
 import os
 
+
 #Define arguments for each required and optional input
 def define_arguments():
     parser=argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -40,21 +41,64 @@ def generate_arguments():
 
     return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight
 
+### Download knowledge graph files
+
+## need gsutil to download pheknowlator files
+def check_gsutil():
+    output = os.popen('gsutil -v')
+    output = output.read()
+    if output == '':
+        gsutil = False
+    else:
+        gsutil = True
+    return(gsutil)
+
+## isntall gsutil software
+def install_gsutil():
+    os.system("pip install gsutil")
+
+## downloading pheknowlator files from current build and storing in chosen directory
+
+### NB: Change directory based on reformating of file structure?
+
+def download_pkl(kg_dir):
+    os.makedirs(kg_dir)
+    if not check_gsutil():
+        install_gsutil()
+    os.system(' gsutil -m cp \
+  "gs://pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt" \
+  "gs://pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers.txt" \
+  ' + kg_dir)
+
+
+## downloading the KG-COVID19
+def download_kg19(kg_dir):
+    os.makedirs(kg_dir)
+    os.system('wget https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz -P ' + kg_dir)
+    os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
+
+
+
 def get_graph_files(input_dir,output_dir, kg_type):
 
+    fname  = [v for v in os.listdir(input_dir) if 'example_input' in v]
+    if len(fname) == 1:
+        input_file = input_dir + '/' + fname[0]
+    else:
+        raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
+    
+    
     if kg_type == "pkl":
+        kg_dir = input_dir + '/' + kg_type + '/'
+        if not os.path.exists(kg_dir):
+            download_pkl(kg_dir)
+
+
         existence_dict = {
             'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
             'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
-            '_example_input':'false',
         }
-
-        for k in list(existence_dict.keys()):
-            for fname in os.listdir(input_dir):
-                if k in fname:
-                    if k == '_example_input':
-                        input_file = input_dir + '/' + fname
-                    existence_dict[k] = 'true'
+        
 
         for k in list(existence_dict.keys()):
             for fname in os.listdir(input_dir + '/' + kg_type):
@@ -66,18 +110,17 @@ def get_graph_files(input_dir,output_dir, kg_type):
                     existence_dict[k] = 'true'
 
     if kg_type == "kg-covid19":
+        kg_dir = input_dir + '/' + kg_type + '/'
+        if not os.path.exists(kg_dir):
+            download_kg19(kg_dir)
+
+
+        
         existence_dict = {
             'merged-kg_edges':'false',
-            'merged-kg_nodes':'false',
-            '_example_input':'false',
+            'merged-kg_nodes':'false'
         }
 
-        for k in list(existence_dict.keys()):
-            for fname in os.listdir(input_dir):
-                if k in fname:
-                    if k == '_example_input':
-                        input_file = input_dir + '/' + fname
-                    existence_dict[k] = 'true'
 
         for k in list(existence_dict.keys()):
             for fname in os.listdir(input_dir + '/' + kg_type):
