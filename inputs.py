@@ -102,7 +102,7 @@ def get_graph_files(input_dir,output_dir, kg_type):
         
 
         for k in list(existence_dict.keys()):
-            for fname in os.listdir(input_dir + '/' + kg_type):
+            for fname in os.listdir(kg_dir):
                 if k in fname:
                     if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
                         triples_list_file = input_dir + '/' + kg_type + '/' + fname
@@ -127,7 +127,7 @@ def get_graph_files(input_dir,output_dir, kg_type):
 
 
         for k in list(existence_dict.keys()):
-            for fname in os.listdir(input_dir + '/' + kg_type):
+            for fname in os.listdir(kg_dir):
                 if k in fname:
                     if k == 'merged-kg_edges':
                         triples_list_file = input_dir + '/' + kg_type + '/' + fname
