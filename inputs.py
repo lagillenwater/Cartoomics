@@ -62,7 +62,6 @@ def install_gsutil():
 ### NB: Change directory based on reformating of file structure?
 
 def download_pkl(kg_dir):
-    os.makedirs(kg_dir)
     if not check_gsutil():
         install_gsutil()
     os.system(' gsutil -m cp \
@@ -73,7 +72,6 @@ def download_pkl(kg_dir):
 
 ## downloading the KG-COVID19
 def download_kg19(kg_dir):
-    os.makedirs(kg_dir)
     os.system('wget https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz -P ' + kg_dir)
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
 
@@ -91,6 +89,9 @@ def get_graph_files(input_dir,output_dir, kg_type):
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
+            os.makedirs(kg_dir)
+            download_pkl(kg_dir)
+        if len(os.listdir(kg_dir)) == 0:
             download_pkl(kg_dir)
 
 
@@ -112,6 +113,9 @@ def get_graph_files(input_dir,output_dir, kg_type):
     if kg_type == "kg-covid19":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
+            os.makedirs(kg_dir)
+            download_kg19(kg_dir)
+        if len(os.listdir(kg_dir)) == 0:
             download_kg19(kg_dir)
 
 
