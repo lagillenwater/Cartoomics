@@ -39,7 +39,7 @@ def generate_arguments():
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type
 
 ### Download knowledge graph files
 
@@ -84,14 +84,11 @@ def get_graph_files(input_dir,output_dir, kg_type):
         input_file = input_dir + '/' + fname[0]
     else:
         raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
-    
-    
+
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
-            os.makedirs(kg_dir)
-            download_pkl(kg_dir)
-        if len(os.listdir(kg_dir)) == 0:
+            os.mkdir(kg_dir)
             download_pkl(kg_dir)
 
 
@@ -100,7 +97,6 @@ def get_graph_files(input_dir,output_dir, kg_type):
             'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
         }
         
-
         for k in list(existence_dict.keys()):
             for fname in os.listdir(kg_dir):
                 if k in fname:
@@ -110,13 +106,14 @@ def get_graph_files(input_dir,output_dir, kg_type):
                         labels_file = input_dir + '/' + kg_type + '/' + fname
                     existence_dict[k] = 'true'
 
+        
+
     if kg_type == "kg-covid19":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
-            os.makedirs(kg_dir)
+            os.mkdir(kg_dir)
             download_kg19(kg_dir)
-        if len(os.listdir(kg_dir)) == 0:
-            download_kg19(kg_dir)
+
 
 
         
