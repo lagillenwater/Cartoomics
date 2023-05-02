@@ -1,6 +1,8 @@
 import pandas as pd
 import re
 import os
+import math
+import sys
 
 # set column number and width to display all information
 pd.set_option('display.max_rows', None)
@@ -9,7 +11,11 @@ pd.set_option('display.max_rows', None)
 
 # Read in the user example file and output as a pandas dataframe
 def read_user_input(user_example_file):
-	examples = pd.read_csv(user_example_file, sep= "|")
+	try:
+		examples = pd.read_csv(user_example_file, sep= "|")
+	except pd.errors.ParserError:
+		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		sys.exit(1)
 	return(examples)
 
 # Get list of unique nodes
@@ -41,62 +47,85 @@ def find_node(node, kg, ontology = ""):
 # Could potentially find several features for a single input example. Need a way to be able to select multiple feaures for a search. 
 # Need a way to go back through search terms. 
 
+def map_input_to_nodes(node,kg):
+
+	search_loop = True
+	while(search_loop):
+		print("User Search Node: ", node)
+		found_nodes = find_node(node,kg)
+		nrow = found_nodes.shape[0]
+		if nrow == 0:
+			print("No search terms returned")
+			node = input("Please try another input term: ")
+		else:
+			search_loop = False	
+	print("Found", nrow, "features in KG")
+
+	return found_nodes,nrow
+
+def manage_user_input(found_nodes,user_input,kg):
+
+	if node_in_search(found_nodes,user_input):
+		
+		#Manage if there are 2 duplicate label names
+		if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
+			dup_node = True
+			while(dup_node):
+				user_id_input = input("Input node 'id': ")
+				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
+				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
+					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
+					bad_input = False
+					dup_node = False
+
+				else:
+					print("Input id does not correspond with selected label.... try again")
+				
+		else:
+			node_label = user_input
+			bad_input = False
+			dup_node = False
+
+	elif node_in_labels(kg,user_input):
+		node_label= user_input
+		bad_input = False
+	else:
+		print("Input not in search results.... try again")
+		node_label = ""
+		bad_input = True
+
+	return node_label,bad_input
+
 def search_nodes(nodes, kg, examples):
 	examples["source_label"] = ""
 	examples["target_label"] = ""
+
+	vals_per_page = 20
+
 	for node in nodes:
-		search_loop = True
-		while(search_loop):
-			print("User Search Node: ", node)
-			found_nodes = find_node(node,kg)
-			nrow = found_nodes.shape[0]
-			if nrow == 0:
-				print("No search terms returned")
-				node = input("Please try another input term: ")
-			else:
-				search_loop = False	
-		print("Found", nrow, "features in KG")
-		user_input = ""
 		bad_input = True
-	
-		if nrow < 20:
-			while(bad_input):
-				print(found_nodes.iloc[0:nrow,].to_string())
-				user_input = input("Input node'label': ")
-				if node_in_search(found_nodes,user_input):
-
-					#Manage if there are 2 duplicate label names
-					if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
-						user_input = input("Input node 'id': ")
-						if node_id_in_search(found_nodes,user_input):
-							node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_input,'label'].values[0]
-
-							bad_input = False
-					else:
-						node_label= user_input
-						bad_input = False
-				elif node_in_labels(kg,user_input):
-					node_label= user_input
-					bad_input = False
-				else:
-					print("Input not in search results.... try again")
-		else:	
-			i = 0
-			while(bad_input):
-				high = min(nrow,(i+1)*20)
-				print(found_nodes.iloc[i*20:high,].to_string())
-				user_input = input("Input node 'label' or 'f' for the next 20 features or 'b' for the previous 20: ")
-				if user_input == 'f':
+		found_nodes,nrow = map_input_to_nodes(node,kg)
+		i = 1
+		while(bad_input):
+			high = min(nrow,(i)*vals_per_page)
+			print(found_nodes.iloc[(i-1)*vals_per_page:high,].to_string())
+			user_input = input("Input node 'label' or 'f' for the next " + str(vals_per_page) + " features, 'b' for the previous " + str(vals_per_page) + ", or 'u' to update the node search term: ")
+			if user_input == 'f':
+				if (nrow / i ) > vals_per_page:
 					i+=1
-				elif user_input == 'b':
+			elif user_input == 'b':
+				if i > 1:
 					i-=1
-				else:
-					i+=1
-					if node_in_search(found_nodes,user_input):
-						node_label = user_input
-						bad_input = False
-					else:
-						print("Input not in search results.... try again")
+			elif user_input == 'u':
+				#Will replace the original node label in examples file with new one
+				examples = examples.replace([node],'REPLACE')
+				node = input("Input new node search term: ")
+				examples = examples.replace(['REPLACE'],node)
+				found_nodes,nrow = map_input_to_nodes(node,kg)
+				i = 1
+			else:
+				node_label,bad_input = manage_user_input(found_nodes,user_input,kg)
+
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
 	return(examples)
