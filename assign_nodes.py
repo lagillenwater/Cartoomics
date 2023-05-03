@@ -13,7 +13,12 @@ pd.set_option('display.max_rows', None)
 def read_user_input(user_example_file):
 	try:
 		examples = pd.read_csv(user_example_file, sep= "|")
+	#Check for poorly formatted file
 	except pd.errors.ParserError:
+		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		sys.exit(1)
+	#Check for extra columns or blank vlaues
+	if (len(examples.columns) > 2) | (examples.isna().values.any()):
 		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
 		sys.exit(1)
 	return(examples)
