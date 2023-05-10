@@ -31,6 +31,10 @@ class Embeddings:
 
         if exists == 'true':
             emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)
+            if kg_type == 'pkl':
+                entity_map = json.load(open(self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')))
+            if kg_type == 'kg-covid19':
+                entity_map = json.load(open(self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integer_Identifier_Map')))
 
         #Only generate embeddings if file doesn't exist
         if exists == 'false':
@@ -98,4 +102,4 @@ class Embeddings:
 
             emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)
 
-        return emb
+        return emb,entity_map
