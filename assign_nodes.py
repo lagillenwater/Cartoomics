@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import os
 import math
+import sys
 
 # set column number and width to display all information
 pd.set_option('display.max_rows', None)
@@ -10,7 +11,17 @@ pd.set_option('display.max_rows', None)
 
 # Read in the user example file and output as a pandas dataframe
 def read_user_input(user_example_file):
-	examples = pd.read_csv(user_example_file, sep= "|")
+	try:
+		examples = pd.read_csv(user_example_file, sep= "|")
+		print(examples.columns)
+	#Check for poorly formatted file
+	except pd.errors.ParserError:
+		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		sys.exit(1)
+	#Check for extra columns or blank values or absence of source/target columns
+	if (len(examples.columns) != 2) | (examples.isna().values.any()) | (len([item for item in examples.columns if item not in ['source','target']]) > 0):
+		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		sys.exit(1)
 	return(examples)
 
 # Get list of unique nodes
