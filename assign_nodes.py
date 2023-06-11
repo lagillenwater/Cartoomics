@@ -3,6 +3,20 @@ import re
 import os
 import math
 import sys
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
 
 # set column number and width to display all information
 pd.set_option('display.max_rows', None)
@@ -17,10 +31,12 @@ def read_user_input(user_example_file):
 	#Check for poorly formatted file
 	except pd.errors.ParserError:
 		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
 		sys.exit(1)
 	#Check for extra columns or blank values or absence of source/target columns
 	if (len(examples.columns) != 2) | (examples.isna().values.any()) | (len([item for item in examples.columns if item not in ['source','target']]) > 0):
 		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+		logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
 		sys.exit(1)
 	return(examples)
 
@@ -66,6 +82,7 @@ def map_input_to_nodes(node,kg):
 		else:
 			search_loop = False	
 	print("Found", nrow, "features in KG")
+	logging.info('Found %s features in KG',nrow)
 
 	return found_nodes,nrow
 
@@ -76,6 +93,7 @@ def manage_user_input(found_nodes,user_input,kg):
 		#Manage if there are 2 duplicate label names
 		if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
 			dup_node = True
+			logging.info('Duplicate label names found: %s',user_input)
 			while(dup_node):
 				user_id_input = input("Input node 'id': ")
 				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
@@ -83,9 +101,11 @@ def manage_user_input(found_nodes,user_input,kg):
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
 					dup_node = False
+					logging.info('ID chosen: %s',user_id_input)
 
 				else:
 					print("Input id does not correspond with selected label.... try again")
+					logging.info('Input id does not correspond with selected label: %s',user_id_input)
 				
 		else:
 			node_label = user_input
@@ -97,6 +117,7 @@ def manage_user_input(found_nodes,user_input,kg):
 		bad_input = False
 	else:
 		print("Input not in search results.... try again")
+		logging.info('Input not in search results: %s',user_input)
 		node_label = ""
 		bad_input = True
 
@@ -109,6 +130,7 @@ def search_nodes(nodes, kg, examples):
 	vals_per_page = 20
 
 	for node in nodes:
+		logging.info('Searching for node: %s',node)
 		bad_input = True
 		found_nodes,nrow = map_input_to_nodes(node,kg)
 		i = 1
@@ -126,14 +148,21 @@ def search_nodes(nodes, kg, examples):
 				#Will replace the original node label in examples file with new one
 				examples = examples.replace([node],'REPLACE')
 				node = input("Input new node search term: ")
+				logging.info('Input new node search term: %s.',node)
 				examples = examples.replace(['REPLACE'],node)
 				found_nodes,nrow = map_input_to_nodes(node,kg)
 				i = 1
 			else:
 				node_label,bad_input = manage_user_input(found_nodes,user_input,kg)
 
+		logging.info('Node label chosen for %s: %r',node,node_label)
+		node_label
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
+	
+	print('examples complete: ',examples)
+	logging.info('All input nodes searched.')
+	
 	return(examples)
 
 
@@ -162,10 +191,10 @@ def node_in_labels(kg, user_input):
 
 #subgraph_df is a dataframe with source,targe headers and | delimited
 def create_input_file(examples,output_dir):
-    input_file = output_dir+"/_Input_Nodes_.csv"
-    #examples = examples[["source_label","target_label"]]
-    #examples.columns = ["source", "target"]
-    examples.to_csv(input_file, sep = "|", index = False)
+	input_file = output_dir+"/_Input_Nodes_.csv"
+	logging.info('Input file created: %s',input_file)
+	
+	examples.to_csv(input_file, sep = "|", index = False)
 
 
 
@@ -183,18 +212,21 @@ def check_input_existence(output_dir):
 
 # Wrapper function
 def interactive_search_wrapper(g,user_input_file, output_dir):
-    exists = check_input_existence(output_dir)
-    if(exists[0] == 'false'):
-        print('Interactive Node Search')
-        #Interactively assign node
-        u = read_user_input(user_input_file)
-        n = unique_nodes(u)
-        s = search_nodes(n,g,u)
-        create_input_file(s,output_dir)
-    else:
-        print('Node mapping file exists... moving to embedding creation')
-        mapped_file = output_dir + '/'+ exists[1]
-        s = pd.read_csv(mapped_file, sep = "|")
-    return(s)
+	exists = check_input_existence(output_dir)
+	if(exists[0] == 'false'):
+		print('Interactive Node Search')
+		logging.info('Interactive Node Search')
+		#Interactively assign node
+		u = read_user_input(user_input_file)
+		n = unique_nodes(u)
+		s = search_nodes(n,g,u)
+		create_input_file(s,output_dir)
+	else:
+		print('Node mapping file exists... moving to embedding creation')
+		logging.info('Node mapping file exists... moving to embedding creation')
+		mapped_file = output_dir + '/'+ exists[1]
+		s = pd.read_csv(mapped_file, sep = "|")
+		logging.info('Node mapping file: %s',mapped_file)
+	return(s)
 
                               

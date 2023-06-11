@@ -5,6 +5,19 @@ import py4cytoscape as p4c
 from py4cytoscape import gen_node_color_map
 from py4cytoscape import palette_color_brewer_d_RdBu
 import os
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
 
 #subgraph_df is a dataframe with S, P, O headers and | delimited
 def create_node_attributes(input_nodes_df,subgraph_df):
@@ -48,6 +61,8 @@ def create_noa_file(subgraph_attribute_df,output_dir):
         writer.writerow(["Node","Attribute"])
         writer.writerows(l)
 
+    logging.info('Created noa file: %s',noa_file)
+
 def create_sif_file(subgraph_df,output_dir):
 
     sif_file = output_dir+"/Subgraph.csv"
@@ -56,6 +71,8 @@ def create_sif_file(subgraph_df,output_dir):
         os.makedirs(output_dir)
 
     subgraph_df.to_csv(sif_file,sep='|',index=False)
+
+    logging.info('Created sif file: %s',sif_file)
 
 #subgraph_df is a dataframe with S, P, O headers and | delimited
 def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
@@ -80,6 +97,8 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
     
     p4c.export_image(png_file,network='subgraph')
 
+    logging.info('Created cytoscape png: %s',png_file)
+
 # Wrapper Function
 def output_visualization(input_nodes_df,subgraph_df,output_dir):
 
@@ -90,6 +109,8 @@ def output_visualization(input_nodes_df,subgraph_df,output_dir):
     create_sif_file(subgraph_df,output_dir)
 
     create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
+
+    logging.info('Subgraph visualization complete.')
 
     return subgraph_attributes_df
 
