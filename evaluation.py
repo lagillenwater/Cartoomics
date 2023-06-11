@@ -4,6 +4,21 @@ import pandas as pd
 from igraph import * 
 import numpy as np
 import os
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
+
 
 def ranked_comparison(output_dir,**value_dfs):
 
@@ -20,6 +35,7 @@ def ranked_comparison(output_dir,**value_dfs):
         os.makedirs(output_folder)
 
     df.to_csv(output_folder+'/ranked_comparison.csv',sep=',',index=False)
+    logging.info('Create ranked comparison file: %s',output_folder+'/ranked_comparison.csv')
     return df
 
 def path_length_comparison(output_dir,input_nodes_df,labels_all,search_type,**subgraph_dfs):
@@ -46,6 +62,7 @@ def path_length_comparison(output_dir,input_nodes_df,labels_all,search_type,**su
         os.makedirs(output_folder)
         
     df.to_csv(output_folder+'/path_length_comparison.csv',sep=',',index=False)
+    logging.info('Create path length comparison file: %s',output_folder+'/path_length_comparison.csv')
     return df
 
 def num_nodes_comparison(output_dir,**subgraph_dfs):
@@ -64,6 +81,7 @@ def num_nodes_comparison(output_dir,**subgraph_dfs):
         os.makedirs(output_folder)
         
     df.to_csv(output_folder+'/num_nodes_comparison.csv',sep=',',index=False)
+    logging.info('Create number of nodes comparison file: %s',output_folder+'/num_nodes_comparison.csv')
     return df
 
 def get_ontology_lables(noa_df,labels_all,kg_type):
@@ -87,7 +105,8 @@ def get_ontology_lables(noa_df,labels_all,kg_type):
                     ont_found = 'true'
             if ont_found == 'false':
                 print('Ontology not accounted for in list: ',uri)
-                raise Exception('Ontology type not accounted for in list: ',uri,', add this ontology type to get_ontology_labels function (evaluation.py).')   
+                raise Exception('Ontology type not accounted for in list: ',uri,', add this ontology type to get_ontology_labels function (evaluation.py).')
+                logging.error('Ontology type not accounted for in list: %s, add this ontology type to get_ontology_labels function (evaluation.py).',uri)   
     
     ont_labels, counts = np.unique(ont_labels,return_counts=True)
     ont_labels = ont_labels.tolist()
@@ -142,6 +161,7 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
         os.makedirs(output_folder)
 
     df.to_csv(output_folder+'/intermediate_nodes_comparison.csv',sep=',',index=False)
+    logging.info('Create intermediate nodes comparison file: %s',output_folder+'/intermediate_nodes_comparison.csv')
     return df
 
 def edge_type_comparison(output_dir,**subgraph_dfs):
@@ -191,6 +211,7 @@ def edge_type_comparison(output_dir,**subgraph_dfs):
         os.makedirs(output_folder)
         
     df.to_csv(output_folder+'/edge_type_comparison.csv',sep=',',index=False)
+    logging.info('Create edge type comparison file: %s',output_folder+'/edge_type_comparison.csv')
     return df
 
 
@@ -224,6 +245,7 @@ def output_path_lists(output_dir,path_list,subgraph_algorithm,idx):
         os.makedirs(output_folder)
 
     df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv',sep=',',index=False)
+    logging.info('Create path list file: %s',output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv')
 
 def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
 
@@ -233,3 +255,4 @@ def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
         os.makedirs(output_folder)
 
     num_paths_df.to_csv(output_folder+'/num_paths_'+subgraph_algorithm+'.csv',sep=',',index=False)
+    logging.info('Create number of paths file: %s',output_folder+'/num_paths_'+subgraph_algorithm+'.csv')

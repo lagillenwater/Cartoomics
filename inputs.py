@@ -1,5 +1,18 @@
 import argparse
 import os
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
 
 
 #Define arguments for each required and optional input
@@ -39,18 +52,23 @@ def generate_arguments():
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
 
+    for arg, value in sorted(vars(args).items()):
+        logging.info("Argument %s: %r", arg, value)
+
     return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight
 
 ### Download knowledge graph files
 def download_pkl(kg_dir):
     os.system('wget https://storage.googleapis.com/pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt -P ' + kg_dir)
+    logging.info('Downloaded Node Labels File: https://storage.googleapis.com/pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt: %s',kg_dir)
     os.system('wget https://storage.googleapis.com/pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers.txt -P ' +kg_dir)
+    logging.info('Downloaded Triples File: https://storage.googleapis.com/pheknowlator/current_build/knowledge_graphs/instance_builds/relations_only/owlnets/PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers.txt: %s',kg_dir)
 
 ## downloading the KG-COVID19
 def download_kg19(kg_dir):
     os.system('wget https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz -P ' + kg_dir)
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
-
+    logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
 
 def get_graph_files(input_dir,output_dir, kg_type):
@@ -60,10 +78,9 @@ def get_graph_files(input_dir,output_dir, kg_type):
         input_file = input_dir + '/' + fname[0]
     else:
         raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
+        logging.error('Missing or duplicate file in input directory: _example_input')
 
 
-    
-    
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
@@ -118,6 +135,8 @@ def get_graph_files(input_dir,output_dir, kg_type):
     for k in existence_dict:
         if existence_dict[k] == 'false':
             raise Exception('Missing file in input directory: ' + k)
+            logging.error('Missing file in input directory: %s',k)
+            
 
     #Check for existence of output directory
     if not os.path.exists(output_dir):

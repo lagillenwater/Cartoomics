@@ -3,6 +3,20 @@ from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 import json
 import re
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
+
 
 class Embeddings:
 
@@ -53,6 +67,10 @@ class Embeddings:
                 if self.kg_type == 'kg-covid19':
                     kg_data = set(tuple(x.split('\t'))[1:4] for x in f_in.read().splitlines())
                     f_in.close()
+
+            logging.info('Created Triples_Integers_node2vecInput file: %s',output_ints_location) 
+            logging.info('Created Triples_Integer_Identifier_Map file: %s',output_ints_map_location) 
+
             entity_map = {}
             entity_counter = 0
             graph_len = len(kg_data)
@@ -80,14 +98,16 @@ class Embeddings:
             if self.kg_type == 'pkl':
                 file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
             if self.kg_type == 'kg-covid19':
-                file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_node2vecInput_cleaned')                   
+                file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_node2vecInput_cleaned')
+                                  
 
             with open(file_out, 'w') as f_out:
                 for x in kg_data[1:]:
                     f_out.write(x[0] + ' ' + x[1] + '\n')
                 f_out.close()
-                
-                
+            
+            logging.info('Created Triples_node2vecInput_cleaned file: %s',file_out) 
+                   
             embeddings_out = self.input_dir + '/' + self.kg_type + '/' + embeddings_file
 
             command = "python sparse_custom_node2vec_wrapper.py --edgelist {} --dim {} --walklen 10 --walknum 20 --window 10 --output {}"
@@ -97,7 +117,9 @@ class Embeddings:
 
                 #Check for existence of embeddings file and error if not
             if exists == 'false':
-                raise Exception('Embeddings file not generated in input directory: ' + self.input_dir + '/' + self.kg_type + '/' + embeddings_file)   
+                raise Exception('Embeddings file not generated in input directory: ' + self.input_dir + '/' + self.kg_type + '/' + embeddings_file)
+                logging.error('Embeddings file not generated in input directory: %s',self.input_dir + '/' + self.kg_type + '/' + embeddings_file)
+
 
 
             emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)

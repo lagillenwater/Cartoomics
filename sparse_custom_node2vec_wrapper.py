@@ -8,6 +8,21 @@ import argparse
 import csrgraph as cg
 import nodevectors
 from nodevectors_node2vec import Node2Vec
+import os
+import glob
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
+
 
 def main():
     parser = argparse.ArgumentParser(description='A wrapper for running Node2Vec on Very Large Graphs')
@@ -23,6 +38,10 @@ def main():
     parser.add_argument('-m', '--save_model', help='Save Gensim node2vec model', default=False)
     parser.add_argument('-o', '--output', help='Embedding File Output Location', default=False)
     args = parser.parse_args()
+
+    logging.info('Node2vec wrapper.')
+    for arg, value in sorted(vars(args).items()):
+        logging.info("Argument %s: %r", arg, value)
 
     # print user parameters to console
     print('\n#######################################################################\n')
