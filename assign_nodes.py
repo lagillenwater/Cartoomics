@@ -54,14 +54,24 @@ def unique_nodes(examples):
 #			ontology	specific ontology to restrict search of nodes
 
 def find_node(node, kg, ontology = ""):
-    nodes = kg.labels_all
-	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
-    if node.isupper(): #likely a gene or protein
-        results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["label", "entity_uri"]]
-    else:
-        results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri"]]
+	nodes = kg.labels_all
+	### Check for exact matches first
+	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())][["label", "entity_uri"]]
 
-    return(results)
+	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
+	if node.isupper(): #likely a gene or protein
+		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["label", "entity_uri"]]
+		#Remove exact matches from this df
+		results = results[(~results.label.isin(exact_matches.label))]
+	else:
+		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri"]]
+		#Remove exact matches from this df
+		results = results[(~results.label.isin(exact_matches.label))]
+
+	#Concat both dfs so that exact matches are presented first
+	all_results = pd.concat([exact_matches, results], axis=0)
+
+	return(all_results)
                 
 
 # Create a list of nodes for input
@@ -89,14 +99,12 @@ def map_input_to_nodes(node,kg):
 def manage_user_input(found_nodes,user_input,kg):
 
 	if node_in_search(found_nodes,user_input):
-		
 		#Manage if there are 2 duplicate label names
 		if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
 			dup_node = True
 			logging.info('Duplicate label names found: %s',user_input)
 			while(dup_node):
 				user_id_input = input("Input node 'id': ")
-				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
 				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
@@ -160,7 +168,6 @@ def search_nodes(nodes, kg, examples):
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
 	
-	print('examples complete: ',examples)
 	logging.info('All input nodes searched.')
 	
 	return(examples)
