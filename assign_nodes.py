@@ -105,6 +105,7 @@ def manage_user_input(found_nodes,user_input,kg):
 			logging.info('Duplicate label names found: %s',user_input)
 			while(dup_node):
 				user_id_input = input("Input node 'id': ")
+				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
 				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
