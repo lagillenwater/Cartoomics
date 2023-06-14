@@ -68,7 +68,10 @@ def find_node(node, kg, ontology = ""):
 		#Remove exact matches from this df
 		results = results[(~results.label.isin(exact_matches.label))]
 
-	#Concat both dfs so that exact matches are presented first
+        # sort results by ontology
+	results = results.sort_values(['entity_uri'])
+
+        #Concat both dfs so that exact matches are presented first
 	all_results = pd.concat([exact_matches, results], axis=0)
 
 	return(all_results)
