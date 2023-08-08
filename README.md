@@ -198,59 +198,43 @@ cs,pdp
   
 ## Output Structure
   
-<Cartoon_Name>/
-    |
-    |---- Inputs/
-    |         |
-    |         |---_example_input.csv
-    |         |
-    |         |---pkl
-    |         |    |      
-    |         |    |----nodes.csv
-    |         |    |
-    |         |    |----edges.csv
-    |         |    |
-    |         |    |----embeddings files (if generated)
-    |         |    |
-    |         |---kg-covid-19
-    |         |    |      
-    |         |    |----nodes.csv
-    |         |    |
-    |         |    |----edges.csv
-    |         |    |
-    |         |    |----embeddings files (if generated)
-    |         |    |
-    |---- Outputs/
-    |         |
-    |---------|--- _Input_Nodes_.csv
-    |                   |
-    |-------------------|----CosineSimilarity AND/OR PDP/
-    |                   |             |
-    |                   |             |----Subgraph.csv
-    |                   |             |  
-    |                   |             |----Subgraph_attributes.noa
-    |                   |             | 
-    |                   |             |----Subgraph_visualization.png
-    |                   |             |
-    |-------------------|-------------|----NearestNeighbors/
-    |                   |             |               |
-    |                   |             |               |----Subgraph.csv
-    |                   |             |               |
-    |                   |             |               |----Subgraph_attributes.noa
-    |                   |             |               |
-    |                   |             |               |----Subgraph_visualization.png
-    |                   |             |
-    |-------------------|----Evaluation_Files/
-    |                   |             |
-    |                   |             |----edge_type_comparison.csv
-    |                   |             |  
-    |                   |             |----intermediate_nodes_comparison.csv
-    |                   |             | 
-    |                   |             |----num_nodes_comparison.csv
-    |                   |             |
-    |                   |             |----path_length_comparison.csv 
-    |                   |             |
-    |                   |             |----path_list_CosineSimilarity.csv AND/OR path_list_PDP.csv
+```
+├── Inputs
+│   ├── _example_input.csv
+│   ├── kg-covid19
+│   │   ├── merged-kg_Triples_Integer_Identifier_Map.tsv
+│   │   ├── merged-kg_Triples_Integers_node2vecInput.tsv
+│   │   ├── merged-kg_Triples_node2vecInput_cleaned.tsv
+│   │   └── merged-kg_edges_node2vec_Embeddings128.emb (if generated)
+│   └── pkl
+│       ├── PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels.txt
+│       ├── PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers.txt
+│       ├── PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integer_Identifier_Map.txt
+│       ├── PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Integers_node2vecInput.txt
+│       ├── PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_node2vecInput_cleaned.txt
+│       └── PheKnowLator_v3_node2vec_Embeddings128.emb (if generated)
+└── Outputs
+    └── Cartoon_Name
+        ├── CosineSimilarity
+        │   ├── Subgraph.csv
+        │   ├── Subgraph_Visualization.png
+        │   └── Subgraph_attributes.noa
+        ├── Evaluation_Files
+        │   ├── edge_type_comparison.csv
+        │   ├── intermediate_nodes_comparison.csv
+        │   ├── num_nodes_comparison.csv
+        │   ├── num_paths_CosineSimilarity.csv
+        │   ├── num_paths_PDP.csv
+        │   ├── path_length_comparison.csv
+        │   ├── paths_list_CosineSimilarity_0-9.csv
+        │   ├── paths_list_PDP_0-9.csv
+        │   └── ranked_comparison.csv
+        ├── PDP
+        │   ├── Subgraph.csv
+        │   ├── Subgraph_Visualization.png
+        │   └── Subgraph_attributes.noa
+        └── _Input_Nodes_.csv
+```
   
 
 # Software Design
