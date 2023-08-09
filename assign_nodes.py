@@ -40,6 +40,17 @@ def read_user_input(user_example_file):
 		sys.exit(1)
 	return(examples)
 
+#TO DO: parse ocr file correctly
+def read_ocr_input(user_input_file):
+	#Combine all files into 1 if multiple exist (for Pathway OCR)
+	full_df = pd.DataFrame()
+	for i in user_input_file:
+		print(i)
+		df = pd.read_csv(i, sep= "\t")
+		full_df = pd.concat([full_df,df], axis=0, ignore_index=True)
+	print(full_df)
+	return full_df
+
 # Get list of unique nodes
 # Inputs:	examples		pandas dataframe of user input examples.
 # Outputs:	nodes 			set of unique nodes
@@ -198,8 +209,8 @@ def node_in_labels(kg, user_input):
 		return(False)
 
 #subgraph_df is a dataframe with source,targe headers and | delimited
-def create_input_file(examples,output_dir):
-	input_file = output_dir+"/_Input_Nodes_.csv"
+def create_input_file(examples,output_dir,input_type):
+	input_file = output_dir+"/_" + input_type + "_Input_Nodes_.csv"
 	logging.info('Input file created: %s',input_file)
 	
 	examples.to_csv(input_file, sep = "|", index = False)
@@ -207,11 +218,11 @@ def create_input_file(examples,output_dir):
 
 
 # Check if the input_nodes file already exists
-def check_input_existence(output_dir):
+def check_input_existence(output_dir,input_type):
     exists = 'false'
     mapped_file = ''
     for fname in os.listdir(output_dir):
-        if bool(re.match("_Input_Nodes_",fname)):
+        if bool(re.match("/_" + input_type + "_Input_Nodes_",fname)):
             exists = 'true'
             mapped_file = fname
     return exists,mapped_file
@@ -219,16 +230,20 @@ def check_input_existence(output_dir):
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir):
-	exists = check_input_existence(output_dir)
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
+	#Check for existence based on input type
+	exists = check_input_existence(output_dir,input_type)
 	if(exists[0] == 'false'):
 		print('Interactive Node Search')
 		logging.info('Interactive Node Search')
 		#Interactively assign node
-		u = read_user_input(user_input_file)
+		if input_type == 'annotated_diagram':
+			u = read_user_input(user_input_file[0])
+		if input_type == 'pathway_ocr':
+			u = read_ocr_input(user_input_file)
 		n = unique_nodes(u)
 		s = search_nodes(n,g,u)
-		create_input_file(s,output_dir)
+		create_input_file(s,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')

@@ -3,6 +3,7 @@ import os
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
+import pandas as pd
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -35,6 +36,8 @@ def define_arguments():
 
     parser.add_argument("--pdp-weight",dest="PdpWeight",required=False,default=0.4,help="PdpWeight")
 
+    parser.add_argument("--input-type",dest="InputType",required=True,help="InputType: either 'annotated_diagram','pathway_ocr', or 'experimental_data'")
+
     return parser
 
 # Wrapper function
@@ -51,11 +54,12 @@ def generate_arguments():
     weights = args.Weights
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
+    input_type = args.InputType
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type
 
 ### Download knowledge graph files
 def download_pkl(kg_dir):
@@ -70,16 +74,42 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
+def get_graph_files(input_dir,output_dir, kg_type,input_type):
 
-def get_graph_files(input_dir,output_dir, kg_type):
+    #Search for annotated diagram input
+    if input_type == 'annotated_diagram':
+        folder = input_dir+'/annotated_diagram'
+        if not os.path.isdir(folder):
+            raise Exception('Missing folder input directory: ' + folder)
+            logging.error('Missing folder input directory: ' + folder)
+        fname  = [v for v in os.listdir(folder) if 'example_input' in v]
+        if len(fname) == 1:
+            input_file = [folder + '/' + fname[0]]
+        else:
+            raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
+            logging.error('Missing or duplicate file in input directory: _example_input')
 
-    fname  = [v for v in os.listdir(input_dir) if 'example_input' in v]
-    if len(fname) == 1:
-        input_file = input_dir + '/' + fname[0]
-    else:
-        raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
-        logging.error('Missing or duplicate file in input directory: _example_input')
+    #Search for Pathway OCR diagram input
+    if input_type == 'pathway_ocr':
+        folder = input_dir+'/pathway_ocr_diagram'
+        input_file = []
+        if not os.path.isdir(folder):
+            raise Exception('Missing folder input directory: ' + folder)
+            logging.error('Missing folder input directory: ' + folder)
+        fnames  = [v for v in os.listdir(folder) if '_' in v]
+        if len(fnames) == len(set(fnames)):
+            for i in fnames:
+                input_file.append(folder + '/' + i)
+        else:
+            raise Exception('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
+            logging.error('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
 
+    #Search for Exerpimental data input
+    if input_type == 'experimental_data':
+        folder = input_dir+'/experimental_data'
+        if not os.path.isdir(folder):
+            raise Exception('Missing folder input directory: ' + folder)
+            logging.error('Missing folder input directory: ' + folder)
 
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
@@ -142,4 +172,6 @@ def get_graph_files(input_dir,output_dir, kg_type):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
+    print('input_file: ',input_file)
     return triples_list_file,labels_file,input_file
+    

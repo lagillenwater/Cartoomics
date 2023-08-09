@@ -9,9 +9,9 @@ from evaluation import *
 
 def main():
 
-    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight = generate_arguments()
+    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type = generate_arguments()
 
-    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type)
+    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type)
 
     print("Creating knowledge graph object from inputs.....")
 
@@ -19,7 +19,7 @@ def main():
     
     print("Mapping between user inputs and KG nodes.......")
     
-    s = interactive_search_wrapper(g, input_file, output_dir)
+    s = interactive_search_wrapper(g, input_file, output_dir, input_type)
 
     print("Mapping complete")
     print(s)
