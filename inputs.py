@@ -89,6 +89,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
             raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
             logging.error('Missing or duplicate file in input directory: _example_input')
 
+    
     #Search for Pathway OCR diagram input
     if input_type == 'pathway_ocr':
         folder = input_dir+'/pathway_ocr_diagram'
@@ -96,7 +97,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
         if not os.path.isdir(folder):
             raise Exception('Missing folder input directory: ' + folder)
             logging.error('Missing folder input directory: ' + folder)
-        fnames  = [v for v in os.listdir(folder) if '_' in v]
+        fnames  = [v for v in os.listdir(folder)]
         if len(fnames) == len(set(fnames)):
             for i in fnames:
                 input_file.append(folder + '/' + i)
