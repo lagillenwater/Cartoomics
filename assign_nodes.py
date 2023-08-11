@@ -43,7 +43,7 @@ def read_user_input(user_example_file):
 #TO DO: parse ocr file correctly
 def read_ocr_input(user_input_file):
 	#Combine all files into 1 if multiple exist (for Pathway OCR)
-    ## LG - 8/11/23 still need to combine the 3 PFOCR file types (ie., gene, chemical, or disease mentions). For now using a manually created one in /Test_Data/Inputs/
+    ## LG - 8/11/23 still need to combine the 3 PFOCR file types (ie., gene, chemical, or disease mentions). For now using a manually created one in /Test_Data/Inputs/pathway_ocr
 	full_df = pd.DataFrame()
 	for i in user_input_file:
 		print(i)
@@ -243,9 +243,10 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
 		#Interactively assign node
 		if input_type == 'annotated_diagram':
 			u = read_user_input(user_input_file[0])
+			n = unique_nodes(u)
 		if input_type == 'pathway_ocr':
 			u = read_ocr_input(user_input_file)
-		n = unique_nodes(u)
+			n = unique_nodes(u.iloc[:,0].to_frame())
 		s = search_nodes(n,g,u)
 		create_input_file(s,output_dir,input_type)
 	else:
