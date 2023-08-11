@@ -43,6 +43,7 @@ def read_user_input(user_example_file):
 #TO DO: parse ocr file correctly
 def read_ocr_input(user_input_file):
 	#Combine all files into 1 if multiple exist (for Pathway OCR)
+    ## LG - 8/11/23 still need to combine the 3 PFOCR file types (ie., gene, chemical, or disease mentions). For now using a manually created one in /Test_Data/Inputs/
 	full_df = pd.DataFrame()
 	for i in user_input_file:
 		print(i)
