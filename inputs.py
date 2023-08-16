@@ -4,6 +4,7 @@ import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
 import pandas as pd
+from urllib.request import urlretrieve
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -92,15 +93,29 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
     
     #Search for Pathway OCR diagram input
     if input_type == 'pathway_ocr':
-        folder = input_dir+'/pathway_ocr_diagram'
+        user_input = input("Input the PFOCR URL for the figure: ")
         input_file = []
+        pfocr_id = user_input.split("/")[-1].split(".")[0]
+### Could add the Figure ID here. LG
+        folder = input_dir+'/pathway_ocr_diagram/'
         if not os.path.isdir(folder):
-            raise Exception('Missing folder input directory: ' + folder)
-            logging.error('Missing folder input directory: ' + folder)
+            # raise Exception('Missing folder input directory: ' + folder)
+            # logging.error('Missing folder input directory: ' + folder)
+            os.mkdir(folder)
+
+        mentions = ["genes", "chemicals", "diseases"]
+        for mention in mentions:
+            url = "https://raw.githubusercontent.com/wikipathways/pfocr-database/main/download/" + pfocr_id+ "-"+mention+".tsv"
+            filename = folder + mention+".tsv"
+            try:
+                urlretrieve(url, filename)
+                print("downloaded " + mention)
+            except:
+                print("no content for " + mention)
         fnames  = [v for v in os.listdir(folder)]
         if len(fnames) == len(set(fnames)):
             for i in fnames:
-                input_file.append(folder + '/' + i)
+                input_file.append(folder  + i)
         else:
             raise Exception('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
             logging.error('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
