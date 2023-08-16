@@ -43,14 +43,15 @@ def read_user_input(user_example_file):
 #TO DO: parse ocr file correctly
 def read_ocr_input(user_input_file):
 	#Combine all files into 1 if multiple exist (for Pathway OCR)
-    ## LG - 8/11/23 still need to combine the 3 PFOCR file types (ie., gene, chemical, or disease mentions). For now using a manually created one in /Test_Data/Inputs/pathway_ocr
-	full_df = pd.DataFrame()
-	for i in user_input_file:
-		print(i)
-		df = pd.read_csv(i, sep= "\t")
-		full_df = pd.concat([full_df,df], axis=0, ignore_index=True)
-	print(full_df)
-	return full_df
+    ## Download each file individually and process in the wrapper function 
+	# full_df = pd.DataFrame()
+	# for i in user_input_file:
+	# 	print(i)
+	# 	df = pd.read_csv(i, sep= "\t")
+	# 	full_df = pd.concat([full_df,df], axis=0, ignore_index=True)
+	# print(full_df)
+    df = pd.read_csv(user_input_file, sep = "\t")
+    return(df)
 
 # Get list of unique nodes
 # Inputs:	examples		pandas dataframe of user input examples.
@@ -238,17 +239,22 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
 	if(exists[0] == 'false'):
-		print('Interactive Node Search')
-		logging.info('Interactive Node Search')
-		#Interactively assign node
-		if input_type == 'annotated_diagram':
-			u = read_user_input(user_input_file[0])
-			n = unique_nodes(u)
-		if input_type == 'pathway_ocr':
-			u = read_ocr_input(user_input_file)
-			n = unique_nodes(u.iloc[:,0].to_frame())
-		s = search_nodes(n,g,u)
-		create_input_file(s,output_dir,input_type)
+            print('Interactive Node Search')
+            logging.info('Interactive Node Search')
+            #Interactively assign node
+            if input_type == 'annotated_diagram':
+                u = read_user_input(user_input_file[0])
+                n = unique_nodes(u)
+            if input_type == 'pathway_ocr':
+                n = []
+                for i in user_input_file:
+                    u = read_ocr_input(i)
+                    nodes = unique_nodes(u.iloc[:,0].to_frame())
+                    n.append(nodes)
+            n = [item for items in n for item in items]
+            print(n)
+            s = search_nodes(n,g,u)
+            create_input_file(s,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
