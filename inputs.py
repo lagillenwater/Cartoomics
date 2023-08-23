@@ -101,7 +101,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
         if not os.path.isdir(folder):
             # raise Exception('Missing folder input directory: ' + folder)
             # logging.error('Missing folder input directory: ' + folder)
-            os.mkdir(folder)
+            os.makedirs(folder)
 
         mentions = ["genes", "chemicals", "diseases"]
         for mention in mentions:
