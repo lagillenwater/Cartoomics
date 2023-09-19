@@ -251,7 +251,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
                     u = read_ocr_input(i)
                     nodes = unique_nodes(u.iloc[:,0].to_frame())
                     n.append(nodes)
-            n = [item for items in n for item in items]
+                n = [item for items in n for item in items]
             print(n)
             s = search_nodes(n,g,u)
             create_input_file(s,output_dir,input_type)
