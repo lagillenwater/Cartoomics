@@ -40,16 +40,7 @@ def read_user_input(user_example_file):
 		sys.exit(1)
 	return(examples)
 
-#TO DO: parse ocr file correctly
 def read_ocr_input(user_input_file):
-	#Combine all files into 1 if multiple exist (for Pathway OCR)
-    ## Download each file individually and process in the wrapper function 
-	# full_df = pd.DataFrame()
-	# for i in user_input_file:
-	# 	print(i)
-	# 	df = pd.read_csv(i, sep= "\t")
-	# 	full_df = pd.concat([full_df,df], axis=0, ignore_index=True)
-	# print(full_df)
     df = pd.read_csv(user_input_file, sep = "\t")
     return(df)
 
