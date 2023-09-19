@@ -39,6 +39,8 @@ def define_arguments():
 
     parser.add_argument("--input-type",dest="InputType",required=True,help="InputType: either 'annotated_diagram','pathway_ocr', or 'experimental_data'")
 
+    parser.add_argument("--pfocr_url",dest="PfocrURL",required=False, help="The URL for the PFOCR annotated figure (example, 'https://pfocr.wikipathways.org/figures/PMC5095497__IMM-149-423-g007.html'")
+
     return parser
 
 # Wrapper function
@@ -56,6 +58,7 @@ def generate_arguments():
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
     input_type = args.InputType
+    pfocr_url = args.PforcrURL
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -75,7 +78,7 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
-def get_graph_files(input_dir,output_dir, kg_type,input_type):
+def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
 
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
@@ -93,7 +96,11 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
     
     #Search for Pathway OCR diagram input
     if input_type == 'pathway_ocr':
-        user_input = input("Input the PFOCR URL for the figure: ")
+        if pfocr_url is null:
+            user_input = input("Input the PFOCR URL for the figure: ")
+        else:
+            user_input = 
+
         input_file = []
         pfocr_id = user_input.split("/")[-1].split(".")[0]
 ### Could add the Figure ID here. LG
@@ -105,7 +112,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
 
         mentions = ["genes", "chemicals", "diseases"]
         for mention in mentions:
-            url = "https://raw.githubusercontent.com/wikipathways/pfocr-database/main/download/" + pfocr_id+ "-"+mention+".tsv"
+            url = "https://raw.githubusercontent.com/wikipathways/pfocr-database/main/_data/" + pfocr_id+ "-"+mention+".tsv"
             filename = folder + mention+".tsv"
             try:
                 urlretrieve(url, filename)
