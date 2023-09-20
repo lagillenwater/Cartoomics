@@ -49,7 +49,6 @@ def generate_arguments():
     #Generate argument parser and define arguments
     parser = define_arguments()
     args = parser.parse_args()
-
     input_dir = args.InputDir
     output_dir = args.OutputDir
     kg_type = args.KG
@@ -58,12 +57,12 @@ def generate_arguments():
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
     input_type = args.InputType
-    pfocr_url = args.PforcrURL
+    pfocr_url = args.PfocrURL
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url
 
 ### Download knowledge graph files
 def download_pkl(kg_dir):
@@ -96,10 +95,10 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
     
     #Search for Pathway OCR diagram input
     if input_type == 'pathway_ocr':
-        if pfocr_url is null:
+        if pfocr_url is None:
             user_input = input("Input the PFOCR URL for the figure: ")
         else:
-            user_input = 
+            user_input = pfocr_url
 
         input_file = []
         pfocr_id = user_input.split("/")[-1].split(".")[0]
