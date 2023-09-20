@@ -6,7 +6,7 @@ import sys
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
-
+import itertools
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -42,6 +42,8 @@ def read_user_input(user_example_file):
 
 def read_ocr_input(user_input_file):
     df = pd.read_csv(user_input_file, sep = "\t")
+    if "genes" in user_input_file:
+        df = df.loc[df["organism_name"] == "Homo sapiens"]
     return(df)
 
 # Get list of unique nodes
@@ -236,15 +238,19 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
             if input_type == 'annotated_diagram':
                 u = read_user_input(user_input_file[0])
                 n = unique_nodes(u)
+                s = search_nodes(n,g,u)
             if input_type == 'pathway_ocr':
                 n = []
                 for i in user_input_file:
-                    u = read_ocr_input(i)
-                    nodes = unique_nodes(u.iloc[:,0].to_frame())
+                    ocr_frame = read_ocr_input(i)
+                    nodes = unique_nodes(ocr_frame["word"].to_frame())
                     n.append(nodes)
                 n = [item for items in n for item in items]
-            print(n)
-            s = search_nodes(n,g,u)
+                u = pd.DataFrame(itertools.permutations(n,2))
+                u = u.rename(columns = {0: "source", 1:"target"})
+                print(u)
+                s = search_nodes(n,g,u)
+                        
             create_input_file(s,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
