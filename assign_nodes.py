@@ -243,7 +243,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
                 n = []
                 for i in user_input_file:
                     ocr_frame = read_ocr_input(i)
-                    if "genes" in user_input_file:
+                    if "genes" in i:
                         nodes = unique_nodes(ocr_frame["ncbigene_id"].to_frame())
                         nodes = ["http://www.ncbi.nlm.nih.gov/gene/" + str(n) for n in nodes]
                     else: 
