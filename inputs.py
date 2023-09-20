@@ -118,7 +118,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
                 print("downloaded " + mention)
             except:
                 print("no content for " + mention)
-        fnames  = [v for v in os.listdir(folder)]
+        fnames  = [v for v in os.listdir(folder) if v != '.DS_Store']
         if len(fnames) == len(set(fnames)):
             for i in fnames:
                 input_file.append(folder  + i)
