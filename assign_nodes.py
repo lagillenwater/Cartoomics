@@ -62,7 +62,7 @@ def unique_nodes(examples):
 def find_node(node, kg, ontology = ""):
 	nodes = kg.labels_all
 	### Check for exact matches first
-	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())][["label", "entity_uri"]]
+	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())|(nodes["entity_uri"].str.lower() == node.lower())][["label", "entity_uri"]]
 
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
 	if node.isupper(): #likely a gene or protein
