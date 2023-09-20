@@ -243,7 +243,11 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
                 n = []
                 for i in user_input_file:
                     ocr_frame = read_ocr_input(i)
-                    nodes = unique_nodes(ocr_frame["word"].to_frame())
+                    if "genes" in user_input_file:
+                        nodes = unique_nodes(ocr_frame["ncbigene_id"].to_frame())
+                        nodes = ["http://www.ncbi.nlm.nih.gov/gene/" + str(n) for n in nodes]
+                    else: 
+                        nodes = unique_nodes(ocr_frame["word"].to_frame())
                     n.append(nodes)
                 n = [item for items in n for item in items]
                 u = pd.DataFrame(itertools.permutations(n,2))
