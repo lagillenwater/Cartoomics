@@ -6,7 +6,7 @@ import sys
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
-
+import itertools
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -40,16 +40,11 @@ def read_user_input(user_example_file):
 		sys.exit(1)
 	return(examples)
 
-#TO DO: parse ocr file correctly
 def read_ocr_input(user_input_file):
-	#Combine all files into 1 if multiple exist (for Pathway OCR)
-	full_df = pd.DataFrame()
-	for i in user_input_file:
-		print(i)
-		df = pd.read_csv(i, sep= "\t")
-		full_df = pd.concat([full_df,df], axis=0, ignore_index=True)
-	print(full_df)
-	return full_df
+    df = pd.read_csv(user_input_file, sep = "\t")
+    if "genes" in user_input_file:
+        df = df.loc[df["organism_name"] == "Homo sapiens"]
+    return(df)
 
 # Get list of unique nodes
 # Inputs:	examples		pandas dataframe of user input examples.
@@ -67,7 +62,7 @@ def unique_nodes(examples):
 def find_node(node, kg, ontology = ""):
 	nodes = kg.labels_all
 	### Check for exact matches first
-	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())][["label", "entity_uri"]]
+	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())|(nodes["entity_uri"].str.lower() == node.lower())][["label", "entity_uri"]]
 
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
 	if node.isupper(): #likely a gene or protein
@@ -237,16 +232,30 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
 	if(exists[0] == 'false'):
-		print('Interactive Node Search')
-		logging.info('Interactive Node Search')
-		#Interactively assign node
-		if input_type == 'annotated_diagram':
-			u = read_user_input(user_input_file[0])
-		if input_type == 'pathway_ocr':
-			u = read_ocr_input(user_input_file)
-		n = unique_nodes(u)
-		s = search_nodes(n,g,u)
-		create_input_file(s,output_dir,input_type)
+            print('Interactive Node Search')
+            logging.info('Interactive Node Search')
+            #Interactively assign node
+            if input_type == 'annotated_diagram':
+                u = read_user_input(user_input_file[0])
+                n = unique_nodes(u)
+                s = search_nodes(n,g,u)
+            if input_type == 'pathway_ocr':
+                n = []
+                for i in user_input_file:
+                    ocr_frame = read_ocr_input(i)
+                    if "genes" in i:
+                        nodes = unique_nodes(ocr_frame["ncbigene_id"].to_frame())
+                        nodes = ["http://www.ncbi.nlm.nih.gov/gene/" + str(n) for n in nodes]
+                    else: 
+                        nodes = unique_nodes(ocr_frame["word"].to_frame())
+                    n.append(nodes)
+                n = [item for items in n for item in items]
+                u = pd.DataFrame(itertools.permutations(n,2))
+                u = u.rename(columns = {0: "source", 1:"target"})
+                print(u)
+                s = search_nodes(n,g,u)
+                        
+            create_input_file(s,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')

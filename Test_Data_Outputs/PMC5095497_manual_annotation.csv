@@ -1,0 +1,13 @@
+source|target
+SREBP1|ACLY
+SREBP1|SLC25A1
+PPAR alpha|CPT1
+PPAR alpha|SLC25A20
+CPT1|acyl-CoA
+CAC|acyl-CoA
+citrate|CIC
+citrate|ACLY
+ACLY|reactive oxygen species
+ACLY|nitrous oxide
+reactive oxygen species|lipid peroxidation
+nitrous oxide|lipid peroxidation

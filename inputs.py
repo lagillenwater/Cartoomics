@@ -4,6 +4,7 @@ import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
 import pandas as pd
+from urllib.request import urlretrieve
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -38,6 +39,8 @@ def define_arguments():
 
     parser.add_argument("--input-type",dest="InputType",required=True,help="InputType: either 'annotated_diagram','pathway_ocr', or 'experimental_data'")
 
+    parser.add_argument("--pfocr_url",dest="PfocrURL",required=False, help="The URL for the PFOCR annotated figure (example, 'https://pfocr.wikipathways.org/figures/PMC5095497__IMM-149-423-g007.html'")
+
     return parser
 
 # Wrapper function
@@ -46,7 +49,6 @@ def generate_arguments():
     #Generate argument parser and define arguments
     parser = define_arguments()
     args = parser.parse_args()
-
     input_dir = args.InputDir
     output_dir = args.OutputDir
     kg_type = args.KG
@@ -55,11 +57,12 @@ def generate_arguments():
     search_type = args.SearchType
     pdp_weight = args.PdpWeight
     input_type = args.InputType
+    pfocr_url = args.PfocrURL
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url
 
 ### Download knowledge graph files
 def download_pkl(kg_dir):
@@ -74,7 +77,7 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
-def get_graph_files(input_dir,output_dir, kg_type,input_type):
+def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
 
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
@@ -89,17 +92,36 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type):
             raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
             logging.error('Missing or duplicate file in input directory: _example_input')
 
+    
     #Search for Pathway OCR diagram input
     if input_type == 'pathway_ocr':
-        folder = input_dir+'/pathway_ocr_diagram'
+        if pfocr_url is None:
+            user_input = input("Input the PFOCR URL for the figure: ")
+        else:
+            user_input = pfocr_url
+
         input_file = []
+        pfocr_id = user_input.split("/")[-1].split(".")[0]
+### Could add the Figure ID here. LG
+        folder = input_dir+'/pathway_ocr_diagram/'
         if not os.path.isdir(folder):
-            raise Exception('Missing folder input directory: ' + folder)
-            logging.error('Missing folder input directory: ' + folder)
-        fnames  = [v for v in os.listdir(folder) if '_' in v]
+            # raise Exception('Missing folder input directory: ' + folder)
+            # logging.error('Missing folder input directory: ' + folder)
+            os.makedirs(folder)
+
+        mentions = ["genes", "chemicals", "diseases"]
+        for mention in mentions:
+            url = "https://raw.githubusercontent.com/wikipathways/pfocr-database/main/_data/" + pfocr_id+ "-"+mention+".tsv"
+            filename = folder + mention+".tsv"
+            try:
+                urlretrieve(url, filename)
+                print("downloaded " + mention)
+            except:
+                print("no content for " + mention)
+        fnames  = [v for v in os.listdir(folder) if v != '.DS_Store']
         if len(fnames) == len(set(fnames)):
             for i in fnames:
-                input_file.append(folder + '/' + i)
+                input_file.append(folder  + i)
         else:
             raise Exception('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
             logging.error('Duplicate file in input directory: genes.tsv OR chemicals.tsv OR disease.tsv')
