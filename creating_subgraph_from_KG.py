@@ -19,7 +19,7 @@ def main():
     
     print("Mapping between user inputs and KG nodes.......")
     
-    s = interactive_search_wrapper(g, input_file, output_dir, input_type)
+    s = interactive_search_wrapper(g, input_file, output_dir, input_type,kg_type)
 
     print("Mapping complete")
 
