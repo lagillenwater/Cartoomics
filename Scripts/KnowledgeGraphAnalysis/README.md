@@ -15,3 +15,16 @@ This will output the following files:
 ```
 #_Pattern_Counts_Full.csv, where # corresponds to the iteration
 ```
+
+## Visualization
+
+To evaluate all metapaths, run the following code:
+
+```
+python Paths_Distribution_Plot.py --directory <OUTPUT-DIR from above>
+```
+
+This will output the following plots:
+- PathsDistribution.png (a boxplot showing the distribution of specific path patterns across all iterations)
+- UniquePaths.png (the total number of unique paths for all iterations)
+- UniquePathsHistogram.png (the distribution of the number of unique paths across all iterations)
