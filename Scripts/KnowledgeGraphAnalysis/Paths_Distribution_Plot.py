@@ -4,6 +4,7 @@ import seaborn as sns
 import os
 import tqdm
 from collections import defaultdict 
+import argparse
 
 #Evaluates all patterns that were first generated from shortest path subgraphs of an entity-entity search, and outputs a plot of how many unique paths there are per iteration
 
@@ -48,7 +49,6 @@ def main():
             full_df = pd.concat([full_df,df],ignore_index=True)
 
         #Unique paths for this iteration  
-        print(len(df.drop_duplicates(subset=["Pattern"])))
         unique_per_it.loc[it_ct] = len(df.drop_duplicates(subset=["Pattern"]))
 
         it_ct += 1
@@ -65,8 +65,11 @@ def main():
     fig.set_size_inches(20, 16)
 
     sns.boxplot(x = full_df['Pattern'], y = full_df['Count'])
-    sns.stripplot(x = full_df['Pattern'], y = full_df['Count']).set(title='Count of Unique Paths per Iteration of Gene-Disease Pairs (Count > 10)')
+    sns.stripplot(x = full_df['Pattern'], y = full_df['Count'])
     plt.xticks(rotation=90)
+    plt.title("Count of Unique Paths per Iteration of Gene-Disease Pairs (Count > 10)",fontsize = 24)
+    plt.xlabel("Pattern",fontsize = 18)
+    plt.ylabel("Count",fontsize = 18)
     plt.savefig(directory+"/PathsDistribution.png",bbox_inches='tight')
     plt.clf()
 
@@ -83,20 +86,26 @@ def main():
     # Change seaborn plot size
     fig.set_size_inches(12, 8)
 
-    sns.scatterplot(data=unique_paths_df, x=unique_paths_df.index, y="Total_Unique_Paths").set(title='Total Unique Paths per Iteration of Gene-Disease Pairs')
+    sns.scatterplot(data=unique_paths_df, x=unique_paths_df.index, y="Total_Unique_Paths")
 
     '''plt.axvline(x=k_elbow)
     plt.text(2*len(unique_paths_df)/3, max(unique_paths_df['Total_Unique_Paths'])/2,'Optimal # Unique Paths (k='+str(k_elbow)+'): '+str(paths_k), fontsize = 12)'''
 
+    plt.title("Total Unique Paths per Iteration of Gene-Disease Pairs",fontsize = 24)
+    plt.xlabel("Iteration",fontsize = 18)
+    plt.ylabel("Total Unique Paths",fontsize = 18)
     plt.savefig(directory+"/UniquePaths.png",bbox_inches='tight')
     plt.clf()
 
     fig = plt.gcf()
-    # Change seaborn plot size
-    fig.set_size_inches(12, 8)
-    sns.scatterplot(data=unique_per_it, x=unique_per_it.index, y='Unique_Paths').set(title='Unique Paths for Each Iteration of Gene-Disease Pairs')
-    plt.savefig(directory+"/IterationUniquePaths.png",bbox_inches='tight')
 
+    plt.style.use('seaborn-v0_8')
+    plt.hist(unique_per_it,bins=len(unique_per_it), facecolor = '#929591', edgecolor='#000000')
+    plt.title("Distribution of Unique Paths for Each Iteration of Gene-Disease Pairs",fontsize = 24)
+    plt.xlabel("# Unique Paths",fontsize = 18)
+    plt.ylabel("Count",fontsize = 18)
+    plt.savefig(directory+"/UniquePathsHistogram.png",bbox_inches='tight')
 
-
+if __name__ == '__main__':
+    main()
 
