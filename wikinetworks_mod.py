@@ -244,7 +244,8 @@ def getInteractionLoc(featureList):
                 temp = pd.Series(edgesWithAnchors.iloc[j,])
                 temp = temp.to_dict()
                 temp["node1_graphref"] = newNode
-                edgesWithAnchors2 = edgesWithAnchors2.append(temp, ignore_index=True)
+                temp = pd.DataFrame.from_dict([temp])
+                edgesWithAnchors2 = pd.concat([edgesWithAnchors2,temp], ignore_index=True)
     interactDF = pd.concat([interactDF, edgesWithAnchors2], ignore_index=True)
     """
     mask = [0 for i in range(0, len(interactDF))]
