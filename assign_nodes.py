@@ -24,11 +24,11 @@ pd.set_option('display.max_rows', None)
 
 #Added here to avoid circular import
 def get_label(labels,value,kg_type):
-    if kg_type == 'pkl':
-        label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
-    if kg_type == 'kg-covid19':
-        label = labels.loc[labels['id'] == value,'label'].values[0]        
-    return label
+	if kg_type == 'pkl':
+		label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
+	if kg_type == 'kg-covid19':
+		label = labels.loc[labels['id'] == value,'label'].values[0]        
+	return label
 
 
 # Read in the user example file and output as a pandas dataframe
@@ -262,9 +262,15 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 					ocr_frame = read_ocr_input(i)
 					if "genes" in i:
 						for i in range(len(ocr_frame)):
-							gene_id = str(ocr_frame.iloc[i].loc['ncbigene_id'])
-							pkl_id = "http://www.ncbi.nlm.nih.gov/gene/" + str(gene_id)
-							n[ocr_frame.iloc[i].loc['word']] = get_label(g.labels_all,pkl_id,kg_type)
+							try:
+								gene_id = str(ocr_frame.iloc[i].loc['ncbigene_id'])
+								pkl_id = "http://www.ncbi.nlm.nih.gov/gene/" + str(gene_id)
+								n[ocr_frame.iloc[i].loc['word']] = get_label(g.labels_all,pkl_id,kg_type)
+							except IndexError:
+								try:
+									n_manual.append(ocr_frame.iloc[i].loc['ncbigene_symbol'])
+								except IndexError:
+									n_manual.append(ocr_frame.iloc[i].loc['word'])
 					elif 'chemicals' in i:
 						for i in range(len(ocr_frame)):
 							try:
@@ -276,8 +282,8 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 								n_manual.append(ocr_frame.iloc[i].loc['word'])
 					else: 
 						nodes = unique_nodes(ocr_frame["word"].to_frame())
-						n_manual.append(nodes)
-				if len(n_manual) > 1: n_manual = [item for items in n_manual for item in items]
+						for i in nodes:
+							n_manual.append(i)
 				n_existing = list(n.keys())
 				n_both = n_manual + n_existing
 				#Creates examples df without source_label and target_label
