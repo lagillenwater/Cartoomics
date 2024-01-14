@@ -1,11 +1,12 @@
 # Given a starting graph of node pairs, find all paths between them to create a subgraph
-from find_path import find_shortest_path
+from find_path import find_shortest_path,find_shortest_path_pattern
 from find_path import prioritize_path_cs
 from find_path import prioritize_path_pdp
 import pandas as pd
 from tqdm import tqdm
 from evaluation import output_path_lists
 from evaluation import output_num_paths_pairs
+from igraph import * 
 
 def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type):
 
@@ -25,6 +26,30 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
     df = df.drop_duplicates(subset=['S','P','O'])
 
     return df
+
+def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,manually_chosen_uris):
+
+    input_nodes_df.columns = input_nodes_df.columns.str.lower()
+
+    all_paths = []
+
+    for i in range(len(input_nodes_df)):
+        start_node = input_nodes_df.iloc[i].loc['source']
+        end_node = input_nodes_df.iloc[i].loc['target']
+        shortest_path_df,manually_chosen_uris = find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,input_nodes_df,manually_chosen_uris)
+        if len(shortest_path_df) > 0:
+            all_paths.append(shortest_path_df)
+
+    if len(all_paths) > 0:
+        df = pd.concat(all_paths)
+        df.reset_index(drop=True, inplace=True)
+        #Remove duplicate edges
+        df = df.drop_duplicates(subset=['S','P','O'])
+
+    else:
+        df = pd.DataFrame()
+
+    return df,manually_chosen_uris
 
 # Have user define weights to upweight
 def user_defined_edge_weights(graph, triples_df,kg_type ):
@@ -100,7 +125,15 @@ def user_defined_edge_exclusion(graph,kg_type ):
     return(graph)
 
 
-
+# Edges to remove
+def automatic_defined_edge_exclusion(graph,kg_type):
+    if kg_type == 'pkl':
+        to_drop = ['<http://purl.obolibrary.org/obo/RO_0002160>','<http://purl.obolibrary.org/obo/BFO_0000050>','<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>','<http://purl.obolibrary.org/obo/RO_0001025>']
+    if kg_type != 'pkl':
+        to_drop = ['biolink:category','biolink:in_taxon']
+    for edge in to_drop:
+        graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
+    return(graph)
 
 
     
