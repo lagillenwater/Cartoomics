@@ -5,6 +5,9 @@ import os
 import tqdm
 from collections import defaultdict 
 import argparse
+import logging.config
+from pythonjsonlogger import jsonlogger
+import sys
 
 #Evaluates all patterns that were first generated from shortest path subgraphs of an entity-entity search, and outputs a plot of how many unique paths there are per iteration
 
@@ -34,6 +37,11 @@ def main():
     node_input1 = args.NodeInput1
     node_input2 = args.NodeInput2
 
+    metapath_dir = '/MetapathEvaluation/'
+    metapath_outdir = directory + metapath_dir
+    if not os.path.isdir(metapath_outdir):
+        os.makedirs(metapath_outdir)
+
     #For search of mulitple files within only 1 directory of #_Pattern_Counts_Full per iteration
     unique_df = pd.DataFrame(columns=['Pattern'])
     full_df = pd.DataFrame(columns=['Pattern','Count'])
@@ -45,7 +53,7 @@ def main():
     counter = defaultdict()
 
     it_ct = 0
-    os.chdir(directory)
+    os.chdir(directory + metapath_dir)
     for patterns_file in tqdm.tqdm(os.listdir()):
         if 'Pattern_Counts_Full.csv' in patterns_file:
             df = pd.read_csv(patterns_file,delimiter=',')
@@ -61,7 +69,12 @@ def main():
             #Unique paths for this iteration  
             unique_per_it.loc[it_ct] = len(df.drop_duplicates(subset=["Pattern"]))
 
-        it_ct += 1
+            it_ct += 1
+
+    if len(full_df) == 0:
+        print('No files of the #_Pattern_Counts_Full.csv naming convention found, ensure that files are first created.')
+        logging.error('No files of the #_Pattern_Counts_Full.csv naming convention found, ensure that files are first created.')
+        sys.exit(1)
 
     full_df.to_csv("full_df.csv")
     unique_paths_df.to_csv("unique_paths_df.csv")
