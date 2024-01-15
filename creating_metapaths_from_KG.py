@@ -8,6 +8,7 @@ import tqdm as tqdm
 import random
 import logging.config
 from pythonjsonlogger import jsonlogger
+import sys
 
 from collections import Counter
 from constants import (
@@ -20,6 +21,11 @@ def main():
     input_dir,output_dir,kg_types,num_iterations,batch_size,node_input1,node_input2,embedding_dimensions,weights,search_type,pdp_weight = generate_arguments_metapaths()
 
     kg_types = ast.literal_eval(kg_types)
+
+    metapath_dir = '/MetapathEvaluation/'
+    metapath_outdir = output_dir + metapath_dir
+    if not os.path.isdir(metapath_outdir):
+        os.makedirs(metapath_outdir)
 
     for kg_type in kg_types:
         triples_list_file,labels_file = get_graph_files_metapaths(input_dir,output_dir, kg_type)
@@ -41,8 +47,8 @@ def main():
         for c in tqdm.tqdm(range(0,int(num_iterations))):  #300)):
 
             #Check for existence of output directory
-            if os.path.exists(output_dir+'/' + str(c) + '_Pattern_Counts_Full.csv'):
-                logging.error('File exists: ' + output_dir+'/' + str(c) + '_Pattern_Counts_Full.csv' + ', continuing to next iteration.')
+            if os.path.exists(output_dir+ metapath_dir + str(c) + '_Pattern_Counts_Full.csv'):
+                logging.error('File exists: ' + output_dir + metapath_dir + str(c) + '_Pattern_Counts_Full.csv' + ', continuing to next iteration.')
                 continue
 
             patterns_all = []
@@ -85,8 +91,8 @@ def main():
                     counts.append(patterns_count[patterns_all_df.iloc[i].loc['Pattern']])
                 patterns_all_df['Count'] = counts
                 patterns_all_df = patterns_all_df.drop_duplicates(subset=['Pattern','Count'])
-                #print('pattern length after ct: ',c, ': ',len(patterns_all_df))  
-                patterns_all_df.to_csv(output_dir+'/' + str(c) + '_Pattern_Counts_Full.csv',sep=',',index=False)
+
+                patterns_all_df.to_csv(output_dir + metapath_dir + str(c) + '_Pattern_Counts_Full.csv',sep=',',index=False)
             c += 1
 
 
