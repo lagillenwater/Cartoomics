@@ -137,8 +137,6 @@ def download_kg19(kg_dir):
 
 def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
 
-    print(input_dir)
-
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
         folder = input_dir+'/annotated_diagram'
@@ -254,7 +252,6 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    print('input_file: ',input_file)
     return triples_list_file,labels_file,input_file
 
 def get_graph_files_metapaths(input_dir,output_dir, kg_type):
