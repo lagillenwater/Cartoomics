@@ -22,6 +22,14 @@ logging.config.fileConfig(log_config[0], disable_existing_loggers=False, default
 pd.set_option('display.max_rows', None)
 
 
+#Added here to avoid circular import
+def get_label(labels,value,kg_type):
+	if kg_type == 'pkl':
+		label = labels.loc[labels['entity_uri'] == value,'label'].values[0]
+	if kg_type == 'kg-covid19':
+		label = labels.loc[labels['id'] == value,'label'].values[0]        
+	return label
+
 
 # Read in the user example file and output as a pandas dataframe
 def read_user_input(user_example_file):
@@ -142,11 +150,16 @@ def manage_user_input(found_nodes,user_input,kg):
 	return node_label,bad_input
 
 def search_nodes(nodes, kg, examples):
-	examples["source_label"] = ""
-	examples["target_label"] = ""
+	if type(nodes) == list():
+		examples["source_label"] = ""
+		examples["target_label"] = ""
+	elif type(nodes) == pd.DataFrame:
+		d = nodes.loc[nodes['source_label'] == '']
+		nodes = unique_nodes(d[['source']])
 
 	vals_per_page = 20
 
+	#Search by node in list
 	for node in nodes:
 		logging.info('Searching for node: %s',node)
 		bad_input = True
@@ -174,7 +187,7 @@ def search_nodes(nodes, kg, examples):
 				node_label,bad_input = manage_user_input(found_nodes,user_input,kg)
 
 		logging.info('Node label chosen for %s: %r',node,node_label)
-		node_label
+
 		examples.loc[examples["source"] == node,"source_label"] = node_label
 		examples.loc[examples["target"] == node,"target_label"] = node_label
 	
@@ -228,34 +241,68 @@ def check_input_existence(output_dir,input_type):
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir, input_type):
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
 	if(exists[0] == 'false'):
-            print('Interactive Node Search')
-            logging.info('Interactive Node Search')
+			print('Interactive Node Search')
+			logging.info('Interactive Node Search')
             #Interactively assign node
-            if input_type == 'annotated_diagram':
-                u = read_user_input(user_input_file[0])
-                n = unique_nodes(u)
-                s = search_nodes(n,g,u)
-            if input_type == 'pathway_ocr':
-                n = []
-                for i in user_input_file:
-                    ocr_frame = read_ocr_input(i)
-                    if "genes" in i:
-                        nodes = unique_nodes(ocr_frame["ncbigene_id"].to_frame())
-                        nodes = ["http://www.ncbi.nlm.nih.gov/gene/" + str(n) for n in nodes]
-                    else: 
-                        nodes = unique_nodes(ocr_frame["word"].to_frame())
-                    n.append(nodes)
-                n = [item for items in n for item in items]
-                u = pd.DataFrame(itertools.permutations(n,2))
-                u = u.rename(columns = {0: "source", 1:"target"})
-                print(u)
-                s = search_nodes(n,g,u)
-                        
-            create_input_file(s,output_dir,input_type)
+			if input_type == 'annotated_diagram':
+				#Creates examples df without source_label and target_label
+				u = read_user_input(user_input_file[0])
+				n = unique_nodes(u)
+				s = search_nodes(n,g,u)
+			if input_type == 'pathway_ocr':
+				#List of entities that are already mapped to identifiers
+				n = {}
+				#List of entities that need to be manually mapped to identifiers
+				n_manual = []
+				for i in user_input_file:
+					ocr_frame = read_ocr_input(i)
+					if "genes" in i:
+						for i in range(len(ocr_frame)):
+							try:
+								gene_id = str(ocr_frame.iloc[i].loc['ncbigene_id'])
+								pkl_id = "http://www.ncbi.nlm.nih.gov/gene/" + str(gene_id)
+								n[ocr_frame.iloc[i].loc['word']] = get_label(g.labels_all,pkl_id,kg_type)
+							except IndexError:
+								try:
+									n_manual.append(ocr_frame.iloc[i].loc['ncbigene_symbol'])
+								except IndexError:
+									n_manual.append(ocr_frame.iloc[i].loc['word'])
+					elif 'chemicals' in i:
+						for i in range(len(ocr_frame)):
+							try:
+								chebi_id = str(ocr_frame.iloc[i].loc['chebi']).upper().split(':')[1]
+								pkl_id = 'http://purl.obolibrary.org/obo/CHEBI_'+str(chebi_id)
+								n[ocr_frame.iloc[i].loc['word']] = get_label(g.labels_all,pkl_id,kg_type)
+							#Index Error since no chebi value will error on first step of splitting by ":"
+							except IndexError:
+								n_manual.append(ocr_frame.iloc[i].loc['word'])
+					else: 
+						nodes = unique_nodes(ocr_frame["word"].to_frame())
+						for i in nodes:
+							n_manual.append(i)
+				n_existing = list(n.keys())
+				n_both = n_manual + n_existing
+				#Creates examples df without source_label and target_label
+				u = pd.DataFrame(itertools.permutations(n_both,2))
+				u = u.rename(columns = {0: "source", 1:"target"})
+				u[['source_label','target_label']] = pd.DataFrame([['','']],index=u.index)
+				for i in range(len(u)):
+					try:
+						#u.iloc[i].loc['source_label'] = n[u.iloc[i].loc['source']]
+						u.at[i,'source_label'] = n[u.iloc[i].loc['source']]
+					except KeyError:
+						pass
+					try:
+						u.at[i,'target_label'] = n[u.iloc[i].loc['target']]
+					except KeyError:
+						pass
+				s = search_nodes(u,g,u)
+
+			create_input_file(s,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
