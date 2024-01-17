@@ -208,7 +208,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
 
     num_paths_df = pd.DataFrame(columns = ['source_node','target_node','num_paths'])
 
-    term_foldername = term_row['term_label'].replace(" ","_").replace(".","_").replace(":","_").replace("'",'')
+    term_foldername = 'Guiding_Term_'+term_row['term_label'].replace(" ","_").replace(".","_").replace(":","_").replace("'",'')
     for i in tqdm(range(len(input_nodes_df))):
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']

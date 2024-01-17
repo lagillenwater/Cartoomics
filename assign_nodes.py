@@ -7,6 +7,7 @@ import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
 import itertools
+import numpy as np
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -215,6 +216,10 @@ def search_nodes(nodes, kg, examples, guiding_term = False):
 				examples.loc[examples["source"] == node,"source_id"] = id_given
 				examples.loc[examples["target"] == node,"target_id"] = id_given
 	
+	#Replace any nan in _id columns with "not_needed"
+	examples = examples.astype(str)
+	for c in examples.columns:
+		examples[c] = examples[c].replace('nan','not_needed')
 	logging.info('All input nodes searched.')
 	
 	return(examples)

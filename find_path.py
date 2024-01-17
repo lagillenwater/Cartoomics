@@ -84,15 +84,23 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
 
 def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type):
 
-    try:
-        node1 = node_pair['source_id']
-    except KeyError:
+    if node_pair['source_id'] != 'not_needed':
+        try:
+            node1 = node_pair['source_id']
+        #Handle case where no ID was input for any nodes or only 1 node
+        except KeyError: 
+            node1 = get_uri(labels_all,node_pair['source_label'], kg_type)
+    else:
         node1 = get_uri(labels_all,node_pair['source_label'], kg_type)
-    try:
-        node1 = node_pair['target_id']
-    except KeyError:
-        node2 = get_uri(labels_all,node_pair['target_label'], kg_type)
 
+    if node_pair['target_id'] != 'not_needed':
+        try:
+            node2 = node_pair['target_id']
+        #Handle case where no ID was input for any nodes or only 1 node
+        except KeyError:
+            node2 = get_uri(labels_all,node_pair['target_label'], kg_type)
+    else:
+        node2 = get_uri(labels_all,node_pair['target_label'], kg_type)
 
     #Add weights if specified
     if weights:
