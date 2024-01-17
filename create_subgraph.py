@@ -149,7 +149,8 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
-        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,
+        node_pair = input_nodes_df.iloc[i]
+        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,
         search_type,triples_file,input_dir,embedding_dimensions,kg_type)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
@@ -180,7 +181,8 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
-        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
+        node_pair = input_nodes_df.iloc[i]
+        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -197,3 +199,37 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
     output_num_paths_pairs(output_dir,num_paths_df,'PDP')
 
     return df,paths_pdp
+
+def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
+
+    input_nodes_df.columns= input_nodes_df.columns.str.lower()
+
+    all_paths = []
+
+    num_paths_df = pd.DataFrame(columns = ['source_node','target_node','num_paths'])
+
+    term_foldername = term_row['term_label'].replace(" ","_").replace(".","_").replace(":","_").replace("'",'')
+    for i in tqdm(range(len(input_nodes_df))):
+        df_paths = pd.DataFrame()
+        start_node = input_nodes_df.iloc[i].loc['source_label']
+        end_node = input_nodes_df.iloc[i].loc['target_label']
+        node_pair = input_nodes_df.iloc[i]
+        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,
+        search_type,triples_file,input_dir,embedding_dimensions,kg_type,term_row)
+        all_paths.append(cs_shortest_path_df)
+        df_paths['source_node'] = [start_node]
+        df_paths['target_node'] = [end_node]
+        df_paths['num_paths'] = [len(path_nodes)]
+        num_paths_df = pd.concat([num_paths_df,df_paths],axis=0)
+        #Output path list to file where index will match the pair# in the _Input_Nodes_.csv
+        output_path_lists(output_dir,paths_total_cs,term_foldername,i)
+
+    df = pd.concat(all_paths)
+    df.reset_index(drop=True, inplace=True)
+    #Remove duplicate edges
+    df = df.drop_duplicates(subset=['S','P','O'])
+
+    output_num_paths_pairs(output_dir,num_paths_df,term_foldername)
+
+    return df,paths_total_cs,term_foldername
+

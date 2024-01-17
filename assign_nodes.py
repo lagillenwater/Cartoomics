@@ -32,21 +32,34 @@ def get_label(labels,value,kg_type):
 
 
 # Read in the user example file and output as a pandas dataframe
-def read_user_input(user_example_file):
-	try:
-		examples = pd.read_csv(user_example_file, sep= "|")
-		print(examples.columns)
-	#Check for poorly formatted file
-	except pd.errors.ParserError:
-		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
-		logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
-		sys.exit(1)
-	#Check for extra columns or blank values or absence of source/target columns
-	if (len(examples.columns) != 2) | (examples.isna().values.any()) | (len([item for item in examples.columns if item not in ['source','target']]) > 0):
-		print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
-		logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
-		sys.exit(1)
-	return(examples)
+def read_user_input(user_example_file, guiding_term = False):
+	if guiding_term:
+		examples = pd.read_csv(user_example_file)
+		if len(examples.columns) > 1:
+			print('Error in format of ' + user_example_file + ', ensure that only "term" column exists in each row.')
+			logging.error('Error in format of %s, ensure that only "term" column exists in each row.',user_example_file)
+			sys.exit(1)
+		elif examples.columns[0] != "term":
+			print('Error in format of ' + user_example_file + ', ensure that only "term" column exists in each row.')
+			logging.error('Error in format of %s, ensure that only "term" column exists in each row.',user_example_file)
+			sys.exit(1)
+		return examples
+	
+	elif not guiding_term:
+		try:
+			examples = pd.read_csv(user_example_file, sep= "|")
+			print(examples.columns)
+		#Check for poorly formatted file
+		except pd.errors.ParserError:
+			print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+			logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
+			sys.exit(1)
+		#Check for extra columns or blank values or absence of source/target columns
+		if (len(examples.columns) != 2) | (examples.isna().values.any()) | (len([item for item in examples.columns if item not in ['source','target']]) > 0):
+			print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
+			logging.error('Error in format of %s, ensure that only "source" and "target" columns exist in each row.',user_example_file)
+			sys.exit(1)
+		return(examples)
 
 def read_ocr_input(user_input_file):
     df = pd.read_csv(user_input_file, sep = "\t")
@@ -115,6 +128,7 @@ def map_input_to_nodes(node,kg):
 
 def manage_user_input(found_nodes,user_input,kg):
 
+	user_id_input = 'none'
 	if node_in_search(found_nodes,user_input):
 		#Manage if there are 2 duplicate label names
 		if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
@@ -147,10 +161,12 @@ def manage_user_input(found_nodes,user_input,kg):
 		node_label = ""
 		bad_input = True
 
-	return node_label,bad_input
+	return node_label,bad_input,user_id_input
 
-def search_nodes(nodes, kg, examples):
-	if type(nodes) == list():
+def search_nodes(nodes, kg, examples, guiding_term = False):
+	if guiding_term:
+		examples['term_label'] = ""
+	elif type(nodes) == list():
 		examples["source_label"] = ""
 		examples["target_label"] = ""
 	elif type(nodes) == pd.DataFrame:
@@ -184,12 +200,20 @@ def search_nodes(nodes, kg, examples):
 				found_nodes,nrow = map_input_to_nodes(node,kg)
 				i = 1
 			else:
-				node_label,bad_input = manage_user_input(found_nodes,user_input,kg)
+				node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg)
 
 		logging.info('Node label chosen for %s: %r',node,node_label)
 
-		examples.loc[examples["source"] == node,"source_label"] = node_label
-		examples.loc[examples["target"] == node,"target_label"] = node_label
+		if guiding_term:
+			examples.loc[examples["term"] == node,"term_label"] = node_label
+			if id_given != 'none':
+				examples.loc[examples["term"] == node,"term_id"] = id_given
+		else:
+			examples.loc[examples["source"] == node,"source_label"] = node_label
+			examples.loc[examples["target"] == node,"target_label"] = node_label
+			if id_given != 'none':
+				examples.loc[examples["source"] == node,"source_id"] = id_given
+				examples.loc[examples["target"] == node,"target_id"] = id_given
 	
 	logging.info('All input nodes searched.')
 	
@@ -241,7 +265,7 @@ def check_input_existence(output_dir,input_type):
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type):
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,input_dir=""):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
 	if(exists[0] == 'false'):
@@ -301,6 +325,12 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 					except KeyError:
 						pass
 				s = search_nodes(u,g,u)
+
+			if input_type == 'guiding_term':
+				#Creates examples df without source_label and target_label
+				u = read_user_input(input_dir+'/Guiding_Terms.csv',True)
+				n = unique_nodes(u)
+				s = search_nodes(n,g,u,True)
 
 			create_input_file(s,output_dir,input_type)
 	else:

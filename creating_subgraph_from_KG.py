@@ -3,15 +3,17 @@ from create_graph import create_graph
 from assign_nodes import interactive_search_wrapper
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
+from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion
 from visualize_subgraph import output_visualization
 from evaluation import *
+from tqdm import tqdm
 
 def main():
 
-    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url= generate_arguments()
+    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,guiding_term = generate_arguments()
 
-    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url)
+    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url,guiding_term)
 
     print("Creating knowledge graph object from inputs.....")
 
@@ -20,6 +22,10 @@ def main():
     print("Mapping between user inputs and KG nodes.......")
     
     s = interactive_search_wrapper(g, input_file, output_dir, input_type,kg_type)
+
+    if guiding_term:
+
+        guiding_term_df = interactive_search_wrapper(g, input_file, output_dir, 'guiding_term', kg_type,input_dir)
 
     print("Mapping complete")
 
@@ -43,6 +49,18 @@ def main():
     print("Outputting PDP visualization......")
 
     pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
+
+    if guiding_term:
+        print("Finding subgraph using user input for Guiding Term(s)......")
+
+        for t in tqdm(range(len(guiding_term_df))):
+            term_row = guiding_term_df.iloc[t]
+
+            subgraph_guiding_term,path_total_guiding_term,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type)
+
+            print("Outputting Guiding Term(s) visualization......")
+
+            pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
 
 if __name__ == '__main__':
     main()
