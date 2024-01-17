@@ -16,6 +16,8 @@ def process_pkl_files(triples_file,labels_file):
 
     labels = pd.read_csv(labels_file, sep = '	', quoting=csv.QUOTE_NONE)
     labels.columns.str.lower()
+    for c in labels.columns:
+        labels[[c]] = labels[[c]]. fillna('None')
 
     #Remove brackets from URI
     labels['entity_uri'] = labels['entity_uri'].str.replace("<","")

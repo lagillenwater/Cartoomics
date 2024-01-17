@@ -230,13 +230,13 @@ def create_input_file(examples,output_dir,input_type):
 
 # Check if the input_nodes file already exists
 def check_input_existence(output_dir,input_type):
-    exists = 'false'
-    mapped_file = ''
-    for fname in os.listdir(output_dir):
-        if bool(re.match("/_" + input_type + "_Input_Nodes_",fname)):
-            exists = 'true'
-            mapped_file = fname
-    return exists,mapped_file
+	exists = 'false'
+	mapped_file = ''
+	for fname in os.listdir(output_dir):
+		if bool(re.match("_" + input_type + "_Input_Nodes_.csv",fname)):
+			exists = 'true'
+			mapped_file = fname
+	return exists,mapped_file
 
 
 
