@@ -232,6 +232,30 @@ def find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,w
 
     return df
 
+#Returns the path as a dataframe of S/P/O of all triples' labels within the path
+def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type,s,manually_chosen_uris):
+
+    node1 = start_node
+    node2 = end_node
+
+    #Add weights if specified
+    if weights:
+        w = graph.es["weight"]
+    else:
+        w = None
+
+    #list of nodes
+    path_nodes = graph.get_shortest_paths(v=node1, to=node2, weights=w, mode=search_type)
+
+    if len(path_nodes[0]) > 0:
+
+        df = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
+
+    else:
+        df = pd.DataFrame()
+
+    return df,manually_chosen_uris
+
 def prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type):
 
     path_nodes = find_all_shortest_paths(start_node,end_node,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
