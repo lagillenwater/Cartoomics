@@ -6,26 +6,34 @@ import pandas as pd
 from tqdm import tqdm
 from evaluation import output_path_lists
 from evaluation import output_num_paths_pairs
-from igraph import * 
+from tqdm import tqdm
 
-def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type):
+def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,manually_chosen_uris):
 
-    input_nodes_df.columns= input_nodes_df.columns.str.lower()
+    input_nodes_df.columns = input_nodes_df.columns.str.lower()
 
     all_paths = []
 
     for i in range(len(input_nodes_df)):
-        start_node = input_nodes_df.iloc[i].loc['source_label']
-        end_node = input_nodes_df.iloc[i].loc['target_label']
-        shortest_path_df = find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type)
-        all_paths.append(shortest_path_df)
+        #If already given uri without file
+        start_node = input_nodes_df.iloc[i].loc['source']
+        end_node = input_nodes_df.iloc[i].loc['target']
+        #start_node = input_nodes_df.iloc[i].loc['source_label']
+        #end_node = input_nodes_df.iloc[i].loc['target_label']
+        shortest_path_df,manually_chosen_uris = find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,input_nodes_df,manually_chosen_uris)
+        if len(shortest_path_df) > 0:
+            all_paths.append(shortest_path_df)
 
-    df = pd.concat(all_paths)
-    df.reset_index(drop=True, inplace=True)
-    #Remove duplicate edges
-    df = df.drop_duplicates(subset=['S','P','O'])
+    if len(all_paths) > 0:
+        df = pd.concat(all_paths)
+        df.reset_index(drop=True, inplace=True)
+        #Remove duplicate edges
+        df = df.drop_duplicates(subset=['S','P','O'])
 
-    return df
+    else:
+        df = pd.DataFrame()
+
+    return df,manually_chosen_uris
 
 def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,manually_chosen_uris):
 
@@ -54,6 +62,7 @@ def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,tripl
 # Have user define weights to upweight
 def user_defined_edge_weights(graph, triples_df,kg_type ):
     if kg_type == 'pkl':
+        #If manually adding edges to remove
         edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
@@ -68,6 +77,8 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
             else:
                 to_weight.append(user_input)
         to_weight = graph.labels_all[graph.labels_all['label'].isin(to_weight)]['entity_uri'].tolist()
+        
+
 
     if kg_type == 'kg-covid19':
         edges = set(list(graph.igraph.es['predicate']))
@@ -89,44 +100,8 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
     return(graph)
 
 # Have user define weights to upweight
-def user_defined_edge_exclusion(graph,kg_type ):
-    if kg_type == 'pkl':
-        edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
-        print("### Unique Edges in Knowledge Graph ###")
-        print('\n'.join(edges))
-        still_adding = True
-        to_drop= []
-        print('\n')
-        print('Input the edges to avoid in the path search (if possible). When finished input "Done."')
-        while(still_adding):
-            user_input = input('Edge or "Done": ')
-            if user_input == 'Done':
-                still_adding = False
-            else:
-                to_drop.append(user_input)
-        to_drop = graph.labels_all[graph.labels_all['label'].isin(to_drop)]['entity_uri'].tolist()
-        
-    if kg_type == 'kg-covid19':
-        edges = set(list(graph.igraph.es['predicate']))
-        print("### Unique Edges in Knowledge Graph ###")
-        print('\n'.join(edges))
-        still_adding = True
-        to_drop= []
-        print('\n')
-        print('Input the edges to avoid in the path search (if possible). When finished input "Done"')
-        while(still_adding):
-            user_input = input('Edge or "Done"')
-            if user_input == 'Done':
-                still_adding = False
-            else:
-                to_drop.append(user_input)
-    for edge in to_drop:
-        graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
-    return(graph)
-
-
-# Edges to remove
-def automatic_defined_edge_exclusion(graph,kg_type):
+def automatic_defined_edge_exclusion(graph,kg_type ):
+    #If not manually adding edges to remove:
     if kg_type == 'pkl':
         to_drop = ['<http://purl.obolibrary.org/obo/RO_0002160>','<http://purl.obolibrary.org/obo/BFO_0000050>','<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>','<http://purl.obolibrary.org/obo/RO_0001025>']
     if kg_type != 'pkl':
@@ -135,6 +110,17 @@ def automatic_defined_edge_exclusion(graph,kg_type):
         graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
     return(graph)
 
+
+def user_defined_node_exclusion(graph,kg_type):
+
+    #If not manually adding edges to remove:
+    if kg_type == 'pkl':
+        to_drop = ['<http://purl.obolibrary.org/obo/RO_0002160>','<http://purl.obolibrary.org/obo/BFO_0000050>','<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>']
+    if kg_type == 'kg-covid19':
+        to_drop = ['MONDO:0000001']
+    for edge in to_drop:
+        graph.igraph.delete_vertices(graph.igraph.vs.select(predicate = node))
+    return(graph)
 
     
 def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
@@ -150,7 +136,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,
-        search_type,triples_file,input_dir,embedding_dimensions,kg_type)
+        search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,input_nodes_df)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -180,7 +166,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
-        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
+        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type,input_nodes_df)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
