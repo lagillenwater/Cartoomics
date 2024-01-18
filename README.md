@@ -27,6 +27,10 @@ py4cytoscape>=1.3.0
 csrgraph>=0.1.28
 nodevectors>=0.1.23
 igraph>=0.9.10
+bioservices>=1.11.2
+fiona>=1.9.5
+geopandas>=0.14.1
+shapely>=2.0.2
 ```
 
 ## Installation
