@@ -141,7 +141,10 @@ def manage_user_input(found_nodes,user_input,kg):
 				for i in range(len(l)):
 					print(str(i+1),': ',l[i])
 				option_input = input("Input option #: ")
-				user_id_input = l[int(option_input)-1]
+				if str(int(option_input)-1) in [str(v) for v in range(len(l))]: 
+					try:
+						user_id_input = l[int(option_input)-1]
+					except IndexError: continue
 				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
