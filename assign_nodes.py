@@ -136,8 +136,11 @@ def manage_user_input(found_nodes,user_input,kg):
 			dup_node = True
 			logging.info('Duplicate label names found: %s',user_input)
 			while(dup_node):
-				user_id_input = input("Input node 'id': ")
-				print(found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist())
+				l = found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist()
+				print('Select from the following options: ')
+				for i in range(len(l)):
+					print(str(i+1),': ',l[i])
+				user_id_input = input("Input node 'entity_uri': ")
 				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
 					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
 					bad_input = False
