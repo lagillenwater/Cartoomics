@@ -206,6 +206,7 @@ cs,pdp
 ├── Inputs
 │   ├── annotated_diagram
 │   │   └── _example_input.csv
+│   ├── GuidingTerm.csv
 │   ├── experimental_data
 │   ├── kg-covid19
 │   │   ├── merged-kg_Triples_Integer_Identifier_Map.tsv
@@ -242,7 +243,12 @@ cs,pdp
     │   ├── Subgraph.csv
     │   ├── Subgraph_Visualization.png
     │   └── Subgraph_attributes.noa
-    ├── annotated_diagram_Input_Nodes_.csv
+    ├── Guiding_Term_<specified_term>
+    │   ├── Subgraph.csv
+    │   ├── Subgraph_Visualization.png
+    │   └── Subgraph_attributes.noa
+    ├── _annotated_diagram_Input_Nodes_.csv
+    ├── _guiding_term_Input_Nodes_.csv
     ├── experimental_data_Input_Nodes_.csv
     └── pathway_ocr_Input_Nodes_.csv
 ```
