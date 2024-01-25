@@ -84,14 +84,14 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
 
     #Update column names for cytoscape
     subgraph_df.columns = ['source','interaction','target']
-    subgraph_attributes_df.columns = ['id','group']
+    subgraph_attributes_df.columns = ['id','index']
 
     p4c.create_network_from_data_frames(subgraph_attributes_df,subgraph_df,title='subgraph')
 
     #Ensure no network exists named subgraph in Cytoscape or you will have to manually override before it can be output
     p4c.set_visual_style('BioPAX_SIF',network='subgraph')
 
-    p4c.set_node_color_mapping(**gen_node_color_map('group', mapping_type='d',style_name='BioPAX_SIF'))
+    p4c.set_node_color_mapping(**gen_node_color_map('index', mapping_type='d',style_name='BioPAX_SIF'))
 
     p4c.set_edge_label_mapping('interaction')
     
