@@ -235,17 +235,17 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
             download_kg19(kg_dir)
         
         existence_dict = {
-            'merged-kg_edges':'false',
-            'merged-kg_nodes':'false'
+            'merged-kg_edges.':'false',
+            'merged-kg_nodes.':'false'
         }
 
 
         for k in list(existence_dict.keys()):
             for fname in os.listdir(kg_dir):
                 if k in fname:
-                    if k == 'merged-kg_edges':
+                    if k == 'merged-kg_edges.':
                         triples_list_file = input_dir + '/' + kg_type + '/' + fname
-                    if k == 'merged-kg_nodes':
+                    if k == 'merged-kg_nodes.':
                         labels_file = input_dir + '/' + kg_type + '/' + fname 
                     existence_dict[k] = 'true'
 
