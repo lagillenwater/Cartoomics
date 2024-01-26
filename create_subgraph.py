@@ -128,7 +128,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
 # Edges to remove
 def automatic_defined_edge_exclusion(graph,kg_type):
     if kg_type == 'pkl':
-        to_drop = ['<http://purl.obolibrary.org/obo/RO_0002160>','<http://purl.obolibrary.org/obo/BFO_0000050>','<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>','<http://purl.obolibrary.org/obo/RO_0001025>']
+        to_drop = ['http://purl.obolibrary.org/obo/RO_0002160','http://purl.obolibrary.org/obo/BFO_0000050','http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.obolibrary.org/obo/RO_0001025']
     if kg_type != 'pkl':
         to_drop = ['biolink:category','biolink:in_taxon']
     for edge in to_drop:
