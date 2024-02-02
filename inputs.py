@@ -43,6 +43,8 @@ def define_arguments():
 
     parser.add_argument("--guiding-term",dest="GuidingTerm",required=False,default=False,help="Search for paths using Guiding Term(s).",type = bool)
 
+    parser.add_argument("--input-substring",dest="InputSubstring",required=False,default='none',help="Substring to use in example_input.")
+
     return parser
 
 # Wrapper function
@@ -61,11 +63,12 @@ def generate_arguments():
     input_type = args.InputType
     pfocr_url = args.PfocrURL
     guiding_term = args.GuidingTerm
+    input_substring = args.InputSubstring
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, guiding_term
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, guiding_term, input_substring
 
 #Define arguments for each required and optional input
 def define_arguments_metapaths():
@@ -138,7 +141,7 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
-def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False):
+def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False, input_substring = 'none'):
 
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
@@ -150,8 +153,13 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
         if len(fname) == 1:
             input_file = [folder + '/' + fname[0]]
         else:
-            raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
-            logging.error('Missing or duplicate file in input directory: _example_input')
+            print(input_substring)
+            if input_substring == 'none':
+                raise Exception('Missing or duplicate file in input directory: ' + '_example_input')
+                logging.error('Missing or duplicate file in input directory: _example_input')
+            else:
+                for i in fname:
+                    if input_substring in i: input_file = [folder + '/' + i]
 
     
     #Search for Pathway OCR diagram input

@@ -9,24 +9,46 @@ def define_arguments():
     parser.add_argument("--wikipathway",dest="wikipathway",required=True,help="Wikipathways ID (e.g., WP5372), there is no default")
     return(parser)
 
-parser = define_arguments()
-args = parser.parse_args()
-wikipathway = args.wikipathway
+def download_wikipathways_edgelist(w_dir,wikipathway):
 
-if not os.path.isdir("wikpathways_graphs"):
-    os.mkdir("wikipathways_graphs")
+    if not os.path.exists(w_dir+"/"+wikipathway):
+        os.makedirs(w_dir+"/"+wikipathway)
 
-os.chdir('./wikipathways_graphs')
+    os.chdir(w_dir+"/"+wikipathway)
 
-if not os.path.isdir(wikipathway):
-    os.mkdir(wikipathway)
+    __all__ = ["WikiPathways"]
+    s = WikiPathways()
 
-os.chdir(wikipathway)
+    graph = runParsePathway(s, wikipathway)
+    
 
-__all__ = ["WikiPathways"]
-s = WikiPathways()
+def convert_wikipathways_input(all_wikipathways_dir,wikipathway):
 
-graph = runParsePathway(s, args.wikipathway)
 
+    wikipathways_edgelist = pd.read_csv(all_wikipathways_dir + '/' + wikipathway + '/' + wikipathway + '_edgeList.csv')
+
+    edgelist_df = wikipathways_edgelist[['Source', 'Target']]
+    edgelist_df = edgelist_df.rename(columns={'Source' : 'source', 'Target': 'target'})
+
+    if not os.path.exists(all_wikipathways_dir+ '/annotated_diagram'):
+        os.makedirs(all_wikipathways_dir+ '/annotated_diagram')
+
+    edgelist_df.to_csv(all_wikipathways_dir + '/annotated_diagram/' + wikipathway + '_example_input.csv',sep='|',index=False)
+
+
+def main():
+
+    parser = define_arguments()
+    args = parser.parse_args()
+    wikipathway = args.wikipathway
+
+    all_wikipathways_dir = os.getcwd() + "/wikipathways_graphs"
+
+    download_wikipathways_edgelist(all_wikipathways_dir,wikipathway)
+
+    convert_wikipathways_input(all_wikipathways_dir,wikipathway)
+
+if __name__ == '__main__':
+    main()
 
 
