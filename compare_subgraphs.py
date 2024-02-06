@@ -14,22 +14,26 @@ import ast
 
 def main():
 
-    parser = define_graphsim_arguments()
-    args = parser.parse_args()
-    wikipathway_diagrams = args.wikipathway_diagrams
+    cosine_similarity,pdp,guiding_term,wikipathway_diagrams = generate_graphsim_arguments() 
 
     #Convert string input to list
     wikipathway_diagrams = ast.literal_eval(wikipathway_diagrams)
 
+    subgraph_types = []
     for p in wikipathway_diagrams:
         #Generates subgraphs of wikipathways graphs once edgelists are already downloaded into corresponding folder wikipathways_graphs/<p>
-        command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + p + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p
-        os.system(command)
+        if cosine_similarity == 'true': 
+            subgraph_types.append('CosineSimilarity')
+        if pdp == 'true':
+            subgraph_types.append('PDP')
+        if guiding_term:
+            subgraph_types.append('GuidingTerm_'+guiding_term)
 
     #Evaluates graph similarity between original edgelist and subgraph generated
-    results_df,w_dir = compare_wikipathways_subgraphs(wikipathway_diagrams)
+    for algorithm in subgraph_types:
+        results_df,w_dir = compare_wikipathways_subgraphs(wikipathway_diagrams,algorithm)
 
-    visualize_graph_metrics(results_df,w_dir)
+        visualize_graph_metrics(results_df,w_dir,algorithm)
 
 if __name__ == '__main__':
     main()
