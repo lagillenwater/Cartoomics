@@ -100,6 +100,28 @@ To run the evaluation script, execute the following command once the subgraph ge
 python evaluate_all_subgraphs.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl
 ```
 
+
+### Command Line Arguments: Subgraph comparison
+  
+This set of command line arguments will enable one to compare the output of pathway diagrams from Wikipathways to those generated with the cartoomics algorithms described above. 
+
+First, run the wikipathway_converter script which will download a pathway diagram (ex: WP554) specified into computer readable format, then convert them into the format expected by the cartoomics algorithm.
+
+```
+python wikipathways_converter.py --wikipathway WIKIPATHWAY
+```
+
+Next, run the compare_subgraph script which will first execute the above creating_subgraph_from_KG.py script for each WIKIPATHWAY specified, then will calculate the following graph similarity metrics over the original edgelist and the subgraph created:
+- Jaccard Similarity
+- Overlap Coefficient
+- Graph Edit Distance 
+
+To run the compare_subgraph script, specify the wikipathway diagrams as a list (ex: "['WP554','WP5373']"):
+
+```
+python compare_subgraphs.py --wikipathway-diagrams WIKIPATHWAY-DIAGRAMS 
+```
+
 **Note that the output-dir should be in quotes, and all subgraph files (described below) must be generated**
  
 

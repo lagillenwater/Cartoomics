@@ -44,8 +44,10 @@ def main():
 
     all_wikipathways_dir = os.getcwd() + "/wikipathways_graphs"
 
+    #Downloads wikipathway diagrams as edgelists
     download_wikipathways_edgelist(all_wikipathways_dir,wikipathway)
 
+    #Converts wikipathway diagram edgelists to format necessary for subgraph generation
     convert_wikipathways_input(all_wikipathways_dir,wikipathway)
 
 if __name__ == '__main__':
