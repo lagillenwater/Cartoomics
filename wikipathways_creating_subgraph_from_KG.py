@@ -23,9 +23,9 @@ def main():
         #Generates subgraphs of wikipathways graphs once edgelists are already downloaded into corresponding folder wikipathways_graphs/<p>
         command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + p + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p
 
-        if cosine_similarity: 
+        if cosine_similarity == 'true': 
             command = command + ' --cosine-similarity True'
-        if pdp:
+        if pdp == 'true':
             command = command + ' --pdp True'
         if guiding_term:
             command = command + ' --guiding-term True'
