@@ -19,5 +19,34 @@
 
 #Command to test guiding term input
 #python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Neuroinflammation  --output-dir ./Test_Data/Outputs_Neuroinflammation --knowledge-graph pkl --input-type annotated_diagram --guiding-term True
-python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Covid19  --output-dir ./Test_Data/Inputs_Covid19 --knowledge-graph kg-covid19 --input-type annotated_diagram --guiding-term True
+#python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Covid19  --output-dir ./Test_Data/Inputs_Covid19 --knowledge-graph kg-covid19 --input-type annotated_diagram --guiding-term True
+
+### testing the converter over an array of wikipathways
+wikipathways=("WP4538" "WP856")
+for str in ${wikipathways[@]}; do
+    echo $str
+#     python wikipathways_converter.py --wikipathway $str
+    python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Neuroinflammation  --output-dir ./Test_Data/Outputs_Neuroinflammation --knowledge-graph pkl --input-type annotated_diagram
+
+done
+
+
+# # Initialize an empty string to hold the formatted elements
+# formatted_string=""
+
+# # Loop through the array
+# for element in "${wikipathways[@]}"; do
+#     # Add single quotes around the element and append it to the formatted string
+#     formatted_string+="'"$element"',"
+# done
+
+# # Remove the trailing comma
+# formatted_string=${formatted_string%,}
+
+# # Add the square brackets at the beginning and end of the string
+# formatted_string="[$formatted_string]"
+
+# echo $formatted_string
+
+# python compare_subgraphs.py --wikipathway-diagrams $formatted_string
 
