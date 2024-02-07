@@ -24,9 +24,9 @@ def main():
         command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + p + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p
 
         if cosine_similarity == 'true': 
-            command = command + ' --cosine-similarity True'
+            command = command + ' --cosine-similarity true'
         if pdp == 'true':
-            command = command + ' --pdp True'
+            command = command + ' --pdp true'
         if guiding_term:
             command = command + ' --guiding-term True'
             
