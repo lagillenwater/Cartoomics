@@ -26,27 +26,29 @@ wikipathways=("WP4538" "WP856")
 for str in ${wikipathways[@]}; do
     echo $str
 #     python wikipathways_converter.py --wikipathway $str
-    python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Neuroinflammation  --output-dir ./Test_Data/Outputs_Neuroinflammation --knowledge-graph pkl --input-type annotated_diagram
+    # python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Neuroinflammation  --output-dir ./Test_Data/Outputs_Neuroinflammation --knowledge-graph pkl --input-type annotated_diagram
+    # python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/$str    '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p --cosine-similarity True --pdf False --guiding-term  False
 
 done
 
 
-# # Initialize an empty string to hold the formatted elements
-# formatted_string=""
+# Initialize an empty string to hold the formatted elements
+formatted_string=""
 
-# # Loop through the array
-# for element in "${wikipathways[@]}"; do
-#     # Add single quotes around the element and append it to the formatted string
-#     formatted_string+="'"$element"',"
-# done
+# Loop through the array
+for element in "${wikipathways[@]}"; do
+    # Add single quotes around the element and append it to the formatted string
+    formatted_string+="'"$element"',"
+done
 
-# # Remove the trailing comma
-# formatted_string=${formatted_string%,}
+# Remove the trailing comma
+formatted_string=${formatted_string%,}
 
-# # Add the square brackets at the beginning and end of the string
-# formatted_string="[$formatted_string]"
+# Add the square brackets at the beginning and end of the string
+formatted_string="[$formatted_string]"
 
-# echo $formatted_string
+echo $formatted_string
 
-# python compare_subgraphs.py --wikipathway-diagrams $formatted_string
+python compare_subgraphs.py --wikipathway-diagrams $formatted_string
+
 
