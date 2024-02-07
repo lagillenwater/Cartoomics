@@ -105,11 +105,10 @@ python evaluate_all_subgraphs.py --input-dir INPUTDIR --output-dir OUTPUTDIR --k
   
 This set of command line arguments will enable one to compare the output of pathway diagrams from Wikipathways to those generated with the cartoomics algorithms described above. 
 
-First, run the wikipathway_converter script which will download a pathway diagram (ex: WP554) specified into computer readable format, then convert them into the format expected by the cartoomics algorithm. As an alternative, run the wikipathways_converter script with the pathway figure OCR (PFOCR) url linking to a wikipathway annotated figure within the [PFCOR list of annotated figures](https://pfocr.wikipathways.org/browse/wikipathways.html) (e.g., https://pfocr.wikipathways.org/figures/PMC5883377__CN-16-151_F1B.html ). 
+First, run the wikipathway_converter script which will download a pathway diagram (ex: WP554) specified into computer readable format, then convert them into the format expected by the cartoomics algorithm. 
 
 ```
 python wikipathways_converter.py --wikipathway WIKIPATHWAY 
-python wikipathways_converter.py --pfocr_url PFOCR_URL
 ```
 
 Next, run the compare_subgraph script which will first execute the above creating_subgraph_from_KG.py script for each WIKIPATHWAY specified, then will calculate the following graph similarity metrics over the original edgelist and the subgraph created:
