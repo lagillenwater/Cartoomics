@@ -22,20 +22,20 @@
 #python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Covid19  --output-dir ./Test_Data/Inputs_Covid19 --knowledge-graph kg-covid19 --input-type annotated_diagram --guiding-term True
 
 ### testing the converter over an array of wikipathways
-wikipathways=("WP4538" "WP856")
-for str in ${wikipathways[@]}; do
-    echo $str
+wikipathways=("WP4562" "WP5368")
+# for str in ${wikipathways[@]}; do
 #     python wikipathways_converter.py --wikipathway $str
-    # python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Neuroinflammation  --output-dir ./Test_Data/Outputs_Neuroinflammation --knowledge-graph pkl --input-type annotated_diagram
-    # python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/$str    '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p --cosine-similarity True --pdf False --guiding-term  False
+# done
 
-done
+# for str in ${wikipathways[@]}; do
 
-
+#     python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/$str  --knowledge-graph pkl --input-type annotated_diagram  --cosine-similarity false --pdp true --input-substring $str
+# done
+    
 # Initialize an empty string to hold the formatted elements
 formatted_string=""
 
-# Loop through the array
+# Loop through the arrays
 for element in "${wikipathways[@]}"; do
     # Add single quotes around the element and append it to the formatted string
     formatted_string+="'"$element"',"
@@ -48,7 +48,8 @@ formatted_string=${formatted_string%,}
 formatted_string="[$formatted_string]"
 
 echo $formatted_string
-
+python wikipathways_creating_subgraph_from_KG.py --wikipathway-diagrams $formatted_string
 python compare_subgraphs.py --wikipathway-diagrams $formatted_string
+
 
 
