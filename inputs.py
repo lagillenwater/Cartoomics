@@ -5,6 +5,7 @@ import logging.config
 from pythonjsonlogger import jsonlogger
 import pandas as pd
 from urllib.request import urlretrieve
+import sys
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -81,6 +82,7 @@ def generate_arguments():
     if pdp not in ['true', 'false']:
         parser.print_help()
         sys.exit(1)
+    
 
     return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring
 
