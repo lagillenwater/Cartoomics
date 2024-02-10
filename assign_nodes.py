@@ -8,6 +8,19 @@ import logging.config
 from pythonjsonlogger import jsonlogger
 import itertools
 import numpy as np
+import requests
+import json
+import copy
+
+from constants import (
+	WIKIPATHWAYS_SUBFOLDER,
+	WIKIPATHWAYS_METADATA_FILESTRING,
+	PKL_PREFIXES,
+	NODE_PREFIX_MAPPINGS,
+	NODE_NORMALIZER_URL,
+	PKL_GENE_URI,
+	PKL_OBO_URI
+)
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -328,12 +341,10 @@ def search_nodes(nodes, kg, examples, guiding_term = False):
 
 		if guiding_term:
 			examples.loc[examples["term"] == node,"term_label"] = node_label
-			#if id_given != 'none':
 			examples.loc[examples["term"] == node,"term_id"] = id_given
 		else:
 			examples.loc[examples["source"] == node,"source_label"] = node_label
 			examples.loc[examples["target"] == node,"target_label"] = node_label
-			#if id_given != 'none':
 			examples.loc[examples["source"] == node,"source_id"] = id_given
 			examples.loc[examples["target"] == node,"target_id"] = id_given
 	
@@ -388,6 +399,60 @@ def check_input_existence(output_dir,input_type):
 			mapped_file = fname
 	return exists,mapped_file
 
+def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
+
+	for fname in os.listdir(wikipathway_input_folder):
+		if WIKIPATHWAYS_METADATA_FILESTRING in fname:
+			df = pd.read_csv(wikipathway_input_folder + "/" + fname,sep=',')
+	
+	database = df.loc[df['textlabel'] == node]['database'].values[0]
+	database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
+
+	if database != "Unknown":
+		prefix = NODE_PREFIX_MAPPINGS[database]
+		node_curie = prefix + ":" + database_id
+
+		if kg_type == 'kg_covid19':
+			return node_curie
+
+		if kg_type == 'pkl':
+			normalized_node = normalize_node_api(node_curie)
+			normalized_node_uri = convert_to_uri(normalized_node)
+			return normalized_node_uri
+
+	else:
+		return node
+
+def convert_to_uri(curie):
+
+	if 'gene' in curie.lower():
+		uri = PKL_GENE_URI + curie.split(":")[1]
+	
+	else:
+		uri = PKL_OBO_URI + curie.replace(":","_")
+
+	return uri
+
+	
+def normalize_node_api(node_curie):
+
+	url = NODE_NORMALIZER_URL + node_curie
+
+	# Make the HTTP request to NodeNormalizer
+	response = requests.get(url, timeout=30)
+	response.raise_for_status()
+
+	# Write response to file if it contains data
+	entries = response.json()[node_curie]
+	if len(entries) > 1: #.strip().split("\n")
+		for iden in entries['equivalent_identifiers']:
+			if iden['identifier'].split(':')[0] in PKL_PREFIXES:
+				norm_node = iden['identifier']
+				print(norm_node)
+				return norm_node
+	
+	else:
+		return node_curie
 
 
 # Wrapper function
@@ -402,8 +467,31 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				#Creates examples df without source_label and target_label
 				u = read_user_input(user_input_file[0])
 				n = unique_nodes(u)
-				
-				s = search_nodes(n,g,u)
+				#For wikipathways diagram, search for metadata file for matches
+				if WIKIPATHWAYS_SUBFOLDER in output_dir:
+					print('output_dir: ',output_dir)
+					wikipathway_input_folder = output_dir.split("_output")[0]
+					for node in n:
+						node_uri = get_wikipathway_id(node,wikipathway_input_folder,kg_type)
+						try:
+							node_label = get_label(g.labels_all,node_uri,kg_type)
+							s = copy.deepcopy(u)
+							s.loc[s["source"] == node,"source_label"] = node_label
+							s.loc[s["target"] == node,"target_label"] = node_label
+							s.loc[s["source"] == node,"source_id"] = node_uri
+							s.loc[s["target"] == node,"target_id"] = node_uri
+							print('s for wiki: ')
+							print(s)
+
+							####
+
+							#Need to handle not searching for nodes in s that have already been indexed at this point
+
+							####
+						except IndexError:
+							s = search_nodes(n,g,u)
+				else:
+					s = search_nodes(n,g,u)
 			if input_type == 'pathway_ocr':
 				#List of entities that are already mapped to identifiers
 				n = {}
