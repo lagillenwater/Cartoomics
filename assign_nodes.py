@@ -291,70 +291,59 @@ def manage_user_input(found_nodes,user_input,kg,exact_match):
 
 	return node_label,bad_input,user_id_input
 
-def search_nodes(nodes, kg, examples, guiding_term = False):
-	if guiding_term:
-		examples['term_label'] = ""
-	elif type(nodes) == list():
-		examples["source_label"] = ""
-		examples["target_label"] = ""
-	elif type(nodes) == pd.DataFrame:
-		d = nodes.loc[nodes['source_label'] == '']
-		nodes = unique_nodes(d[['source']])
+def search_node(node, kg, examples, guiding_term = False):
 
 	vals_per_page = 20
 
-	#Search by node in list
-	for node in nodes:
-		logging.info('Searching for node: %s',node)
-		bad_input = True
-		found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
-		if exact_match:
-			node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,kg,exact_match)
-		else:
-			i = 1
-			while(bad_input):
-				high = min(nrow,(i)*vals_per_page)
-				print(found_nodes.iloc[(i-1)*vals_per_page:high,].to_string())
-				user_input = input("Input node 'label' or 'f' for the next " + str(vals_per_page) + " features, 'b' for the previous " + str(vals_per_page) + ", or 'u' to update the node search term: ")
-				if user_input == 'f':
-					if (nrow / i ) > vals_per_page:
-						i+=1
-				elif user_input == 'b':
-					if i > 1:
-						i-=1
-				elif user_input == 'u':
-					#Will replace the original node label in examples file with new one
-					examples = examples.replace([node],'REPLACE')
-					node = input("Input new node search term: ")
-					logging.info('Input new node search term: %s.',node)
-					examples = examples.replace(['REPLACE'],node)
-					found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
-					i = 1
-				else:
-					node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg,exact_match)
+	logging.info('Searching for node: %s',node)
+	bad_input = True
+	found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
+	if exact_match:
+		node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,kg,exact_match)
+	else:
+		i = 1
+		while(bad_input):
+			high = min(nrow,(i)*vals_per_page)
+			print(found_nodes.iloc[(i-1)*vals_per_page:high,].to_string())
+			user_input = input("Input node 'label' or 'f' for the next " + str(vals_per_page) + " features, 'b' for the previous " + str(vals_per_page) + ", or 'u' to update the node search term: ")
+			if user_input == 'f':
+				if (nrow / i ) > vals_per_page:
+					i+=1
+			elif user_input == 'b':
+				if i > 1:
+					i-=1
+			elif user_input == 'u':
+				#Will replace the original node label in examples file with new one
+				examples = examples.replace([node],'REPLACE')
+				node = input("Input new node search term: ")
+				logging.info('Input new node search term: %s.',node)
+				examples = examples.replace(['REPLACE'],node)
+				found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
+				i = 1
+			else:
+				node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg,exact_match)
 
-		logging.info('Node label chosen for %s: %r',node,node_label)
-		if exact_match:
-			#Update node label to be identical to given node
-			node_label = node
-			logging.info('Exact match found, using original label %s',node_label)
+	logging.info('Node label chosen for %s: %r',node,node_label)
+	if exact_match:
+		#Update node label to be identical to given node
+		node_label = node
+		logging.info('Exact match found, using original label %s',node_label)
 
-		if guiding_term:
-			examples.loc[examples["term"] == node,"term_label"] = node_label
-			examples.loc[examples["term"] == node,"term_id"] = id_given
-		else:
-			examples.loc[examples["source"] == node,"source_label"] = node_label
-			examples.loc[examples["target"] == node,"target_label"] = node_label
-			examples.loc[examples["source"] == node,"source_id"] = id_given
-			examples.loc[examples["target"] == node,"target_id"] = id_given
-	
-	#Replace any nan in _id columns with "not_needed"
-	#examples = examples.astype(str)
-	#for c in examples.columns:
-	#	examples[c] = examples[c].replace('nan','not_needed')
-	logging.info('All input nodes searched.')
-	
-	return(examples)
+	return node_label,id_given,examples
+
+
+def create_annotated_df(examples,node,node_label,id_given,guiding_term):
+
+	if guiding_term:
+		examples.loc[examples["term"] == node,"term_label"] = node_label
+		examples.loc[examples["term"] == node,"term_id"] = id_given
+	else:
+		examples.loc[examples["source"] == node,"source_label"] = node_label
+		examples.loc[examples["target"] == node,"target_label"] = node_label
+		examples.loc[examples["source"] == node,"source_id"] = id_given
+		examples.loc[examples["target"] == node,"target_id"] = id_given
+
+	return examples
 
 
 # Check if search input is in the list of integer_ids
@@ -448,7 +437,6 @@ def normalize_node_api(node_curie):
 		for iden in entries['equivalent_identifiers']:
 			if iden['identifier'].split(':')[0] in PKL_PREFIXES:
 				norm_node = iden['identifier']
-				print(norm_node)
 				return norm_node
 	
 	else:
@@ -469,29 +457,24 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				n = unique_nodes(u)
 				#For wikipathways diagram, search for metadata file for matches
 				if WIKIPATHWAYS_SUBFOLDER in output_dir:
-					print('output_dir: ',output_dir)
 					wikipathway_input_folder = output_dir.split("_output")[0]
 					for node in n:
 						node_uri = get_wikipathway_id(node,wikipathway_input_folder,kg_type)
 						try:
+							#If uri exist in PKL use that
 							node_label = get_label(g.labels_all,node_uri,kg_type)
-							s = copy.deepcopy(u)
-							s.loc[s["source"] == node,"source_label"] = node_label
-							s.loc[s["target"] == node,"target_label"] = node_label
-							s.loc[s["source"] == node,"source_id"] = node_uri
-							s.loc[s["target"] == node,"target_id"] = node_uri
-							print('s for wiki: ')
-							print(s)
-
-							####
-
-							#Need to handle not searching for nodes in s that have already been indexed at this point
-
-							####
+							examples = create_annotated_df(u,node,node_label,node_uri,False)
+							logging.info('Found node id for %r: %s',node,node_uri)
 						except IndexError:
-							s = search_nodes(n,g,u)
+							#Otherwise perform search through graph
+							node_label,id_given,examples = search_node(node,g,u)
+							examples = create_annotated_df(examples,node,node_label,id_given,False)
+					logging.info('All input nodes searched.')
 				else:
-					s = search_nodes(n,g,u)
+					for node in n:
+						node_label,id_given,examples = search_node(node,g,u)
+						examples = create_annotated_df(examples,node,node_label,id_given,False)
+					logging.info('All input nodes searched.')
 			if input_type == 'pathway_ocr':
 				#List of entities that are already mapped to identifiers
 				n = {}
@@ -539,21 +522,27 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						u.at[i,'target_label'] = n[u.iloc[i].loc['target']]
 					except KeyError:
 						pass
-				s = search_nodes(u,g,u)
+				for node in n:
+					node_label,id_given,examples = search_node(node,g,u)
+					examples = create_annotated_df(examples,node,node_label,id_given,False)
+				logging.info('All input nodes searched.')
 
 			if input_type == 'guiding_term':
 				#Creates examples df without source_label and target_label
 				u = read_user_input(input_dir+'/Guiding_Terms.csv',True)
 				n = unique_nodes(u)
-				s = search_nodes(n,g,u,True)
+				for node in n:
+					node_label,id_given,examples = search_node(node,g,u,True)
+					examples = create_annotated_df(examples,node,node_label,id_given,True)
+				logging.info('All input nodes searched.')
 
-			create_input_file(s,output_dir,input_type)
+			create_input_file(examples,output_dir,input_type)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
 		mapped_file = output_dir + '/'+ exists[1]
-		s = pd.read_csv(mapped_file, sep = "|")
+		examples = pd.read_csv(mapped_file, sep = "|")
 		logging.info('Node mapping file: %s',mapped_file)
-	return(s)
+	return(examples)
 
                               
