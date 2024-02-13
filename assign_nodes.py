@@ -15,7 +15,7 @@ import copy
 from constants import (
 	WIKIPATHWAYS_SUBFOLDER,
 	WIKIPATHWAYS_METADATA_FILESTRING,
-	WIKIPATHWAYS_PREFIX,
+	WIKIPATHWAYS_UNKNOWN_PREFIXES,
 	PKL_PREFIXES,
 	NODE_PREFIX_MAPPINGS,
 	NODE_NORMALIZER_URL,
@@ -273,7 +273,7 @@ def manage_user_input(found_nodes,user_input,kg,exact_match):
 					else:
 						print("Input id does not correspond with selected label.... try again")
 						logging.info('Input id does not correspond with selected label: %s',user_id_input)
-					
+
 			else:
 				node_label = user_input
 				bad_input = False
@@ -399,7 +399,7 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 		database = df.loc[df['textlabel'] == node]['database'].values[0]
 		database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
 
-		if (database.lower() != "unknown") and (database.lower() != WIKIPATHWAYS_PREFIX.lower()):
+		if database not in WIKIPATHWAYS_UNKNOWN_PREFIXES:
 			prefix = NODE_PREFIX_MAPPINGS[database]
 			node_curie = prefix + ":" + database_id
 
