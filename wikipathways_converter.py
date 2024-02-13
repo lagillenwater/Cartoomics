@@ -41,6 +41,8 @@ def download_wikipathways_edgelist(w_dir,wikipathway):
     s = WikiPathways()
 
     graph = runParsePathway(s, wikipathway)
+
+    print(graph)
     
 
 def convert_wikipathways_input(all_wikipathways_dir,wikipathway):
@@ -64,10 +66,11 @@ def main():
     wikipathway = args.wikipathway
     pfocr_url = args.pfocr_url
 
-    all_wikipathways_dir = os.getcwd() + "/wikipathways_graphs"
-
     #Gets wikpathway from pfocr_url
-    wikipathway = get_wikipathway_from_pfocr_url(pfocr_url)
+    if pfocr_url:
+        wikipathway = get_wikipathway_from_pfocr_url(pfocr_url)
+        
+    all_wikipathways_dir = os.getcwd() + "/wikipathways_graphs"
     
     #Downloads wikipathway diagrams as edgelists
     download_wikipathways_edgelist(all_wikipathways_dir,wikipathway)

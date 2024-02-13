@@ -395,22 +395,29 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 		if WIKIPATHWAYS_METADATA_FILESTRING in fname:
 			df = pd.read_csv(wikipathway_input_folder + "/" + fname,sep=',')
 	
-	database = df.loc[df['textlabel'] == node]['database'].values[0]
-	database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
+	try:
+		database = df.loc[df['textlabel'] == node]['database'].values[0]
+		database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
 
-	if (database != "Unknown") and (database != WIKIPATHWAYS_PREFIX):
-		prefix = NODE_PREFIX_MAPPINGS[database]
-		node_curie = prefix + ":" + database_id
+		if (database.lower() != "unknown") and (database.lower() != WIKIPATHWAYS_PREFIX.lower()):
+			prefix = NODE_PREFIX_MAPPINGS[database]
+			node_curie = prefix + ":" + database_id
 
-		if kg_type == 'kg_covid19':
-			return node_curie
+			if kg_type == 'kg_covid19':
+				return node_curie
 
-		if kg_type == 'pkl':
-			normalized_node = normalize_node_api(node_curie)
-			normalized_node_uri = convert_to_uri(normalized_node)
-			return normalized_node_uri
+			if kg_type == 'pkl':
+				normalized_node = normalize_node_api(node_curie)
+				normalized_node_uri = convert_to_uri(normalized_node)
+				return normalized_node_uri
 
-	else:
+		#Handle case where node type is unknown
+		else:
+			logging.info('Input node type: %s, indexing manually',database)
+			return node
+	#Handle case where node is not in metadata file
+	except IndexError:
+		logging.info('Input node not in database metadata file: %s, indexing manually',wikipathway_input_folder + "/" + fname)
 		return node
 
 def convert_to_uri(curie):
