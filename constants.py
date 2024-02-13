@@ -2,6 +2,7 @@
 
 WIKIPATHWAYS_SUBFOLDER = 'wikipathways_graphs'
 WIKIPATHWAYS_METADATA_FILESTRING = '_datanodeDF.csv'
+WIKIPATHWAYS_PREFIX = 'Wikipathways'
 NODE_PREFIX_MAPPINGS = {
     'Ensembl' : 'Ensembl',
     'HMDB' : 'HMDB',

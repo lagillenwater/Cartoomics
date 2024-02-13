@@ -15,6 +15,7 @@ import copy
 from constants import (
 	WIKIPATHWAYS_SUBFOLDER,
 	WIKIPATHWAYS_METADATA_FILESTRING,
+	WIKIPATHWAYS_PREFIX,
 	PKL_PREFIXES,
 	NODE_PREFIX_MAPPINGS,
 	NODE_NORMALIZER_URL,
@@ -397,7 +398,7 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 	database = df.loc[df['textlabel'] == node]['database'].values[0]
 	database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
 
-	if database != "Unknown":
+	if (database != "Unknown") and (database != WIKIPATHWAYS_PREFIX):
 		prefix = NODE_PREFIX_MAPPINGS[database]
 		node_curie = prefix + ":" + database_id
 
