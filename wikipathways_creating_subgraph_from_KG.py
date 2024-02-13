@@ -11,6 +11,9 @@ from graph_similarity_metrics import *
 import argparse
 import ast
 
+from constants import (
+    WIKIPATHWAYS_SUBFOLDER
+)
 
 def main():
 
@@ -21,14 +24,14 @@ def main():
 
     for p in wikipathway_diagrams:
         #Generates subgraphs of wikipathways graphs once edgelists are already downloaded into corresponding folder wikipathways_graphs/<p>
-        command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + p + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p
+        command = 'python creating_subgraph_from_KG.py --input-dir ./' + WIKIPATHWAYS_SUBFOLDER + ' --output-dir ./' + WIKIPATHWAYS_SUBFOLDER + '/' + p + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + p
 
         if cosine_similarity == 'true': 
             command = command + ' --cosine-similarity true'
         if pdp == 'true':
             command = command + ' --pdp true'
         if guiding_term:
-            command = command + ' --guiding-term True'
+            command = command + ' --guiding-term'
             
         os.system(command)
         

@@ -1,3 +1,25 @@
+"""Constants"""
+
+WIKIPATHWAYS_SUBFOLDER = 'wikipathways_graphs'
+WIKIPATHWAYS_METADATA_FILESTRING = '_datanodeDF.csv'
+WIKIPATHWAYS_PREFIX = 'WikiPathways'
+NODE_PREFIX_MAPPINGS = {
+    'Ensembl' : 'Ensembl',
+    'HMDB' : 'HMDB',
+    'Entrez Gene' : 'NCBIGene',
+    'KEGG Compound' : 'KEGG.COMPOUND',
+    'PubChem-compound' : 'PUBCHEM.COMPOUND',
+    'Uniprot-TrEMBL' : 'UniProtKB',
+    'HGNC' : 'HGNC'
+}
+
+
+NODE_NORMALIZER_URL = 'https://nodenormalization-sri.renci.org/1.4/get_normalized_nodes?curie='
+
+PKL_PREFIXES = ['NCBIGene','CHEBI']
+PKL_GENE_URI = 'http://www.ncbi.nlm.nih.gov/gene/'
+PKL_OBO_URI = 'http://purl.obolibrary.org/obo/'
+
 """Constants for prefix mappings."""
 
 #PKL
