@@ -8,6 +8,21 @@ import logging.config
 from pythonjsonlogger import jsonlogger
 import itertools
 import numpy as np
+import requests
+import json
+import copy
+import csv
+
+from constants import (
+	WIKIPATHWAYS_SUBFOLDER,
+	WIKIPATHWAYS_METADATA_FILESTRING,
+	WIKIPATHWAYS_UNKNOWN_PREFIXES,
+	PKL_PREFIXES,
+	NODE_PREFIX_MAPPINGS,
+	NODE_NORMALIZER_URL,
+	PKL_GENE_URI,
+	PKL_OBO_URI
+)
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -82,112 +97,220 @@ def unique_nodes(examples):
 #			ontology	specific ontology to restrict search of nodes
 
 def find_node(node, kg, ontology = ""):
-	nodes = kg.labels_all
-	### Check for exact matches first
+
+	no_match = True
+
+	### Check for exact matches and return only those
+	matches,exact_match,no_match = exact_match_identification(kg.labels_all,node)
+
+	#Do not continue if match found
+	if not no_match:
+		return matches,exact_match
+
+	### For genes check for exact matches by appending (human)
+	matches,exact_match,no_match = exact_gene_match_identification(kg.labels_all,node)
+	#Do not continue if match found
+	if not no_match:
+		return matches,exact_match
+
+	### Check for exact matches in synonym and return only those
+	matches,exact_match,no_match = exact_synonym_match_identification(kg.labels_all,node)
+	#Do not continue if match found
+	if not no_match:
+		return matches,exact_match
+
+	### Fuzzy match
+	matches,exact_match,no_match = fuzzy_match_identification(kg.labels_all,node)
+	#Do not continue if match found
+	if not no_match:
+		return matches,exact_match
+
+def exact_match_identification(nodes,node):
+
+	### Check for exact matches and return only those
 	exact_matches = nodes[(nodes["label"].str.lower() == node.lower())|(nodes["entity_uri"].str.lower() == node.lower())][["label", "entity_uri"]]
+	
+	if len(exact_matches) == 1:
+		#Return node label if exact match is identified
+		node_label = exact_matches.iloc[0][["label"]].values[0]
+		exact_match = True
+		no_match = False
+		return node_label,exact_match,no_match
+	#Return full df of exact matches if more than 1
+	if len(exact_matches) > 1:
+		exact_match = False
+		no_match = False
+		return exact_matches,exact_match,no_match
+
+	#Return flag if no exact matches
+	else:
+		no_match = True
+		return "","",no_match
+
+def exact_gene_match_identification(nodes,node):
+
+	### For genes check for exact matches by appending (human)
+	human_gene_match = node.lower() + " (human)"
+	exact_gene_matches = nodes[(nodes["label"].str.lower() == human_gene_match)][["label", "entity_uri"]]
+	
+	if len(exact_gene_matches) == 1:
+		#Return node label if exact match is identified
+		node_label = exact_gene_matches.iloc[0][["label"]].values[0]
+		exact_gene_match = True
+		no_match = False
+		return node_label,exact_gene_match,no_match
+	if len(exact_gene_matches) > 1:
+		exact_gene_match = False
+		no_match = False
+		return exact_gene_matches,exact_gene_match,no_match
+
+	#Return flag if no exact matches
+	else:
+		no_match = True
+		return "","",no_match
+
+def exact_synonym_match_identification(nodes,node):
+
+	### Check for exact matches in synonym and return only those, don't assume nodes with special characters is a regex
+	exact_synonym_matches = nodes[nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)][["label", "entity_uri", "synonym"]]
+	if len(exact_synonym_matches) > 0:
+		for i in range(len(exact_synonym_matches)):
+			synonym_list = exact_synonym_matches.iloc[i].loc["synonym"].split("|")
+			synonym_match = [i for i in synonym_list if i.lower() == node.lower()]
+			if len(synonym_match) == 1:
+				node_label = exact_synonym_matches.iloc[i][["label"]].values[0]
+				exact_match = True
+				no_match = False
+				return node_label,exact_match,no_match
+
+	if len(exact_synonym_matches) > 0:
+		exact_match = False
+		no_match = False
+		return exact_synonym_matches,exact_match,no_match
+
+	#Return flag if no exact matches
+	else:
+		no_match = True
+		return "","",no_match
+
+def fuzzy_match_identification(nodes,node):
 
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
 	if node.isupper(): #likely a gene or protein
-		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["label", "entity_uri"]]
-		#Remove exact matches from this df
-		results = results[(~results.label.isin(exact_matches.label))]
+		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False,regex=False) ][["label", "entity_uri"]]
 	else:
-		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri"]]
-		#Remove exact matches from this df
-		results = results[(~results.label.isin(exact_matches.label))]
+		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)][["label", "entity_uri"]]
 
         # sort results by ontology
 	results = results.sort_values(['entity_uri'])
 
-        #Concat both dfs so that exact matches are presented first
-	all_results = pd.concat([exact_matches, results], axis=0)
+	no_match = False
+	exact_match = False
+	return results, exact_match, no_match
 
-	return(all_results)
-                
-
-# Create a list of nodes for input
-
-# Could potentially find several features for a single input example. Need a way to be able to select multiple feaures for a search. 
-# Need a way to go back through search terms. 
-
-def map_input_to_nodes(node,kg):
+def map_input_to_nodes(node,kg,enable_skipping):
 
 	search_loop = True
+	exact_match = False
 	while(search_loop):
 		print("User Search Node: ", node)
-		found_nodes = find_node(node,kg)
-		nrow = found_nodes.shape[0]
-		if nrow == 0:
-			print("No search terms returned")
-			node = input("Please try another input term: ")
-		else:
+		found_nodes,exact_match = find_node(node,kg)
+		#Handle when node label is returned for exact match, which will be a string not a df
+		if isinstance(found_nodes, str):
 			search_loop = False	
+			nrow = 1
+			logging.info('Found exact match in KG')
+		#Do not require more user input when enable skipping true
+		elif enable_skipping:
+			nrow = found_nodes.shape[0]
+			print("No exact search terms returned, skipping enabled")
+			logging.info("No exact search terms returned, skipping enabled")
+			return found_nodes,nrow,exact_match
+		else:	
+			nrow = found_nodes.shape[0]
+			if nrow == 0:
+				print("No search terms returned")
+				node = input("Please try another input term: ")
+			else:
+				search_loop = False	
 	print("Found", nrow, "features in KG")
 	logging.info('Found %s features in KG',nrow)
 
-	return found_nodes,nrow
+	return found_nodes,nrow,exact_match
 
-def manage_user_input(found_nodes,user_input,kg):
+def manage_user_input(found_nodes,user_input,kg,exact_match):
 
-	user_id_input = 'none'
-	if node_in_search(found_nodes,user_input):
-		#Manage if there are 2 duplicate label names
-		if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
-			dup_node = True
-			logging.info('Duplicate label names found: %s',user_input)
-			while(dup_node):
-				l = found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist()
-				print('Select from the following options: ')
-				for i in range(len(l)):
-					print(str(i+1),': ',l[i])
-				option_input = input("Input option #: ")
-				if str(int(option_input)-1) in [str(v) for v in range(len(l))]: 
-					try:
-						user_id_input = l[int(option_input)-1]
-					except IndexError: continue
-				if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
-					node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
-					bad_input = False
-					dup_node = False
-					logging.info('ID chosen: %s',user_id_input)
 
-				else:
-					print("Input id does not correspond with selected label.... try again")
-					logging.info('Input id does not correspond with selected label: %s',user_id_input)
-				
-		else:
-			node_label = user_input
-			bad_input = False
-			dup_node = False
-
-	elif node_in_labels(kg,user_input):
-		node_label= user_input
+	#Only continue search if node_label match not found according to exact_match flag
+	if exact_match:
+		node_label = found_nodes
+		user_id_input = kg.labels_all.loc[kg.labels_all['label'] == node_label]['entity_uri'].values[0]
 		bad_input = False
+	
 	else:
-		print("Input not in search results.... try again")
-		logging.info('Input not in search results: %s',user_input)
-		node_label = ""
-		bad_input = True
+		user_id_input = 'none'
+		if node_in_search(found_nodes,user_input):
+			#Manage if there are 2 duplicate label names
+			if len(found_nodes[found_nodes['label'] == user_input][['label','entity_uri']]) > 1:
+				dup_node = True
+				logging.info('Duplicate label names found: %s',user_input)
+				while(dup_node):
+					#Get all uris with the duplicate labels
+					l = found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist()
+					print('Select from the following options: ')
+					#Show options as numeric, ask for numeric return
+					for i in range(len(l)):
+						print(str(i+1),': ',l[i])
+					option_input = input("Input option #: ")
+					if str(int(option_input)-1) in [str(v) for v in range(len(l))]: 
+						try:
+							#Return the actualy uri not the numeric entry
+							user_id_input = l[int(option_input)-1]
+						except IndexError: continue
+					#Convert uri back to label and store as node_label
+					if user_id_input in found_nodes[found_nodes['label'] == user_input]['entity_uri'].values.tolist():
+						node_label = kg.labels_all.loc[kg.labels_all['entity_uri'] == user_id_input,'label'].values[0]
+						bad_input = False
+						dup_node = False
+						logging.info('ID chosen: %s',user_id_input)
+
+					else:
+						print("Input id does not correspond with selected label.... try again")
+						logging.info('Input id does not correspond with selected label: %s',user_id_input)
+
+			else:
+				node_label = user_input
+				bad_input = False
+				dup_node = False
+
+		elif node_in_labels(kg,user_input):
+			node_label= user_input
+			#Still return node ID even if not needed
+			user_id_input = found_nodes[found_nodes['label'] == user_input]['entity_uri'][0]
+			bad_input = False
+		else:
+			print("Input not in search results.... try again")
+			logging.info('Input not in search results: %s',user_input)
+			node_label = ""
+			bad_input = True
 
 	return node_label,bad_input,user_id_input
 
-def search_nodes(nodes, kg, examples, guiding_term = False):
-	if guiding_term:
-		examples['term_label'] = ""
-	elif type(nodes) == list():
-		examples["source_label"] = ""
-		examples["target_label"] = ""
-	elif type(nodes) == pd.DataFrame:
-		d = nodes.loc[nodes['source_label'] == '']
-		nodes = unique_nodes(d[['source']])
+def search_node(node, kg, examples, enable_skipping, guiding_term = False):
 
 	vals_per_page = 20
+	skip_node = False
 
-	#Search by node in list
-	for node in nodes:
-		logging.info('Searching for node: %s',node)
-		bad_input = True
-		found_nodes,nrow = map_input_to_nodes(node,kg)
+	logging.info('Searching for node: %s',node)
+	bad_input = True
+	found_nodes,nrow,exact_match = map_input_to_nodes(node,kg,enable_skipping)
+	if exact_match:
+		node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,kg,exact_match)
+	elif not exact_match and enable_skipping:
+		skip_node = True
+		node_label = ''
+		id_given = ''
+	else:
 		i = 1
 		while(bad_input):
 			high = min(nrow,(i)*vals_per_page)
@@ -205,31 +328,32 @@ def search_nodes(nodes, kg, examples, guiding_term = False):
 				node = input("Input new node search term: ")
 				logging.info('Input new node search term: %s.',node)
 				examples = examples.replace(['REPLACE'],node)
-				found_nodes,nrow = map_input_to_nodes(node,kg)
+				found_nodes,nrow,exact_match = map_input_to_nodes(node,kg,enable_skipping)
 				i = 1
 			else:
-				node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg)
+				node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg,exact_match)
 
-		logging.info('Node label chosen for %s: %r',node,node_label)
+	logging.info('Node label chosen for %s: %r',node,node_label)
+	if exact_match:
+		#Update node label to be identical to given node
+		node_label = node
+		logging.info('Exact match found, using original label %s',node_label)
 
-		if guiding_term:
-			examples.loc[examples["term"] == node,"term_label"] = node_label
-			if id_given != 'none':
-				examples.loc[examples["term"] == node,"term_id"] = id_given
-		else:
-			examples.loc[examples["source"] == node,"source_label"] = node_label
-			examples.loc[examples["target"] == node,"target_label"] = node_label
-			if id_given != 'none':
-				examples.loc[examples["source"] == node,"source_id"] = id_given
-				examples.loc[examples["target"] == node,"target_id"] = id_given
-	
-	#Replace any nan in _id columns with "not_needed"
-	examples = examples.astype(str)
-	for c in examples.columns:
-		examples[c] = examples[c].replace('nan','not_needed')
-	logging.info('All input nodes searched.')
-	
-	return(examples)
+	return node_label,id_given,examples,skip_node
+
+
+def create_annotated_df(examples,node,node_label,id_given,guiding_term):
+
+	if guiding_term:
+		examples.loc[examples["term"] == node,"term_label"] = node_label
+		examples.loc[examples["term"] == node,"term_id"] = id_given
+	else:
+		examples.loc[examples["source"] == node,"source_label"] = node_label
+		examples.loc[examples["target"] == node,"target_label"] = node_label
+		examples.loc[examples["source"] == node,"source_id"] = id_given
+		examples.loc[examples["target"] == node,"target_id"] = id_given
+
+	return examples
 
 
 # Check if search input is in the list of integer_ids
@@ -262,24 +386,107 @@ def create_input_file(examples,output_dir,input_type):
 	
 	examples.to_csv(input_file, sep = "|", index = False)
 
-
+#Takes in a list of skipped nodes for a given pathway
+def create_skipped_node_file(skipped_nodes,output_dir):
+	#Only output file if nodes are skipped
+	if len(skipped_nodes) > 0:
+		skipped_node_file = output_dir+"/skipped_nodes.csv"
+		logging.info('Skipped file created: %s',skipped_node_file)
+		
+		e = open(skipped_node_file,"a")
+		writer = csv.writer(e, delimiter="\t")
+		for n in skipped_nodes:
+			writer.writerow([n])
+		e.close()
 
 # Check if the input_nodes file already exists
 def check_input_existence(output_dir,input_type):
 	exists = 'false'
 	mapped_file = ''
+	print(output_dir)
 	for fname in os.listdir(output_dir):
 		if bool(re.match("_" + input_type + "_Input_Nodes_.csv",fname)):
 			exists = 'true'
 			mapped_file = fname
 	return exists,mapped_file
 
+def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
+
+	for fname in os.listdir(wikipathway_input_folder):
+		if WIKIPATHWAYS_METADATA_FILESTRING in fname:
+			df = pd.read_csv(wikipathway_input_folder + "/" + fname,sep=',')
+	
+	try:
+		database = df.loc[df['textlabel'] == node]['database'].values[0]
+		database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
+
+		if database not in WIKIPATHWAYS_UNKNOWN_PREFIXES:
+			#Chebi nodes have full cure given as ID
+			if database.lower() == 'chebi':
+				node_curie = database_id
+			else:
+				prefix = NODE_PREFIX_MAPPINGS[database]
+				#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
+				node_curie = prefix + ":" + str(database_id)
+			
+			if kg_type == 'kg_covid19':
+				return node_curie
+
+			if kg_type == 'pkl':
+				normalized_node = normalize_node_api(node_curie)
+				normalized_node_uri = convert_to_uri(normalized_node)
+				return normalized_node_uri
+
+		#Handle case where node type is unknown
+		else:
+			logging.info('Input node type: %s, indexing manually',database)
+			return node
+	#Handle case where node is not in metadata file
+	except IndexError:
+		logging.info('Input node not in database metadata file: %s, indexing manually',wikipathway_input_folder + "/" + fname)
+		return node
+
+def convert_to_uri(curie):
+
+	if 'gene' in curie.lower():
+		uri = PKL_GENE_URI + curie.split(":")[1]
+	
+	else:
+		uri = PKL_OBO_URI + curie.replace(":","_")
+
+	return uri
+
+	
+def normalize_node_api(node_curie):
+
+	url = NODE_NORMALIZER_URL + node_curie
+
+	# Make the HTTP request to NodeNormalizer
+	response = requests.get(url, timeout=30)
+	response.raise_for_status()
+
+	# Write response to file if it contains data
+	entries = response.json()[node_curie]
+	try:
+		if len(entries) > 1: #.strip().split("\n")
+			for iden in entries['equivalent_identifiers']:
+				if iden['identifier'].split(':')[0] in PKL_PREFIXES:
+					norm_node = iden['identifier']
+					return norm_node
+	#Handle case where node normalizer returns nothing
+	except TypeError:
+		return node_curie
+	
+	else:
+		return node_curie
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,input_dir=""):
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,enable_skipping,input_dir=""):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
+	if enable_skipping:
+		skipped_nodes = []
 	if(exists[0] == 'false'):
 			print('Interactive Node Search')
 			logging.info('Interactive Node Search')
@@ -288,7 +495,41 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				#Creates examples df without source_label and target_label
 				u = read_user_input(user_input_file[0])
 				n = unique_nodes(u)
-				s = search_nodes(n,g,u)
+				#For wikipathways diagram, search for metadata file for matches
+				if WIKIPATHWAYS_SUBFOLDER in output_dir:
+					wikipathway_input_folder = output_dir.split("_output")[0]
+					for node in n:
+						node_uri = get_wikipathway_id(node,wikipathway_input_folder,kg_type)
+						try:
+							#Ensure uri exist in PKL
+							node_label = get_label(g.labels_all,node_uri,kg_type)
+							#Use original label for graph similarity
+							examples = create_annotated_df(u,node,node,node_uri,False)
+							logging.info('Found node id for %r: %s',node,node_uri)
+						except IndexError:
+							#Otherwise perform search through graph
+							node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
+							#Only add node to examples df if not skipped
+							if not skip_node:
+								examples = create_annotated_df(examples,node,node_label,id_given,False)
+							#Drop any triples that contain that node
+							elif skip_node:
+								examples.drop(examples[examples['source'] == node].index, inplace = True)
+								examples.drop(examples[examples['target'] == node].index, inplace = True)
+								skipped_nodes.append(node)
+					logging.info('All input nodes searched.')
+				else:
+					for node in n:
+						node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
+						#Only add node to examples df if not skipped
+						if not skip_node:
+							examples = create_annotated_df(examples,node,node_label,id_given,False)
+						#Drop any triples that contain that node
+						elif skip_node:
+							examples.drop(examples[examples['source'] == node].index, inplace = True)
+							examples.drop(examples[examples['target'] == node].index, inplace = True)
+							skipped_nodes.append(node)
+					logging.info('All input nodes searched.')
 			if input_type == 'pathway_ocr':
 				#List of entities that are already mapped to identifiers
 				n = {}
@@ -336,21 +577,42 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						u.at[i,'target_label'] = n[u.iloc[i].loc['target']]
 					except KeyError:
 						pass
-				s = search_nodes(u,g,u)
+				for node in n:
+					node_label,id_given,examples = search_node(node,g,u)
+					#Only add node to examples df if not skipped
+					if not skip_node:
+						examples = create_annotated_df(examples,node,node_label,id_given,False)
+					#Drop any triples that contain that node
+					elif skip_node:
+						examples.drop(examples[examples['source'] == node].index, inplace = True)
+						examples.drop(examples[examples['target'] == node].index, inplace = True)
+						skipped_nodes.append(node)
+				logging.info('All input nodes searched.')
 
 			if input_type == 'guiding_term':
 				#Creates examples df without source_label and target_label
 				u = read_user_input(input_dir+'/Guiding_Terms.csv',True)
 				n = unique_nodes(u)
-				s = search_nodes(n,g,u,True)
+				for node in n:
+					node_label,id_given,examples = search_node(node,g,u,True)
+					#Only add node to examples df if not skipped
+					if not skip_node:
+						examples = create_annotated_df(examples,node,node_label,id_given,True)
+					#Drop any triples that contain that node
+					elif skip_node:
+						examples.drop(examples[examples['source'] == node].index, inplace = True)
+						examples.drop(examples[examples['target'] == node].index, inplace = True)
+						skipped_nodes.append(node)
+				logging.info('All input nodes searched.')
 
-			create_input_file(s,output_dir,input_type)
+			create_input_file(examples,output_dir,input_type)
+			create_skipped_node_file(skipped_nodes,output_dir)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
 		mapped_file = output_dir + '/'+ exists[1]
-		s = pd.read_csv(mapped_file, sep = "|")
+		examples = pd.read_csv(mapped_file, sep = "|")
 		logging.info('Node mapping file: %s',mapped_file)
-	return(s)
+	return(examples)
 
                               
