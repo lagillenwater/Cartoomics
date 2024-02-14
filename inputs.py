@@ -50,6 +50,8 @@ def define_arguments():
 
     parser.add_argument("--input-substring",dest="InputSubstring",required=False,default='none',help="Substring to use in example_input.")
 
+    parser.add_argument("--enable-skipping",dest="EnableSkipping",required=False,default=False,help="Enables option to skip nodes when exact match or synonym is not found.",type=bool)
+
     return parser
 
 # Wrapper function
@@ -71,6 +73,7 @@ def generate_arguments():
     pdp = args.PDP
     guiding_term = args.GuidingTerm
     input_substring = args.InputSubstring
+    enable_skipping = args.EnableSkipping
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -84,7 +87,7 @@ def generate_arguments():
         sys.exit(1)
     
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping
 
 #Define arguments for each required and optional input
 def define_arguments_metapaths():

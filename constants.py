@@ -12,7 +12,7 @@ NODE_PREFIX_MAPPINGS = {
     'Uniprot-TrEMBL' : 'UniProtKB',
     'HGNC' : 'HGNC'
 }
-WIKIPATHWAYS_UNKNOWN_PREFIXES = ['Unknown',WIKIPATHWAYS_PREFIX,'Pfam']
+WIKIPATHWAYS_UNKNOWN_PREFIXES = ['Unknown',WIKIPATHWAYS_PREFIX,'Pfam','Wikidata','InterPro','Enzyme Nomenclature']
 
 
 NODE_NORMALIZER_URL = 'https://nodenormalization-sri.renci.org/1.4/get_normalized_nodes?curie='

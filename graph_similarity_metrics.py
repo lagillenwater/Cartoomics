@@ -25,14 +25,42 @@ logging.config.fileConfig(log_config[0], disable_existing_loggers=False, default
 
 def define_graphsim_arguments():
     parser=argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
     ## Required inputs
+    parser.add_argument("--knowledge-graph",dest="KG",required=True,help="Knowledge Graph: either 'pkl' for PheKnowLator or 'kg-covid19' for KG-Covid19")
+
+    ## Optional inputs
+    parser.add_argument("--embedding-dimensions",dest="EmbeddingDimensions",required=False,default=128,help="EmbeddingDimensions")
+
+    parser.add_argument("--weights",dest="Weights",required=False,help="Weights", type = bool, default = False)
+
+    parser.add_argument("--search-type",dest="SearchType",required=False,default='all',help="SearchType")
+
+    parser.add_argument("--pdp-weight",dest="PdpWeight",required=False,default=0.4,help="PdpWeight")
+
+    parser.add_argument("--input-type",dest="InputType",required=True,help="InputType: either 'annotated_diagram','pathway_ocr', or 'experimental_data'")
+
+    parser.add_argument("--pfocr_url",dest="PfocrURL",required=False, help="The URL for the PFOCR annotated figure (example, 'https://pfocr.wikipathways.org/figures/PMC5095497__IMM-149-423-g007.html'")
+
     parser.add_argument("--cosine-similarity",dest="CosineSimilarity",required=False,default='true',help="Search for paths using Cosine Similarity.",type = str)
 
     parser.add_argument("--pdp",dest="PDP",required=False,default='true',help="Search for paths using PDP.",type = str)
     
-    parser.add_argument("--guiding-term",dest="GuidingTerm",required=False,help="Search for paths using Guiding Term specified.",type = str)
+    parser.add_argument("--guiding-term",dest="GuidingTerm",required=False,default=False,help="Search for paths using Guiding Term(s).",type = bool)
 
-    parser.add_argument("--wikipathway-diagrams",dest="wikipathway_diagrams",required=True,help="List of wikipathway diagrams to evaluate, example input '['WP554','WP5373']'")
+    parser.add_argument("--input-substring",dest="InputSubstring",required=False,default='none',help="Substring to use in example_input.")
+    
+    ###CHECK THIS ONE
+    #parser.add_argument("--guiding-term",dest="GuidingTerm",required=False,help="Search for paths using Guiding Term specified.",type = str)
+
+    ## Required inputs for wikipathways diagrams
+    parser.add_argument("--wikipathways",dest="Wikipathways",required=False,help="List of Wikipathways IDs (example input: '['WP5372']'), there is no default")
+    
+    parser.add_argument("--pfocr_urls",dest="PfocrUrls",required=False,help="List of pfocr urls (e.g., '['https://pfocr.wikipathways.org/figures/PMC6943888__40035_2019_179_Fig1_HTML.html']'), there is no default")
+    
+    parser.add_argument("--pfocr-urls-file",dest="PfocrUrlsFile",required=False,default=False,help="Specifies existance of file with list of pfocr urls",type=bool)
+
+    parser.add_argument("--enable-skipping",dest="EnableSkipping",required=False,default=False,help="Enables option to skip nodes when exact match or synonym is not found.",type=bool)
 
     return(parser)
 
@@ -42,10 +70,21 @@ def generate_graphsim_arguments():
     #Generate argument parser and define arguments
     parser = define_graphsim_arguments()
     args = parser.parse_args()
+    kg_type = args.KG
+    embedding_dimensions = args.EmbeddingDimensions
+    weights = args.Weights
+    search_type = args.SearchType
+    pdp_weight = args.PdpWeight
+    input_type = args.InputType
     cosine_similarity = args.CosineSimilarity
     pdp = args.PDP
     guiding_term = args.GuidingTerm
-    wikipathway_diagrams = args.wikipathway_diagrams
+    input_substring = args.InputSubstring
+
+    wikipathways = args.Wikipathways
+    pfocr_urls = args.PfocrUrls
+    pfocr_urls_file = args.PfocrUrlsFile
+    enable_skipping = args.EnableSkipping
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -58,7 +97,81 @@ def generate_graphsim_arguments():
         parser.print_help()
         sys.exit(1)
 
-    return cosine_similarity,pdp,guiding_term,wikipathway_diagrams
+    return kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping
+
+#Same as get_graph_files except does not get input example file, done later, and no pfocr_url or experimental dataset is possible
+def get_wikipathways_graph_files(input_dir,kg_type,input_type, guiding_term = False, input_substring = 'none'):
+
+    #Search for annotated diagram input
+    if input_type == 'annotated_diagram':
+        folder = input_dir+'/annotated_diagram'
+        if not os.path.isdir(folder):
+            raise Exception('Missing folder input directory: ' + folder)
+            logging.error('Missing folder input directory: ' + folder)
+        
+    #Check for existence of guiding_terms file only
+    if guiding_term:
+        guiding_term_file = input_dir + '/Guiding_Terms.csv'
+        if not os.path.isfile(guiding_term_file):
+            raise Exception('Missing file in input directory: ' + guiding_term_file)
+            logging.error('Missing file in input directory: ' + guiding_term_file)
+
+    if kg_type == "pkl":
+        kg_dir = input_dir + '/' + kg_type + '/'
+        if not os.path.exists(kg_dir):
+            os.mkdir(kg_dir)
+        if len(os.listdir(kg_dir)) < 2:
+            download_pkl(kg_dir)
+
+
+        existence_dict = {
+            'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':'false',
+            'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':'false',
+        }
+        
+        
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(kg_dir):
+                if k in fname:
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_Triples_Identifiers':
+                        triples_list_file = input_dir + '/' + kg_type + '/' + fname
+                    if k == 'PheKnowLator_v3.0.2_full_instance_relationsOnly_OWLNETS_NodeLabels':
+                        labels_file = input_dir + '/' + kg_type + '/' + fname
+                    existence_dict[k] = 'true'
+    
+    if kg_type == "kg-covid19":
+        kg_dir = input_dir + '/' + kg_type + '/'
+        if not os.path.exists(kg_dir):
+            os.mkdir(kg_dir)
+        if len(os.listdir(kg_dir)) < 2:
+            download_kg19(kg_dir)
+        
+        existence_dict = {
+            'merged-kg_edges.':'false',
+            'merged-kg_nodes.':'false'
+        }
+
+
+        for k in list(existence_dict.keys()):
+            for fname in os.listdir(kg_dir):
+                if k in fname:
+                    if k == 'merged-kg_edges.':
+                        triples_list_file = input_dir + '/' + kg_type + '/' + fname
+                    if k == 'merged-kg_nodes.':
+                        labels_file = input_dir + '/' + kg_type + '/' + fname 
+                    existence_dict[k] = 'true'
+
+    #Check for existence of all necessary files, error if not
+
+    #### Add exception
+    for k in existence_dict:
+        if existence_dict[k] == 'false':
+            raise Exception('Missing file in input directory: ' + k)
+            logging.error('Missing file in input directory: %s',k)
+            
+
+    return triples_list_file,labels_file
+
 
 #Creates igraph object and a list of nodes
 def create_igraph_graph(edgelist_df,edgelist_type):

@@ -11,6 +11,7 @@ import numpy as np
 import requests
 import json
 import copy
+import csv
 
 from constants import (
 	WIKIPATHWAYS_SUBFOLDER,
@@ -170,10 +171,9 @@ def exact_gene_match_identification(nodes,node):
 
 def exact_synonym_match_identification(nodes,node):
 
-	### Check for exact matches in synonym and return only those
-	exact_synonym_matches = nodes[nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri", "synonym"]]
+	### Check for exact matches in synonym and return only those, don't assume nodes with special characters is a regex
+	exact_synonym_matches = nodes[nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)][["label", "entity_uri", "synonym"]]
 	if len(exact_synonym_matches) > 0:
-		#exact_synonym_matches['exact_synonym'] = nodes[nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)][["synonym"]]
 		for i in range(len(exact_synonym_matches)):
 			synonym_list = exact_synonym_matches.iloc[i].loc["synonym"].split("|")
 			synonym_match = [i for i in synonym_list if i.lower() == node.lower()]
@@ -197,11 +197,9 @@ def fuzzy_match_identification(nodes,node):
 
 	### All caps input is probably a gene or protein. Either search in a case sensitive manner or assign to specific ontology.
 	if node.isupper(): #likely a gene or protein
-		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False) ][["label", "entity_uri"]]
-		#Remove exact matches from this df
-		results = results[(~results.label.isin(exact_matches.label))]
+		results = nodes[(nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)) & nodes["entity_uri"].str.contains("gene|PR|GO",flags=re.IGNORECASE, na = False,regex=False) ][["label", "entity_uri"]]
 	else:
-		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False)][["label", "entity_uri"]]
+		results = nodes[nodes["label"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["synonym"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)|nodes["description/definition"].str.contains(node,flags=re.IGNORECASE, na = False,regex=False)][["label", "entity_uri"]]
 
         # sort results by ontology
 	results = results.sort_values(['entity_uri'])
@@ -210,7 +208,7 @@ def fuzzy_match_identification(nodes,node):
 	exact_match = False
 	return results, exact_match, no_match
 
-def map_input_to_nodes(node,kg):
+def map_input_to_nodes(node,kg,enable_skipping):
 
 	search_loop = True
 	exact_match = False
@@ -222,6 +220,12 @@ def map_input_to_nodes(node,kg):
 			search_loop = False	
 			nrow = 1
 			logging.info('Found exact match in KG')
+		#Do not require more user input when enable skipping true
+		elif enable_skipping:
+			nrow = found_nodes.shape[0]
+			print("No exact search terms returned, skipping enabled")
+			logging.info("No exact search terms returned, skipping enabled")
+			return found_nodes,nrow,exact_match
 		else:	
 			nrow = found_nodes.shape[0]
 			if nrow == 0:
@@ -292,15 +296,20 @@ def manage_user_input(found_nodes,user_input,kg,exact_match):
 
 	return node_label,bad_input,user_id_input
 
-def search_node(node, kg, examples, guiding_term = False):
+def search_node(node, kg, examples, enable_skipping, guiding_term = False):
 
 	vals_per_page = 20
+	skip_node = False
 
 	logging.info('Searching for node: %s',node)
 	bad_input = True
-	found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
+	found_nodes,nrow,exact_match = map_input_to_nodes(node,kg,enable_skipping)
 	if exact_match:
 		node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,kg,exact_match)
+	elif not exact_match and enable_skipping:
+		skip_node = True
+		node_label = ''
+		id_given = ''
 	else:
 		i = 1
 		while(bad_input):
@@ -319,7 +328,7 @@ def search_node(node, kg, examples, guiding_term = False):
 				node = input("Input new node search term: ")
 				logging.info('Input new node search term: %s.',node)
 				examples = examples.replace(['REPLACE'],node)
-				found_nodes,nrow,exact_match = map_input_to_nodes(node,kg)
+				found_nodes,nrow,exact_match = map_input_to_nodes(node,kg,enable_skipping)
 				i = 1
 			else:
 				node_label,bad_input,id_given = manage_user_input(found_nodes,user_input,kg,exact_match)
@@ -330,7 +339,7 @@ def search_node(node, kg, examples, guiding_term = False):
 		node_label = node
 		logging.info('Exact match found, using original label %s',node_label)
 
-	return node_label,id_given,examples
+	return node_label,id_given,examples,skip_node
 
 
 def create_annotated_df(examples,node,node_label,id_given,guiding_term):
@@ -377,12 +386,24 @@ def create_input_file(examples,output_dir,input_type):
 	
 	examples.to_csv(input_file, sep = "|", index = False)
 
-
+#Takes in a list of skipped nodes for a given pathway
+def create_skipped_node_file(skipped_nodes,output_dir):
+	#Only output file if nodes are skipped
+	if len(skipped_nodes) > 0:
+		skipped_node_file = output_dir+"/skipped_nodes.csv"
+		logging.info('Skipped file created: %s',skipped_node_file)
+		
+		e = open(skipped_node_file,"a")
+		writer = csv.writer(e, delimiter="\t")
+		for n in skipped_nodes:
+			writer.writerow([n])
+		e.close()
 
 # Check if the input_nodes file already exists
 def check_input_existence(output_dir,input_type):
 	exists = 'false'
 	mapped_file = ''
+	print(output_dir)
 	for fname in os.listdir(output_dir):
 		if bool(re.match("_" + input_type + "_Input_Nodes_.csv",fname)):
 			exists = 'true'
@@ -400,9 +421,14 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 		database_id = df.loc[df['textlabel'] == node]['databaseID'].values[0]
 
 		if database not in WIKIPATHWAYS_UNKNOWN_PREFIXES:
-			prefix = NODE_PREFIX_MAPPINGS[database]
-			node_curie = prefix + ":" + database_id
-
+			#Chebi nodes have full cure given as ID
+			if database.lower() == 'chebi':
+				node_curie = database_id
+			else:
+				prefix = NODE_PREFIX_MAPPINGS[database]
+				#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
+				node_curie = prefix + ":" + str(database_id)
+			
 			if kg_type == 'kg_covid19':
 				return node_curie
 
@@ -441,20 +467,26 @@ def normalize_node_api(node_curie):
 
 	# Write response to file if it contains data
 	entries = response.json()[node_curie]
-	if len(entries) > 1: #.strip().split("\n")
-		for iden in entries['equivalent_identifiers']:
-			if iden['identifier'].split(':')[0] in PKL_PREFIXES:
-				norm_node = iden['identifier']
-				return norm_node
+	try:
+		if len(entries) > 1: #.strip().split("\n")
+			for iden in entries['equivalent_identifiers']:
+				if iden['identifier'].split(':')[0] in PKL_PREFIXES:
+					norm_node = iden['identifier']
+					return norm_node
+	#Handle case where node normalizer returns nothing
+	except TypeError:
+		return node_curie
 	
 	else:
 		return node_curie
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,input_dir=""):
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,enable_skipping,input_dir=""):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
+	if enable_skipping:
+		skipped_nodes = []
 	if(exists[0] == 'false'):
 			print('Interactive Node Search')
 			logging.info('Interactive Node Search')
@@ -469,19 +501,34 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 					for node in n:
 						node_uri = get_wikipathway_id(node,wikipathway_input_folder,kg_type)
 						try:
-							#If uri exist in PKL use that
+							#Ensure uri exist in PKL
 							node_label = get_label(g.labels_all,node_uri,kg_type)
-							examples = create_annotated_df(u,node,node_label,node_uri,False)
+							#Use original label for graph similarity
+							examples = create_annotated_df(u,node,node,node_uri,False)
 							logging.info('Found node id for %r: %s',node,node_uri)
 						except IndexError:
 							#Otherwise perform search through graph
-							node_label,id_given,examples = search_node(node,g,u)
-							examples = create_annotated_df(examples,node,node_label,id_given,False)
+							node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
+							#Only add node to examples df if not skipped
+							if not skip_node:
+								examples = create_annotated_df(examples,node,node_label,id_given,False)
+							#Drop any triples that contain that node
+							elif skip_node:
+								examples.drop(examples[examples['source'] == node].index, inplace = True)
+								examples.drop(examples[examples['target'] == node].index, inplace = True)
+								skipped_nodes.append(node)
 					logging.info('All input nodes searched.')
 				else:
 					for node in n:
-						node_label,id_given,examples = search_node(node,g,u)
-						examples = create_annotated_df(examples,node,node_label,id_given,False)
+						node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
+						#Only add node to examples df if not skipped
+						if not skip_node:
+							examples = create_annotated_df(examples,node,node_label,id_given,False)
+						#Drop any triples that contain that node
+						elif skip_node:
+							examples.drop(examples[examples['source'] == node].index, inplace = True)
+							examples.drop(examples[examples['target'] == node].index, inplace = True)
+							skipped_nodes.append(node)
 					logging.info('All input nodes searched.')
 			if input_type == 'pathway_ocr':
 				#List of entities that are already mapped to identifiers
@@ -532,7 +579,14 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						pass
 				for node in n:
 					node_label,id_given,examples = search_node(node,g,u)
-					examples = create_annotated_df(examples,node,node_label,id_given,False)
+					#Only add node to examples df if not skipped
+					if not skip_node:
+						examples = create_annotated_df(examples,node,node_label,id_given,False)
+					#Drop any triples that contain that node
+					elif skip_node:
+						examples.drop(examples[examples['source'] == node].index, inplace = True)
+						examples.drop(examples[examples['target'] == node].index, inplace = True)
+						skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
 
 			if input_type == 'guiding_term':
@@ -541,10 +595,18 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				n = unique_nodes(u)
 				for node in n:
 					node_label,id_given,examples = search_node(node,g,u,True)
-					examples = create_annotated_df(examples,node,node_label,id_given,True)
+					#Only add node to examples df if not skipped
+					if not skip_node:
+						examples = create_annotated_df(examples,node,node_label,id_given,True)
+					#Drop any triples that contain that node
+					elif skip_node:
+						examples.drop(examples[examples['source'] == node].index, inplace = True)
+						examples.drop(examples[examples['target'] == node].index, inplace = True)
+						skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
 
 			create_input_file(examples,output_dir,input_type)
+			create_skipped_node_file(skipped_nodes,output_dir)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
