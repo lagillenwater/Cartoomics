@@ -11,7 +11,7 @@ import argparse
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
-
+from inputs import *
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -103,18 +103,18 @@ def generate_graphsim_arguments():
 def get_wikipathways_graph_files(input_dir,kg_type,input_type, guiding_term = False, input_substring = 'none'):
 
     #Search for annotated diagram input
-    if input_type == 'annotated_diagram':
-        folder = input_dir+'/annotated_diagram'
-        if not os.path.isdir(folder):
-            raise Exception('Missing folder input directory: ' + folder)
-            logging.error('Missing folder input directory: ' + folder)
+    # if input_type == 'annotated_diagram':
+    #     folder = input_dir+'/annotated_diagram'
+    #     if not os.path.isdir(folder):
+    #         raise Exception('Missing folder input directory: ' + folder)
+    #         logging.error('Missing folder input directory: ' + folder)
         
-    #Check for existence of guiding_terms file only
-    if guiding_term:
-        guiding_term_file = input_dir + '/Guiding_Terms.csv'
-        if not os.path.isfile(guiding_term_file):
-            raise Exception('Missing file in input directory: ' + guiding_term_file)
-            logging.error('Missing file in input directory: ' + guiding_term_file)
+    # #Check for existence of guiding_terms file only
+    # if guiding_term:
+    #     guiding_term_file = input_dir + '/Guiding_Terms.csv'
+    #     if not os.path.isfile(guiding_term_file):
+    #         raise Exception('Missing file in input directory: ' + guiding_term_file)
+    #         logging.error('Missing file in input directory: ' + guiding_term_file)
 
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
