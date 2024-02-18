@@ -3,7 +3,7 @@ Bootstrap: docker
 From: continuumio/miniconda3
 
 %files
-    /gpfs/alpine1/scratch/lgillenwater@xsede.org/Cartoomics/environment.yml
+    environment.yml
 
 %post
     /opt/conda/bin/conda env create -f environment.yml
