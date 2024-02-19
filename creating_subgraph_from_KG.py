@@ -1,6 +1,6 @@
 from inputs import *
 from create_graph import create_graph
-from assign_nodes import interactive_search_wrapper
+from assign_nodes import interactive_search_wrapper, skip_self_loops
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
@@ -22,6 +22,9 @@ def main():
     print("Mapping between user inputs and KG nodes.......")
     
     s = interactive_search_wrapper(g, input_file, output_dir, input_type,kg_type,enable_skipping)
+
+    #For skipping self loops
+    s = skip_self_loops(s)
 
     if guiding_term:
 

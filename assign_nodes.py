@@ -606,7 +606,9 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				logging.info('All input nodes searched.')
 
 			create_input_file(examples,output_dir,input_type)
-			create_skipped_node_file(skipped_nodes,output_dir)
+			#Creates a skipped_node file per input diagram
+			if enable_skipping:
+				create_skipped_node_file(skipped_nodes,output_dir)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
