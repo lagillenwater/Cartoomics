@@ -617,10 +617,10 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 		logging.info('Node mapping file: %s',mapped_file)
 	return(examples)
 
-    ## dropping a row in the case of self loops
+## dropping a row in the case of self loops based on node ID
 def skip_self_loops(input_df):
     for i in range(len(input_df)):
-        if input_df.loc[i,"source"] == input_df.loc[i,"target"]:
+        if input_df.loc[i,"source_id"] == input_df.loc[i,"target_id"]:
             input_df.drop([i], axis = 0, inplace = True)
 
     return(input_df)
