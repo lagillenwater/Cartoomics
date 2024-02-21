@@ -10,7 +10,8 @@ NODE_PREFIX_MAPPINGS = {
     'KEGG Compound' : 'KEGG.COMPOUND',
     'PubChem-compound' : 'PUBCHEM.COMPOUND',
     'Uniprot-TrEMBL' : 'UniProtKB',
-    'HGNC' : 'HGNC'
+    'HGNC' : 'HGNC',
+    'ChEBI' : 'CHEBI'
 }
 WIKIPATHWAYS_UNKNOWN_PREFIXES = ['Unknown',WIKIPATHWAYS_PREFIX,'Pfam','Wikidata','InterPro','Enzyme Nomenclature']
 

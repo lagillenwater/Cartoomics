@@ -422,12 +422,12 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 
 		if database not in WIKIPATHWAYS_UNKNOWN_PREFIXES:
 			#Chebi nodes have full cure given as ID
-			if database.lower() == 'chebi':
-				node_curie = database_id
-			else:
-				prefix = NODE_PREFIX_MAPPINGS[database]
-				#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
-				node_curie = prefix + ":" + str(database_id)
+			if database.lower() == 'chebi' and 'chebi' in database_id.lower():
+				database_id = database_id.split(':')[1]
+			
+			prefix = NODE_PREFIX_MAPPINGS[database]
+			#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
+			node_curie = prefix + ":" + str(database_id)
 			
 			if kg_type == 'kg_covid19':
 				return node_curie
