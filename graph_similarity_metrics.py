@@ -211,7 +211,6 @@ def create_networkx_graph(edgelist_df,edgelist_type):
         edgelist_df = edgelist_df[['Source',  'Target', 'edgeID']]
         edgelist_df = edgelist_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})
 
-
     g = nx.from_pandas_edgelist(edgelist_df, 'S', 'O')
 
     return g
@@ -234,21 +233,22 @@ def overlap_sim(g1,g2):
 
     return o
 
-def compare_wikipathways_subgraphs(wikipathway_diagrams,subgraph_type):
+def compare_wikipathways_subgraphs(wikipathway_diagrams,subgraph_type,all_wikipathways_dir):
 
     all_subgraph_types = []
     pathways = []
     jaccard = []
     overlap = []
     edit = []
-    for p in wikipathway_diagrams:
+    for wikipathway in wikipathway_diagrams:
 
-        w_file = os.getcwd() + '/wikipathways_graphs/' + p + '/' + p + '_edgeList.csv'
-        w_dir = os.getcwd() + '/wikipathways_graphs'
+        w_file = all_wikipathways_dir + '/' + wikipathway + '/' + wikipathway + '_edgeList.csv'
 
+        output_dir = all_wikipathways_dir + '/' + wikipathway + '_output/'
+        subgraph_file_path = subgraph_type + '/Subgraph.csv'
+        
         #Subgraph type must be CosineSimilarity, PDP, or GuidingTerm_<specified_term> to match current output structure
-        w_subgraph_file = os.getcwd() + '/wikipathways_graphs/' + p + '_output/' + subgraph_type + '/Subgraph.csv'
-
+        w_subgraph_file = output_dir + subgraph_file_path
 
         df_1 = pd.read_csv(w_file,sep=',')
         df_2 = pd.read_csv(w_subgraph_file,sep='|')
@@ -279,25 +279,25 @@ def compare_wikipathways_subgraphs(wikipathway_diagrams,subgraph_type):
     results_df['Overlap'] = overlap
     results_df['Edit Distance'] = edit
 
-    results_file = os.getcwd() + '/wikipathways_graphs/'+'Graph_Similarity_Metrics.csv'
+    results_file = all_wikipathways_dir + '/Graph_Similarity_Metrics.csv'
     results_df.to_csv(results_file,sep=',',index=False)
     logging.info('Created graph similarity metrics csv file: %s',results_file)
 
-    return results_df,w_dir
+    return results_df
 
 #Generates histogram with N number of categories by pathway, where lists are the input
 def visualize_graph_metrics(df,w_dir,subgraph_type):
     
     ax = df.plot(x="Pathway", y=['Jaccard','Overlap'], kind="bar", rot=0)
     plt.title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type,fontsize = 18)
-    plt_file = w_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Jaccard_Overlap.png'
+    plt_file = all_wikipathways_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Jaccard_Overlap.png'
     plt.savefig(plt_file)
 
     logging.info('Created png: %s',plt_file)
 
     ax = df.plot(x="Pathway", y=['Edit Distance'], kind="bar", rot=0)
     plt.title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type,fontsize = 18)
-    plt_file = w_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Edit_Distance.png'
+    plt_file = all_wikipathways_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Edit_Distance.png'
     plt.savefig(plt_file)
 
     logging.info('Created png: %s',plt_file)

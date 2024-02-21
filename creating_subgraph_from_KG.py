@@ -4,7 +4,7 @@ from assign_nodes import interactive_search_wrapper, skip_self_loops
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
-from create_subgraph import user_defined_edge_exclusion
+from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_exclusion
 from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
@@ -35,7 +35,8 @@ def main():
     print(s)
 
     if weights == True:
-        g = user_defined_edge_exclusion(g,kg_type)
+        #g = user_defined_edge_exclusion(g,kg_type)
+        g = automatic_defined_edge_exclusion(g,kg_type)
 
     if cosine_similarity == 'true':
         print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")

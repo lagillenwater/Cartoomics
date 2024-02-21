@@ -128,7 +128,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
 # Edges to remove
 def automatic_defined_edge_exclusion(graph,kg_type):
     if kg_type == 'pkl':
-        to_drop = ['http://purl.obolibrary.org/obo/RO_0002160','http://purl.obolibrary.org/obo/BFO_0000050','http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.obolibrary.org/obo/RO_0001025']
+        to_drop = ['http://purl.obolibrary.org/obo/RO_0002160','http://purl.obolibrary.org/obo/BFO_0000050','http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.obolibrary.org/obo/RO_0001025','http://purl.obolibrary.org/obo/RO_0000087']
     if kg_type != 'pkl':
         to_drop = ['biolink:category','biolink:in_taxon']
     for edge in to_drop:
@@ -150,7 +150,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,
+        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,
         search_type,triples_file,input_dir,embedding_dimensions,kg_type)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
@@ -182,7 +182,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
+        path_nodes,pdp_shortest_path_df,paths_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -214,7 +214,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,
+        path_nodes,cs_shortest_path_df,paths_total_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,
         search_type,triples_file,input_dir,embedding_dimensions,kg_type,term_row)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
