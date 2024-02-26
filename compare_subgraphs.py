@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from graph_similarity_metrics import *
 import argparse
 import ast
+import csv
 
 from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
@@ -28,6 +29,11 @@ def main():
     all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
     subgraph_types = []
+    results_fields = ['SubgraphType','Pathway','Metric','Score']
+    results_file = all_wikipathways_dir + '/Graph_Similarity_Metrics.csv'
+    with open(results_file, 'w') as f:
+        write = csv.writer(f)
+        write.writerow(results_fields)
 
     for wikipathway in wikipathways:
 
@@ -39,11 +45,19 @@ def main():
         if guiding_term:
             subgraph_types.append('GuidingTerm_'+guiding_term)
 
-    #Evaluates graph similarity between original edgelist and subgraph generated
-    for algorithm in subgraph_types:
-        results_df = compare_wikipathways_subgraphs(wikipathways,algorithm,all_wikipathways_dir)
+        for algorithm in subgraph_types:
+            wikipathways_graph,cartoomics_graph = prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir)
+            all_metrics = []
+            all_metrics.append([algorithm,wikipathway,'Jaccard',jaccard_similarity(wikipathways_graph,cartoomics_graph)])
+            all_metrics.append([algorithm,wikipathway,'Overlap',overlap_metric(wikipathways_graph,cartoomics_graph)])
+            #Graph edit distance not supported yet
+            #all_metrics.append([algorithm,wikipathway,'EditDistance',edit_distance_metric(wikipathways_graph,cartoomics_graph)])
 
-        visualize_graph_metrics(results_df,all_wikipathways_dir,algorithm)
+            with open(results_file, 'a') as f:
+                write = csv.writer(f)
+                write.writerows(all_metrics) 
+
+            visualize_graph_metrics(results_file,all_wikipathways_dir,algorithm)
 
 if __name__ == '__main__':
     main()
