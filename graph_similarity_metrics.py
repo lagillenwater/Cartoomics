@@ -11,7 +11,8 @@ import argparse
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
-
+from inputs import *
+import seaborn as sns
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -103,18 +104,18 @@ def generate_graphsim_arguments():
 def get_wikipathways_graph_files(input_dir,kg_type,input_type, guiding_term = False, input_substring = 'none'):
 
     #Search for annotated diagram input
-    if input_type == 'annotated_diagram':
-        folder = input_dir+'/annotated_diagram'
-        if not os.path.isdir(folder):
-            raise Exception('Missing folder input directory: ' + folder)
-            logging.error('Missing folder input directory: ' + folder)
+    # if input_type == 'annotated_diagram':
+    #     folder = input_dir+'/annotated_diagram'
+    #     if not os.path.isdir(folder):
+    #         raise Exception('Missing folder input directory: ' + folder)
+    #         logging.error('Missing folder input directory: ' + folder)
         
-    #Check for existence of guiding_terms file only
-    if guiding_term:
-        guiding_term_file = input_dir + '/Guiding_Terms.csv'
-        if not os.path.isfile(guiding_term_file):
-            raise Exception('Missing file in input directory: ' + guiding_term_file)
-            logging.error('Missing file in input directory: ' + guiding_term_file)
+    # #Check for existence of guiding_terms file only
+    # if guiding_term:
+    #     guiding_term_file = input_dir + '/Guiding_Terms.csv'
+    #     if not os.path.isfile(guiding_term_file):
+    #         raise Exception('Missing file in input directory: ' + guiding_term_file)
+    #         logging.error('Missing file in input directory: ' + guiding_term_file)
 
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'
@@ -211,94 +212,58 @@ def create_networkx_graph(edgelist_df,edgelist_type):
         edgelist_df = edgelist_df[['Source',  'Target', 'edgeID']]
         edgelist_df = edgelist_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})
 
-
     g = nx.from_pandas_edgelist(edgelist_df, 'S', 'O')
 
     return g
 
-def jaccard_sim(g1,g2):
+def prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir):
 
-    g_intersection = intersection([g1,g2],keep_all_vertices=False)
-    g_union = union([g1,g2])
+    wikipathway_dir = all_wikipathways_dir + '/' + wikipathway
+
+    wikipathways_subgraph_file = wikipathway_dir + '/' + wikipathway + '_edgeList.csv'
+    #Subgraph type must be CosineSimilarity, PDP, or GuidingTerm_<specified_term> to match current output structure
+    cartoomics_subgraph_file = wikipathway_dir + '_output/' + algorithm + '/Subgraph.csv'
+
+    wikipathways_df = pd.read_csv(wikipathways_subgraph_file,sep=',')
+    cartoomics_df = pd.read_csv(cartoomics_subgraph_file,sep='|')
+
+    wikipathways_graph = create_igraph_graph(wikipathways_df,'wikipathways')
+    cartoomics_graph = create_igraph_graph(cartoomics_df,'subgraph')
+
+    return wikipathways_graph,cartoomics_graph
+
+def jaccard_similarity(wikipathways_graph,cartoomics_graph):
+
+    g_intersection = intersection([wikipathways_graph,cartoomics_graph],keep_all_vertices=False)
+    g_union = union([wikipathways_graph,cartoomics_graph])
 
     j = g_intersection.vcount() / g_union.vcount()
 
     return j
 
-def overlap_sim(g1,g2):
+def overlap_metric(wikipathways_graph,cartoomics_graph):
 
-    g_intersection = intersection([g1,g2], keep_all_vertices=False)
-    g_min = min([g1.vcount(),g2.vcount()])
+    g_intersection = intersection([wikipathways_graph,cartoomics_graph], keep_all_vertices=False)
+    g_min = min([wikipathways_graph.vcount(),cartoomics_graph.vcount()])
 
     o = g_intersection.vcount() / g_min
 
     return o
 
-def compare_wikipathways_subgraphs(wikipathway_diagrams,subgraph_type):
+def edit_distance_metric(wikipathways_graph,cartoomics_graph):
 
-    all_subgraph_types = []
-    pathways = []
-    jaccard = []
-    overlap = []
-    edit = []
-    for p in wikipathway_diagrams:
+    e = nx.graph_edit_distance(wikipathways_graph,cartoomics_graph)
 
-        w_file = os.getcwd() + '/wikipathways_graphs/' + p + '/' + p + '_edgeList.csv'
-        w_dir = os.getcwd() + '/wikipathways_graphs'
+    return e
 
-        #Subgraph type must be CosineSimilarity, PDP, or GuidingTerm_<specified_term> to match current output structure
-        w_subgraph_file = os.getcwd() + '/wikipathways_graphs/' + p + '_output/' + subgraph_type + '/Subgraph.csv'
-
-
-        df_1 = pd.read_csv(w_file,sep=',')
-        df_2 = pd.read_csv(w_subgraph_file,sep='|')
-
-        g_1 = create_igraph_graph(df_1,'wikipathways')
-        g_2 = create_igraph_graph(df_2,'subgraph')
-
-        j = jaccard_sim(g_1,g_2)
-
-        o = overlap_sim(g_1,g_2)
-
-        #Calculate graph edit distance, which requires networkx graph
-        g_1 = create_networkx_graph(df_1,'wikipathways')
-        g_2 = create_networkx_graph(df_2,'subgraph')
-
-        e = nx.graph_edit_distance(g_1,g_2) 
-
-        all_subgraph_types.append(subgraph_type)
-        pathways.append(p)
-        jaccard.append(j)
-        overlap.append(o)
-        edit.append(e)
-
-    results_df = pd.DataFrame(columns=['SubgraphType','Pathway','Jaccard','Overlap','Edit Distance'])
-    results_df['SubgraphType'] = all_subgraph_types
-    results_df['Pathway'] = pathways
-    results_df['Jaccard'] = jaccard
-    results_df['Overlap'] = overlap
-    results_df['Edit Distance'] = edit
-
-    results_file = os.getcwd() + '/wikipathways_graphs/'+'Graph_Similarity_Metrics.csv'
-    results_df.to_csv(results_file,sep=',',index=False)
-    logging.info('Created graph similarity metrics csv file: %s',results_file)
-
-    return results_df,w_dir
 
 #Generates histogram with N number of categories by pathway, where lists are the input
-def visualize_graph_metrics(df,w_dir,subgraph_type):
+def visualize_graph_metrics(results_file,all_wikipathways_dir,subgraph_type):
     
-    ax = df.plot(x="Pathway", y=['Jaccard','Overlap'], kind="bar", rot=0)
-    plt.title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type,fontsize = 18)
-    plt_file = w_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Jaccard_Overlap.png'
+    results_df = pd.read_csv(results_file,sep=',')
+    plt_file = all_wikipathways_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Jaccard_Overlap.png'
+    sns_plot = sns.barplot(results_df, x='Pathway', y = 'Score',hue='Metric',errorbar=None).set_title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type)
+    plt.legend(title='Metrics', loc='upper right', labels=['Jaccard', 'Overlap'])
     plt.savefig(plt_file)
-
-    logging.info('Created png: %s',plt_file)
-
-    ax = df.plot(x="Pathway", y=['Edit Distance'], kind="bar", rot=0)
-    plt.title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type,fontsize = 18)
-    plt_file = w_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Edit_Distance.png'
-    plt.savefig(plt_file)
-
     logging.info('Created png: %s',plt_file)
 

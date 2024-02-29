@@ -422,12 +422,12 @@ def get_wikipathway_id(node,wikipathway_input_folder,kg_type):
 
 		if database not in WIKIPATHWAYS_UNKNOWN_PREFIXES:
 			#Chebi nodes have full cure given as ID
-			if database.lower() == 'chebi':
-				node_curie = database_id
-			else:
-				prefix = NODE_PREFIX_MAPPINGS[database]
-				#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
-				node_curie = prefix + ":" + str(database_id)
+			if database.lower() == 'chebi' and 'chebi' in database_id.lower():
+				database_id = database_id.split(':')[1]
+			
+			prefix = NODE_PREFIX_MAPPINGS[database]
+			#Create node curie from prefix and id, using string of database_id when column is read in as int (when all gene IDs)
+			node_curie = prefix + ":" + str(database_id)
 			
 			if kg_type == 'kg_covid19':
 				return node_curie
@@ -606,7 +606,9 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				logging.info('All input nodes searched.')
 
 			create_input_file(examples,output_dir,input_type)
-			create_skipped_node_file(skipped_nodes,output_dir)
+			#Creates a skipped_node file per input diagram
+			if enable_skipping:
+				create_skipped_node_file(skipped_nodes,output_dir)
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')
@@ -615,4 +617,11 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 		logging.info('Node mapping file: %s',mapped_file)
 	return(examples)
 
-                              
+## dropping a row in the case of self loops based on node ID
+def skip_self_loops(input_df):
+    for i in range(len(input_df)):
+        if input_df.loc[i,"source_id"] == input_df.loc[i,"target_id"]:
+            input_df.drop([i], axis = 0, inplace = True)
+
+    return(input_df)
+        
