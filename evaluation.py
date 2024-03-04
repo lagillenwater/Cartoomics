@@ -256,3 +256,17 @@ def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
 
     num_paths_df.to_csv(output_folder+'/num_paths_'+subgraph_algorithm+'.csv',sep=',',index=False)
     logging.info('Create number of paths file: %s',output_folder+'/num_paths_'+subgraph_algorithm+'.csv')
+
+def output_graph_comparison_df(output_dir,all_avg_paths_cosine_sim,algorithm):
+
+    output_folder = output_dir+'/Evaluation_Files'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    all_avg_paths_cosine_sim_df = pd.DataFrame.from_dict(all_avg_paths_cosine_sim, orient='columns')
+
+    all_avg_paths_cosine_sim_df.to_csv(output_folder+'/literature_comparison_evaluation' + algorithm + '.csv',sep=',',index=False)
+    logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation' + algorithm + '.csv')
+
+

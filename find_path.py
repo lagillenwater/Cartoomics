@@ -5,6 +5,7 @@ from scipy import spatial
 from scipy.spatial import distance
 from collections import defaultdict
 from assign_nodes import unique_nodes
+from functools import reduce
 
 
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
@@ -138,26 +139,28 @@ def get_embedding(emb,node):
 
 def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_type,guiding_term,input_nodes_df):
 
+    #Set target embedding value to target node if no guiding term is provided
     if guiding_term.empty:
-        n1 = g_nodes[path_nodes[0][len(path_nodes[0])-1]]
+        n1 = g_nodes[path_nodes[0][len(path_nodes[0])-1]]  
 
+    #Set target embedding value to guiding term if it exists
     else:
         try:
             n1 = guiding_term['term_id']
         except KeyError:
             n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
-        
+
     n1_int = convert_path_nodes(n1,entity_map)
     target_emb = get_embedding(emb,n1_int)
 
     #Dict of all embeddings to reuse if they exist
     embeddings = defaultdict(list)
 
-    #List of total cosine similarity for each path in path_nodes, should be same length as path_nodes
-    paths_total_cs = []
+    #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_cs_values = []
 
     for l in path_nodes:
-        cs = 0
+        cs = []
         for i in range(0,len(l)-1):
             n1 = g_nodes[l[i]]
             n1_int = convert_path_nodes(n1,entity_map)
@@ -166,22 +169,27 @@ def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,lab
                 embeddings[n1_int] = e
             else:
                 embeddings[n1_int] = e
-            cs += 1 - spatial.distance.cosine(e,target_emb)
-        paths_total_cs.append(cs)
+            cs.append(1 - spatial.distance.cosine(e,target_emb))
+        all_paths_cs_values.append(cs)
 
-    chosen_path_nodes_cs = select_path(paths_total_cs,path_nodes)
+    #Get sum of all cosine values in value_list
+    value_list = list(map(sum, all_paths_cs_values))
+    chosen_path_nodes_cs = select_max_path(value_list,path_nodes)
 
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_cs,search_type)
 
     df = convert_to_labels(df,labels_all,kg_type,input_nodes_df)
 
-    return df,paths_total_cs
+    return df,all_paths_cs_values,chosen_path_nodes_cs[0]
 
 def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_type,input_nodes_df):
 
     #List of pdp for each path in path_nodes, should be same length as path_nodes
-    paths_pdp = []
+    #paths_pdp = []
+
+    #List of lists of pdp for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_pdp_values = []
 
     for l in path_nodes:
         pdp = 1
@@ -190,20 +198,21 @@ def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_typ
             dp_damped = pow(dp,-w)
             pdp = pdp*dp_damped
 
-        paths_pdp.append(pdp)
+        #paths_pdp.append(pdp)
+        all_paths_pdp_values.append(pdp)
 
-    chosen_path_nodes_pdp = select_path(paths_pdp,path_nodes)
+    chosen_path_nodes_pdp = select_max_path(all_paths_pdp_values,path_nodes)
 
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_pdp,search_type)
 
     df = convert_to_labels(df,labels_all,kg_type,input_nodes_df)
 
-    return df,paths_pdp
+    return df,all_paths_pdp_values,chosen_path_nodes_pdp
 
-def select_path(value_list,path_nodes):
+def select_max_path(value_list,path_nodes):
 
-    #Get max cs from total_cs_path, use that idx of path_nodes then create mechanism
+    #Get max value from value_list, use that idx of path_nodes then create mechanism
     max_index = value_list.index(max(value_list))
     #Must be list of lists for define_path_triples function
     chosen_path_nodes = [path_nodes[max_index]]
@@ -294,17 +303,50 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
-    df,paths_total_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
+    df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
 
-    return path_nodes,df,paths_total_cs
+    return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs
+
+def calculate_paths_cosine_sim(input_nodes_df,all_chosen_path_nodes,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
+
+    #List of all average cosine similarity values for each path in subgraph to the given term
+    avg_paths_cosine_sim = []
+
+    e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
+    emb,entity_map = e.generate_graph_embeddings(kg_type)
+
+    #Searches for cosine similarity between each intermediate node in all chosen paths of the subgraph and the guiding term
+    for i in range(len(all_chosen_path_nodes)):
+        
+        #Will find cosine similarity scores of each node to the given term_row for this path, all_paths_cs_values will be a list of 1 list
+        df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,[all_chosen_path_nodes[i]],g_nodes,triples_df,search_type,labels_all, kg_type, term_row, input_nodes_df)
+
+        avg_cosine_sim = sum(all_paths_cs_values[0]) / len(all_paths_cs_values[0])
+        avg_paths_cosine_sim.append(avg_cosine_sim)
+
+    return avg_paths_cosine_sim
+
+def generate_comparison_terms_dict(all_avg_paths_cosine_sim,term_row,avg_paths_cosine_sim):
+
+    print('term_row: ',term_row)
+    #Add average cosine similarity of all paths for this term to dictionary
+    for p in range(len(avg_paths_cosine_sim)):
+        l = {}
+        l['Term'] = term_row['term_label']
+        l['Path_Number'] = p + 1
+        l['Average_Cosine_Similarity'] = avg_paths_cosine_sim[p]
+
+        all_avg_paths_cosine_sim.append(l)
+    
+    return all_avg_paths_cosine_sim
 
 def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
 
     path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
 
-    df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
+    df,all_paths_pdp_values,chosen_path_nodes_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
 
-    return path_nodes,df,paths_pdp
+    return path_nodes,df,all_paths_pdp_values,chosen_path_nodes_pdp[0]
 
 # expand nodes by drugs 1 hop away
 def drugNeighbors(graph,nodes, kg_type,input_nodes_df):

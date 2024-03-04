@@ -53,6 +53,8 @@ def define_arguments():
 
     parser.add_argument("--enable-skipping",dest="EnableSkipping",required=False,default=False,help="Enables option to skip nodes when exact match or synonym is not found.",type=bool)
 
+    parser.add_argument("--literature-comparison-evaluation",dest="LiteratureComparisonEvaluation",required=False,default=False,help="Uses guiding term(s) file to calculate average cosine similarity of each path.",type=bool)
+
     return parser
 
 # Wrapper function
@@ -75,6 +77,7 @@ def generate_arguments():
     guiding_term = args.GuidingTerm
     input_substring = args.InputSubstring
     enable_skipping = args.EnableSkipping
+    literature_comparison_evaluation = args.LiteratureComparisonEvaluation
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -86,9 +89,12 @@ def generate_arguments():
     if pdp not in ['true', 'false']:
         parser.print_help()
         sys.exit(1)
-    
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping
+    if literature_comparison_evaluation and input_substring == '':
+        print('input-substring required when path-similarity-evaluation is enabled.')
+        sys.exit(1)
+
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping, literature_comparison_evaluation
 
 #Define arguments for each required and optional input
 def define_arguments_metapaths():
@@ -161,7 +167,7 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
-def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False, input_substring = 'none'):
+def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False, literature_comparison_evaluation = False, input_substring = 'none'):
 
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
@@ -228,6 +234,19 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
         if not os.path.isfile(guiding_term_file):
             raise Exception('Missing file in input directory: ' + guiding_term_file)
             logging.error('Missing file in input directory: ' + guiding_term_file)
+
+    #Check for existence of guiding_terms file only
+    if literature_comparison_evaluation:
+        folder = input_dir+'/literature_comparison'
+        if not os.path.isdir(folder):
+            raise Exception('Missing folder input directory: ' + folder)
+            logging.error('Missing folder input directory: ' + folder)
+        #Check for existence of specific pathway file
+        if input_substring:
+            literature_comparison_evaluation_file = folder + '/' + input_substring + '_Literature_Comparison_Terms.csv'
+            if not os.path.isfile(literature_comparison_evaluation_file):
+                raise Exception('Missing file in output directory: ' + literature_comparison_evaluation_file)
+                logging.error('Missing file in output directory: ' + literature_comparison_evaluation_file)
 
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'

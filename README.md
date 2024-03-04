@@ -317,6 +317,34 @@ A .png file of all Jaccard and Overlap scores per Wikipathways diagram per algor
   
 A .png file of all Graph Edit Distance per Wikipathways diagram per algorithm. 
 
+### Command Line Arguments: Wikipathways Literature Comparison
+
+The following will execute the same Wikipathways subgraph generation, with an additional comparison to a given set of one or more guiding terms extracted from literature to which all intermediate nodes in the subgraph will be compared using cosine similarity. When literature comparison evaluation is enabled, the software will look for a "Literature_Comparison_Terms.csv" file in the Wikipathways input directory that is named by the given Wikipathways ID substring.  The intermediate nodes in all subgraphs of the specified algorithms will be compared to each term in that file after indexing. 
+
+The following file must exist, where WP_ID corresponds to the input-substring specified:
+
+```
+~/wikipathways_graphs/<WP_ID>_Literature_Comparison_Terms.csv
+```
+
+The cosine similarity based comparison can then be enabled with the following command line:
+
+```
+'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/<WP_ID>_output --knowledge-graph pkl --input-type annotated_diagram --input-substring <WP_ID> --literature-comparison-evaluation True
+```
+
+### Expected Outputs
+
+**Note that all subgraph files (described above in Wikipathways subgraph generation) will be generated**
+  
+#### Literature Comparison Metrics
+
+A .csv file of average Cosine Similarity scores per term in the specified _Literature_Comparison_Terms.csv per path in each subgraph. This file will exist per algorithm, e.g., /wikipathways_graphs/<WP_ID>_output/literature_comparison_evaluation_<algorithm>.csv.
+
+```
+Term,Path_Number,Average_Cosine_Similarity
+Alzheimer's disease,1,0.018525460516315206
+```
 
 ## Output Structure
   

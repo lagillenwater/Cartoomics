@@ -403,7 +403,6 @@ def create_skipped_node_file(skipped_nodes,output_dir):
 def check_input_existence(output_dir,input_type):
 	exists = 'false'
 	mapped_file = ''
-	print(output_dir)
 	for fname in os.listdir(output_dir):
 		if bool(re.match("_" + input_type + "_Input_Nodes_.csv",fname)):
 			exists = 'true'
@@ -482,7 +481,7 @@ def normalize_node_api(node_curie):
 
 
 # Wrapper function
-def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,enable_skipping,input_dir=""):
+def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type,enable_skipping,input_dir="",input_substring=""):
 	#Check for existence based on input type
 	exists = check_input_existence(output_dir,input_type)
 	if enable_skipping:
@@ -578,7 +577,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 					except KeyError:
 						pass
 				for node in n:
-					node_label,id_given,examples = search_node(node,g,u)
+					node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
 					#Only add node to examples df if not skipped
 					if not skip_node:
 						examples = create_annotated_df(examples,node,node_label,id_given,False)
@@ -588,13 +587,16 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						examples.drop(examples[examples['target'] == node].index, inplace = True)
 						skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
-
-			if input_type == 'guiding_term':
+			if input_type == 'literature_comparison' or input_type == 'guiding_term':
+				if input_type == 'literature_comparison':
+					term_file = input_dir+'/literature_comparison/' + input_substring + '_Literature_Comparison_Terms.csv'
+				elif input_type == 'guiding_term':
+					term_file = input_dir+'/Guiding_Terms.csv'
 				#Creates examples df without source_label and target_label
-				u = read_user_input(input_dir+'/Guiding_Terms.csv',True)
+				u = read_user_input(term_file,True)
 				n = unique_nodes(u)
 				for node in n:
-					node_label,id_given,examples = search_node(node,g,u,True)
+					node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping,True)
 					#Only add node to examples df if not skipped
 					if not skip_node:
 						examples = create_annotated_df(examples,node,node_label,id_given,True)
