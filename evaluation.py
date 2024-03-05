@@ -87,7 +87,7 @@ def num_nodes_comparison(output_dir,**subgraph_dfs):
 def get_ontology_lables(noa_df,labels_all,kg_type):
 
     ont_types = ['/CHEBI_','/PR_','/PW_','/gene','/MONDO_','/HP_','/VO_','/EFO_','NCBITaxon_','/GO_','/DOID_','/reactome','/SO_',
-    'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.',]
+    'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.','ensembl']
 
     ont_labels = []
 
@@ -216,9 +216,10 @@ def edge_type_comparison(output_dir,**subgraph_dfs):
 
 
 #Gets subgraph df for specific algorithm, supporting types are CosineSimilarity and PDP
-def get_subgraph_dfs(output_dir,subgraph_algorithm):
+def get_subgraph_dfs(output_dir,input_type,subgraph_algorithm):
 
-    input_nodes_file = output_dir+'/_Input_Nodes_.csv'
+    input_nodes_file = output_dir+"/_" + input_type + "_Input_Nodes_.csv"
+    #input_nodes_file = output_dir+'/_Input_Nodes_.csv'
     input_nodes = pd.read_csv(input_nodes_file, sep = "|")
 
     subgraph_file = output_dir+'/'+subgraph_algorithm+'/Subgraph.csv'
@@ -227,8 +228,9 @@ def get_subgraph_dfs(output_dir,subgraph_algorithm):
     noa_file = output_dir+'/'+subgraph_algorithm+'/Subgraph_attributes.noa'
     noa_df = pd.read_csv(noa_file, sep = "|")
 
-    path_list_file = output_dir+'/Evaluation_Files/paths_list_'+subgraph_algorithm+'.csv'
-    path_list = pd.read_csv(path_list_file, sep=",")
+    #path_list_file = output_dir+'/Evaluation_Files/paths_list_'+subgraph_algorithm+'.csv'
+    #path_list = pd.read_csv(path_list_file, sep=",")
+    path_list = []
 
     return input_nodes,subgraph_df,noa_df,path_list
 
