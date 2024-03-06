@@ -1,0 +1,105 @@
+---
+input_text: |-
+  1. Exp Ther Med. 2018 Oct;16(4):3275-3285. doi: 10.3892/etm.2018.6603. Epub 2018 
+  Aug 13.
+
+  Cellular signaling pathways regulating β-cell proliferation as a promising 
+  therapeutic target in the treatment of diabetes.
+
+  Jiang WJ(1), Peng YC(1), Yang KM(1).
+
+  Author information:
+  (1)Institute of Anatomy, Basic Medical College of Dali University, Dali, Yunnan 
+  671000, P.R. China.
+
+  It is established that a decrease in β-cell number and deficiency in the 
+  function of existing β-cells contribute to type 1 and type 2 diabetes mellitus. 
+  Therefore, a major focus of current research is to identify novel methods of 
+  improving the number and function of β-cells, so as to prevent and/or postpone 
+  the development of diabetes mellitus and potentially reverse diabetes mellitus. 
+  Based on prior knowledge of the above-mentioned causes, promising therapeutic 
+  approaches may include direct transplantation of islets, implantation and 
+  subsequent induced differentiation of progenitors/stem cells to β-cells, 
+  replication of pre-existing β-cells, or activation of endogenous β-cell 
+  progenitors. More recently, with regards to cell replacement and regenerative 
+  treatment for diabetes patients, the identification of cellular signaling 
+  pathways with related genes or corresponding proteins involved in diabetes has 
+  become a topic of interest. However, the majority of pathways and molecules 
+  associated with β-cells remain unresolved, and the specialized functions of 
+  known pathways remain unclear, particularly in humans. The current article has 
+  evaluated the progress of research on pivotal cellular signaling pathways 
+  involved with β-cell proliferation and survival, and their validity for 
+  therapeutic adult β-cell regeneration in diabetes. More efforts are required to 
+  elucidate the cellular events involved in human β-cell proliferation in terms of 
+  the underlying mechanisms and functions.
+
+  DOI: 10.3892/etm.2018.6603
+  PMCID: PMC6143874
+  PMID: 30233674
+raw_completion_output: |-
+  phenotypes: decrease in β-cell number; deficiency in the function of existing β-cells; type 1 diabetes mellitus; type 2 diabetes mellitus
+  label: Cellular signaling pathways regulating β-cell proliferation
+prompt: |+
+  From the text below, extract the following entities in the following format:
+
+  phenotypes: <A semicolon-separated list of human phenotypes, including symptoms of disease. It must be semicolon-separated. Labels containing the word 'with' should be split into multiple phenotypes.>
+  label: <The label (name) of the named thing>
+
+
+  Text:
+  1. Exp Ther Med. 2018 Oct;16(4):3275-3285. doi: 10.3892/etm.2018.6603. Epub 2018 
+  Aug 13.
+
+  Cellular signaling pathways regulating β-cell proliferation as a promising 
+  therapeutic target in the treatment of diabetes.
+
+  Jiang WJ(1), Peng YC(1), Yang KM(1).
+
+  Author information:
+  (1)Institute of Anatomy, Basic Medical College of Dali University, Dali, Yunnan 
+  671000, P.R. China.
+
+  It is established that a decrease in β-cell number and deficiency in the 
+  function of existing β-cells contribute to type 1 and type 2 diabetes mellitus. 
+  Therefore, a major focus of current research is to identify novel methods of 
+  improving the number and function of β-cells, so as to prevent and/or postpone 
+  the development of diabetes mellitus and potentially reverse diabetes mellitus. 
+  Based on prior knowledge of the above-mentioned causes, promising therapeutic 
+  approaches may include direct transplantation of islets, implantation and 
+  subsequent induced differentiation of progenitors/stem cells to β-cells, 
+  replication of pre-existing β-cells, or activation of endogenous β-cell 
+  progenitors. More recently, with regards to cell replacement and regenerative 
+  treatment for diabetes patients, the identification of cellular signaling 
+  pathways with related genes or corresponding proteins involved in diabetes has 
+  become a topic of interest. However, the majority of pathways and molecules 
+  associated with β-cells remain unresolved, and the specialized functions of 
+  known pathways remain unclear, particularly in humans. The current article has 
+  evaluated the progress of research on pivotal cellular signaling pathways 
+  involved with β-cell proliferation and survival, and their validity for 
+  therapeutic adult β-cell regeneration in diabetes. More efforts are required to 
+  elucidate the cellular events involved in human β-cell proliferation in terms of 
+  the underlying mechanisms and functions.
+
+  DOI: 10.3892/etm.2018.6603
+  PMCID: PMC6143874
+  PMID: 30233674
+
+  ===
+
+extracted_object:
+  id: f7c665b6-a4f1-47eb-86f6-170678c1beb6
+  label: Cellular signaling pathways regulating β-cell proliferation
+  phenotypes:
+    - AUTO:decrease%20in%20%CE%B2-cell%20number
+    - AUTO:deficiency%20in%20the%20function%20of%20existing%20%CE%B2-cells
+    - HP:0100651
+    - HP:0005978
+named_entities:
+  - id: AUTO:decrease%20in%20%CE%B2-cell%20number
+    label: decrease in β-cell number
+  - id: AUTO:deficiency%20in%20the%20function%20of%20existing%20%CE%B2-cells
+    label: deficiency in the function of existing β-cells
+  - id: HP:0100651
+    label: type 1 diabetes mellitus
+  - id: HP:0005978
+    label: type 2 diabetes mellitus
