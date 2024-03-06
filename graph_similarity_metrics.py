@@ -13,6 +13,7 @@ import logging.config
 from pythonjsonlogger import jsonlogger
 from inputs import *
 import seaborn as sns
+import csv
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -256,14 +257,31 @@ def edit_distance_metric(wikipathways_graph,cartoomics_graph):
 
     return e
 
+def generate_graph_similarity_metrics(all_metrics,wikipathway,algorithm,all_wikipathways_dir):
 
-#Generates histogram with N number of categories by pathway, where lists are the input
-def visualize_graph_metrics(results_file,all_wikipathways_dir,subgraph_type):
-    
-    results_df = pd.read_csv(results_file,sep=',')
-    plt_file = all_wikipathways_dir + '/' + subgraph_type + '_Graph_Similarity_Metrics_Jaccard_Overlap.png'
-    sns_plot = sns.barplot(results_df, x='Pathway', y = 'Score',hue='Metric',errorbar=None).set_title("Graph Similarity Metrics for Wikipathways Diagrams and "+ subgraph_type)
-    plt.legend(title='Metrics', loc='upper right', labels=['Jaccard', 'Overlap'])
-    plt.savefig(plt_file)
-    logging.info('Created png: %s',plt_file)
+    wikipathways_graph,cartoomics_graph = prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir)
+    all_metrics.append([algorithm,wikipathway,'Jaccard',jaccard_similarity(wikipathways_graph,cartoomics_graph)])
+    all_metrics.append([algorithm,wikipathway,'Overlap',overlap_metric(wikipathways_graph,cartoomics_graph)])
+    #Graph edit distance not supported yet
+    #all_metrics.append([algorithm,wikipathway,'EditDistance',edit_distance_metric(wikipathways_graph,cartoomics_graph)])
+
+    return all_metrics
+
+def output_graph_similarity_metrics(all_wikipathways_dir,all_metrics):
+
+    results_fields = ['Algorithm','Pathway_ID','Metric','Score']
+
+    output_folder = all_wikipathways_dir+'/graph_similarity'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    results_file = output_folder + '/Graph_Similarity_Metrics.csv'
+
+    with open(results_file, 'w') as f:
+        write = csv.writer(f)
+        write.writerow(results_fields)
+        write.writerows(all_metrics)
+
+    return results_file
 

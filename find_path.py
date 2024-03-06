@@ -183,6 +183,41 @@ def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,lab
 
     return df,all_paths_cs_values,chosen_path_nodes_cs[0]
 
+def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,labels_all,kg_type,guiding_term):
+
+    #Set target embedding value to guiding term if it exists
+    try:
+        n1 = guiding_term['term_id']
+    except KeyError:
+        n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
+
+    n1_int = convert_path_nodes(n1,entity_map)
+    target_emb = get_embedding(emb,n1_int)
+
+    #Dict of all embeddings to reuse if they exist
+    embeddings = defaultdict(list)
+
+    #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_cs_values = []
+
+    #Searches for cosine similarity between each node and the guiding term
+    for node in node_labels:
+        n1 = get_uri(labels_all,node, kg_type)
+        n1_int = convert_path_nodes(n1,entity_map)
+        if n1_int not in list(embeddings.keys()):
+            e = get_embedding(emb,n1_int)
+            embeddings[n1_int] = e
+        else:
+            embeddings[n1_int] = e
+        cs = 1 - spatial.distance.cosine(e,target_emb)
+        all_paths_cs_values.append(cs)
+
+    #Calculate average cosine similarity to this guiding term for entire subgraph
+    avg_cosine_sim = sum(all_paths_cs_values) / len(all_paths_cs_values)
+
+    return avg_cosine_sim
+
+
 def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_type,input_nodes_df):
 
     #List of pdp for each path in path_nodes, should be same length as path_nodes
@@ -307,38 +342,18 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples
 
     return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs
 
-def calculate_paths_cosine_sim(input_nodes_df,all_chosen_path_nodes,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
+def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway):
 
-    #List of all average cosine similarity values for each path in subgraph to the given term
-    avg_paths_cosine_sim = []
+    #Add average cosine similarity of subgraph for this term to dictionary
+    l = {}
+    l['Term'] = term_row['term_label']
+    l['Average_Cosine_Similarity'] = avg_cosine_sim
+    l['Algorithm'] = algorithm
+    l['Pathway_ID'] = wikipathway
 
-    e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
-    emb,entity_map = e.generate_graph_embeddings(kg_type)
-
-    #Searches for cosine similarity between each intermediate node in all chosen paths of the subgraph and the guiding term
-    for i in range(len(all_chosen_path_nodes)):
-        
-        #Will find cosine similarity scores of each node to the given term_row for this path, all_paths_cs_values will be a list of 1 list
-        df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,[all_chosen_path_nodes[i]],g_nodes,triples_df,search_type,labels_all, kg_type, term_row, input_nodes_df)
-
-        avg_cosine_sim = sum(all_paths_cs_values[0]) / len(all_paths_cs_values[0])
-        avg_paths_cosine_sim.append(avg_cosine_sim)
-
-    return avg_paths_cosine_sim
-
-def generate_comparison_terms_dict(all_avg_paths_cosine_sim,term_row,avg_paths_cosine_sim):
-
-    print('term_row: ',term_row)
-    #Add average cosine similarity of all paths for this term to dictionary
-    for p in range(len(avg_paths_cosine_sim)):
-        l = {}
-        l['Term'] = term_row['term_label']
-        l['Path_Number'] = p + 1
-        l['Average_Cosine_Similarity'] = avg_paths_cosine_sim[p]
-
-        all_avg_paths_cosine_sim.append(l)
+    subgraph_cosine_sim.append(l)
     
-    return all_avg_paths_cosine_sim
+    return subgraph_cosine_sim
 
 def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
 

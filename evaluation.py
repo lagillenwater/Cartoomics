@@ -115,7 +115,7 @@ def get_ontology_lables(noa_df,labels_all,kg_type):
     return ont_labels, counts, num_intermediate_nodes
 
 
-def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
+def intermediate_nodes_comparison(intermediate_nodes_df,labels_all,kg_type,wikipathway,**noa_dfs):
 
     all_ont_labels = []
 
@@ -139,6 +139,8 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
     #Get counts of each ontology type
     for nd in noa_dfs.items():
         values = []
+        algorithm = []
+        pathway = []
         n_df = nd[1]
         ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
         #Add any ontology types not already in subgraph
@@ -153,18 +155,38 @@ def intermediate_nodes_comparison(output_dir,labels_all,kg_type,**noa_dfs):
         #Sort dict the same way as df is sorted
         for key in sorted(onts_dict.keys()):
             values.append(onts_dict[key])
-        df[nd[0]] = values
+            algorithm.append(nd[0])
+            pathway.append(wikipathway)
+        #df[nd[0]] = values
+        df['Algorithm'] = algorithm
+        df['Percent_Nodes'] = values
+        df['Pathway_ID'] = pathway
 
-    output_folder = output_dir+'/Evaluation_Files'
+    intermediate_nodes_df = pd.concat([intermediate_nodes_df,df], axis=0)
+
+    return intermediate_nodes_df
+    
+    '''output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
     df.to_csv(output_folder+'/intermediate_nodes_comparison.csv',sep=',',index=False)
     logging.info('Create intermediate nodes comparison file: %s',output_folder+'/intermediate_nodes_comparison.csv')
+    return df'''
+
+def output_node_edge_type_file(output_dir,df,filename):
+
+    output_folder = output_dir+'/node_edge_evaluation'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    df.to_csv(output_folder+'/' + filename + '.csv',sep=',',index=False)
+    logging.info('Creating ' + filename + ' file: %s',output_folder+'/' + filename + '.csv')
     return df
 
-def edge_type_comparison(output_dir,**subgraph_dfs):
+def edge_type_comparison(edge_type_df,wikipathway,**subgraph_dfs):
 
     all_edge_labels = []
 
@@ -186,6 +208,8 @@ def edge_type_comparison(output_dir,**subgraph_dfs):
 
     for sg in subgraph_dfs.items():
         values = []
+        algorithm = []
+        pathway = []
         sg_df = sg[1]
 
         #Need to account for the fact that ont types will be different for each sg_df (i.e. values)
@@ -203,16 +227,25 @@ def edge_type_comparison(output_dir,**subgraph_dfs):
         #Sort dict the same way as df is sorted
         for key in sorted(edge_dict.keys()):
             values.append(edge_dict[key])
-        df[sg[0]] = values
+            algorithm.append(sg[0])
+            pathway.append(wikipathway)
+        #df[sg[0]] = values
+        df['Algorithm'] = algorithm
+        df['Percent_Edges'] = values
+        df['Pathway_ID'] = pathway
 
-    output_folder = output_dir+'/Evaluation_Files'
+    edge_type_df = pd.concat([edge_type_df,df], axis=0)
+
+    return edge_type_df
+
+    '''output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
         
     df.to_csv(output_folder+'/edge_type_comparison.csv',sep=',',index=False)
     logging.info('Create edge type comparison file: %s',output_folder+'/edge_type_comparison.csv')
-    return df
+    return df'''
 
 
 #Gets subgraph df for specific algorithm, supporting types are CosineSimilarity and PDP
@@ -259,16 +292,17 @@ def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):
     num_paths_df.to_csv(output_folder+'/num_paths_'+subgraph_algorithm+'.csv',sep=',',index=False)
     logging.info('Create number of paths file: %s',output_folder+'/num_paths_'+subgraph_algorithm+'.csv')
 
-def output_graph_comparison_df(output_dir,all_avg_paths_cosine_sim,algorithm):
+def output_literature_comparison_df(output_dir,all_subgraphs_cosine_sim):
 
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    all_avg_paths_cosine_sim_df = pd.DataFrame.from_dict(all_avg_paths_cosine_sim, orient='columns')
+    all_subgraphs_cosine_sim_df = pd.DataFrame.from_dict(all_subgraphs_cosine_sim, orient='columns')
 
-    all_avg_paths_cosine_sim_df.to_csv(output_folder+'/literature_comparison_evaluation' + algorithm + '.csv',sep=',',index=False)
-    logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation' + algorithm + '.csv')
+    all_subgraphs_cosine_sim_df.to_csv(output_folder+'/literature_comparison_evaluation.csv',sep=',',index=False)
+    logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation.csv')
 
+    return all_subgraphs_cosine_sim_df
 

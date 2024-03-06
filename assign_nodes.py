@@ -387,10 +387,10 @@ def create_input_file(examples,output_dir,input_type):
 	examples.to_csv(input_file, sep = "|", index = False)
 
 #Takes in a list of skipped nodes for a given pathway
-def create_skipped_node_file(skipped_nodes,output_dir):
+def create_skipped_node_file(skipped_nodes,output_dir,filename=''):
 	#Only output file if nodes are skipped
 	if len(skipped_nodes) > 0:
-		skipped_node_file = output_dir+"/skipped_nodes.csv"
+		skipped_node_file = output_dir+"/" + filename + "skipped_nodes.csv"
 		logging.info('Skipped file created: %s',skipped_node_file)
 		
 		e = open(skipped_node_file,"a")
@@ -486,6 +486,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 	exists = check_input_existence(output_dir,input_type)
 	if enable_skipping:
 		skipped_nodes = []
+		guiding_term_skipped_nodes = []
 	if(exists[0] == 'false'):
 			print('Interactive Node Search')
 			logging.info('Interactive Node Search')
@@ -602,15 +603,17 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						examples = create_annotated_df(examples,node,node_label,id_given,True)
 					#Drop any triples that contain that node
 					elif skip_node:
-						examples.drop(examples[examples['source'] == node].index, inplace = True)
-						examples.drop(examples[examples['target'] == node].index, inplace = True)
-						skipped_nodes.append(node)
+						examples.drop(examples[examples['term'] == node].index, inplace = True)
+						#examples.drop(examples[examples['source'] == node].index, inplace = True)
+						#examples.drop(examples[examples['target'] == node].index, inplace = True)
+						guiding_term_skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
 
 			create_input_file(examples,output_dir,input_type)
 			#Creates a skipped_node file per input diagram
 			if enable_skipping:
 				create_skipped_node_file(skipped_nodes,output_dir)
+				create_skipped_node_file(guiding_term_skipped_nodes,output_dir,'guidingTerms')
 	else:
 		print('Node mapping file exists... moving to embedding creation')
 		logging.info('Node mapping file exists... moving to embedding creation')

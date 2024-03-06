@@ -4,7 +4,6 @@ from assign_nodes import interactive_search_wrapper, skip_self_loops
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
-from create_subgraph import compare_paths_guiding_terms
 from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_exclusion
 from visualize_subgraph import output_visualization
 from evaluation import *
@@ -12,9 +11,9 @@ from tqdm import tqdm
 
 def main():
 
-    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping,literature_comparison_evaluation = generate_arguments()
+    input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping = generate_arguments()
 
-    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url,guiding_term,literature_comparison_evaluation,input_substring)
+    triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url,guiding_term,input_substring)
 
     print("Creating knowledge graph object from inputs.....")
 
@@ -30,10 +29,6 @@ def main():
     if guiding_term:
 
         guiding_term_df = interactive_search_wrapper(g, input_file, output_dir, 'guiding_term', kg_type, enable_skipping, input_dir)
-
-    if literature_comparison_evaluation:
-
-        comparison_terms_df = interactive_search_wrapper(g, input_file, output_dir, 'literature_comparison', kg_type, enable_skipping, input_dir, input_substring)
 
     print("Mapping complete")
 
@@ -53,12 +48,6 @@ def main():
 
         cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
 
-        if literature_comparison_evaluation:
-
-            all_avg_paths_cosine_sim = compare_paths_guiding_terms(s,all_chosen_path_nodes,g, output_dir, comparison_terms_df,weights,search_type,triples_list_file,input_dir,embedding_dimensions,kg_type)
-
-            output_graph_comparison_df(output_dir,all_avg_paths_cosine_sim,'CosineSimilarity')
-
     if pdp == 'true':
 
         print("Finding subgraph using user input for PDP......")
@@ -68,12 +57,6 @@ def main():
         print("Outputting PDP visualization......")
 
         pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
-
-        if literature_comparison_evaluation:
-
-            all_avg_paths_cosine_sim = compare_paths_guiding_terms(s,all_chosen_path_nodes,g, output_dir, comparison_terms_df,weights,search_type,triples_list_file,input_dir,embedding_dimensions,kg_type)
-
-            output_graph_comparison_df(output_dir,all_avg_paths_cosine_sim,'PDP')
 
     if guiding_term:
         print("Finding subgraph using user input for Guiding Term(s)......")
@@ -87,11 +70,6 @@ def main():
 
             pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
 
-            if literature_comparison_evaluation:
-
-                all_avg_paths_cosine_sim = compare_paths_guiding_terms(s,all_chosen_path_nodes,g, output_dir, comparison_terms_df,weights,search_type,triples_list_file,input_dir,embedding_dimensions,kg_type)
-
-                output_graph_comparison_df(output_dir,all_avg_paths_cosine_sim,'GuidingTerm')
 
 if __name__ == '__main__':
     main()
