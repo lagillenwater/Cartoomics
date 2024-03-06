@@ -1,0 +1,137 @@
+---
+input_text: |-
+  1. Curr Neuropharmacol. 2018 Jan 30;16(2):151-159. doi: 
+  10.2174/1570159X15666170529104000.
+
+  Calcium Signaling, PKC Gamma, IP3R1 and CAR8 Link Spinocerebellar Ataxias and 
+  Purkinje Cell Dendritic Development.
+
+  Shimobayashi E(1), Kapfhammer JP(1).
+
+  Author information:
+  (1)Anatomical Institute, Department of Biomedicine Basel, University of Basel, 
+  Pestalozzistrasse 20, CH-4056 Basel, Switzerland.
+
+  BACKGROUND: Spinocerebellar ataxias (SCAs) are a group of cerebellar diseases 
+  characterized by progressive ataxia and cerebellar atrophy. Several forms of 
+  SCAs are caused by missense mutations or deletions in genes related to calcium 
+  signaling in Purkinje cells. Among them, spinocerebellar ataxia type 14 (SCA14) 
+  is caused by missense mutations in PRKCG gene which encodes protein kinase C 
+  gamma (PKCγ). It is remarkable that in several cases in which SCA is caused by 
+  point mutations in an individual gene, the affected genes are involved in the 
+  PKCγ signaling pathway and calcium signaling which is not only crucial for 
+  proper Purkinje cell function but is also involved in the control of Purkinje 
+  cell dendritic development. In this review, we will focus on the PKCγ signaling 
+  related genes and calcium signaling related genes then discuss their role for 
+  both Purkinje cell dendritic development and cerebellar ataxia.
+  METHODS: Research related to SCAs and Purkinje cell dendritic development is 
+  reviewed.
+  RESULTS: PKCγ dysregulation causes abnormal Purkinje cell dendritic development 
+  and SCA14. Carbonic anhydrase related protein 8 (Car8) encoding CAR8 and Itpr1 
+  encoding IP3R1were identified as upregulated genes in one of SCA14 mouse model. 
+  IP3R1, CAR8 and PKCγ proteins are strongly and specifically expressed in 
+  Purkinje cells. The common function among them is that they are involved in the 
+  regulation of calcium homeostasis in Purkinje cells and their dysfunction causes 
+  ataxia in mouse and human. Furthermore, disruption of intracellular calcium 
+  homeostasis caused by mutations in some calcium channels in Purkinje cells links 
+  to abnormal Purkinje cell dendritic development and the pathogenesis of several 
+  SCAs.
+  CONCLUSION: Once PKCγ signaling related genes and calcium signaling related 
+  genes are disturbed, the normal dendritic development of Purkinje cells is 
+  impaired as well as the integration of signals from other neurons, resulting in 
+  abnormal development, cerebellar dysfunction and eventually Purkinje cell loss.
+
+  Copyright© Bentham Science Publishers; For any queries, please email at 
+  epub@benthamscience.org.
+
+  DOI: 10.2174/1570159X15666170529104000
+  PMCID: PMC5883377
+  PMID: 28554312 [Indexed for MEDLINE]
+raw_completion_output: |-
+  phenotypes: progressive ataxia; cerebellar atrophy; abnormal Purkinje cell dendritic development;  ataxia; abnormal development; cerebellar dysfunction; Purkinje cell loss
+  label: Calcium Signaling, PKC Gamma, IP3R1 and CAR8 Link Spinocerebellar Ataxias and Purkinje Cell Dendritic Development
+prompt: |+
+  From the text below, extract the following entities in the following format:
+
+  phenotypes: <A semicolon-separated list of human phenotypes, including symptoms of disease. It must be semicolon-separated. Labels containing the word 'with' should be split into multiple phenotypes.>
+  label: <The label (name) of the named thing>
+
+
+  Text:
+  1. Curr Neuropharmacol. 2018 Jan 30;16(2):151-159. doi: 
+  10.2174/1570159X15666170529104000.
+
+  Calcium Signaling, PKC Gamma, IP3R1 and CAR8 Link Spinocerebellar Ataxias and 
+  Purkinje Cell Dendritic Development.
+
+  Shimobayashi E(1), Kapfhammer JP(1).
+
+  Author information:
+  (1)Anatomical Institute, Department of Biomedicine Basel, University of Basel, 
+  Pestalozzistrasse 20, CH-4056 Basel, Switzerland.
+
+  BACKGROUND: Spinocerebellar ataxias (SCAs) are a group of cerebellar diseases 
+  characterized by progressive ataxia and cerebellar atrophy. Several forms of 
+  SCAs are caused by missense mutations or deletions in genes related to calcium 
+  signaling in Purkinje cells. Among them, spinocerebellar ataxia type 14 (SCA14) 
+  is caused by missense mutations in PRKCG gene which encodes protein kinase C 
+  gamma (PKCγ). It is remarkable that in several cases in which SCA is caused by 
+  point mutations in an individual gene, the affected genes are involved in the 
+  PKCγ signaling pathway and calcium signaling which is not only crucial for 
+  proper Purkinje cell function but is also involved in the control of Purkinje 
+  cell dendritic development. In this review, we will focus on the PKCγ signaling 
+  related genes and calcium signaling related genes then discuss their role for 
+  both Purkinje cell dendritic development and cerebellar ataxia.
+  METHODS: Research related to SCAs and Purkinje cell dendritic development is 
+  reviewed.
+  RESULTS: PKCγ dysregulation causes abnormal Purkinje cell dendritic development 
+  and SCA14. Carbonic anhydrase related protein 8 (Car8) encoding CAR8 and Itpr1 
+  encoding IP3R1were identified as upregulated genes in one of SCA14 mouse model. 
+  IP3R1, CAR8 and PKCγ proteins are strongly and specifically expressed in 
+  Purkinje cells. The common function among them is that they are involved in the 
+  regulation of calcium homeostasis in Purkinje cells and their dysfunction causes 
+  ataxia in mouse and human. Furthermore, disruption of intracellular calcium 
+  homeostasis caused by mutations in some calcium channels in Purkinje cells links 
+  to abnormal Purkinje cell dendritic development and the pathogenesis of several 
+  SCAs.
+  CONCLUSION: Once PKCγ signaling related genes and calcium signaling related 
+  genes are disturbed, the normal dendritic development of Purkinje cells is 
+  impaired as well as the integration of signals from other neurons, resulting in 
+  abnormal development, cerebellar dysfunction and eventually Purkinje cell loss.
+
+  Copyright© Bentham Science Publishers; For any queries, please email at 
+  epub@benthamscience.org.
+
+  DOI: 10.2174/1570159X15666170529104000
+  PMCID: PMC5883377
+  PMID: 28554312 [Indexed for MEDLINE]
+
+  ===
+
+extracted_object:
+  id: 58ffda05-9b07-4297-b929-ee54eb3bb514
+  label: Calcium Signaling, PKC Gamma, IP3R1 and CAR8 Link Spinocerebellar Ataxias
+    and Purkinje Cell Dendritic Development
+  phenotypes:
+    - HP:0002073
+    - HP:0001272
+    - AUTO:abnormal%20Purkinje%20cell%20dendritic%20development
+    - HP:0001251
+    - AUTO:abnormal%20development
+    - AUTO:cerebellar%20dysfunction
+    - AUTO:Purkinje%20cell%20loss
+named_entities:
+  - id: HP:0002073
+    label: progressive ataxia
+  - id: HP:0001272
+    label: cerebellar atrophy
+  - id: AUTO:abnormal%20Purkinje%20cell%20dendritic%20development
+    label: abnormal Purkinje cell dendritic development
+  - id: HP:0001251
+    label: ataxia
+  - id: AUTO:abnormal%20development
+    label: abnormal development
+  - id: AUTO:cerebellar%20dysfunction
+    label: cerebellar dysfunction
+  - id: AUTO:Purkinje%20cell%20loss
+    label: Purkinje cell loss
