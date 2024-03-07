@@ -1,0 +1,39 @@
+1. Cancers (Basel). 2018 Mar 22;10(4):90. doi: 10.3390/cancers10040090.
+
+Targeting the Hippo Pathway Is a New Potential Therapeutic Modality for 
+Malignant Mesothelioma.
+
+Sekido Y(1)(2).
+
+Author information:
+(1)Division of Molecular Oncology, Aichi Cancer Center Research Institute, 1-1 
+Kanokoden, Chikusa-ku, Nagoya 464-8681, Japan. ysekido@aichi-cc.jp.
+(2)Department of Cancer Genetics, Nagoya University Graduate School of Medicine, 
+Nagoya 464-8681, Japan. ysekido@aichi-cc.jp.
+
+Malignant mesothelioma (MM) constitutes a very aggressive tumor that arises from 
+the pleural or peritoneal cavities and is highly refractory to conventional 
+therapies. Several key genetic alterations are associated with the development 
+and progression of MM including mutations of the CDKN2A/ARF, NF2, and BAP1 
+tumor-suppressor genes. Notably, activating oncogene mutations are very rare; 
+thus, it is difficult to develop effective inhibitors to treat MM. The NF2 gene 
+encodes merlin, a protein that regulates multiple cell-signaling cascades 
+including the Hippo pathway. MMs also exhibit inactivation of Hippo pathway 
+components including LATS1/2, strongly suggesting that merlin-Hippo pathway 
+dysregulation plays a key role in the development and progression of MM. 
+Furthermore, Hippo pathway inactivation has been shown to result in constitutive 
+activation of the YAP1/TAZ transcriptional coactivators, thereby conferring 
+malignant phenotypes to mesothelial cells. Critical YAP1/TAZ target genes, 
+including prooncogenic CCDN1 and CTGF, have also been shown to enhance the 
+malignant phenotypes of MM cells. Together, these data indicate the Hippo 
+pathway as a therapeutic target for the treatment of MM, and support the 
+development of new strategies to effectively target the activation status of 
+YAP1/TAZ as a promising therapeutic modality for this formidable disease.
+
+DOI: 10.3390/cancers10040090
+PMCID: PMC5923345
+PMID: 29565815
+
+Conflict of interest statement: The author received a collaboration grant from 
+Kyowa Hakko Kirin Co., Ltd. (Tokyo, JAPAN), and Eisai Co., Ltd. (Tokyo, JAPAN). 
+The founding sponsors had no role in the writing of the manuscript.

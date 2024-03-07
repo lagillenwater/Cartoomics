@@ -1,0 +1,30 @@
+1. PLoS Pathog. 2018 Mar 15;14(3):e1006839. doi: 10.1371/journal.ppat.1006839. 
+eCollection 2018 Mar.
+
+Viral manipulation of STAT3: Evade, exploit, and injure.
+
+Roca Suarez AA(1)(2), Van Renne N(1)(2), Baumert TF(1)(2)(3), Lupberger J(1)(2).
+
+Author information:
+(1)Inserm, U1110, Institut de Recherche sur les Maladies Virales et Hépatiques, 
+Strasbourg, France.
+(2)Université de Strasbourg, Strasbourg, France.
+(3)Pôle Hépato-digestif, Institut Hospitalo-universitaire, Hôpitaux 
+Universitaires de Strasbourg, Strasbourg, France.
+
+Signal transducer and activator of transcription 3 (STAT3) is a key regulator of 
+numerous physiological functions, including the immune response. As pathogens 
+elicit an acute phase response with concerted activation of STAT3, they are 
+confronted with two evolutionary options: either curtail it or employ it. This 
+has important consequences for the host, since abnormal STAT3 function is 
+associated with cancer development and other diseases. This review provides a 
+comprehensive outline of how human viruses cope with STAT3-mediated inflammation 
+and how this affects the host. Finally, we discuss STAT3 as a potential target 
+for antiviral therapy.
+
+DOI: 10.1371/journal.ppat.1006839
+PMCID: PMC5854428
+PMID: 29543893 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors have declared that no competing 
+interests exist.

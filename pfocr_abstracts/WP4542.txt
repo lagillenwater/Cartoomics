@@ -1,0 +1,31 @@
+1. Cancers (Basel). 2018 Mar 28;10(4):94. doi: 10.3390/cancers10040094.
+
+The Hippo Pathway: Immunity and Cancer.
+
+Taha Z(1), Janse van Rensburg HJ(2), Yang X(3).
+
+Author information:
+(1)Department of Pathology and Molecular Medicine, Queen's University, Kingston, 
+ON K7L 3N6, Canada. zaid.taha@queensu.ca.
+(2)Department of Pathology and Molecular Medicine, Queen's University, Kingston, 
+ON K7L 3N6, Canada. 8vrhjj@queensu.ca.
+(3)Department of Pathology and Molecular Medicine, Queen's University, Kingston, 
+ON K7L 3N6, Canada. yangx@queensu.ca.
+
+Since its discovery, the Hippo pathway has emerged as a central signaling 
+network in mammalian cells. Canonical signaling through the Hippo pathway core 
+components (MST1/2, LATS1/2, YAP and TAZ) is important for development and 
+tissue homeostasis while aberrant signaling through the Hippo pathway has been 
+implicated in multiple pathologies, including cancer. Recent studies have 
+uncovered new roles for the Hippo pathway in immunology. In this review, we 
+summarize the mechanisms by which Hippo signaling in pathogen-infected or 
+neoplastic cells affects the activities of immune cells that respond to these 
+threats. We further discuss how Hippo signaling functions as part of an immune 
+response. Finally, we review how immune cell-intrinsic Hippo signaling modulates 
+the development/function of leukocytes and propose directions for future work.
+
+DOI: 10.3390/cancers10040094
+PMCID: PMC5923349
+PMID: 29597279
+
+Conflict of interest statement: The authors declare no conflict of interest.

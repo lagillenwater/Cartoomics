@@ -1,0 +1,47 @@
+1. Biomedicines. 2018 Mar 26;6(2):38. doi: 10.3390/biomedicines6020038.
+
+NF-κB Activation in Lymphoid Malignancies: Genetics, Signaling, and Targeted 
+Therapy.
+
+Grondona P(1), Bucher P(2), Schulze-Osthoff K(3), Hailfinger S(4), Schmitt A(5).
+
+Author information:
+(1)Interfaculty Institute for Biochemistry, Eberhard Karls University of 
+Tuebingen, Hoppe-Seyler-Str. 4, 72076 Tuebingen, Germany. 
+paula.grondona@student.uni-tuebingen.de.
+(2)Interfaculty Institute for Biochemistry, Eberhard Karls University of 
+Tuebingen, Hoppe-Seyler-Str. 4, 72076 Tuebingen, Germany. 
+philip.bucher@student.uni-tuebingen.de.
+(3)Interfaculty Institute for Biochemistry, Eberhard Karls University of 
+Tuebingen, Hoppe-Seyler-Str. 4, 72076 Tuebingen, Germany. KSO@uni-tuebingen.de.
+(4)Interfaculty Institute for Biochemistry, Eberhard Karls University of 
+Tuebingen, Hoppe-Seyler-Str. 4, 72076 Tuebingen, Germany. 
+Stephan.Hailfinger@uni-tuebingen.de.
+(5)Interfaculty Institute for Biochemistry, Eberhard Karls University of 
+Tuebingen, Hoppe-Seyler-Str. 4, 72076 Tuebingen, Germany. 
+anja.schmitt@ifib.uni-tuebingen.de.
+
+The NF-κB transcription factor family plays a crucial role in lymphocyte 
+proliferation and survival. Consequently, aberrant NF-κB activation has been 
+described in a variety of lymphoid malignancies, including diffuse large B-cell 
+lymphoma, Hodgkin lymphoma, and adult T-cell leukemia. Several factors, such as 
+persistent infections (e.g., with Helicobacter pylori), the pro-inflammatory 
+microenvironment of the cancer, self-reactive immune receptors as well as 
+genetic lesions altering the function of key signaling effectors, contribute to 
+constitutive NF-κB activity in these malignancies. In this review, we will 
+discuss the molecular consequences of recurrent genetic lesions affecting key 
+regulators of NF-κB signaling. We will particularly focus on the oncogenic 
+mechanisms by which these alterations drive deregulated NF-κB activity and thus 
+promote the growth and survival of the malignant cells. As the concept of a 
+targeted therapy based on the mutational status of the malignancy has been 
+supported by several recent preclinical and clinical studies, further insight in 
+the function of NF-κB modulators and in the molecular mechanisms governing 
+aberrant NF-κB activation observed in lymphoid malignancies might lead to the 
+development of additional treatment strategies and thus improve lymphoma 
+therapy.
+
+DOI: 10.3390/biomedicines6020038
+PMCID: PMC6027339
+PMID: 29587428
+
+Conflict of interest statement: The authors declare no conflict of interest.

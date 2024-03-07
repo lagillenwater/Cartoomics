@@ -1,0 +1,38 @@
+1. J Immunol Res. 2018 Feb 8;2018:3696914. doi: 10.1155/2018/3696914. eCollection
+ 2018.
+
+How Hippo Signaling Pathway Modulates Cardiovascular Development and Diseases.
+
+Zhou W(1)(2), Zhao M(3).
+
+Author information:
+(1)Guangdong Cardiovascular Institute, Guangdong General Hospital, Guangdong 
+Academy of Medical Sciences, Guangzhou 510100, China.
+(2)Guangzhou Medical University, The Second Affiliated Hospital of Guangzhou 
+Medical University, Guangzhou 510000, China.
+(3)Department of Pediatrics, The Third Xiangya Hospital, Central South 
+University, Changsha 410013, China.
+
+Cardiovascular disease remains the leading cause of death around the globe. 
+Cardiac deterioration is associated with irreversible cardiomyocyte loss. 
+Understanding how the cardiovascular system develops and the pathological 
+processes of cardiac disease will contribute to finding novel and preventive 
+therapeutic methods. The canonical Hippo tumor suppressor pathway in mammalian 
+cells is primarily composed of the MST1/2-SAV1-LATS1/2-MOB1-YAP/TAZ cascade. 
+Continuing research on this pathway has identified other factors like RASSF1A, 
+Nf2, MAP4Ks, and NDR1/2, further enriching our knowledge of the Hippo-YAP 
+pathway. YAP, the core effecter of the Hippo pathway, may accumulate in the 
+nucleus and initiate transcriptional activity if the pathway is inhibited. The 
+role of Hippo signaling has been widely investigated in organ development and 
+cancers. A heart of normal size and function which is critical for survival 
+could not be generated without the proper regulation of the Hippo tumor 
+suppressor pathway. Recent research has demonstrated a novel role of Hippo 
+signaling in cardiovascular disease in the context of development, hypertrophy, 
+angiogenesis, regeneration, apoptosis, and autophagy. In this review, we 
+summarize the current knowledge of how Hippo signaling modulates pathological 
+processes in cardiovascular disease and discuss potential molecular therapeutic 
+targets.
+
+DOI: 10.1155/2018/3696914
+PMCID: PMC5822808
+PMID: 29577047 [Indexed for MEDLINE]

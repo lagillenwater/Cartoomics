@@ -1,0 +1,44 @@
+1. Front Neurosci. 2019 Jan 31;13:25. doi: 10.3389/fnins.2019.00025. eCollection 
+2019.
+
+Neurons and Microglia; A Sickly-Sweet Duo in Diabetic Pain Neuropathy.
+
+Rajchgot T(1), Thomas SC(1), Wang JC(2), Ahmadi M(1), Balood M(1), Crosson T(1), 
+Dias JP(3), Couture R(1), Claing A(1), Talbot S(1).
+
+Author information:
+(1)Département de Pharmacologie et Physiologie, Faculté de Médecine, Université 
+de Montréal, Montréal, QC, Canada.
+(2)Graduate Institute of Microbiology, College of Medicine, National Taiwan 
+University, Taipei, Taiwan.
+(3)Johns Hopkins University School of Medicine, Division of Endocrinology, 
+Diabetes and Metabolism, Baltimore, MD, United States.
+
+Diabetes is a common condition characterized by persistent hyperglycemia. High 
+blood sugar primarily affects cells that have a limited capacity to regulate 
+their glucose intake. These cells include capillary endothelial cells in the 
+retina, mesangial cells in the renal glomerulus, Schwann cells, and neurons of 
+the peripheral and central nervous systems. As a result, hyperglycemia leads to 
+largely intractable complications such as retinopathy, nephropathy, 
+hypertension, and neuropathy. Diabetic pain neuropathy is a complex and 
+multifactorial disease that has been associated with poor glycemic control, 
+longer diabetes duration, hypertension, advanced age, smoking status, 
+hypoinsulinemia, and dyslipidemia. While many of the driving factors involved in 
+diabetic pain are still being investigated, they can be broadly classified as 
+either neuron -intrinsic or -extrinsic. In neurons, hyperglycemia impairs the 
+polyol pathway, leading to an overproduction of reactive oxygen species and 
+reactive nitrogen species, an enhanced formation of advanced glycation end 
+products, and a disruption in Na+/K+ ATPase pump function. In terms of the 
+extrinsic pathway, hyperglycemia leads to the generation of both overactive 
+microglia and microangiopathy. The former incites a feed-forward inflammatory 
+loop that hypersensitizes nociceptor neurons, as observed at the onset of 
+diabetic pain neuropathy. The latter reduces neurons' access to oxygen, glucose 
+and nutrients, prompting reductions in nociceptor terminal expression and losses 
+in sensation, as observed in the later stages of diabetic pain neuropathy. 
+Overall, microglia can be seen as potent and long-lasting amplifiers of 
+nociceptor neuron activity, and may therefore constitute a potential therapeutic 
+target in the treatment of diabetic pain neuropathy.
+
+DOI: 10.3389/fnins.2019.00025
+PMCID: PMC6365454
+PMID: 30766472

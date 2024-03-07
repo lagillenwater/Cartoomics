@@ -1,0 +1,47 @@
+1. Brain Behav. 2018 Aug;8(8):e00978. doi: 10.1002/brb3.978. Epub 2018 Jun 22.
+
+Autism throughout genetics: Perusal of the implication of ion channels.
+
+Daghsni M(1)(2), Rima M(3), Fajloun Z(4), Ronjat M(1)(5), Brusés JL(6), M'rad 
+R(2)(7), De Waard M(1)(5).
+
+Author information:
+(1)L'institut du Thorax, INSERM UMR1087/CNRS UMR6291, Université de Nantes, 
+Nantes, France.
+(2)Université de Tunis El Manar, Faculté de Médecine de Tunis, LR99ES10 
+Laboratoire de Génétique Humaine, 1007, Tunis, Tunisie.
+(3)Department of Neuroscience, Institute of Biology Paris-Seine, CNRS UMR 8246, 
+INSERM U1130, Sorbonne Universités, Paris, France.
+(4)Azm Center for Research in Biotechnology and Its Application, Lebanese 
+University, Tripoli, Lebanon.
+(5)LabEx Ion Channels Science and Therapeutics, Nice, France.
+(6)Department of Natural Sciences, Mercy College, Dobbs Ferry, NY, USA.
+(7)Service des Maladies Congénitales et Héréditaires, Hôpital Charles Nicolle, 
+Tunis, Tunisie.
+
+BACKGROUND: Autism spectrum disorder (ASD) comprises a group of 
+neurodevelopmental psychiatric disorders characterized by deficits in social 
+interactions, interpersonal communication, repetitive and stereotyped behaviors 
+and may be associated with intellectual disabilities. The description of ASD as 
+a synaptopathology highlights the importance of the synapse and the implication 
+of ion channels in the etiology of these disorders.
+METHODS: A narrative and critical review of the relevant papers from 1982 to 
+2017 known by the authors was conducted.
+RESULTS: Genome-wide linkages, association studies, and genetic analyses of 
+patients with ASD have led to the identification of several candidate genes and 
+mutations linked to ASD. Many of the candidate genes encode for proteins 
+involved in neuronal development and regulation of synaptic function including 
+ion channels and actors implicated in synapse formation. The involvement of ion 
+channels in ASD is of great interest as they represent attractive therapeutic 
+targets. In agreement with this view, recent findings have shown that drugs 
+modulating ion channel function are effective for the treatment of certain types 
+of patients with ASD.
+CONCLUSION: This review describes the genetic aspects of ASD with a focus on 
+genes encoding ion channels and highlights the therapeutic implications of ion 
+channels in the treatment of ASD.
+
+© 2018 The Authors. Brain and Behavior published by Wiley Periodicals, Inc.
+
+DOI: 10.1002/brb3.978
+PMCID: PMC6085908
+PMID: 29934975 [Indexed for MEDLINE]

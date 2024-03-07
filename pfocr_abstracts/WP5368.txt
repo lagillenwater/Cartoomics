@@ -1,0 +1,58 @@
+1. Oncol Lett. 2017 Jun;13(6):4047-4054. doi: 10.3892/ol.2017.5969. Epub 2017 Apr
+ 3.
+
+Clinical significance of the estrogen-modifying enzymes steroid sulfatase and 
+estrogen sulfotransferase in epithelial ovarian cancer.
+
+Mungenast F(1), Aust S(2), Vergote I(3), Vanderstichele A(3), Sehouli J(4), 
+Braicu E(4), Mahner S(5), Castillo-Tong DC(6), Zeillinger R(7), Thalhammer T(1).
+
+Author information:
+(1)Department of Pathophysiology and Allergy Research, Center for 
+Pathophysiology, Infectiology and Immunology, Medical University of Vienna, 
+A-1090 Vienna, Austria.
+(2)Department of Gynaecology and Gynaecological Oncology, Comprehensive Cancer 
+Center, Medical University of Vienna, A-1090 Vienna, Austria.
+(3)Division of Gynaecological Oncology, Department of Obstetrics and 
+Gynaecology, Catholic University of Leuven, University Hospital, B-3000 Leuven, 
+Belgium.
+(4)Department of Gynaecology, European Competence Center for Ovarian Cancer, 
+Virchow Clinic Campus, Medical University of Berlin, D-13353 Berlin, Germany.
+(5)Department of Gynaecology and Obstetrics, University of Munich, D-80539 
+Munich, Germany.
+(6)Translational Gynaecology Group, Department of Obstetrics and Gynaecology, 
+Comprehensive Cancer Center, Medical University of Vienna, A-1090 Vienna, 
+Austria.
+(7)Molecular Oncology Group, Department of Obstetrics and Gynaecology, 
+Comprehensive Cancer Center, Medical University of Vienna, A-1090 Vienna, 
+Austria.
+
+17β-estradiol (E2) can contribute to the progression of epithelial ovarian 
+cancer (EOC). Although the majority of patients with EOC are postmenopausal 
+woman, when de novo estrogen production in the ovary has ceased, ovarian cancer 
+cells remain exposed to estrogens synthesized locally in the cancer cells from 
+inactive sulfonated steroid hormone precursors-such as estrone sulfate taken up 
+from the circulation via the sulfatase pathway. An abundance of the 
+estrogen-modifying enzymes, including estrogen-activating steroid sulfatase 
+(STS) and estrogen-inactivating estrogen-sulfotransferase (SULT1E1), is 
+important for providing active estrogen to EOC cells. Therefore, the present 
+study determined the levels of SULT1E1, STS and estrogen receptor α (ERα) 
+protein in paraffin-embedded specimens from 206 patients with Federation of 
+Gynecology and Obstetrics stage II-IV EOC treated with debulking surgery and 
+standard platinum-based adjuvant chemotherapy. The levels of STS, SULT1E1 and 
+ERα were assessed by automated quantitative microscopy-based image analysis 
+subsequent to immunohistochemical staining. Significantly higher SULT1E1 levels 
+were observed in better differentiated EOC tumors compared to grade 3 EOC tumors 
+(P=0.001). STS and SULT1E1 levels were positively associated with ERα abundance 
+(P<0.001 and P=0.001, respectively). In advanced stage high-grade serous EOC 
+(HGSOC; n=132), the most frequent and lethal type of ovarian cancer, SULT1E1 
+expression was significantly associated with a better overall survival rate 
+(hazard ratio 0.66, 95% confidence interval, 0.45-0.94; P=0.005). These results 
+highlight the importance of SULT1E1-mediated estrogen inactivation in EOC, 
+particularly HGSOC. Therefore, targeting the sulfatase pathway is a potential 
+endocrine therapeutic intervention for certain patients with estrogen-responsive 
+EOC.
+
+DOI: 10.3892/ol.2017.5969
+PMCID: PMC5452883
+PMID: 28588698

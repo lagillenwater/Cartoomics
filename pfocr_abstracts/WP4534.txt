@@ -1,0 +1,30 @@
+1. Clin Transl Med. 2018 Aug 13;7(1):23. doi: 10.1186/s40169-018-0202-9.
+
+Mechanoregulation and pathology of YAP/TAZ via Hippo and non-Hippo mechanisms.
+
+Dobrokhotov O(1)(2), Samsonov M(3), Sokabe M(2), Hirata H(4)(5).
+
+Author information:
+(1)R-Pharm Japan, Tokyo, 105-0001, Japan.
+(2)Mechanobiology Laboratory, Nagoya University Graduate School of Medicine, 65 
+Tsurumai, Showa-ku, Nagoya, 466-8550, Japan.
+(3)R-Pharm, Moscow, 123317, Russia.
+(4)R-Pharm Japan, Tokyo, 105-0001, Japan. hhirata@med.nagoya-u.ac.jp.
+(5)Mechanobiology Laboratory, Nagoya University Graduate School of Medicine, 65 
+Tsurumai, Showa-ku, Nagoya, 466-8550, Japan. hhirata@med.nagoya-u.ac.jp.
+
+Yes-associated protein (YAP) and its paralog WW domain containing transcription 
+regulator 1 (TAZ) are important regulators of multiple cellular functions such 
+as proliferation, differentiation, and survival. On the tissue level, YAP/TAZ 
+are essential for embryonic development, organ size control and regeneration, 
+while their deregulation leads to carcinogenesis or other diseases. As an 
+underlying principle for YAP/TAZ-mediated regulation of biological functions, a 
+growing body of research reveals that YAP/TAZ play a central role in delivering 
+information of mechanical environments surrounding cells to the nucleus 
+transcriptional machinery. In this review, we discuss mechanical cue-dependent 
+regulatory mechanisms for YAP/TAZ functions, as well as their clinical 
+significance in cancer progression and treatment.
+
+DOI: 10.1186/s40169-018-0202-9
+PMCID: PMC6087706
+PMID: 30101371

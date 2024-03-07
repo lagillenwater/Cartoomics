@@ -1,0 +1,34 @@
+1. Biochem Soc Trans. 2018 Aug 20;46(4):967-982. doi: 10.1042/BST20170568. Epub 
+2018 Jul 31.
+
+Emerging mechanisms of dynein transport in the cytoplasm versus the cilium.
+
+Roberts AJ(1).
+
+Author information:
+(1)Institute of Structural and Molecular Biology, Birkbeck, University of 
+London, Malet Street, London, U.K. a.roberts@mail.cryst.bbk.ac.uk.
+
+Two classes of dynein power long-distance cargo transport in different cellular 
+contexts. Cytoplasmic dynein-1 is responsible for the majority of transport 
+toward microtubule minus ends in the cell interior. Dynein-2, also known as 
+intraflagellar transport dynein, moves cargoes along the axoneme of eukaryotic 
+cilia and flagella. Both dyneins operate as large ATP-driven motor complexes, 
+whose dysfunction is associated with a group of human disorders. But how similar 
+are their mechanisms of action and regulation? To examine this question, this 
+review focuses on recent advances in dynein-1 and -2 research, and probes to 
+what extent the emerging principles of dynein-1 transport could apply to or 
+differ from those of the less well-understood dynein-2 mechanoenzyme.
+
+© 2018 The Author(s).
+
+DOI: 10.1042/BST20170568
+PMCID: PMC6103457
+PMID: 30065109 [Indexed for MEDLINE]
+
+Conflict of interest statement: The Author declares that there are no competing 
+interests associated with this manuscript. NOTE ADDED IN PROOF: An analysis of 
+dynein-2 subunit interactions via a visible immunoprecipitation (VIP) assay has 
+been published, demonstrating interactions between WDR60 and TCTEX1/3-TCTEX1D2; 
+WDR34 and LC8 and Roadblock; and the intermediate chain-light chain complex with 
+the heavy chain and light-intermediate chain [148].

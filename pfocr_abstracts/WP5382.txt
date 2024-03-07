@@ -1,0 +1,40 @@
+1. Int J Mol Med. 2018 Mar;41(3):1201-1212. doi: 10.3892/ijmm.2017.3352. Epub
+2017  Dec 29.
+
+Mutual regulation of the Hippo/Wnt/LPA/TGF‑β signaling pathways and their roles 
+in glaucoma (Review).
+
+Wang X(1), Huai G(1), Wang H(2), Liu Y(3), Qi P(4), Shi W(4), Peng J(1), Yang 
+H(2), Deng S(2), Wang Y(1).
+
+Author information:
+(1)Department of Biomedical Engineering, Medical School of University of 
+Electronic Science and Technology of China, Chengdu, Sichuan 610054, P.R. China.
+(2)Institute of Organ Transplantation, Sichuan Academy of Medical Science and 
+Sichuan Provincial People's Hospital, Chengdu, Sichuan 610072, P.R. China.
+(3)91388 Military Hospital, Zhanjiang, Guangdong 524022, P.R. China.
+(4)Department of Pediatrics, Sichuan Academy of Medical Science and Sichuan 
+Provincial People's Hospital, Chengdu, Sichuan 610072, P.R. China.
+
+Glaucoma is the leading cause of irreversible blindness worldwide and there is 
+no effective treatment thus far. The trabecular meshwork has been identified as 
+the major pathological area involved. Certain signaling pathways in the 
+trabecular meshwork, including the Wnt, lysophosphatidic acid and transforming 
+growth factor‑β pathways, have been identified as novel therapeutic targets in 
+glaucoma treatment. Meanwhile, it has been reported that key proteins in these 
+pathways, particularly the primary transcription regulator Yes‑associated 
+protein (YAP) and transcriptional co‑activator with PDZ‑binding motif (TAZ), 
+exhibit interactions with the Hippo pathway. The Hippo pathway, which was first 
+identified in Drosophila, has drawn great focus with regard to various aspects 
+of studies in recent years. One role of the Hippo pathway in the regulation of 
+organ size was indicated by more recent evidence. Defining the relevant 
+physiological function of the Hippo pathway has proven to be extremely 
+complicated. Studies have ascribed a role for the Hippo pathway in an 
+overwhelming number of processes, including cell proliferation, cell death and 
+cell differentiation. Therefore, the present review aimed to unravel the roles 
+of YAP and TAZ in the Hippo pathway and the pathogenesis of glaucoma. 
+Furthermore, a new and creative study for the treatment of glaucoma is provided.
+
+DOI: 10.3892/ijmm.2017.3352
+PMCID: PMC5819904
+PMID: 29286147 [Indexed for MEDLINE]

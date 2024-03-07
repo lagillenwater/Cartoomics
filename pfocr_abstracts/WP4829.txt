@@ -1,0 +1,34 @@
+1. Front Cell Neurosci. 2018 Aug 28;12:273. doi: 10.3389/fncel.2018.00273. 
+eCollection 2018.
+
+Mechanism of BDNF Modulation in GABAergic Synaptic Transmission in Healthy and 
+Disease Brains.
+
+Porcher C(1)(2)(3), Medina I(1)(2)(3), Gaiarsa JL(1)(2)(3).
+
+Author information:
+(1)Aix Marseille University, Marseille, France.
+(2)Institut National de la Santé et de la Recherche Médicale (INSERM) U901, 
+Marseille, France.
+(3)Institut de Neurobiologie de la Méditerranée (INMED), Marseille, France.
+
+In the mature healthy mammalian neuronal networks, γ-aminobutyric acid (GABA) 
+mediates synaptic inhibition by acting on GABAA and GABAB receptors (GABAAR, 
+GABABR). In immature networks and during numerous pathological conditions the 
+strength of GABAergic synaptic inhibition is much less pronounced. In these 
+neurons the activation of GABAAR produces paradoxical depolarizing action that 
+favors neuronal network excitation. The depolarizing action of GABAAR is a 
+consequence of deregulated chloride ion homeostasis. In addition to depolarizing 
+action of GABAAR, the GABABR mediated inhibition is also less efficient. One of 
+the key molecules regulating the GABAergic synaptic transmission is the brain 
+derived neurotrophic factor (BDNF). BDNF and its precursor proBDNF, can be 
+released in an activity-dependent manner. Mature BDNF operates via its cognate 
+receptors tropomyosin related kinase B (TrkB) whereas proBDNF binds the p75 
+neurotrophin receptor (p75NTR). In this review article, we discuss recent 
+finding illuminating how mBDNF-TrkB and proBDNF-p75NTR signaling pathways 
+regulate GABA related neurotransmission under physiological conditions and 
+during epilepsy.
+
+DOI: 10.3389/fncel.2018.00273
+PMCID: PMC6121065
+PMID: 30210299

@@ -1,0 +1,41 @@
+1. Prog Neurobiol. 2012 Dec;99(3):191-225. doi: 10.1016/j.pneurobio.2012.03.003. 
+Epub 2012 Mar 22.
+
+Charcot-Marie-Tooth disease and intracellular traffic.
+
+Bucci C(1), Bakke O, Progida C.
+
+Author information:
+(1)Department of Biological and Environmental Sciences and Technologies 
+(DiSTeBA), University of Salento, Via Provinciale Monteroni, 73100 Lecce, Italy. 
+cecilia.bucci@unisalento.it
+
+Mutations of genes whose primary function is the regulation of membrane traffic 
+are increasingly being identified as the underlying causes of various important 
+human disorders. Intriguingly, mutations in ubiquitously expressed membrane 
+traffic genes often lead to cell type- or organ-specific disorders. This is 
+particularly true for neuronal diseases, identifying the nervous system as the 
+most sensitive tissue to alterations of membrane traffic. Charcot-Marie-Tooth 
+(CMT) disease is one of the most common inherited peripheral neuropathies. It is 
+also known as hereditary motor and sensory neuropathy (HMSN), which comprises a 
+group of disorders specifically affecting peripheral nerves. This peripheral 
+neuropathy, highly heterogeneous both clinically and genetically, is 
+characterized by a slowly progressive degeneration of the muscle of the foot, 
+lower leg, hand and forearm, accompanied by sensory loss in the toes, fingers 
+and limbs. More than 30 genes have been identified as targets of mutations that 
+cause CMT neuropathy. A number of these genes encode proteins directly or 
+indirectly involved in the regulation of intracellular traffic. Indeed, the list 
+of genes linked to CMT disease includes genes important for vesicle formation, 
+phosphoinositide metabolism, lysosomal degradation, mitochondrial fission and 
+fusion, and also genes encoding endosomal and cytoskeletal proteins. This review 
+focuses on the link between intracellular transport and CMT disease, 
+highlighting the molecular mechanisms that underlie the different forms of this 
+peripheral neuropathy and discussing the pathophysiological impact of membrane 
+transport genetic defects as well as possible future ways to counteract these 
+defects.
+
+Copyright © 2012 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.pneurobio.2012.03.003
+PMCID: PMC3514635
+PMID: 22465036 [Indexed for MEDLINE]

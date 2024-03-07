@@ -1,0 +1,43 @@
+1. Signal Transduct Target Ther. 2018 Jun 8;3:15. doi: 10.1038/s41392-018-0015-8.
+ eCollection 2018.
+
+Transcriptional cofactors Ski and SnoN are major regulators of the TGF-β/Smad 
+signaling pathway in health and disease.
+
+Tecalco-Cruz AC(1), Ríos-López DG(2), Vázquez-Victorio G(3), Rosales-Alvarez 
+RE(2), Macías-Silva M(2).
+
+Author information:
+(1)1Instituto de Investigaciones Biomédicas at Universidad Nacional Autónoma de 
+México, Mexico city, 04510 Mexico.
+(2)2Instituto de Fisiología Celular at Universidad Nacional Autónoma de México, 
+Mexico city, 04510 Mexico.
+(3)3Facultad de Ciencias at Universidad Nacional Autónoma de México, Mexico 
+city, 04510 Mexico.
+
+The transforming growth factor-β (TGF-β) family plays major pleiotropic roles by 
+regulating many physiological processes in development and tissue homeostasis. 
+The TGF-β signaling pathway outcome relies on the control of the spatial and 
+temporal expression of >500 genes, which depend on the functions of the Smad 
+protein along with those of diverse modulators of this signaling pathway, such 
+as transcriptional factors and cofactors. Ski (Sloan-Kettering Institute) and 
+SnoN (Ski novel) are Smad-interacting proteins that negatively regulate the 
+TGF-β signaling pathway by disrupting the formation of R-Smad/Smad4 complexes, 
+as well as by inhibiting Smad association with the p300/CBP coactivators. The 
+Ski and SnoN transcriptional cofactors recruit diverse corepressors and histone 
+deacetylases to repress gene transcription. The TGF-β/Smad pathway and 
+coregulators Ski and SnoN clearly regulate each other through several positive 
+and negative feedback mechanisms. Thus, these cross-regulatory processes finely 
+modify the TGF-β signaling outcome as they control the magnitude and duration of 
+the TGF-β signals. As a result, any alteration in these regulatory mechanisms 
+may lead to disease development. Therefore, the design of targeted therapies to 
+exert tight control of the levels of negative modulators of the TGF-β pathway, 
+such as Ski and SnoN, is critical to restore cell homeostasis under the specific 
+pathological conditions in which these cofactors are deregulated, such as 
+fibrosis and cancer.
+
+DOI: 10.1038/s41392-018-0015-8
+PMCID: PMC5992185
+PMID: 29892481
+
+Conflict of interest statement: The authors declare no competing interests.

@@ -1,0 +1,36 @@
+1. Front Bioeng Biotechnol. 2018 Mar 19;6:18. doi: 10.3389/fbioe.2018.00018. 
+eCollection 2018.
+
+Recent Insights into the Contribution of the Changing Hypertrophic Chondrocyte 
+Phenotype in the Development and Progression of Osteoarthritis.
+
+Ripmeester EGJ(1), Timur UT(1), Caron MMJ(1), Welting TJM(1).
+
+Author information:
+(1)Laboratory for Experimental Orthopedics, Department of Orthopedic Surgery, 
+Maastricht University Medical Center, Maastricht, Netherlands.
+
+Osteoarthritis (OA) is an extremely prevalent age-related condition. The 
+economic and societal burden due to the cost of symptomatic treatment, inability 
+to work, joint replacement, and rehabilitation is huge and increasing. 
+Currently, there are no effective medical therapies that delay or reverse the 
+pathological manifestations of OA. Current treatment options are, without 
+exception, focused on slowing down progression of the disease to postpone total 
+joint replacement surgery for as long as possible and keeping the associated 
+pain and joint immobility manageable. Alterations in the articular cartilage 
+chondrocyte phenotype might be fundamental in the pathological mechanisms of OA 
+development. In many ways, the changing chondrocyte phenotype in osteoarthritic 
+cartilage resembles the process of endochondral ossification as seen, for 
+instance, in developing growth plates. However, the relative contribution of 
+endochondral ossification to the changing chondrocyte phenotype in the 
+development and progression of OA remains poorly described. In this review, we 
+will discuss the current knowledge regarding the cartilage endochondral 
+phenotypic changes occurring during OA development and progression, as well as 
+the molecular and environmental effectors driving these changes. Understanding 
+how these molecular mechanisms determine the chondrocyte cell fate in OA will be 
+essential in enabling cartilage regenerative approaches in future treatments of 
+OA.
+
+DOI: 10.3389/fbioe.2018.00018
+PMCID: PMC5867295
+PMID: 29616218

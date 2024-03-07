@@ -1,0 +1,31 @@
+1. Front Physiol. 2018 Oct 30;9:1533. doi: 10.3389/fphys.2018.01533. eCollection 
+2018.
+
+The Pathogenesis and Therapies of Striated Muscle Laminopathies.
+
+Brull A(1), Morales Rodriguez B(1)(2), Bonne G(1), Muchir A(1), Bertrand AT(1).
+
+Author information:
+(1)Sorbonne Université, INSERM, Institut de Myologie, Center of Research in 
+Myology, UMRS 974, Paris, France.
+(2)Sanofi R&D, Chilly Mazarin, France.
+
+Emery-Dreifuss muscular dystrophy (EDMD) is a genetic condition characterized by 
+early contractures, skeletal muscle weakness, and cardiomyopathy. During the 
+last 20 years, various genetic approaches led to the identification of causal 
+genes of EDMD and related disorders, all encoding nuclear envelope proteins. By 
+their respective localization either at the inner nuclear membrane or the outer 
+nuclear membrane, these proteins interact with each other and establish a 
+connection between the nucleus and the cytoskeleton. Beside this physical link, 
+these proteins are also involved in mechanotransduction, responding to 
+environmental cues, such as increased tension of the cytoskeleton, by the 
+activation or repression of specific sets of genes. This ability of cells to 
+adapt to environmental conditions is altered in EDMD. Increased knowledge on the 
+pathophysiology of EDMD has led to the development of drug or gene therapies 
+that have been tested on mouse models. This review proposed an overview of the 
+functions played by the different proteins involved in EDMD and related 
+disorders and the current therapeutic approaches tested so far.
+
+DOI: 10.3389/fphys.2018.01533
+PMCID: PMC6218675
+PMID: 30425656

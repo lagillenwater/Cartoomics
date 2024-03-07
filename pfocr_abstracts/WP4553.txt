@@ -1,0 +1,47 @@
+1. Cell Death Dis. 2018 Jan 19;9(2):46. doi: 10.1038/s41419-017-0066-8.
+
+FBXL10 contributes to the development of diffuse large B-cell lymphoma by 
+epigenetically enhancing ERK1/2 signaling pathway.
+
+Zhao X(1), Wang X(1), Li Q(1), Chen W(2)(3), Zhang N(2), Kong Y(1), Lv J(4), Cao 
+L(1), Lin D(2), Wang X(1), Xu G(5), Wu X(6).
+
+Author information:
+(1)Department of Cell Biology, 2011 Collaborative Innovation Center of Tianjin 
+for Medical Epigenetics, Tianjin Key Laboratory of Medical Epigenetics, Tianjin 
+Medical University, Tianjin, 300070, China.
+(2)Department of Bioinformatics, Tianjin Medical University, Tianjin, 300070, 
+China.
+(3)Department of Molecular Biology and Cell Biology, University of Science and 
+Technology of China, Anhui, 230027, China.
+(4)Department of Immunology, Tianjin Medical University, Tianjin, 300070, China.
+(5)Nanlou Respiratory Department, PLA General Hospital, 28 Fuxing Road, Beijing, 
+100853, China. xuguogang@gmail.com.
+(6)Department of Cell Biology, 2011 Collaborative Innovation Center of Tianjin 
+for Medical Epigenetics, Tianjin Key Laboratory of Medical Epigenetics, Tianjin 
+Medical University, Tianjin, 300070, China. wuxudong@tmu.edu.cn.
+
+Epigenetic modifiers have emerged as critical factors governing the biology of 
+different cancers. Herein we show that FBXL10 (also called KDM2B or JHDM1B), an 
+important member of Polycomb repressive complexes, is overexpressed in human 
+diffuse large B-cell lymphoma (DLBCL) tissues and the derived cell lines. 
+Knocking down FBXL10 by specific short hairpin RNAs in DLBCL cells inhibits cell 
+proliferation and induces apoptosis in vitro. Moreover, FBXL10 depletion in 
+DLBCL cells abrogates tumor growth in mouse xenograft models. Through the 
+analysis of RNA sequencing, we find that one of the key derepressed genes by 
+depletion of FBXL10 is DUSP6, encoding a phosphatase for ERK1/2. Mechanistically 
+FBXL10 maintains the silencing of DUSP6 expression via recruitment of Polycomb 
+group proteins and deposition of repressive histone modifications at the DUSP6 
+promoter. Consistently, FBXL10 is required for ERK1/2 phosphorylation in DLBCL 
+cells. Furthermore, we show that ERK1/2 activation and the proliferation rate of 
+FBXL10-depleted cells can be rescued by downregulation of DUSP6 expression. 
+These findings indicate that FBXL10 may be a promising therapeutic target in 
+DLBCL and establish a link of epigenetic regulators to kinase signaling 
+pathways.
+
+DOI: 10.1038/s41419-017-0066-8
+PMCID: PMC5833345
+PMID: 29352142 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare that they have no competing 
+financial interests.
