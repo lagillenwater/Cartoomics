@@ -4,7 +4,7 @@ from assign_nodes import *
 from evaluation import *
 from create_subgraph import compare_subgraph_guiding_terms
 from graph_embeddings import Embeddings
-from evaluation_plots_all import visualize_literature_comparison_boxplot,visualize_literature_comparison_scatterplot
+from evaluation_plots_all import visualize_literature_comparison_boxplot,visualize_literature_comparison_scatterplot,visualize_literature_comparison_heatmap
 
 from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
@@ -67,6 +67,11 @@ def main():
     visualize_literature_comparison_boxplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
 
     visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
+
+    #Transform data to get average cosine similarity across all terms per Pathway and Algorithm
+    term_averages_cosine_sim_df = all_subgraphs_cosine_sim_df.groupby(['Pathway_ID','Algorithm'],as_index=False).agg({'Average_Cosine_Similarity':'mean'})
+
+    visualize_literature_comparison_heatmap(term_averages_cosine_sim_df,all_wikipathways_dir)
 
 
 if __name__ == '__main__':

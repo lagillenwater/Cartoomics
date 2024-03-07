@@ -114,5 +114,15 @@ def visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_
         plt.close()
         logging.info('Created png: %s',plt_file)
 
+def visualize_literature_comparison_heatmap(term_averages_cosine_sim_df,all_wikipathways_dir):
+
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+
+    plt_file = output_folder + '/Literature_Comparison_all_terms_heatmap.png'
+    df_matrix = term_averages_cosine_sim_df.pivot_table(index='Pathway_ID',columns='Algorithm',values='Average_Cosine_Similarity')
+    sns.heatmap(df_matrix, fmt="g", cmap='viridis').set_title("Average Cosine Similarity of Subgraphs to All Associated Literature Terms")
+    plt.savefig(plt_file,bbox_inches="tight")
+    plt.close()
+    logging.info('Created png: %s',plt_file)
 
 
