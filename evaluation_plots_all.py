@@ -107,7 +107,7 @@ def visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_
         df = all_subgraphs_cosine_sim_df.loc[all_subgraphs_cosine_sim_df['Pathway_ID'] == pathway]
 
         plt_file = all_wikipathways_dir + '/' + pathway + '_output/Evaluation_Files/Literature_Comparison_all_terms_scatterplot.png'
-        sns_plot = sns.scatterplot(data=all_subgraphs_cosine_sim_df, x='Algorithm', y = 'Average_Cosine_Similarity',hue='Term').set_title("Cosine Similarity of subgraph to All Associated Literature Terms")
+        sns_plot = sns.scatterplot(data=all_subgraphs_cosine_sim_df, x='Algorithm', y = 'Average_Cosine_Similarity',hue='Term').set_title("Cosine Similarity of " + pathway + " Subgraph to All Associated Literature Terms")
         plt.legend(title='Term', loc='upper right', labels=terms)
         plt.xticks(rotation=45)
         plt.savefig(plt_file,bbox_inches="tight")
