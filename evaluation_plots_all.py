@@ -81,3 +81,38 @@ def visualize_graph_similarity_metrics(results_file,all_wikipathways_dir):
         plt.close()
         logging.info('Created png: %s',plt_file)
 
+#Generates boxplot of each 
+def visualize_literature_comparison_boxplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir):
+
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+    algorithms = all_subgraphs_cosine_sim_df.Algorithm.unique()
+
+    plt_file = output_folder + '/Literature_Comparison_all_terms_boxplot.png'
+    sns_plot = sns.boxplot(data=all_subgraphs_cosine_sim_df, x='Pathway_ID', y = 'Average_Cosine_Similarity',hue='Algorithm').set_title("Cosine Similarity of subgraph to All Associated Literature Terms")
+    sns.stripplot(data=all_subgraphs_cosine_sim_df, x="Pathway_ID", y="Average_Cosine_Similarity",
+              hue="Algorithm", hue_order=algorithms, dodge=True)
+    plt.legend(title='Average_Cosine_Similarity', loc='upper right', labels=algorithms)
+    plt.xticks(rotation=45)
+    plt.savefig(plt_file,bbox_inches="tight")
+    plt.close()
+    logging.info('Created png: %s',plt_file)
+
+def visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir):
+
+    terms = all_subgraphs_cosine_sim_df.Term.unique()
+    pathways = all_subgraphs_cosine_sim_df.Pathway_ID.unique()
+
+    for pathway in pathways:
+
+        df = all_subgraphs_cosine_sim_df.loc[all_subgraphs_cosine_sim_df['Pathway_ID'] == pathway]
+
+        plt_file = all_wikipathways_dir + '/' + pathway + '_output/Evaluation_Files/Literature_Comparison_all_terms_scatterplot.png'
+        sns_plot = sns.scatterplot(data=all_subgraphs_cosine_sim_df, x='Algorithm', y = 'Average_Cosine_Similarity',hue='Term').set_title("Cosine Similarity of subgraph to All Associated Literature Terms")
+        plt.legend(title='Term', loc='upper right', labels=terms)
+        plt.xticks(rotation=45)
+        plt.savefig(plt_file,bbox_inches="tight")
+        plt.close()
+        logging.info('Created png: %s',plt_file)
+
+
+

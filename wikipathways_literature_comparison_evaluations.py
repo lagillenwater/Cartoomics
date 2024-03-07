@@ -4,6 +4,7 @@ from assign_nodes import *
 from evaluation import *
 from create_subgraph import compare_subgraph_guiding_terms
 from graph_embeddings import Embeddings
+from evaluation_plots_all import visualize_literature_comparison_boxplot,visualize_literature_comparison_scatterplot
 
 from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
@@ -62,6 +63,10 @@ def main():
             all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim)
         
     all_subgraphs_cosine_sim_df = output_literature_comparison_df(all_wikipathways_dir+'/literature_comparison',all_subgraphs_cosine_sim)
+
+    visualize_literature_comparison_boxplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
+
+    visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
 
 
 if __name__ == '__main__':
