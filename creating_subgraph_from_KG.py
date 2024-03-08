@@ -9,11 +9,14 @@ from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
 from memory_management import *
+#import resource
 
 def main():
 
+    # resource.setrlimit(resource.RLIMIT_AS, (8000000, 16000000))
+    # resource.setrlimit(resource.RLIMIT_DATA, (8000000,16000000))
     print("limiting memory")
-    limit_memory(percentage = .5) # limits memory to avoid memory faults
+    limit_memory(percentage = .8) # limits memory to avoid memory faults
     
     input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping = generate_arguments()
 
@@ -47,7 +50,7 @@ def main():
 
         print("Outputting CS visualization......")
 
-        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
+    #    cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
 
     if pdp == 'true':
 
@@ -57,7 +60,7 @@ def main():
         
         print("Outputting PDP visualization......")
 
-        pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
+     #   pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
 
     if guiding_term:
         print("Finding subgraph using user input for Guiding Term(s)......")
@@ -69,7 +72,7 @@ def main():
 
             print("Outputting Guiding Term(s) visualization......")
 
-            pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
+      #      pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
 
 if __name__ == '__main__':
     main()

@@ -25,12 +25,13 @@ import resource
 
 def limit_memory(percentage = 0.8):
         # Calculate the maximum memory limit (80% of available memory)
-virtual_memory = psutil.virtual_memory()
-available_memory = virtual_memory.free
-memory_limit = int(available_memory * percentage)
+    virtual_memory = psutil.virtual_memory()
+    available_memory = virtual_memory.available
+    memory_limit = int(available_memory * percentage)
 
         # Set the memory limit
-        resource.setrlimit(resource.RLIMIT_AS, (memory_limit, memory_limit))
-        print("memory set to: " + str(memory_limit))
+    # resource.setrlimit(resource.RLIMIT_AS, (memory_limit, memory_limit))
+    resource.setrlimit(resource.RLIMIT_DATA, (memory_limit, memory_limit))
+    print("memory set to: " + str(memory_limit))
 
         
