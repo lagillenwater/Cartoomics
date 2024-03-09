@@ -10,11 +10,13 @@ def main():
     wikipathways = get_wikipathways_list(wikipathways,pfocr_urls,pfocr_urls_file)
 
     for wikipathway in wikipathways:
+        try:
+            #Next generate subgraphs of wikipathways graphs
+            command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + wikipathway + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + wikipathway + ' --enable-skipping True'
 
-        #Next generate subgraphs of wikipathways graphs
-        command = 'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/' + wikipathway + '_output' + ' --knowledge-graph pkl --input-type annotated_diagram --input-substring ' + wikipathway + ' --enable-skipping True'
-
-        os.system(command)
+            os.system(command)
+        except:
+            pass
 
 
 if __name__ == '__main__':
