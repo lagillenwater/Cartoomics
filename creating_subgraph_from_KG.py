@@ -12,7 +12,7 @@ from memory_management import *
 
 def main():
 
-    limit_memory(percentage = 0.8)
+    limit_memory(percentage = 0.5)
     
     input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping = generate_arguments()
 
