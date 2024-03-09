@@ -8,9 +8,12 @@ from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_e
 from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
+from memory_management import *
 
 def main():
 
+    limit_memory(percentage = 0.8)
+    
     input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping = generate_arguments()
 
     triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url,guiding_term,input_substring)
