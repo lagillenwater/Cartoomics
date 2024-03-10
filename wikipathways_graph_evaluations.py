@@ -4,7 +4,7 @@ from assign_nodes import *
 from evaluation import *
 from create_subgraph import compare_subgraph_guiding_terms
 from graph_embeddings import Embeddings
-from evaluation_plots_all import visualize_graph_similarity_metrics,edge_type_comparison_visualization,intermediate_nodes_comparison_visualization
+from evaluation_plots_all import visualize_graph_similarity_metrics,visualize_graph_node_percentage_metrics,edge_type_comparison_visualization,intermediate_nodes_comparison_visualization
 
 from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
@@ -32,6 +32,8 @@ def main():
 
     #List for all graph similarity metrics
     graph_similarity_metrics = []
+    #List for all graph node percentage metrics
+    graph_node_percentage_metrics = []
     
     edge_types_df = pd.DataFrame()
     intermediate_nodes_df = pd.DataFrame()
@@ -44,27 +46,41 @@ def main():
         if cosine_similarity == 'true':
 
             #Get graph similarity metrics
-            graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
+            #graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
 
             #Get node and edge type metrics
             input_nodes,subgraph_cs,cs_noa_df,path_total_cs = get_subgraph_dfs(output_dir,'annotated_diagram','CosineSimilarity')
             edge_types_df = edge_type_comparison(edge_types_df,wikipathway,CosineSimilarity=subgraph_cs)
             intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,CosineSimilarity=cs_noa_df)
 
+            #Get node percentage metrics
+            graph_node_percentage_metrics = generate_graph_mapping_statistics(graph_node_percentage_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
+
         if pdp == 'true':
 
             #Get graph similarity metrics
-            graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'PDP',all_wikipathways_dir)
+            ##graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'PDP',all_wikipathways_dir)
 
             #Get node and edge type metrics
             input_nodes,subgraph_pdp,pdp_noa_df,path_pdp = get_subgraph_dfs(output_dir,'annotated_diagram','PDP')
             edge_types_df = edge_type_comparison(edge_types_df,wikipathway,PDP=subgraph_pdp)
             intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,PDP=pdp_noa_df)
 
+            #Get node percentage metrics
+            graph_node_percentage_metrics = generate_graph_mapping_statistics(graph_node_percentage_metrics,wikipathway,'PDP',all_wikipathways_dir)
+
 
     #Output files and visualization for graph similarity metrics
-    results_file = output_graph_similarity_metrics(all_wikipathways_dir,graph_similarity_metrics)
-    visualize_graph_similarity_metrics(results_file,all_wikipathways_dir)
+    ##graph_similarity_results_file = output_graph_similarity_metrics(all_wikipathways_dir,graph_similarity_metrics)
+    ##visualize_graph_similarity_metrics(graph_similarity_results_file,all_wikipathways_dir)
+
+    #Output files and visualization for graph node percentage metrics
+    graph_node_percentage_results_file = output_graph_node_percentage_metrics(all_wikipathways_dir,graph_node_percentage_metrics)
+    visualize_graph_node_percentage_metrics(graph_node_percentage_results_file,all_wikipathways_dir)
+
+    all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
+    edge_types_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/edge_type_comparison.csv',sep=',')
+    intermediate_nodes_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/intermediate_nodes_comparison.csv',sep=',')
 
     #Output files and visualization for edge and node type evaluations
     output_node_edge_type_file(all_wikipathways_dir,edge_types_df,'edge_type_comparison')

@@ -455,7 +455,7 @@ def convert_to_uri(curie):
 
 	return uri
 
-	
+#Takes cure in the form PREFIX:ID
 def normalize_node_api(node_curie):
 
 	url = NODE_NORMALIZER_URL + node_curie

@@ -87,7 +87,7 @@ def num_nodes_comparison(output_dir,**subgraph_dfs):
 def get_ontology_lables(noa_df,labels_all,kg_type):
 
     ont_types = ['/CHEBI_','/PR_','/PW_','/gene','/MONDO_','/HP_','/VO_','/EFO_','NCBITaxon_','/GO_','/DOID_','/reactome','/SO_',
-    'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.','ensembl']
+    'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.','ensembl','/CL_']
 
     ont_labels = []
 

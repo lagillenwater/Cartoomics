@@ -176,9 +176,9 @@ def get_wikipathways_graph_files(input_dir,kg_type,input_type, guiding_term = Fa
 
 
 #Creates igraph object and a list of nodes
-def create_igraph_graph(edgelist_df,edgelist_type):
+def create_igraph_graph(edgelist_df):
 
-    #Edgelist generation for subgraphs produced with cartoomics
+    '''#Edgelist generation for subgraphs produced with cartoomics
     if edgelist_type == 'subgraph':
         edgelist_df = edgelist_df[['S','O','P']]
         #Remove gene descriptions in parentheses such as " (human)"
@@ -190,11 +190,11 @@ def create_igraph_graph(edgelist_df,edgelist_type):
     #Edgelist generation for wikipathways diagrams
     if edgelist_type == 'wikipathways':
         edgelist_df = edgelist_df[['Source',  'Target', 'edgeID']]
-        edgelist_df = edgelist_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})
+        edgelist_df = edgelist_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})'''
 
     g = Graph.DataFrame(edgelist_df,directed=True,use_vids=False)
 
-    g_nodes = g.vs()['name']
+    #g_nodes = g.vs()['name']
 
     return g 
 
@@ -228,6 +228,18 @@ def prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir):
     wikipathways_df = pd.read_csv(wikipathways_subgraph_file,sep=',')
     cartoomics_df = pd.read_csv(cartoomics_subgraph_file,sep='|')
 
+    #Edgelist generation for subgraphs produced with cartoomics
+    cartoomics_df = cartoomics_df[['S','O','P']]
+    #Remove gene descriptions in parentheses such as " (human)"
+    cartoomics_df['S'] = cartoomics_df['S'].str.replace(r"\([^()]*\)", "", regex=True).str.strip()
+    cartoomics_df['O'] = cartoomics_df['O'].str.replace(r"\([^()]*\)", "", regex=True).str.strip()
+
+    #Edgelist generation for wikipathways diagrams
+    wikipathways_df = wikipathways_df[['Source',  'Target', 'edgeID']]
+    wikipathways_df = wikipathways_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})
+
+    return cartoomics_df,wikipathways_df
+
     wikipathways_graph = create_igraph_graph(wikipathways_df,'wikipathways')
     cartoomics_graph = create_igraph_graph(cartoomics_df,'subgraph')
 
@@ -259,7 +271,9 @@ def edit_distance_metric(wikipathways_graph,cartoomics_graph):
 
 def generate_graph_similarity_metrics(all_metrics,wikipathway,algorithm,all_wikipathways_dir):
 
-    wikipathways_graph,cartoomics_graph = prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir)
+    wikipathways_df,cartoomics_df = prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir)
+    wikipathways_graph = create_igraph_graph(wikipathways_df)
+    cartoomics_graph = create_igraph_graph(cartoomics_df)
     all_metrics.append([algorithm,wikipathway,'Jaccard',jaccard_similarity(wikipathways_graph,cartoomics_graph)])
     all_metrics.append([algorithm,wikipathway,'Overlap',overlap_metric(wikipathways_graph,cartoomics_graph)])
     #Graph edit distance not supported yet
@@ -284,4 +298,51 @@ def output_graph_similarity_metrics(all_wikipathways_dir,all_metrics):
         write.writerows(all_metrics)
 
     return results_file
+
+def get_percent_nodes_mapped(wikipathways_df,cartoomics_df):
+
+    wikipathways_list = wikipathways_df.S.tolist() + wikipathways_df.O.tolist()
+    cartoomics_list = cartoomics_df.S.tolist() + cartoomics_df.O.tolist()
+    percent_nodes_mapped = sum(node in set(cartoomics_list) for node in set(wikipathways_list))/len(set(wikipathways_list))
+
+    return percent_nodes_mapped
+
+def get_percent_intermediate_nodes(wikipathways_df,cartoomics_df):
+
+    wikipathways_list = wikipathways_df.S.tolist() + wikipathways_df.O.tolist()
+    cartoomics_list = cartoomics_df.S.tolist() + cartoomics_df.O.tolist()
+    percent_intermediate_nodes = len(list(set(cartoomics_list).difference(wikipathways_list)))/len(set(wikipathways_list)) #Change this to divide by length of cartoomics_list
+    
+    return percent_intermediate_nodes
+
+def generate_graph_mapping_statistics(all_metrics,wikipathway,algorithm,all_wikipathways_dir):
+
+    wikipathways_df,cartoomics_df = prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir)
+
+    all_metrics.append([algorithm,wikipathway,'Percent_Nodes_Mapped',get_percent_nodes_mapped(wikipathways_df,cartoomics_df)])
+    all_metrics.append([algorithm,wikipathway,'Percent_Intermediate_Nodes',get_percent_intermediate_nodes(wikipathways_df,cartoomics_df)])
+
+    return all_metrics
+
+def output_graph_node_percentage_metrics(all_wikipathways_dir,all_metrics):
+
+    results_fields = ['Algorithm','Pathway_ID','Metric','Score']
+
+    output_folder = all_wikipathways_dir+'/graph_similarity'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    results_file = output_folder + '/Graph_Node_Percentage_Metrics.csv'
+
+    with open(results_file, 'w') as f:
+        write = csv.writer(f)
+        write.writerow(results_fields)
+        write.writerows(all_metrics)
+
+    return results_file
+
+
+
+
 

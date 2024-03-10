@@ -1,7 +1,7 @@
 # Given a starting graph of node pairs, find all paths between them to create a subgraph
 from find_path import find_shortest_path,find_shortest_path_pattern
 from find_path import prioritize_path_cs,prioritize_path_pdp
-from find_path import calc_cosine_sim_from_label_list,generate_comparison_terms_dict,unique_nodes
+from find_path import calc_cosine_sim_from_label_list,calc_cosine_sim_from_uri_list,generate_comparison_terms_dict,unique_nodes
 import pandas as pd
 from tqdm import tqdm
 from evaluation import output_path_lists
@@ -242,7 +242,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
 
     return df,all_paths_cs_values,term_foldername
 
-def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim):
+def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
 
     #Get all nodes from subgraph not in original edgelist
     subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
@@ -252,10 +252,20 @@ def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,a
     #For each guiding term calculate cosine values to all nodes in supgraph
     for t in tqdm(range(len(comparison_terms_df))):
         term_row = comparison_terms_df.iloc[t]
-        avg_cosine_sim = calc_cosine_sim_from_label_list(emb,entity_map,intermediate_nodes,g.labels_all,kg_type,term_row)
+        if node_type == 'labels':
+            avg_cosine_sim = calc_cosine_sim_from_label_list(emb,entity_map,intermediate_nodes,g.labels_all,kg_type,term_row)
+        elif node_type == 'uris':
+            avg_cosine_sim = calc_cosine_sim_from_uri_list(emb,entity_map,intermediate_nodes,g.labels_all,kg_type,term_row)
         #Organize all path cosine similarity values into dictionary per term
         all_subgraphs_cosine_sim = generate_comparison_terms_dict(all_subgraphs_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway)
 
     return all_subgraphs_cosine_sim
+
+def get_wikipathways_subgraph(annotated_wikipathways_subgraph_df):
+
+    wikipathways_subgraph_df = annotated_wikipathways_subgraph_df[['source_id',  'target_id']]
+    wikipathways_subgraph_df = wikipathways_subgraph_df.rename(columns={'source_id' : 'S', 'target_id': 'O'})
+
+    return wikipathways_subgraph_df
 
 
