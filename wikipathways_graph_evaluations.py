@@ -46,7 +46,7 @@ def main():
         if cosine_similarity == 'true':
 
             #Get graph similarity metrics
-            #graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
+            graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
 
             #Get node and edge type metrics
             input_nodes,subgraph_cs,cs_noa_df,path_total_cs = get_subgraph_dfs(output_dir,'annotated_diagram','CosineSimilarity')
@@ -59,7 +59,7 @@ def main():
         if pdp == 'true':
 
             #Get graph similarity metrics
-            ##graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'PDP',all_wikipathways_dir)
+            graph_similarity_metrics = generate_graph_similarity_metrics(graph_similarity_metrics,wikipathway,'PDP',all_wikipathways_dir)
 
             #Get node and edge type metrics
             input_nodes,subgraph_pdp,pdp_noa_df,path_pdp = get_subgraph_dfs(output_dir,'annotated_diagram','PDP')
@@ -71,8 +71,8 @@ def main():
 
 
     #Output files and visualization for graph similarity metrics
-    ##graph_similarity_results_file = output_graph_similarity_metrics(all_wikipathways_dir,graph_similarity_metrics)
-    ##visualize_graph_similarity_metrics(graph_similarity_results_file,all_wikipathways_dir)
+    graph_similarity_results_file = output_graph_similarity_metrics(all_wikipathways_dir,graph_similarity_metrics)
+    visualize_graph_similarity_metrics(graph_similarity_results_file,all_wikipathways_dir)
 
     #Output files and visualization for graph node percentage metrics
     graph_node_percentage_results_file = output_graph_node_percentage_metrics(all_wikipathways_dir,graph_node_percentage_metrics)

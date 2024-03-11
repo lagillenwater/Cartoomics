@@ -21,7 +21,7 @@ def main():
     #python wikipathways_literature_comparison_evaluations.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP5283','WP4535','WP5358','WP5385','WP4829','WP4564','WP4565','WP4532','WP4534','WP4539','WP4562','WP5283','WP4535','WP5358','WP5385','WP4829','WP4564','WP4565','WP4532','WP4534','WP4539','WP4562','WP4533','WP4542','WP4540','WP4541','WP4760','WP5373','WP4538','WP4553','WP4537','WP5382','WP5368','WP4856']" --enable-skipping True
     #removed ,'WP5372'
 
-    '''kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
+    kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
 
     input_dir = os.getcwd() + '/' + WIKIPATHWAYS_SUBFOLDER
 
@@ -69,11 +69,11 @@ def main():
         wikipathways_subgraph_df = get_wikipathways_subgraph(s)
         all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,wikipathways_subgraph_df,g,comparison_terms_df,kg_type,'Original',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
         
-    all_subgraphs_cosine_sim_df = output_literature_comparison_df(all_wikipathways_dir+'/literature_comparison',all_subgraphs_cosine_sim)'''
+    all_subgraphs_cosine_sim_df = output_literature_comparison_df(all_wikipathways_dir+'/literature_comparison',all_subgraphs_cosine_sim)
 
-    all_subgraphs_cosine_sim_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv',sep=',')
-
-    all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
+    #!For Testing
+    ##all_subgraphs_cosine_sim_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv',sep=',')
+    ##all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
     visualize_literature_comparison_boxplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
 

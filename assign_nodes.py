@@ -394,8 +394,9 @@ def create_skipped_node_file(skipped_nodes,output_dir,filename=''):
 		logging.info('Skipped file created: %s',skipped_node_file)
 		
 		e = open(skipped_node_file,"a")
+		e.truncate(0)
 		writer = csv.writer(e, delimiter="\t")
-		for n in skipped_nodes:
+		for n in set(skipped_nodes):
 			writer.writerow([n])
 		e.close()
 
