@@ -1,0 +1,107 @@
+S|P|O
+TCTEX1D2|causes or contributes to condition|short rib-polydactyly syndrome
+WDR35|causes or contributes to condition|short rib-polydactyly syndrome
+TCTEX1D2|participates_in|Intraflagellar transport
+IFT122|participates_in|Intraflagellar transport
+IFT140|participates_in|Intraflagellar transport
+WDR19|participates_in|Intraflagellar transport
+IFT22|participates_in|Intraflagellar transport
+HSPB11|participates_in|Intraflagellar transport
+IFT27|participates_in|Intraflagellar transport
+IFT43|participates_in|Intraflagellar transport
+IFT46|participates_in|Intraflagellar transport
+IFT80|participates_in|Intraflagellar transport
+IFT81|participates_in|Intraflagellar transport
+WDR34|causes or contributes to condition|short rib-polydactyly syndrome
+DYNC2H1|causes or contributes to condition|short rib-polydactyly syndrome
+DYNC2LI1|causes or contributes to condition|short rib-polydactyly syndrome
+WDR60|causes or contributes to condition|short rib-polydactyly syndrome
+DYNLL2|participates_in|Intraflagellar transport
+TCTEX1D2|subClassOf|protein_coding_gene
+DYNLT1|subClassOf|protein_coding_gene
+DYNLRB1|participates_in|Intraflagellar transport
+DYNLL1|participates_in|Intraflagellar transport
+DYNLRB2|participates_in|Intraflagellar transport
+DYNLT3|subClassOf|protein_coding_gene
+WDR35|causes or contributes to condition|Premature closure of fontanelles
+IFT122|causes or contributes to condition|Premature closure of fontanelles
+WDR35|participates_in|Intraflagellar transport
+WDR35|causes or contributes to condition|cranioectodermal dysplasia
+WDR19|causes or contributes to condition|cranioectodermal dysplasia
+IFT43|causes or contributes to condition|cranioectodermal dysplasia
+WDR35|causes or contributes to condition|short rib-polydactyly syndrome, Verma-Naumoff type
+IFT80|causes or contributes to condition|short rib-polydactyly syndrome, Verma-Naumoff type
+IFT122|causes or contributes to condition|cranioectodermal dysplasia
+IFT122|causes or contributes to condition|Beemer-Langer syndrome
+IFT80|causes or contributes to condition|Beemer-Langer syndrome
+IFT140|causes or contributes to condition|Jeune syndrome
+WDR19|causes or contributes to condition|Jeune syndrome
+IFT80|causes or contributes to condition|Jeune syndrome
+WDR34|causes or contributes to condition|short rib-polydactyly syndrome, Verma-Naumoff type
+WDR34|participates_in|Intraflagellar transport
+WDR34|causes or contributes to condition|Jeune syndrome
+DYNC2H1|causes or contributes to condition|short rib-polydactyly syndrome, Verma-Naumoff type
+WDR60|causes or contributes to condition|short rib-polydactyly syndrome, Verma-Naumoff type
+WDR34|subClassOf|protein_coding_gene
+DYNC2H1|participates_in|Intraflagellar transport
+DYNC2H1|causes or contributes to condition|Jeune syndrome
+DYNC2H1|subClassOf|protein_coding_gene
+DYNC2LI1|participates_in|Intraflagellar transport
+DYNC2LI1|causes or contributes to condition|Jeune syndrome
+DYNC2LI1|subClassOf|protein_coding_gene
+WDR60|participates_in|Intraflagellar transport
+WDR60|causes or contributes to condition|Jeune syndrome
+WDR60|subClassOf|protein_coding_gene
+DYNLL2|participates_in|Immune System
+DYNLT1|participates_in|Immune System
+DYNLL2|participates_in|Activation of BH3-only proteins
+DYNLL1|participates_in|Activation of BH3-only proteins
+DYNLL2|subClassOf|protein_coding_gene
+DYNLL2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1LI1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1H1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1I2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1I1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1LI2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+WDR35|subClassOf|protein_coding_gene
+IFT122|subClassOf|protein_coding_gene
+IFT140|subClassOf|protein_coding_gene
+WDR19|subClassOf|protein_coding_gene
+IFT22|subClassOf|protein_coding_gene
+HSPB11|subClassOf|protein_coding_gene
+IFT27|subClassOf|protein_coding_gene
+IFT43|subClassOf|protein_coding_gene
+IFT46|subClassOf|protein_coding_gene
+IFT80|subClassOf|protein_coding_gene
+IFT81|subClassOf|protein_coding_gene
+DYNLRB1|subClassOf|protein_coding_gene
+DYNLT1|participates_in|Neutrophil degranulation
+DYNLL1|participates_in|Neutrophil degranulation
+DYNLRB2|subClassOf|protein_coding_gene
+DYNC1LI1|participates_in|Neutrophil degranulation
+DYNC1H1|participates_in|Neutrophil degranulation
+DYNC1I2|participates_in|Immune System
+DYNC1I1|participates_in|Immune System
+DYNC1LI2|participates_in|Immune System
+DYNC1LI1|subClassOf|protein_coding_gene
+DYNLRB1|participates_in|Cilium Assembly
+DYNC1H1|participates_in|Cilium Assembly
+DYNC1I2|participates_in|Cilium Assembly
+DYNC1I1|subClassOf|protein_coding_gene
+DYNC1LI2|subClassOf|protein_coding_gene
+DYNLL1|subClassOf|protein_coding_gene
+DYNLL1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNLRB2|participates_in|Cilium Assembly
+DYNC1H1|subClassOf|protein_coding_gene
+DYNC1I2|subClassOf|protein_coding_gene
+WDR35|participates_in|Cilium Assembly
+IFT122|participates_in|Cilium Assembly
+IFT140|participates_in|Cilium Assembly
+WDR19|participates_in|Cilium Assembly
+IFT22|participates_in|Cilium Assembly
+HSPB11|participates_in|Cilium Assembly
+IFT27|participates_in|Cilium Assembly
+IFT43|participates_in|Cilium Assembly
+IFT46|participates_in|Cilium Assembly
+IFT80|participates_in|Cilium Assembly
+IFT81|participates_in|Cilium Assembly

@@ -1,0 +1,198 @@
+S|P|O
+TCTEX1D2|causes or contributes to condition|short rib-polydactyly syndrome
+WDR35|causes or contributes to condition|short rib-polydactyly syndrome
+TCTEX1D2|participates_in|Intraflagellar transport
+IFT122|participates_in|Intraflagellar transport
+IFT140|participates_in|Intraflagellar transport
+WDR19|participates_in|Intraflagellar transport
+IFT22|participates_in|Intraflagellar transport
+TCTEX1D2|subClassOf|protein_coding_gene
+HSPB11|subClassOf|protein_coding_gene
+IFT27|participates_in|Intraflagellar transport
+IFT43|participates_in|Intraflagellar transport
+TCTEX1D2|participates_in|Cilium Assembly
+IFT46|participates_in|Cilium Assembly
+IFT80|participates_in|Cilium Assembly
+IFT81|participates_in|Intraflagellar transport
+WDR34|causes or contributes to condition|short rib-polydactyly syndrome
+DYNC2H1|causes or contributes to condition|short rib-polydactyly syndrome
+DYNC2LI1|causes or contributes to condition|short rib-polydactyly syndrome
+WDR60|causes or contributes to condition|short rib-polydactyly syndrome
+DYNLL2|participates_in|Cilium Assembly
+DYNLT1|subClassOf|protein_coding_gene
+DYNLRB1|participates_in|Intraflagellar transport
+DYNLL1|participates_in|Cilium Assembly
+DYNLRB2|subClassOf|protein_coding_gene
+DYNLT3|subClassOf|protein_coding_gene
+WDR35|causes or contributes to condition|Premature closure of fontanelles
+IFT122|causes or contributes to condition|Premature closure of fontanelles
+WDR35|participates_in|Intraflagellar transport
+WDR35|participates_in|Cilium Assembly
+WDR19|participates_in|Cilium Assembly
+WDR35|subClassOf|protein_coding_gene
+WDR35|subClassOf|gene
+IFT27|subClassOf|gene
+WDR35|participates_in|Organelle biogenesis and maintenance
+IFT43|participates_in|Organelle biogenesis and maintenance
+IFT80|participates_in|Intraflagellar transport
+IFT122|causes or contributes to condition|Lambdoidal craniosynostosis
+WDR35|causes or contributes to condition|Lambdoidal craniosynostosis
+IFT122|subClassOf|protein_coding_gene
+IFT122|causes or contributes to condition|cranioectodermal dysplasia
+IFT43|causes or contributes to condition|cranioectodermal dysplasia
+IFT46|participates_in|Intraflagellar transport
+IFT122|participates_in|Organelle biogenesis and maintenance
+IFT80|participates_in|Organelle biogenesis and maintenance
+IFT81|participates_in|Organelle biogenesis and maintenance
+IFT140|participates_in|Cilium Assembly
+IFT140|subClassOf|gene
+WDR19|subClassOf|gene
+IFT140|subClassOf|protein_coding_gene
+IFT27|subClassOf|protein_coding_gene
+IFT140|participates_in|Organelle biogenesis and maintenance
+WDR19|causes or contributes to condition|cranioectodermal dysplasia
+WDR35|causes or contributes to condition|cranioectodermal dysplasia
+WDR19|participates_in|Hedgehog 'off' state
+IFT122|participates_in|Hedgehog 'off' state
+WDR19|causes or contributes to condition|Jeune syndrome
+IFT140|causes or contributes to condition|Jeune syndrome
+HSPB11|participates_in|Intraflagellar transport
+IFT43|participates_in|Cilium Assembly
+IFT80|subClassOf|gene
+IFT22|participates_in|Cilium Assembly
+IFT122|participates_in|Cilium Assembly
+IFT27|participates_in|Cilium Assembly
+IFT81|participates_in|Cilium Assembly
+HSPB11|participates_in|Cilium Assembly
+HSPB11|participates_in|Organelle biogenesis and maintenance
+WDR19|participates_in|Organelle biogenesis and maintenance
+IFT22|subClassOf|protein_coding_gene
+IFT46|subClassOf|protein_coding_gene
+IFT27|participates_in|Organelle biogenesis and maintenance
+IFT27|causes or contributes to condition|Polydactyly
+IFT80|causes or contributes to condition|Polydactyly
+IFT43|subClassOf|protein_coding_gene
+IFT43|subClassOf|gene
+IFT46|participates_in|Organelle biogenesis and maintenance
+IFT22|participates_in|Organelle biogenesis and maintenance
+IFT80|causes or contributes to condition|Beemer-Langer syndrome
+IFT122|causes or contributes to condition|Beemer-Langer syndrome
+IFT81|subClassOf|protein_coding_gene
+WDR34|participates_in|Organelle biogenesis and maintenance
+WDR34|causes or contributes to condition|Jeune syndrome
+WDR34|participates_in|Cilium Assembly
+WDR34|subClassOf|gene
+IFT80|causes or contributes to condition|Jeune syndrome
+WDR34|participates_in|Intraflagellar transport
+DYNC2H1|participates_in|Intraflagellar transport
+DYNC2LI1|participates_in|Organelle biogenesis and maintenance
+WDR34|subClassOf|protein_coding_gene
+DYNLL2|subClassOf|protein_coding_gene
+DYNLRB1|participates_in|Organelle biogenesis and maintenance
+DYNLL1|subClassOf|protein_coding_gene
+DYNC2H1|participates_in|Signaling by Hedgehog
+WDR35|participates_in|Signaling by Hedgehog
+DYNC2H1|participates_in|Organelle biogenesis and maintenance
+DYNC2H1|causes or contributes to condition|Jeune syndrome
+DYNC2H1|subClassOf|protein_coding_gene
+DYNC2H1|causes or contributes to condition|Polydactyly
+DYNC2H1|participates_in|Cilium Assembly
+DYNC2LI1|participates_in|Cilium Assembly
+DYNLL2|participates_in|Intraflagellar transport
+DYNLL1|participates_in|Organelle biogenesis and maintenance
+DYNLRB2|participates_in|Intraflagellar transport
+DYNC2LI1|subClassOf|gene
+IFT122|subClassOf|gene
+DYNC2LI1|participates_in|Intraflagellar transport
+DYNC2LI1|subClassOf|protein_coding_gene
+WDR60|participates_in|Cilium Assembly
+DYNLL1|participates_in|Intraflagellar transport
+DYNLRB2|participates_in|Cilium Assembly
+aflatoxin B1|interacts with|WDR60
+aflatoxin B1|interacts with|IFT122
+WDR60|causes or contributes to condition|Jeune syndrome
+WDR60|participates_in|Organelle biogenesis and maintenance
+WDR60|participates_in|Intraflagellar transport
+WDR60|subClassOf|protein_coding_gene
+DYNLL2|participates_in|Organelle biogenesis and maintenance
+DYNLRB1|participates_in|Cilium Assembly
+DYNLRB2|participates_in|Organelle biogenesis and maintenance
+DYNLL2|participates_in|Macroautophagy
+DYNLL1|participates_in|Macroautophagy
+DYNC1LI1|subClassOf|protein_coding_gene
+DYNLL2|participates_in|COPI-mediated anterograde transport
+DYNC1H1|participates_in|COPI-mediated anterograde transport
+DYNLL2|participates_in|Golgi-to-ER retrograde transport
+DYNC1I2|participates_in|Golgi-to-ER retrograde transport
+DYNC1I1|participates_in|COPI-mediated anterograde transport
+DYNLL2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1LI2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+WDR19|subClassOf|protein_coding_gene
+IFT80|subClassOf|protein_coding_gene
+DYNLT1|participates_in|Immune System
+DYNLL2|participates_in|Immune System
+DYNLRB1|subClassOf|protein_coding_gene
+DYNLL1|participates_in|Immune System
+DYNLT1|participates_in|Innate Immune System
+DYNC1H1|participates_in|Innate Immune System
+DYNC1I2|participates_in|Immune System
+DYNC1I1|subClassOf|protein_coding_gene
+DYNC1LI2|subClassOf|protein_coding_gene
+DYNC1H1|subClassOf|protein_coding_gene
+DYNC1I2|subClassOf|protein_coding_gene
+TCTEX1D2|participates_in|Organelle biogenesis and maintenance
+DYNLL1|participates_in|Asparagine N-linked glycosylation
+DYNLL2|participates_in|Asparagine N-linked glycosylation
+DYNLL1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1LI1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNLL1|participates_in|Centrosome maturation
+DYNC1H1|participates_in|Centrosome maturation
+DYNLL1|participates_in|Mitotic G2-G2/M phases
+DYNC1I2|participates_in|Mitotic G2-G2/M phases
+DYNC1I1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNLL1|participates_in|Vesicle-mediated transport
+DYNC1LI2|participates_in|Vesicle-mediated transport
+DYNC1LI1|participates_in|Immune System
+DYNC1H1|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1LI1|participates_in|Asparagine N-linked glycosylation
+DYNC1LI1|participates_in|Metabolism of proteins
+DYNC1I2|participates_in|Metabolism of proteins
+DYNC1LI1|participates_in|Post-translational protein modification
+DYNC1LI2|participates_in|Post-translational protein modification
+DYNC1H1|participates_in|Cilium Assembly
+DYNC1H1|subClassOf|gene
+DYNC1H1|participates_in|Organelle biogenesis and maintenance
+DYNC1H1|participates_in|Immune System
+DYNC1H1|participates_in|Intra-Golgi and retrograde Golgi-to-ER traffic
+DYNLL1|participates_in|Intra-Golgi and retrograde Golgi-to-ER traffic
+DYNC1H1|participates_in|Loss of Nlp from mitotic centrosomes
+DYNC1I2|participates_in|Loss of Nlp from mitotic centrosomes
+DYNC1H1|participates_in|Membrane Trafficking
+DYNC1LI2|participates_in|Membrane Trafficking
+valproic acid|interacts with|DYNC1I2
+valproic acid|interacts with|IFT122
+valproic acid|interacts with|IFT140
+DYNC1I2|participates_in|Organelle biogenesis and maintenance
+DYNC1I2|participates_in|Cilium Assembly
+DYNC1I2|participates_in|Membrane Trafficking
+DYNLL2|participates_in|Membrane Trafficking
+DYNC1I2|participates_in|AURKA Activation by TPX2
+DYNC1H1|participates_in|AURKA Activation by TPX2
+DYNC1I2|participates_in|Asparagine N-linked glycosylation
+DYNC1I2|participates_in|Adaptive Immune System
+DYNC1I1|participates_in|Adaptive Immune System
+DYNC1I2|participates_in|COPI-independent Golgi-to-ER retrograde traffic
+DYNC1I1|participates_in|Golgi-to-ER retrograde transport
+DYNC1I1|participates_in|Immune System
+DYNC1I1|participates_in|ER to Golgi Anterograde Transport
+DYNC1LI1|participates_in|ER to Golgi Anterograde Transport
+DYNC1H1|participates_in|Adaptive Immune System
+DYNC1I1|participates_in|Post-translational protein modification
+DYNLL1|participates_in|Post-translational protein modification
+DYNC1LI2|participates_in|Golgi-to-ER retrograde transport
+DYNLL2|participates_in|Vesicle-mediated transport
+DYNC1LI2|participates_in|Immune System
+DYNC1LI2|participates_in|Adaptive Immune System
+DYNC1LI1|participates_in|Adaptive Immune System
+DYNC1LI2|participates_in|Asparagine N-linked glycosylation
+DYNC1H1|participates_in|Asparagine N-linked glycosylation

@@ -1,0 +1,178 @@
+S|P|O
+PAK1|participates_in|RHO GTPases activate PAKs
+NF2|participates_in|RHO GTPases activate PAKs
+PAK1|participates_in|CD28 dependent Vav1 pathway
+PAK2|participates_in|CD28 dependent Vav1 pathway
+PAK3|participates_in|CD28 dependent Vav1 pathway
+PAK1|participates_in|Activation of RAC1
+PAK4|participates_in|Activation of RAC1
+PAK5|participates_in|Activation of RAC1
+PAK6|participates_in|Activation of RAC1
+NF2|participates_in|Signal Transduction
+LATS1|participates_in|Signal Transduction
+WWTR1|participates_in|Signal Transduction
+NF2|subClassOf|gene
+YAP1|subClassOf|gene
+PAK2|participates_in|RHO GTPases activate PAKs
+PAK2|participates_in|Activation of RAC1
+PAK3|participates_in|RHO GTPases activate PAKs
+PAK3|participates_in|Activation of RAC1
+PAK4|subClassOf|protein_coding_gene
+NF2|subClassOf|protein_coding_gene
+PAK5|subClassOf|protein_coding_gene
+PAK6|subClassOf|protein_coding_gene
+MAPK10|participates_in|Cellular responses to stress
+LIMD1|participates_in|Cellular responses to stress
+MAPK10|participates_in|Activation of the AP-1 family of transcription factors
+MAPK8|participates_in|Activation of the AP-1 family of transcription factors
+MAPK9|participates_in|Activation of the AP-1 family of transcription factors
+LIMD1|subClassOf|protein_coding_gene
+LATS1|subClassOf|protein_coding_gene
+MAPK8|participates_in|Cellular responses to stress
+MAPK9|participates_in|Cellular responses to stress
+ITGB5|participates_in|Adaptive Immune System
+SRC|participates_in|Adaptive Immune System
+ITGB5|participates_in|Immune System
+MAPK10|participates_in|Immune System
+MAPK8|participates_in|Immune System
+MAPK9|participates_in|Immune System
+PAK1|participates_in|Adaptive Immune System
+PAK2|participates_in|Adaptive Immune System
+PAK3|participates_in|Adaptive Immune System
+ITGB5|subClassOf|protein_coding_gene
+ITGB5|participates_in|Integrin cell surface interactions
+ITGB7|participates_in|Integrin cell surface interactions
+ITGB5|participates_in|Molecules associated with elastic fibres
+ITGB8|participates_in|Molecules associated with elastic fibres
+ITGB6|participates_in|Molecules associated with elastic fibres
+ITGB5|participates_in|Syndecan interactions
+ITGB4|participates_in|Syndecan interactions
+ITGB3|participates_in|Syndecan interactions
+ITGB2|participates_in|Integrin cell surface interactions
+ITGB1|participates_in|Syndecan interactions
+SRC|participates_in|Signal Transduction
+SRC|causes or contributes to condition|Neoplasm of the large intestine
+YAP1|causes or contributes to condition|Neoplasm of the large intestine
+ITGB7|participates_in|Adaptive Immune System
+ITGB7|participates_in|Immune System
+ITGB7|subClassOf|protein_coding_gene
+ITGB8|participates_in|Integrin cell surface interactions
+ITGB6|participates_in|Integrin cell surface interactions
+ITGB7|participates_in|Extracellular matrix organization
+ITGB4|participates_in|Extracellular matrix organization
+ITGB3|participates_in|Integrin cell surface interactions
+ITGB1|participates_in|Integrin cell surface interactions
+ITGB8|subClassOf|protein_coding_gene
+SRC|subClassOf|protein_coding_gene
+aflatoxin B1|interacts with|ITGB8
+aflatoxin B1|interacts with|MAPK10
+MAPK8|subClassOf|protein_coding_gene
+MAPK9|subClassOf|protein_coding_gene
+PAK1|subClassOf|protein_coding_gene
+aflatoxin B1|interacts with|PAK2
+aflatoxin B1|interacts with|PAK3
+ITGB8|participates_in|Extracellular matrix organization
+ITGB3|participates_in|Molecules associated with elastic fibres
+ITGB1|participates_in|Molecules associated with elastic fibres
+ITGB6|subClassOf|gene
+SRC|subClassOf|gene
+aflatoxin B1|interacts with|ITGB6
+manganese(II) chloride tetrahydrate|interacts with|ITGB6
+manganese(II) chloride tetrahydrate|interacts with|MAPK8
+ITGB6|subClassOf|protein_coding_gene
+valproic acid|interacts with|ITGB6
+valproic acid|interacts with|PAK1
+PAK3|subClassOf|gene
+valproic acid|interacts with|PAK6
+ITGB6|causes or contributes to condition|Spontaneous abortion
+ITGB4|causes or contributes to condition|Spontaneous abortion
+ITGB4|participates_in|Cell-Cell communication
+SRC|participates_in|Cell-Cell communication
+valproic acid|interacts with|ITGB4
+valproic acid|interacts with|MAPK10
+MAPK8|participates_in|Cell-Cell communication
+ITGB4|subClassOf|protein_coding_gene
+PAK1|participates_in|Cell-Cell communication
+valproic acid|interacts with|PAK2
+ITGB4|subClassOf|gene
+ITGB2|participates_in|Extracellular matrix organization
+ITGB3|participates_in|PECAM1 interactions
+SRC|participates_in|PECAM1 interactions
+ITGB3|participates_in|FCERI mediated MAPK activation
+MAPK10|participates_in|FCERI mediated MAPK activation
+MAPK8|participates_in|FCERI mediated MAPK activation
+MAPK9|participates_in|FCERI mediated MAPK activation
+ITGB3|participates_in|Signal transduction by L1
+PAK1|participates_in|Signal transduction by L1
+PAK2|participates_in|FCERI mediated MAPK activation
+ITGB3|participates_in|VEGFA-VEGFR2 Pathway
+PAK3|participates_in|VEGFA-VEGFR2 Pathway
+ITGB3|participates_in|Axon guidance
+PAK4|participates_in|Axon guidance
+PAK5|participates_in|Axon guidance
+ITGB3|causes or contributes to condition|Prostate cancer
+PAK6|causes or contributes to condition|Prostate cancer
+ITGB1|participates_in|Signal transduction by L1
+ITGB2|participates_in|Cell surface interactions at the vascular wall
+SRC|participates_in|Cell surface interactions at the vascular wall
+ITGB2|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+MAPK10|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+MAPK8|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+MAPK9|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+ITGB2|participates_in|Adaptive Immune System
+ITGB2|subClassOf|protein_coding_gene
+valproic acid|interacts with|ITGB2
+ITGB2|causes or contributes to condition|Calcinosis
+ITGB1|causes or contributes to condition|Calcinosis
+ITGB1|participates_in|MET activates PTK2 signaling
+SRC|participates_in|MET activates PTK2 signaling
+ITGB1|participates_in|Immune System
+ITGB1|participates_in|Cell-Cell communication
+ITGB1|participates_in|Semaphorin interactions
+PAK2|participates_in|Semaphorin interactions
+PAK3|participates_in|Semaphorin interactions
+ITGB1|participates_in|Axon guidance
+PAK6|participates_in|Axon guidance
+MAP4K2|subClassOf|protein_coding_gene
+MAP4K5|subClassOf|protein_coding_gene
+MAP4K3|subClassOf|protein_coding_gene
+valproic acid|interacts with|MAP4K2
+valproic acid|interacts with|MAP4K4
+valproic acid|interacts with|MAP4K1
+LATS1|participates_in|Signaling by Hippo
+WWTR1|participates_in|Signaling by Hippo
+YAP1|participates_in|Signaling by Hippo
+SGMS1|subClassOf|protein_coding_gene
+aflatoxin B1|interacts with|MAP4K5
+aflatoxin B1|interacts with|MAP4K3
+MAP4K4|subClassOf|protein_coding_gene
+aflatoxin B1|interacts with|MAP4K1
+MAP4K1|subClassOf|protein_coding_gene
+valproic acid|interacts with|STK4
+valproic acid|interacts with|SGMS1
+STK4|participates_in|Signal Transduction
+STK3|participates_in|Signal Transduction
+SAV1|participates_in|Signal Transduction
+YWHAQ|participates_in|Generic Transcription Pathway
+WWTR1|participates_in|Generic Transcription Pathway
+YAP1|participates_in|Generic Transcription Pathway
+WWTR1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+TEAD2|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+TEAD3|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+TEAD4|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+TEAD1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+WWTR1|causes or contributes to condition|epithelioid hemangioendothelioma
+YAP1|causes or contributes to condition|epithelioid hemangioendothelioma
+YAP1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression
+CTNNA1|participates_in|Signal Transduction
+CTNNA1|participates_in|RHO GTPases activate IQGAPs
+CTNNB1|participates_in|RHO GTPases activate IQGAPs
+STK3|participates_in|Signaling by Hippo
+SAV1|participates_in|Signaling by Hippo
+ACTA1|subClassOf|gene
+ACTA2|subClassOf|gene
+ACTB|subClassOf|gene
+ACTC1|subClassOf|gene
+ACTG1|subClassOf|gene
+ACTG1|subClassOf|protein_coding_gene
+ACTG2|subClassOf|protein_coding_gene
