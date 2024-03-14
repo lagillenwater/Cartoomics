@@ -7,6 +7,7 @@ import os
 import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
+from scipy.stats import zscore
 
 
 # logging
@@ -308,4 +309,28 @@ def output_literature_comparison_df(output_dir,all_subgraphs_cosine_sim):
     logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation.csv')
 
     return all_subgraphs_cosine_sim_df
+
+def compare_literature_terms_across_pathways(all_subgraphs_cosine_sim_df):
+
+    z = all_subgraphs_cosine_sim_df.groupby(['Pathway_ID','Algorithm']).Average_Cosine_Similarity.transform(zscore, ddof=1)
+
+    all_subgraphs_cosine_sim_df['zscore'] = z
+
+    avg_z_by_compare_pathways = all_subgraphs_cosine_sim_df.groupby(['Compared_Pathway','Algorithm']).zscore.transform(mean)
+
+    all_subgraphs_cosine_sim_df['avg_zscore_per_pathway'] = avg_z_by_compare_pathways
+
+    all_subgraphs_zscore_df = all_subgraphs_cosine_sim_df[['Algorithm','Pathway_ID','Compared_Pathway','avg_zscore_per_pathway']]
+
+    all_subgraphs_zscore_df = all_subgraphs_zscore_df.drop_duplicates()
+
+    all_subgraphs_zscore_df.loc[all_subgraphs_zscore_df.Compared_Pathway != all_subgraphs_zscore_df.Pathway_ID, 'Compared_Pathway'] = 'Other_Pathway'
+    all_subgraphs_zscore_df.loc[all_subgraphs_zscore_df.Compared_Pathway == all_subgraphs_zscore_df.Pathway_ID, 'Compared_Pathway'] = 'Same_Pathway'
+
+    return all_subgraphs_zscore_df
+
+
+
+
+
 

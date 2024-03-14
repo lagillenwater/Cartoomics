@@ -231,14 +231,16 @@ def prepare_subgraphs(wikipathway,algorithm,all_wikipathways_dir):
     #Edgelist generation for subgraphs produced with cartoomics
     cartoomics_df = cartoomics_df[['S','O','P']]
     #Remove gene descriptions in parentheses such as " (human)"
-    cartoomics_df['S'] = cartoomics_df['S'].str.replace(r"\([^()]*\)", "", regex=True).str.strip()
-    cartoomics_df['O'] = cartoomics_df['O'].str.replace(r"\([^()]*\)", "", regex=True).str.strip()
+    cartoomics_df['S'] = cartoomics_df['S'].str.replace(r"\(human\)", "", regex=True).str.strip()
+    cartoomics_df['O'] = cartoomics_df['O'].str.replace(r"\(human\)", "", regex=True).str.strip()
+    #cartoomics_df['S'] = cartoomics_df['S'].str.replace("(human)", "", regex=True).str.strip()
+    #cartoomics_df['O'] = cartoomics_df['O'].str.replace("(human)", "", regex=True).str.strip()
 
     #Edgelist generation for wikipathways diagrams
     wikipathways_df = wikipathways_df[['Source',  'Target', 'edgeID']]
     wikipathways_df = wikipathways_df.rename(columns={'Source' : 'S', 'edgeID': 'P','Target': 'O'})
 
-    return cartoomics_df,wikipathways_df
+    return wikipathways_df,cartoomics_df
 
     wikipathways_graph = create_igraph_graph(wikipathways_df,'wikipathways')
     cartoomics_graph = create_igraph_graph(cartoomics_df,'subgraph')
@@ -301,17 +303,19 @@ def output_graph_similarity_metrics(all_wikipathways_dir,all_metrics):
 
 def get_percent_nodes_mapped(wikipathways_df,cartoomics_df):
 
-    wikipathways_list = wikipathways_df.S.tolist() + wikipathways_df.O.tolist()
-    cartoomics_list = cartoomics_df.S.tolist() + cartoomics_df.O.tolist()
-    percent_nodes_mapped = sum(node in set(cartoomics_list) for node in set(wikipathways_list))/len(set(wikipathways_list))
+    wikipathways_list = set(wikipathways_df.S.tolist() + wikipathways_df.O.tolist())
+    cartoomics_list = set(cartoomics_df.S.tolist() + cartoomics_df.O.tolist())
+    #Gets all nodes in wikipathways that are in cartoomics subgraph/all nodes in wikipathways
+    percent_nodes_mapped = sum(node in cartoomics_list for node in wikipathways_list)/len(wikipathways_list)
 
     return percent_nodes_mapped
 
 def get_percent_intermediate_nodes(wikipathways_df,cartoomics_df):
 
-    wikipathways_list = wikipathways_df.S.tolist() + wikipathways_df.O.tolist()
-    cartoomics_list = cartoomics_df.S.tolist() + cartoomics_df.O.tolist()
-    percent_intermediate_nodes = len(list(set(cartoomics_list).difference(wikipathways_list)))/len(set(wikipathways_list)) #Change this to divide by length of cartoomics_list
+    wikipathways_list = set(wikipathways_df.S.tolist() + wikipathways_df.O.tolist())
+    cartoomics_list = set(cartoomics_df.S.tolist() + cartoomics_df.O.tolist())
+    #Gets all intermediate nodes not in wikipathways/all nodes in the final cartoomics subgraph
+    percent_intermediate_nodes = len(cartoomics_list.difference(wikipathways_list))/len(cartoomics_list) #Change this to divide by length of cartoomics_list
     
     return percent_intermediate_nodes
 

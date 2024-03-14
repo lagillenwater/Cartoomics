@@ -183,7 +183,9 @@ def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,lab
 
     return df,all_paths_cs_values,chosen_path_nodes_cs[0]
 
-def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,labels_all,kg_type,guiding_term):
+def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,labels_all,kg_type,guiding_term):
+
+    annotated_node_labels = unique_nodes(annotated_nodes[['source','target']])
 
     #Set target embedding value to guiding term if it exists
     try:
@@ -202,7 +204,13 @@ def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,labels_all,kg_typ
 
     #Searches for cosine similarity between each node and the guiding term
     for node in node_labels:
-        n1 = get_uri(labels_all,node, kg_type)
+        if node in annotated_node_labels:
+            try:
+                n1 = annotated_nodes.loc[annotated_nodes['source'] == node,'source_id'].values[0]
+            except IndexError:
+                n1 = annotated_nodes.loc[annotated_nodes['target'] == node,'target_id'].values[0]
+        else:
+            n1 = get_uri(labels_all,node, kg_type)
         n1_int = convert_path_nodes(n1,entity_map)
         if n1_int not in list(embeddings.keys()):
             e = get_embedding(emb,n1_int)
@@ -374,7 +382,7 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples
 
     return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs
 
-def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway):
+def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway):
 
     #Add average cosine similarity of subgraph for this term to dictionary
     l = {}
@@ -382,6 +390,7 @@ def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,a
     l['Average_Cosine_Similarity'] = avg_cosine_sim
     l['Algorithm'] = algorithm
     l['Pathway_ID'] = wikipathway
+    l['Compared_Pathway'] = compared_pathway
 
     subgraph_cosine_sim.append(l)
     

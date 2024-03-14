@@ -242,22 +242,39 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
 
     return df,all_paths_cs_values,term_foldername
 
-def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
 
-    #Get all nodes from subgraph not in original edgelist
-    subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
-    input_nodes = unique_nodes(s[['source','target']])
-    intermediate_nodes = [i for i in subgraph_nodes if i not in input_nodes]
+def get_cosine_sim_one_pathway(g,comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,annotated_nodes,all_subgraphs_cosine_sim,node_type,compared_pathway):
 
     #For each guiding term calculate cosine values to all nodes in supgraph
     for t in tqdm(range(len(comparison_terms_df))):
         term_row = comparison_terms_df.iloc[t]
         if node_type == 'labels':
-            avg_cosine_sim = calc_cosine_sim_from_label_list(emb,entity_map,intermediate_nodes,g.labels_all,kg_type,term_row)
+            avg_cosine_sim = calc_cosine_sim_from_label_list(emb,entity_map,subgraph_nodes,annotated_nodes,g.labels_all,kg_type,term_row)
         elif node_type == 'uris':
-            avg_cosine_sim = calc_cosine_sim_from_uri_list(emb,entity_map,intermediate_nodes,g.labels_all,kg_type,term_row)
+            avg_cosine_sim = calc_cosine_sim_from_uri_list(emb,entity_map,subgraph_nodes,g.labels_all,kg_type,term_row)
         #Organize all path cosine similarity values into dictionary per term
-        all_subgraphs_cosine_sim = generate_comparison_terms_dict(all_subgraphs_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway)
+        all_subgraphs_cosine_sim = generate_comparison_terms_dict(all_subgraphs_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway)
+
+    return all_subgraphs_cosine_sim
+
+
+def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
+
+    #Get all nodes from subgraph not in original edgelist
+    subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
+    input_nodes = unique_nodes(s[['source','target']])
+    #If comparing to intermediate terms only in subgraph
+    #intermediate_nodes = [i for i in subgraph_nodes if i not in input_nodes]
+
+    #When passed only the terms of that wikipathway abstract
+    if isinstance(comparison_terms,pd.DataFrame):
+       all_subgraphs_cosine_sim = get_cosine_sim_one_pathway(g,comparison_terms,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,wikipathway)
+
+    #When passed the terms of all wikipathway abstracts as dictionary
+    elif isinstance(comparison_terms,dict):
+        for w in comparison_terms.keys():
+            w_comparison_terms_df = comparison_terms[w]
+            all_subgraphs_cosine_sim = get_cosine_sim_one_pathway(g,w_comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,w)
 
     return all_subgraphs_cosine_sim
 

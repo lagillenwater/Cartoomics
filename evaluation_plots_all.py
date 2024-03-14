@@ -126,6 +126,7 @@ def visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_
         plt_file = all_wikipathways_dir + '/' + pathway + '_output/Evaluation_Files/Literature_Comparison_all_terms_scatterplot.png'
         sns_plot = sns.swarmplot(data=df, x='Algorithm', y = 'Average_Cosine_Similarity',hue='Term')
         sns.lineplot(x="Algorithm", dashes=False, y="Average_Cosine_Similarity", hue="Term", style="Term", data=df,legend=False).set_title("Cosine Similarity of " + pathway + " Subgraph to All Associated Literature Terms")
+
         sns.move_legend(sns_plot,"upper left", bbox_to_anchor=(1, 1))
 
         plt.xticks(rotation=45)
@@ -144,4 +145,50 @@ def visualize_literature_comparison_heatmap(term_averages_cosine_sim_df,all_wiki
     plt.close()
     logging.info('Created png: %s',plt_file)
 
+
+
+#Generates boxplot of each 
+def visualize_literature_comparison_boxplot_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir):
+
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+
+    all_subgraphs_other_pathways = all_subgraphs_zscore_df.loc[all_subgraphs_zscore_df.Compared_Pathway != "Same_Pathway"]
+
+    all_subgraphs_same_pathway = all_subgraphs_zscore_df.loc[all_subgraphs_zscore_df.Compared_Pathway == "Same_Pathway"]
+
+    plt_file = output_folder + '/Literature_Comparison_all_pathways_boxplot.png'
+    sns.swarmplot(data=all_subgraphs_same_pathway, x="Pathway_ID", y="avg_zscore_per_pathway",hue='Algorithm',palette="flare",dodge=True, legend=False, marker="x", linewidth=1,size=10)
+    sns.swarmplot(data=all_subgraphs_other_pathways, x="Pathway_ID", y="avg_zscore_per_pathway",hue="Algorithm", dodge=True, legend=False)
+    sns.boxplot(data=all_subgraphs_other_pathways, x='Pathway_ID', y = 'avg_zscore_per_pathway',hue='Algorithm').set_title("Z-Score of Cosine Similarity to All Pathway Abstracts")
+    plt.xticks(rotation=45)
+    plt.savefig(plt_file,bbox_inches="tight")
+    plt.close()
+    logging.info('Created png: %s',plt_file)
+
+def visualize_literature_comparison_scatterplot_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir):
+
+    pathways = all_subgraphs_zscore_df.Pathway_ID.unique()
+
+    for pathway in pathways:
+
+        df = all_subgraphs_zscore_df.loc[all_subgraphs_zscore_df['Pathway_ID'] == pathway]
+        plt_file = all_wikipathways_dir + '/' + pathway + '_output/Evaluation_Files/Literature_Comparison_all_pathways_scatterplot.png'
+        sns_plot = sns.swarmplot(data=df, x='Algorithm', y = 'avg_zscore_per_pathway',hue='Compared_Pathway')
+        sns.lineplot(x="Algorithm", dashes=False, y="avg_zscore_per_pathway", hue="Compared_Pathway", style="Compared_Pathway", data=df,legend=False).set_title("Z-Score of Cosine Similarity to All Pathway Abstracts for" + pathway)
+        sns.move_legend(sns_plot,"upper left", bbox_to_anchor=(1, 1))
+        plt.xticks(rotation=45)
+        plt.savefig(plt_file,bbox_inches="tight")
+        plt.close()
+        logging.info('Created png: %s',plt_file)
+
+def visualize_literature_comparison_heatmap_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir):
+
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+
+    plt_file = output_folder + '/Literature_Comparison_all_pathways_heatmap.png'
+    df_matrix = all_subgraphs_zscore_df.pivot_table(index='Pathway_ID',columns='Algorithm',values='avg_zscore_per_pathway')
+    sns.heatmap(df_matrix, fmt="g", cmap='viridis').set_title("Z-Score of Subgraphs to All Other Pathways")
+    plt.savefig(plt_file,bbox_inches="tight")
+    plt.close()
+    logging.info('Created png: %s',plt_file)
 
