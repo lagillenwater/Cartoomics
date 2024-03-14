@@ -7,6 +7,7 @@ from graph_similarity_metrics import get_wikipathways_graph_files
 from create_graph import create_graph
 
 from constants import (
+    ALL_WIKIPATHWAYS,
     PKL_SUBSTRINGS,
     PKL_OBO_URI,
     WIKIPATHWAYS_SUBFOLDER
@@ -27,6 +28,9 @@ def generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,labels,enable_s
     df = pd.DataFrame(columns = ['term','term_label','term_id'])
     wikipathway_output_dir = all_wikipathways_dir + "/" + wikipathway + "_output"
     df_file = wikipathway_output_dir + "/_literature_comparison_Input_Nodes_.csv"
+
+    #For comparing cosine similarity across all abstracts
+    df_specific_file = all_wikipathways_dir + "/literature_comparison/" + wikipathway + "_literature_comparison_Input_Nodes_.csv"
 
     pmid_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations/" + pmid + ".bionlp"
     pmid_df = pd.read_csv(pmid_file,header=None,sep='\t')
@@ -72,6 +76,8 @@ def generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,labels,enable_s
 
     df = df.drop_duplicates()
     df.to_csv(df_file,sep='|',index=False)
+    #Write the same file to a general folder for comparing cosine similarity across all abstracts
+    df.to_csv(df_specific_file,sep='|',index=False)
 
 def main():
 
@@ -88,6 +94,7 @@ def main():
 
     metadata_df = pd.read_csv(metadata_file,sep=',')
     wikipathways = metadata_df.Pathway_ID.unique()
+    wikipathways = ALL_WIKIPATHWAYS
 
     for wikipathway in wikipathways:
 

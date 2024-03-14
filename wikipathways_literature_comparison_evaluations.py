@@ -4,11 +4,12 @@ from assign_nodes import *
 from evaluation import *
 from create_subgraph import compare_subgraph_guiding_terms,get_wikipathways_subgraph
 from graph_embeddings import Embeddings
-from evaluation_plots_all import visualize_literature_comparison_boxplot,visualize_literature_comparison_scatterplot,visualize_literature_comparison_heatmap
+from evaluation_plots_all import visualize_literature_comparison_boxplot_all_pathways,visualize_literature_comparison_scatterplot_all_pathways,visualize_literature_comparison_heatmap_all_pathways
 
 from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
 from constants import (
+    ALL_WIKIPATHWAYS,
     WIKIPATHWAYS_SUBFOLDER
 )
 
@@ -35,6 +36,14 @@ def main():
 
     all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
+
+    #Gets literature comparison terms for many pathways 
+    all_pathways_comparisons = {}
+    for w in ALL_WIKIPATHWAYS:
+        w_comparison_file = all_wikipathways_dir + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
+        w_comparison_df = pd.read_csv(w_comparison_file, sep = "|")
+        all_pathways_comparisons[w] = w_comparison_df
+
     #List for all cosine sim values to each guiding term
     all_subgraphs_cosine_sim = []
 
@@ -49,7 +58,8 @@ def main():
 
         print("Mapping between user inputs and KG nodes.......")
         
-        comparison_terms_df = interactive_search_wrapper(g, labels_file, output_dir, 'literature_comparison', kg_type, enable_skipping, input_dir, wikipathway)
+        #Gets literature comparison terms for this pathway specifically
+        #comparison_terms_df = interactive_search_wrapper(g, labels_file, output_dir, 'literature_comparison', kg_type, enable_skipping, input_dir, wikipathway)
 
         s = pd.read_csv(output_dir + '/_annotated_diagram_Input_Nodes_.csv',sep='|')
 
@@ -57,17 +67,17 @@ def main():
 
             subgraph_df = pd.read_csv(output_dir + '/CosineSimilarity/Subgraph.csv',sep='|')
 
-            all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
+            all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
 
         if pdp == 'true':
 
             subgraph_df = pd.read_csv(output_dir + '/PDP/Subgraph.csv',sep='|')
 
-            all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms_df,kg_type,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
+            all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
 
         #Get original wikipathways edgelist
         wikipathways_subgraph_df = get_wikipathways_subgraph(s)
-        all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,wikipathways_subgraph_df,g,comparison_terms_df,kg_type,'Original',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
+        all_subgraphs_cosine_sim = compare_subgraph_guiding_terms(s,wikipathways_subgraph_df,g,all_pathways_comparisons,kg_type,'Original',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
         
     all_subgraphs_cosine_sim_df = output_literature_comparison_df(all_wikipathways_dir+'/literature_comparison',all_subgraphs_cosine_sim)
 
@@ -75,14 +85,12 @@ def main():
     ##all_subgraphs_cosine_sim_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv',sep=',')
     ##all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
-    visualize_literature_comparison_boxplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
-
-    visualize_literature_comparison_scatterplot(all_subgraphs_cosine_sim_df,all_wikipathways_dir)
-
-    #Transform data to get average cosine similarity across all terms per Pathway and Algorithm
-    term_averages_cosine_sim_df = all_subgraphs_cosine_sim_df.groupby(['Pathway_ID','Algorithm'],as_index=False).agg({'Average_Cosine_Similarity':'mean'})
-
-    visualize_literature_comparison_heatmap(term_averages_cosine_sim_df,all_wikipathways_dir)
+    #Get relative cosine similarity to other pathways
+    all_subgraphs_zscore_df = compare_literature_terms_across_pathways(all_subgraphs_cosine_sim_df)
+    
+    visualize_literature_comparison_boxplot_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir)
+    visualize_literature_comparison_scatterplot_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir)
+    visualize_literature_comparison_heatmap_all_pathways(all_subgraphs_zscore_df,all_wikipathways_dir)
 
 
 if __name__ == '__main__':
