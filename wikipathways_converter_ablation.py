@@ -13,7 +13,8 @@ from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion
-from assign_nodes import skip_node_in_edgelist
+from assign_nodes import skip_node_in_edgelist,create_skipped_node_file
+import random
 
 from graph_similarity_metrics import *
 from constants import (
@@ -54,6 +55,7 @@ def download_wikipathways_edgelist(w_dir,wikipathway,iteration_substring):
 
 def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_edgelist_to_remove):
 
+    random.seed(10)
 
     wikipathways_edgelist = pd.read_csv(all_wikipathways_dir + '/' + wikipathway + iteration_substring + '/' + wikipathway + '_edgeList.csv')
 
@@ -63,6 +65,8 @@ def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iterati
     #Drop fraction of nodes
     edgelist_nodes = list(edgelist_df.source.unique()) + list(edgelist_df.target.unique())
     ablation_nodes = sample(edgelist_nodes, round(fraction_edgelist_to_remove*(len(edgelist_nodes))))
+
+    create_skipped_node_file(ablation_nodes,all_wikipathways_dir + '/' + wikipathway + iteration_substring + '_output','ablation_nodes')
 
     edgelist_df = skip_node_in_edgelist(edgelist_df,ablation_nodes)
 
@@ -102,7 +106,7 @@ def get_wikipathways_list(wikipathways,pfocr_urls,pfocr_urls_file):
 
     return wikipathways
 
-
+#Outputs example files
 def main():
 
     num_iterations = 1
@@ -124,13 +128,13 @@ def main():
 
     for a in range(num_iterations):
 
-        print('iteration number: ',a)
-
         iteration_substring = "_ablation_" + str(a)
 
         for wikipathway in wikipathways:
 
             wikipathway_iteration = wikipathway + iteration_substring
+
+            print(wikipathway_iteration)
 
             output_dir = all_wikipathways_dir + '/' + wikipathway_iteration + '_output'
             
@@ -143,17 +147,6 @@ def main():
 
             #Converts wikipathway diagram edgelists to format necessary for subgraph generation
             examples_file = convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_edgelist_to_remove)
-
-            #Index wikipathway diagram
-            print("Mapping between user inputs and KG nodes for " + wikipathway_iteration + ".......")
-        
-            s = interactive_search_wrapper(g, [examples_file], output_dir, input_type,kg_type, enable_skipping)
-
-            if guiding_term:
-
-                guiding_term_df = interactive_search_wrapper(g, examples_file, output_dir, 'guiding_term', kg_type,input_dir)
-
-            print("Mapping complete")
 
 
 if __name__ == '__main__':

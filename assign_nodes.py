@@ -346,18 +346,21 @@ def search_node(node, kg, examples, enable_skipping, guiding_term = False):
 
 def create_annotated_df(examples,node,node_label,id_given,guiding_term):
 
-	examples_new = copy.deepcopy(examples)
+	#examples_new = copy.deepcopy(examples)
 
 	if guiding_term:
-		examples_new.loc[examples_new["term"] == node,"term_label"] = node_label
-		examples_new.loc[examples_new["term"] == node,"term_id"] = id_given
+		examples.loc[examples["term"] == node,"term_label"] = node_label
+		examples.loc[examples["term"] == node,"term_id"] = id_given
 	else:
-		examples_new.loc[examples_new["source"] == node,"source_label"] = node_label
-		examples_new.loc[examples_new["target"] == node,"target_label"] = node_label
-		examples_new.loc[examples_new["source"] == node,"source_id"] = id_given
-		examples_new.loc[examples_new["target"] == node,"target_id"] = id_given
+		examples.loc[examples["source"] == node,"source_label"] = node_label
+		examples.loc[examples["target"] == node,"target_label"] = node_label
+		examples.loc[examples["source"] == node,"source_id"] = id_given
+		examples.loc[examples["target"] == node,"target_id"] = id_given
 
-	return examples_new
+	#print(type(examples.iloc[3].loc['source_label']))
+	#examples = examples.replace(np.nan, 'none')
+
+	return examples
 
 
 # Check if search input is in the list of integer_ids
@@ -500,6 +503,11 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 				#Creates examples df without source_label and target_label
 				u = read_user_input(user_input_file[0])
 				n = unique_nodes(u)
+				u['source_label'] = 'none'
+				u['target_label'] = 'none'
+				u['source_id'] = 'none'
+				u['target_id'] = 'none'
+				examples = u
 				#For wikipathways diagram, search for metadata file for matches
 				if WIKIPATHWAYS_SUBFOLDER in output_dir:
 					wikipathway_input_folder = output_dir.split("_output")[0]
@@ -509,11 +517,11 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 							#Ensure uri exist in PKL
 							node_label = get_label(g.labels_all,node_uri,kg_type)
 							#Use original label for graph similarity
-							examples = create_annotated_df(u,node,node,node_uri,False)
+							examples = create_annotated_df(examples,node,node,node_uri,False)
 							logging.info('Found node id for %r: %s',node,node_uri)
 						except IndexError:
 							#Otherwise perform search through graph
-							node_label,id_given,examples,skip_node = search_node(node,g,u,enable_skipping)
+							node_label,id_given,examples,skip_node = search_node(node,g,examples,enable_skipping)
 							#Only add node to examples df if not skipped
 							if not skip_node:
 								examples = create_annotated_df(examples,node,node_label,id_given,False)
@@ -521,8 +529,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 							elif skip_node:
 								'''examples.drop(examples[examples['source'] == node].index, inplace = True)
 								examples.drop(examples[examples['target'] == node].index, inplace = True)'''
-								print('skipping ',node)
-								u = skip_node_in_edgelist(u,[node])
+								examples = skip_node_in_edgelist(examples,[node])
 								skipped_nodes.append(node)
 					logging.info('All input nodes searched.')
 				else:
@@ -640,24 +647,54 @@ def skip_self_loops(input_df):
 #Takes in a df of the edgelist and a list of all node labels to remove. Edgelist format is source,target columns
 def skip_node_in_edgelist(edgelist_df,removed_nodes):
 
+	other_columns = ['source_label','target_label','source_id','target_id']
 	print('Removing nodes')
 
 	for node in tqdm(removed_nodes):
+		print(node)
 		new_edges = []
-		node_objects = edgelist_df.loc[edgelist_df.source == node,'target'].tolist()
-		node_subjects = edgelist_df.loc[edgelist_df.target == node,'source'].tolist()
+		node_objects = list(set(edgelist_df.loc[edgelist_df.source == node,'target'].tolist()))
+		node_subjects = list(set(edgelist_df.loc[edgelist_df.target == node,'source'].tolist()))
+		#Remove self from lists in the case of self loops
+		if node in node_objects: node_objects.remove(node)
+		if node in node_subjects: node_subjects.remove(node)
 		if len(node_objects) > 0 and len(node_subjects) > 0:
 			for s in node_subjects:
 				for o in node_objects:
-					new_edges.append([s,o])
+					if all(w in edgelist_df.columns.tolist() for w in other_columns):
+						s_label = edgelist_df.loc[edgelist_df['source'] == s,'source_label'].values[0]
+						o_label = edgelist_df.loc[edgelist_df['target'] == o,'target_label'].values[0]
+						s_id = edgelist_df.loc[edgelist_df['source'] == s,'source_id'].values[0]
+						o_id = edgelist_df.loc[edgelist_df['target'] == o,'target_id'].values[0]
+						new_edges.append([s,o,s_label,o_label,s_id,o_id])
+					else:
+						new_edges.append([s,o])
 		elif len(node_objects) > 1:
 			all_pairs = list(combinations(node_objects, 2))
 			for i in all_pairs:
-				new_edges.append(list(i))
+				s = list(i)[0]
+				o = list(i)[1]
+				if all(w in edgelist_df.columns.tolist() for w in other_columns):
+					s_label = edgelist_df.loc[edgelist_df['source'] == s,'source_label'].values[0]
+					o_label = edgelist_df.loc[edgelist_df['target'] == o,'target_label'].values[0]
+					s_id = edgelist_df.loc[edgelist_df['source'] == s,'source_id'].values[0]
+					o_id = edgelist_df.loc[edgelist_df['target'] == o,'target_id'].values[0]
+					new_edges.append([s,o,s_label,o_label,s_id,o_id])
+				else:
+					new_edges.append([s,o])
 		elif len(node_subjects) > 1:
 			all_pairs = list(combinations(node_subjects, 2))
 			for i in all_pairs:
-				new_edges.append(list(i))
+				s = list(i)[0]
+				o = list(i)[1]
+				if all(w in edgelist_df.columns.tolist() for w in other_columns):
+					s_label = edgelist_df.loc[edgelist_df['source'] == s,'source_label'].values[0]
+					o_label = edgelist_df.loc[edgelist_df['target'] == o,'target_label'].values[0]
+					s_id = edgelist_df.loc[edgelist_df['source'] == s,'source_id'].values[0]
+					o_id = edgelist_df.loc[edgelist_df['target'] == o,'target_id'].values[0]
+					new_edges.append([s,o,s_label,o_label,s_id,o_id])
+				else:
+					new_edges.append([s,o])
 		#Remove triples with node
 		edgelist_df = edgelist_df.drop(edgelist_df.loc[edgelist_df['source'] == node].index)
 		edgelist_df = edgelist_df.drop(edgelist_df.loc[edgelist_df['target'] == node].index) #, inplace=True).reset_index(drop=True)
@@ -667,6 +704,9 @@ def skip_node_in_edgelist(edgelist_df,removed_nodes):
 			new_triples_df = pd.DataFrame(new_edges, columns = edgelist_df.columns.tolist())
 			edgelist_df = pd.concat([edgelist_df,new_triples_df], axis=0)
 			edgelist_df = edgelist_df.reset_index(drop=True)
+
+	#Remove duplicate node pairs that are in different order
+	edgelist_df = edgelist_df.groupby(edgelist_df.apply(frozenset, axis=1), as_index=False).first()
 
 	return edgelist_df
 
