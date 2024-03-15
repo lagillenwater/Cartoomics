@@ -13,6 +13,7 @@ from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion
+from assign_nodes import skip_node_in_edgelist
 
 from graph_similarity_metrics import *
 from constants import (
@@ -51,7 +52,7 @@ def download_wikipathways_edgelist(w_dir,wikipathway,iteration_substring):
     print(graph)
     
 
-def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_original_edgelist):
+def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_edgelist_to_remove):
 
 
     wikipathways_edgelist = pd.read_csv(all_wikipathways_dir + '/' + wikipathway + iteration_substring + '/' + wikipathway + '_edgeList.csv')
@@ -59,21 +60,11 @@ def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iterati
     edgelist_df = wikipathways_edgelist[['Source', 'Target']]
     edgelist_df = edgelist_df.rename(columns={'Source' : 'source', 'Target': 'target'})
 
-    print('len edgelist before')
-    print(len(edgelist_df))
-
     #Drop fraction of nodes
-    edgelist_nodes = edgelist_df.source.unique() + edgelist_df.target.unique()
-    post_ablation_nodes = sample(list=edgelist_nodes, frac=fraction_original_edgelist)
+    edgelist_nodes = list(edgelist_df.source.unique()) + list(edgelist_df.target.unique())
+    ablation_nodes = sample(edgelist_nodes, round(fraction_edgelist_to_remove*(len(edgelist_nodes))))
 
-    for i in range(len(edgelist_df)):
-        if edgelist_df.iloc[i].loc['source'].isin(post_ablation_nodes):
-            
-
-    #edgelist_df = edgelist_df.drop(edgelist_df.sample(frac=fraction_original_edgelist_removed).index)
-
-    print('len edgelist after')
-    print(len(edgelist_df))
+    edgelist_df = skip_node_in_edgelist(edgelist_df,ablation_nodes)
 
     if not os.path.exists(all_wikipathways_dir+ '/annotated_diagram'):
         os.makedirs(all_wikipathways_dir+ '/annotated_diagram')
@@ -115,7 +106,7 @@ def get_wikipathways_list(wikipathways,pfocr_urls,pfocr_urls_file):
 def main():
 
     num_iterations = 1
-    fraction_original_edgelist = 0.8
+    fraction_edgelist_to_remove = 0.1
 
     kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
 
@@ -151,7 +142,7 @@ def main():
             download_wikipathways_edgelist(all_wikipathways_dir,wikipathway,iteration_substring)
 
             #Converts wikipathway diagram edgelists to format necessary for subgraph generation
-            examples_file = convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_original_edgelist)
+            examples_file = convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iteration_substring,fraction_edgelist_to_remove)
 
             #Index wikipathway diagram
             print("Mapping between user inputs and KG nodes for " + wikipathway_iteration + ".......")

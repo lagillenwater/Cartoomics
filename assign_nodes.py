@@ -12,6 +12,9 @@ import requests
 import json
 import copy
 import csv
+from tqdm import tqdm
+from itertools import combinations
+import copy
 
 from constants import (
 	WIKIPATHWAYS_SUBFOLDER,
@@ -64,7 +67,6 @@ def read_user_input(user_example_file, guiding_term = False):
 	elif not guiding_term:
 		try:
 			examples = pd.read_csv(user_example_file, sep= "|")
-			print(examples.columns)
 		#Check for poorly formatted file
 		except pd.errors.ParserError:
 			print('Error in format of ' + user_example_file + ', ensure that only "source" and "target" columns exist in each row.')
@@ -344,16 +346,18 @@ def search_node(node, kg, examples, enable_skipping, guiding_term = False):
 
 def create_annotated_df(examples,node,node_label,id_given,guiding_term):
 
-	if guiding_term:
-		examples.loc[examples["term"] == node,"term_label"] = node_label
-		examples.loc[examples["term"] == node,"term_id"] = id_given
-	else:
-		examples.loc[examples["source"] == node,"source_label"] = node_label
-		examples.loc[examples["target"] == node,"target_label"] = node_label
-		examples.loc[examples["source"] == node,"source_id"] = id_given
-		examples.loc[examples["target"] == node,"target_id"] = id_given
+	examples_new = copy.deepcopy(examples)
 
-	return examples
+	if guiding_term:
+		examples_new.loc[examples_new["term"] == node,"term_label"] = node_label
+		examples_new.loc[examples_new["term"] == node,"term_id"] = id_given
+	else:
+		examples_new.loc[examples_new["source"] == node,"source_label"] = node_label
+		examples_new.loc[examples_new["target"] == node,"target_label"] = node_label
+		examples_new.loc[examples_new["source"] == node,"source_id"] = id_given
+		examples_new.loc[examples_new["target"] == node,"target_id"] = id_given
+
+	return examples_new
 
 
 # Check if search input is in the list of integer_ids
@@ -515,8 +519,10 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 								examples = create_annotated_df(examples,node,node_label,id_given,False)
 							#Drop any triples that contain that node
 							elif skip_node:
-								examples.drop(examples[examples['source'] == node].index, inplace = True)
-								examples.drop(examples[examples['target'] == node].index, inplace = True)
+								'''examples.drop(examples[examples['source'] == node].index, inplace = True)
+								examples.drop(examples[examples['target'] == node].index, inplace = True)'''
+								print('skipping ',node)
+								u = skip_node_in_edgelist(u,[node])
 								skipped_nodes.append(node)
 					logging.info('All input nodes searched.')
 				else:
@@ -527,8 +533,9 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 							examples = create_annotated_df(examples,node,node_label,id_given,False)
 						#Drop any triples that contain that node
 						elif skip_node:
-							examples.drop(examples[examples['source'] == node].index, inplace = True)
-							examples.drop(examples[examples['target'] == node].index, inplace = True)
+							'''examples.drop(examples[examples['source'] == node].index, inplace = True)
+							examples.drop(examples[examples['target'] == node].index, inplace = True)'''
+							u = skip_node_in_edgelist(u,[node])
 							skipped_nodes.append(node)
 					logging.info('All input nodes searched.')
 			if input_type == 'pathway_ocr':
@@ -585,8 +592,9 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 						examples = create_annotated_df(examples,node,node_label,id_given,False)
 					#Drop any triples that contain that node
 					elif skip_node:
-						examples.drop(examples[examples['source'] == node].index, inplace = True)
-						examples.drop(examples[examples['target'] == node].index, inplace = True)
+						'''examples.drop(examples[examples['source'] == node].index, inplace = True)
+						examples.drop(examples[examples['target'] == node].index, inplace = True)'''
+						u = skip_node_in_edgelist(u,[node])
 						skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
 			if input_type == 'literature_comparison' or input_type == 'guiding_term':
@@ -605,8 +613,6 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 					#Drop any triples that contain that node
 					elif skip_node:
 						examples.drop(examples[examples['term'] == node].index, inplace = True)
-						#examples.drop(examples[examples['source'] == node].index, inplace = True)
-						#examples.drop(examples[examples['target'] == node].index, inplace = True)
 						guiding_term_skipped_nodes.append(node)
 				logging.info('All input nodes searched.')
 
@@ -630,4 +636,40 @@ def skip_self_loops(input_df):
             input_df.drop([i], axis = 0, inplace = True)
 
     return(input_df)
-        
+
+#Takes in a df of the edgelist and a list of all node labels to remove. Edgelist format is source,target columns
+def skip_node_in_edgelist(edgelist_df,removed_nodes):
+
+	print('Removing nodes')
+
+	for node in tqdm(removed_nodes):
+		new_edges = []
+		node_objects = edgelist_df.loc[edgelist_df.source == node,'target'].tolist()
+		node_subjects = edgelist_df.loc[edgelist_df.target == node,'source'].tolist()
+		if len(node_objects) > 0 and len(node_subjects) > 0:
+			for s in node_subjects:
+				for o in node_objects:
+					new_edges.append([s,o])
+		elif len(node_objects) > 1:
+			all_pairs = list(combinations(node_objects, 2))
+			for i in all_pairs:
+				new_edges.append(list(i))
+		elif len(node_subjects) > 1:
+			all_pairs = list(combinations(node_subjects, 2))
+			for i in all_pairs:
+				new_edges.append(list(i))
+		#Remove triples with node
+		edgelist_df = edgelist_df.drop(edgelist_df.loc[edgelist_df['source'] == node].index)
+		edgelist_df = edgelist_df.drop(edgelist_df.loc[edgelist_df['target'] == node].index) #, inplace=True).reset_index(drop=True)
+		edgelist_df = edgelist_df.reset_index(drop=True)
+		#Add new triples to edgelist
+		if len(new_edges) > 0:
+			new_triples_df = pd.DataFrame(new_edges, columns = edgelist_df.columns.tolist())
+			edgelist_df = pd.concat([edgelist_df,new_triples_df], axis=0)
+			edgelist_df = edgelist_df.reset_index(drop=True)
+
+	return edgelist_df
+
+	
+
+	
