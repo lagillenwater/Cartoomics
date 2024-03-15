@@ -1,0 +1,48 @@
+source|target|source_label|target_label|source_id|target_id
+K-Ras|Rasf1a|K-Ras|Rasf1a|http://www.ncbi.nlm.nih.gov/gene/3845|http://www.ncbi.nlm.nih.gov/gene/11186
+K-Ras|B-Raf|K-Ras|B-Raf|http://www.ncbi.nlm.nih.gov/gene/3845|http://www.ncbi.nlm.nih.gov/gene/673
+T3|ERK 2|T3|ERK 2|http://purl.obolibrary.org/obo/CHEBI_18258|http://www.ncbi.nlm.nih.gov/gene/5594
+ERK 2|FOXO1|ERK 2|FOXO1|http://www.ncbi.nlm.nih.gov/gene/5594|http://www.ncbi.nlm.nih.gov/gene/2308
+ERK 2|EZH2|ERK 2|EZH2|http://www.ncbi.nlm.nih.gov/gene/5594|http://www.ncbi.nlm.nih.gov/gene/2146
+cMyc|CDK4|cMyc|CDK4|http://www.ncbi.nlm.nih.gov/gene/4609|http://www.ncbi.nlm.nih.gov/gene/1019
+cMyc|FOXM1|cMyc|FOXM1|http://www.ncbi.nlm.nih.gov/gene/4609|http://www.ncbi.nlm.nih.gov/gene/2305
+CDK4|cMyc|CDK4|cMyc|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.ncbi.nlm.nih.gov/gene/4609
+CDK4|FOXM1|CDK4|FOXM1|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.ncbi.nlm.nih.gov/gene/2305
+FOXM1|cMyc|FOXM1|cMyc|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.ncbi.nlm.nih.gov/gene/4609
+FOXM1|CDK4|FOXM1|CDK4|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.ncbi.nlm.nih.gov/gene/1019
+IGF-1|IGF-1R|IGF-1|IGF-1R|http://www.ncbi.nlm.nih.gov/gene/3479|http://www.ncbi.nlm.nih.gov/gene/3480
+IGF-1R|K-Ras|IGF-1R|K-Ras|http://www.ncbi.nlm.nih.gov/gene/3480|http://www.ncbi.nlm.nih.gov/gene/3845
+VEGFR-1|AKT1|VEGFR-1|AKT1|http://www.ncbi.nlm.nih.gov/gene/2321|http://www.ncbi.nlm.nih.gov/gene/207
+VEGFR-1|AKT2|VEGFR-1|AKT2|http://www.ncbi.nlm.nih.gov/gene/2321|http://www.ncbi.nlm.nih.gov/gene/208
+FOXO1|Pdx1|FOXO1|Pdx1|http://www.ncbi.nlm.nih.gov/gene/2308|http://www.ncbi.nlm.nih.gov/gene/3651
+PLGF|VEGFR-1|PLGF|VEGFR-1|http://www.ncbi.nlm.nih.gov/gene/5228|http://www.ncbi.nlm.nih.gov/gene/2321
+PI3K|AKT1|PI3K|AKT1|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/207
+PI3K|AKT2|PI3K|AKT2|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/208
+B-Raf|ERK 2|B-Raf|ERK 2|http://www.ncbi.nlm.nih.gov/gene/673|http://www.ncbi.nlm.nih.gov/gene/5594
+TGFB1|TGFB1R|TGFB1|TGFB1R|http://www.ncbi.nlm.nih.gov/gene/7040|http://www.ncbi.nlm.nih.gov/gene/7046
+TGFB1R|Smad7|TGFB1R|Smad7|http://www.ncbi.nlm.nih.gov/gene/7046|http://www.ncbi.nlm.nih.gov/gene/4092
+Smad7|AKT1|Smad7|AKT1|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/207
+Smad7|AKT2|Smad7|AKT2|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/208
+cMyc|FOXM1|cMyc|FOXM1|http://www.ncbi.nlm.nih.gov/gene/4609|http://www.ncbi.nlm.nih.gov/gene/2305
+CDK4|CDK4|CDK4|CDK4|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.ncbi.nlm.nih.gov/gene/1019
+CDK4|FOXM1|CDK4|FOXM1|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.ncbi.nlm.nih.gov/gene/2305
+FOXM1|cMyc|FOXM1|cMyc|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.ncbi.nlm.nih.gov/gene/4609
+FOXM1|CDK4|FOXM1|CDK4|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.ncbi.nlm.nih.gov/gene/1019
+FOXM1|FOXM1|FOXM1|FOXM1|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.ncbi.nlm.nih.gov/gene/2305
+VEGFR-1|AKT1|VEGFR-1|AKT1|http://www.ncbi.nlm.nih.gov/gene/2321|http://www.ncbi.nlm.nih.gov/gene/207
+VEGFR-1|AKT2|VEGFR-1|AKT2|http://www.ncbi.nlm.nih.gov/gene/2321|http://www.ncbi.nlm.nih.gov/gene/208
+PI3K|Rab43|PI3K|Rab43|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/339122
+PI3K|FOXO1|PI3K|FOXO1|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/2308
+PI3K|AKT1|PI3K|AKT1|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/207
+PI3K|AKT2|PI3K|AKT2|http://purl.obolibrary.org/obo/GO_0016303|http://www.ncbi.nlm.nih.gov/gene/208
+Smad7|Rab43|Smad7|Rab43|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/339122
+Smad7|FOXO1|Smad7|FOXO1|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/2308
+Smad7|AKT1|Smad7|AKT1|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/207
+Smad7|AKT2|Smad7|AKT2|http://www.ncbi.nlm.nih.gov/gene/4092|http://www.ncbi.nlm.nih.gov/gene/208
+Ca2+|PI3K|Ca2+|PI3K|http://purl.obolibrary.org/obo/CHEBI_29108|http://purl.obolibrary.org/obo/GO_0016303
+Ca2+|cMyc|Ca2+|cMyc|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/4609
+Ca2+|CDK4|Ca2+|CDK4|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/1019
+Ca2+|FOXM1|Ca2+|FOXM1|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/2305
+Ca2+|cMyc|Ca2+|cMyc|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/4609
+Ca2+|CDK4|Ca2+|CDK4|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/1019
+Ca2+|FOXM1|Ca2+|FOXM1|http://purl.obolibrary.org/obo/CHEBI_29108|http://www.ncbi.nlm.nih.gov/gene/2305

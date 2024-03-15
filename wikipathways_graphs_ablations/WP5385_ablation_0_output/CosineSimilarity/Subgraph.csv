@@ -1,0 +1,62 @@
+S|P|O
+K-Ras|causes or contributes to condition|tubular adenocarcinoma
+RASSF1 (human)|causes or contributes to condition|tubular adenocarcinoma
+K-Ras|participates_in|Paradoxical activation of RAF signaling by kinase inactive BRAF
+B-Raf|participates_in|Paradoxical activation of RAF signaling by kinase inactive BRAF
+T3|interacts with|mitogen-activated protein kinase 1 (human)
+mitogen-activated protein kinase 1 (human)|has_gene_template|ERK 2
+ERK 2|participates_in|MAPK family signaling cascades
+FOXO1|participates_in|MAPK family signaling cascades
+ERK 2|participates_in|Cellular responses to stress
+EZH2 (human)|participates_in|Cellular responses to stress
+cMyc|participates_in|G1/S Transition
+CDK4|participates_in|G1/S Transition
+cMyc|causes or contributes to condition|Hepatocellular carcinoma
+FOXM1|causes or contributes to condition|Hepatocellular carcinoma
+CDK4|participates_in|Mitotic G1 phase and G1/S transition
+cMyc|participates_in|Mitotic G1 phase and G1/S transition
+diazinon|interacts with|CDK4
+diazinon|interacts with|FOXM1
+FOXM1|participates_in|Cell Cycle
+CDK4|participates_in|Cell Cycle
+IGF-1|participates_in|Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)
+IGF-1R|participates_in|Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)
+K-Ras|participates_in|Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)
+VEGFR-1|participates_in|Signaling by VEGF
+AKT1|participates_in|Signaling by VEGF
+AKT2 (human)|participates_in|Signaling by VEGF
+FOXO1|participates_in|Regulation of gene expression in beta cells
+PDX1 (human)|participates_in|Regulation of gene expression in beta cells
+valproic acid|interacts with|PGF (human)
+valproic acid|interacts with|VEGFR-1
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|has function|PI3K
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|participates_in|Insulin receptor signalling cascade
+AKT1|participates_in|Insulin receptor signalling cascade
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|participates_in|GPVI-mediated activation cascade
+AKT2 (human)|participates_in|GPVI-mediated activation cascade
+B-Raf|participates_in|Negative regulation of MAPK pathway
+ERK 2|participates_in|Negative regulation of MAPK pathway
+TGFB1|participates_in|TGFBR1 LBD Mutants in Cancer
+TGFB1R|participates_in|TGFBR1 LBD Mutants in Cancer
+TGFB1R|causes or contributes to condition|Neoplasm of the large intestine
+Smad7|causes or contributes to condition|Neoplasm of the large intestine
+Smad7|participates_in|Signal Transduction
+AKT1|participates_in|Signal Transduction
+AKT2 (human)|participates_in|Signal Transduction
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|has function|PI3K
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|participates_in|Vesicle-mediated transport
+RAB43 (human)|participates_in|Vesicle-mediated transport
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit beta isoform (human)|has function|PI3K
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit beta isoform (human)|participates_in|PIP3 activates AKT signaling
+FOXO1|participates_in|PIP3 activates AKT signaling
+Smad7|subClassOf|protein_coding_gene
+RAB43 (human)|subClassOf|protein_coding_gene
+Smad7|subClassOf|gene
+FOXO1|subClassOf|gene
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta (human)|molecularly interacts with|calcium(2+)
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta (human)|has function|PI3K
+Ca2+|participates_in|MAPK family signaling cascades
+cMyc|participates_in|MAPK family signaling cascades
+Ca2+|participates_in|Cell Cycle, Mitotic
+CDK4|participates_in|Cell Cycle, Mitotic
+Ca2+|participates_in|Cell Cycle

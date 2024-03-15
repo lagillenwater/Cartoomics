@@ -1,0 +1,61 @@
+S|P|O
+K-Ras|causes or contributes to condition|tubular adenocarcinoma
+RASSF1 (human)|causes or contributes to condition|tubular adenocarcinoma
+K-Ras|causes or contributes to condition|gemistocytic astrocytoma
+B-Raf|causes or contributes to condition|gemistocytic astrocytoma
+T3|interacts with|mitogen-activated protein kinase 1 (human)
+mitogen-activated protein kinase 1 (human)|has_gene_template|ERK 2
+ERK 2|participates_in|PI3K/AKT activation
+FOXO1|participates_in|PI3K/AKT activation
+ERK 2|participates_in|Oxidative Stress Induced Senescence
+EZH2 (human)|participates_in|Oxidative Stress Induced Senescence
+cMyc|participates_in|Cyclin E associated events during G1/S transition 
+CDK4|participates_in|Cyclin E associated events during G1/S transition 
+cMyc|causes or contributes to condition|Neoplasm of the lung
+FOXM1|causes or contributes to condition|Neoplasm of the lung
+CDK4|causes or contributes to condition|Hepatocellular carcinoma
+FOXM1|causes or contributes to condition|Hepatocellular carcinoma
+IGF-1|participates_in|SHC-related events triggered by IGF1R
+IGF-1R|participates_in|SHC-related events triggered by IGF1R
+IGF-1R|causes or contributes to condition|Squamous cell lung carcinoma
+K-Ras|causes or contributes to condition|Squamous cell lung carcinoma
+VEGFR-1|causes or contributes to condition|Lung adenocarcinoma
+AKT1|causes or contributes to condition|Lung adenocarcinoma
+VEGFR-1|participates_in|Signaling by VEGF
+AKT2 (human)|participates_in|Signaling by VEGF
+FOXO1|participates_in|Regulation of gene expression in beta cells
+PDX1 (human)|participates_in|Regulation of gene expression in beta cells
+PLGF|participates_in|VEGF binds to VEGFR leading to receptor dimerization
+VEGFR-1|participates_in|VEGF binds to VEGFR leading to receptor dimerization
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit gamma isoform (human)|has function|PI3K
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit gamma isoform (human)|participates_in|G beta:gamma signalling through PI3Kgamma
+AKT1|participates_in|G beta:gamma signalling through PI3Kgamma
+AKT2 (human)|participates_in|G beta:gamma signalling through PI3Kgamma
+B-Raf|participates_in|Negative feedback regulation of MAPK pathway
+ERK 2|participates_in|Negative feedback regulation of MAPK pathway
+TGFB1|participates_in|TGFBR1 LBD Mutants in Cancer
+TGFB1R|participates_in|TGFBR1 LBD Mutants in Cancer
+TGFB1R|participates_in|Downregulation of TGF-beta receptor signaling
+Smad7|participates_in|Downregulation of TGF-beta receptor signaling
+Smad7|causes or contributes to condition|Neoplasm of the large intestine
+AKT1|causes or contributes to condition|Neoplasm of the large intestine
+Smad7|participates_in|Generic Transcription Pathway
+AKT2 (human)|participates_in|Generic Transcription Pathway
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|has function|PI3K
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|participates_in|Membrane Trafficking
+RAB43 (human)|participates_in|Membrane Trafficking
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit delta isoform (human)|has function|PI3K
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit delta isoform (human)|participates_in|PI3K/AKT Signaling in Cancer
+FOXO1|participates_in|PI3K/AKT Signaling in Cancer
+Smad7|participates_in|Post-translational protein modification
+RAB43 (human)|participates_in|Post-translational protein modification
+Smad7|subClassOf|gene
+FOXO1|subClassOf|gene
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta (human)|molecularly interacts with|calcium(2+)
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta (human)|has function|PI3K
+Ca2+|participates_in|MAPK family signaling cascades
+cMyc|participates_in|MAPK family signaling cascades
+Ca2+|participates_in|Chromatin modifying enzymes
+CDK4|participates_in|Chromatin modifying enzymes
+Ca2+|participates_in|Cell Cycle, Mitotic
+FOXM1|participates_in|Cell Cycle, Mitotic

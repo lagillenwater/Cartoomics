@@ -1,0 +1,24 @@
+Node|Attribute
+REL|Mechanism
+Downstream signaling events of B Cell Receptor (BCR)|Extra
+NFKB1|Mechanism
+Signaling by the B Cell Receptor (BCR)|Extra
+NFKBIA|Mechanism
+Activation of NF-kappaB in B cells|Extra
+NFKBIE|Mechanism
+Cytosolic sensors of pathogen-associated DNA |Extra
+Immune System|Extra
+Toll Like Receptor 4 (TLR4) Cascade|Extra
+protein_coding_gene|Extra
+IKBKB|Mechanism
+CLEC7A (Dectin-1) signaling|Extra
+MyD88-independent TLR4 cascade |Extra
+IKBKG|Mechanism
+FCERI mediated NF-kB activation|Extra
+DDX58/IFIH1-mediated induction of interferon-alpha/beta|Extra
+Innate Immune System|Extra
+RELA|Mechanism
+Adaptive Immune System|Extra
+MyD88:MAL(TIRAP) cascade initiated on plasma membrane|Extra
+RIP-mediated NFkB activation via ZBP1|Extra
+Toll Like Receptor 7/8 (TLR7/8) Cascade|Extra
