@@ -1,6 +1,6 @@
 Node|Attribute
 FGFR2|Mechanism
-Signaling by VEGF|Extra
+gene|Extra
 KDR|Mechanism
 Role of LAT2/NTAL/LAB on calcium mobilization|Extra
 INSR|Mechanism
@@ -18,31 +18,30 @@ Negative regulation of the PI3K/AKT network|Extra
 EGFR|Mechanism
 Cytokine Signaling in Immune system|Extra
 CSF1R|Mechanism
-Interleukin-2 family signaling|Extra
+ARMS-mediated activation|Extra
 FGFR4|Mechanism
 Hepatic fibrosis|Extra
 FLT1|Mechanism
-gene|Extra
 FLT4|Mechanism
 Signaling by NTRKs|Extra
 NGFR|Mechanism
-Prolonged ERK activation events|Extra
+Gastrin-CREB signalling pathway via PKC and MAPK|Extra
 MET|Mechanism
 Spina bifida|Extra
 PDGFRA|Mechanism
 IRS-related events triggered by IGF1R|Extra
 PDGFRB|Mechanism
-ARMS-mediated activation|Extra
 TEK|Mechanism
 FLT3|Mechanism
 Psychosis|Extra
 NTRK1|Mechanism
 Bipolar affective disorder|Extra
 NTRK2|Mechanism
+Signaling by VEGF|Extra
 VEGFR2 mediated cell proliferation|Extra
 Axon guidance|Extra
 Esophageal neoplasm|Extra
-Cerebral hemorrhage|Extra
+Skeletal dysplasia|Extra
 VEGF binds to VEGFR leading to receptor dimerization|Extra
 Schizophrenia|Extra
 VEGFA-VEGFR2 Pathway|Extra
@@ -53,17 +52,16 @@ Lewy bodies|Extra
 PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling|Extra
 PI3K/AKT activation|Extra
 GAB1 signalosome|Extra
-Signaling by the B Cell Receptor (BCR)|Extra
+DAP12 interactions|Extra
 Signaling by NTRK1 (TRKA)|Extra
-Immune System|Extra
 Saethre-Chotzen syndrome|Extra
 Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)|Extra
+Prolonged ERK activation events|Extra
 Signalling to p38 via RIT and RIN|Extra
 Interleukin receptor SHC signaling|Extra
 Lung adenocarcinoma|Extra
 Signaling by Interleukins|Extra
 Abnormal lung morphology|Extra
-Adrenocortical carcinoma|Extra
 Breast carcinoma|Extra
 pesticide|Extra
 IGF1R signaling cascade|Extra
@@ -72,37 +70,39 @@ Insulin receptor signalling cascade|Extra
 Frs2-mediated activation|Extra
 SHC1 events in EGFR signaling|Extra
 Neoplasm of the breast|Extra
-DAP12 interactions|Extra
 Signaling by SCF-KIT|Extra
 FCERI mediated MAPK activation|Extra
-Acute myelomonocytic leukemia|Extra
 aflatoxin B1|Extra
 Beare-Stevenson cutis gyrata syndrome|Extra
+Signalling to RAS|Extra
+Interleukin-2 family signaling|Extra
+protoplasmic astrocytoma|Extra
 Signaling by PDGF|Extra
 childhood cerebral astrocytoma|Extra
 Adaptive Immune System|Extra
 gliosarcoma|Extra
-Signalling to RAS|Extra
-Gastrin-CREB signalling pathway via PKC and MAPK|Extra
 Alcoholism|Extra
+Immune System|Extra
 Neoplasm|Extra
 Acute megakaryocytic leukemia|Extra
 DAP12 signaling|Extra
 Prostate neoplasm|Extra
-VEGF ligand-receptor interactions|Extra
+Spondyloepiphyseal dysplasia|Extra
 valproic acid|Extra
 Neoplasm of the skin|Extra
+VEGF ligand-receptor interactions|Extra
 Papillary renal cell carcinoma|Extra
+capillary infantile hemangioma|Extra
 Signalling to ERKs|Extra
 Acute myeloid leukemia|Extra
-Signaling by Insulin receptor|Extra
-Prostate cancer|Extra
 IRS-mediated signalling|Extra
-gemistocytic astrocytoma|Extra
+GRB2 events in EGFR signaling|Extra
+Signaling by Insulin receptor|Extra
 MAPK1/MAPK3 signaling|Extra
 NCAM signaling for neurite out-growth|Extra
 Clear cell renal cell carcinoma|Extra
 Signaling by Leptin|Extra
+Acute myelomonocytic leukemia|Extra
 mixed glioma|Extra
 pilocytic astrocytoma|Extra
 Glioma|Extra
@@ -119,27 +119,27 @@ F-actin|Mechanism
 G alpha (12/13) signalling events|Extra
 Costimulation by the CD28 family|Extra
 EPHB-mediated forward signaling|Extra
-Elevated hepatic transaminase|Extra
-quercetin-7-olate|Extra
+Diabetes mellitus|Extra
+nicotinamide|Extra
 Semaphorin interactions|Extra
 Signaling by PTK6|Extra
 Platelet activation, signaling and aggregation|Extra
-G-protein activation|Extra
+GABA B receptor activation|Extra
 PRKACA|Mechanism
-Hemostasis|Extra
 PLC-gamma1 signalling|Extra
 PRKACB|Mechanism
 Post NMDA receptor activation events|Extra
 PRKACG|Mechanism
+primary pigmented nodular adrenocortical disease|Extra
 PRKAR1A|Mechanism
-Calmodulin induced events|Extra
+Vasopressin regulates renal water homeostasis via Aquaporins|Extra
 PRKAR1B|Mechanism
 PRKAR2A|Mechanism
 Recruitment of mitotic centrosome proteins and complexes|Extra
 PRKAR2B|Mechanism
 Degradation of GLI1 by the proteasome|Extra
 PKA activation|Extra
-CaM pathway|Extra
+Opioid Signalling|Extra
 PLC beta mediated events|Extra
 Ca-dependent events|Extra
 C-type lectin receptors (CLRs)|Extra
@@ -147,24 +147,23 @@ Metabolism|Extra
 Glucagon signaling in metabolic regulation|Extra
 DAG and IP3 signaling|Extra
 Innate Immune System|Extra
-Alopecia of scalp|Extra
 PKA activation in glucagon signalling|Extra
-Vasopressin regulates renal water homeostasis via Aquaporins|Extra
 Signaling by EGFR|Extra
 Aquaporin-mediated transport|Extra
+CaM pathway|Extra
 Integration of energy metabolism|Extra
-Opioid Signalling|Extra
+Calmodulin induced events|Extra
+Hemostasis|Extra
 CDH1|Mechanism
 NF2|Mechanism
-Cell-cell junction organization|Extra
+Cell junction organization|Extra
 CDH10|Mechanism
+Cell-cell junction organization|Extra
 CDH11|Mechanism
 CDH12|Mechanism
 CDH13|Mechanism
-Cell-Cell communication|Extra
 CDH15|Mechanism
 CDH16|Mechanism
-Cell junction organization|Extra
 CDH17|Mechanism
 CDH18|Mechanism
 CDH19|Mechanism
@@ -174,19 +173,19 @@ CDH22|Mechanism
 CDH24|Mechanism
 CDH3|Mechanism
 CDH4|Mechanism
-Adherens junctions interactions|Extra
 CDH5|Mechanism
 CDH6|Mechanism
 CDH7|Mechanism
 CDH8|Mechanism
 CDH9|Mechanism
-collecting duct carcinoma|Extra
+mesothelioma|Extra
 MTOR|Mechanism
 STK3|Mechanism
 STK4|Mechanism
-Neoplasm of the large intestine|Extra
-diazinon|Extra
+Cell-Cell communication|Extra
+Adherens junctions interactions|Extra
 Autism|Extra
+Ulcerative colitis|Extra
 temozolomide|Extra
 anaplastic astrocytoma|Extra
 LATS2|Mechanism
@@ -210,11 +209,13 @@ PRKCG|Mechanism
 PRKCH|Mechanism
 PRKCI|Mechanism
 PRKCQ|Mechanism
+diazinon|Extra
 PRKCZ|Mechanism
 PRKD3|Mechanism
 G alpha (q) signalling events|Extra
-Free fatty acids regulate insulin secretion|Extra
+Inositol phosphate metabolism|Extra
 Transmission across Chemical Synapses|Extra
+Free fatty acids regulate insulin secretion|Extra
 G beta:gamma signalling through PLC beta|Extra
 Synthesis of IP3 and IP4 in the cytosol|Extra
 Neuronal System|Extra
@@ -224,7 +225,6 @@ Fatty Acids bound to GPR40 (FFAR1) regulate insulin secretion|Extra
 PRKAA1|Mechanism
 Gene expression (Transcription)|Extra
 WWTR1|Mechanism
-Generic Transcription Pathway|Extra
 YAP1|Mechanism
 PRKAA2|Mechanism
 PKB-mediated events|Extra
@@ -233,14 +233,13 @@ PRKAB2|Mechanism
 PRKAG1|Mechanism
 PRKAG2|Mechanism
 PRKAG3|Mechanism
-Signaling by Hippo|Extra
-epithelioid hemangioendothelioma|Extra
 Cellular responses to stress|Extra
 Translocation of SLC2A4 (GLUT4) to the plasma membrane|Extra
-Energy dependent regulation of mTOR by LKB1-AMPK|Extra
+Generic Transcription Pathway|Extra
 Vesicle-mediated transport|Extra
 PI3K Cascade|Extra
 Metabolism of lipids|Extra
+Energy dependent regulation of mTOR by LKB1-AMPK|Extra
 Organelle biogenesis and maintenance|Extra
 Regulation of TP53 Activity through Phosphorylation|Extra
 Mitochondrial biogenesis|Extra
@@ -249,34 +248,37 @@ MTOR signalling|Extra
 LEF1|Mechanism
 Degradation of beta-catenin by the destruction complex|Extra
 TCF7L1|Mechanism
-Ca2+ pathway|Extra
+Colon cancer|Extra
 TCF7L2|Mechanism
 Formation of the beta-catenin:TCF transactivating complex|Extra
 TCF7|Mechanism
-Signaling by WNT|Extra
+Beta-catenin independent WNT signaling|Extra
 CTNNB1|Mechanism
 Repression of WNT target genes|Extra
-TCF dependent signaling in response to WNT|Extra
-tubular adenocarcinoma|Extra
 Deactivation of the beta-catenin transactivating complex|Extra
+tubular adenocarcinoma|Extra
+Ca2+ pathway|Extra
 Peptide hormone metabolism|Extra
+Signaling by WNT|Extra
 SMAD3|Mechanism
 Signaling by TGF-beta Receptor Complex|Extra
 SMAD2|Mechanism
 Signaling by TGF-beta Receptor Complex in Cancer|Extra
 Glutamate binding, activation of AMPA receptors and synaptic plasticity|Extra
 Trafficking of GluR2-containing AMPA receptors|Extra
-Beta-catenin independent WNT signaling|Extra
+The phototransduction cascade|Extra
 Fcgamma receptor (FCGR) dependent phagocytosis|Extra
+Effects of PIP2 hydrolysis|Extra
 G alpha (z) signalling events|Extra
 p75 NTR receptor-mediated signalling|Extra
 Visual phototransduction|Extra
 GPVI-mediated activation cascade|Extra
+Allodynia|Extra
+Signaling by Hippo|Extra
 juvenile pilocytic astrocytoma|Extra
 GNAL|Mechanism
 GNAS|Mechanism
 intrahepatic cholangiocarcinoma|Extra
-Signaling by Hedgehog|Extra
 Hedgehog 'off' state|Extra
 TEAD1|Mechanism
 TEAD2|Mechanism
