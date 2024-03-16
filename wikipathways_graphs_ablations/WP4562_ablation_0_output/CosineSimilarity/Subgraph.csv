@@ -1,46 +1,24 @@
 S|P|O
-REL|participates_in|Downstream signaling events of B Cell Receptor (BCR)
-NFKB1|participates_in|Downstream signaling events of B Cell Receptor (BCR)
-REL|participates_in|Signaling by the B Cell Receptor (BCR)
-NFKBIA|participates_in|Signaling by the B Cell Receptor (BCR)
-REL|participates_in|Activation of NF-kappaB in B cells
-NFKBIE|participates_in|Activation of NF-kappaB in B cells
-NFKB1|participates_in|Cytosolic sensors of pathogen-associated DNA 
-NFKBIA|participates_in|Cytosolic sensors of pathogen-associated DNA 
-NFKB1|participates_in|Immune System
-NFKBIE|participates_in|Immune System
-NFKBIA|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+RELA|participates_in|Toll Like Receptor 4 (TLR4) Cascade
 NFKB1|participates_in|Toll Like Receptor 4 (TLR4) Cascade
-NFKBIA|participates_in|Activation of NF-kappaB in B cells
-NFKBIE|subClassOf|protein_coding_gene
-REL|subClassOf|protein_coding_gene
-NFKBIE|participates_in|Signaling by the B Cell Receptor (BCR)
-NFKB1|participates_in|Signaling by the B Cell Receptor (BCR)
-IKBKB|participates_in|CLEC7A (Dectin-1) signaling
-NFKBIA|participates_in|CLEC7A (Dectin-1) signaling
-IKBKB|participates_in|Signaling by the B Cell Receptor (BCR)
-IKBKB|participates_in|MyD88-independent TLR4 cascade 
+RELA|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane
+NFKBIA (human)|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane
+NFKB1|participates_in|Cytosolic sensors of pathogen-associated DNA 
+NFKBIA (human)|participates_in|Cytosolic sensors of pathogen-associated DNA 
+CHUK|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade
+RELA|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade
+CHUK|participates_in|MyD88-independent TLR4 cascade 
+NFKBIA (human)|participates_in|MyD88-independent TLR4 cascade 
 NFKB1|participates_in|MyD88-independent TLR4 cascade 
+CHUK|participates_in|Fc epsilon receptor (FCERI) signaling
+IKBKB|participates_in|Fc epsilon receptor (FCERI) signaling
 IKBKG|participates_in|MyD88-independent TLR4 cascade 
+IKBKB|participates_in|Toll Like Receptor 4 (TLR4) Cascade
+IKBKB|participates_in|CLEC7A (Dectin-1) signaling
+NFKBIA (human)|participates_in|CLEC7A (Dectin-1) signaling
+IKBKB|participates_in|MyD88-independent TLR4 cascade 
+IKBKG|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade
 IKBKG|participates_in|FCERI mediated NF-kB activation
-NFKBIA|participates_in|FCERI mediated NF-kB activation
-IKBKG|participates_in|Signaling by the B Cell Receptor (BCR)
+NFKBIA (human)|participates_in|FCERI mediated NF-kB activation
 IKBKG|participates_in|DDX58/IFIH1-mediated induction of interferon-alpha/beta
 NFKB1|participates_in|DDX58/IFIH1-mediated induction of interferon-alpha/beta
-IKBKG|participates_in|Activation of NF-kappaB in B cells
-IKBKG|participates_in|Innate Immune System
-IKBKB|participates_in|Innate Immune System
-RELA|participates_in|Adaptive Immune System
-REL|participates_in|Adaptive Immune System
-RELA|participates_in|Toll Like Receptor 4 (TLR4) Cascade
-RELA|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane
-NFKBIA|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane
-NFKBIE|participates_in|Adaptive Immune System
-RELA|participates_in|Signaling by the B Cell Receptor (BCR)
-RELA|participates_in|DDX58/IFIH1-mediated induction of interferon-alpha/beta
-NFKBIA|participates_in|RIP-mediated NFkB activation via ZBP1
-RELA|participates_in|RIP-mediated NFkB activation via ZBP1
-RELA|subClassOf|protein_coding_gene
-IKBKG|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade
-RELA|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade
-IKBKB|participates_in|Toll Like Receptor 4 (TLR4) Cascade
