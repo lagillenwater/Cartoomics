@@ -8,6 +8,7 @@ import glob
 import logging.config
 from pythonjsonlogger import jsonlogger
 from scipy.stats import zscore
+import csv
 
 
 # logging
@@ -329,8 +330,32 @@ def compare_literature_terms_across_pathways(all_subgraphs_cosine_sim_df):
 
     return all_subgraphs_zscore_df
 
+'''def output_idf_evaluation_df(output_dir,idf_evaluation_df):
+
+    output_folder = output_dir+'/literature_comparison/Evaluation_Files'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    idf_evaluation_df.to_csv(output_folder+'/subgraph_idf_evaluation.csv',sep=',',index=False)
+    logging.info('Create subgraph idf evaluation file: %s',output_folder+'/subgraph_idf_evaluation.csv')'''
 
 
 
+def output_idf_metrics(all_wikipathways_dir,idf_metrics):
 
+    results_fields = ['Pathway_ID','Algorithm','Node','IDF']
 
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    results_file = output_folder + '/subgraph_idf_evaluation.csv'
+
+    with open(results_file, 'w') as f:
+        write = csv.writer(f)
+        write.writerow(results_fields)
+        write.writerows(idf_metrics)
+
+    return results_file

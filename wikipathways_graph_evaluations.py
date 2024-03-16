@@ -78,9 +78,10 @@ def main():
     graph_node_percentage_results_file = output_graph_node_percentage_metrics(all_wikipathways_dir,graph_node_percentage_metrics)
     visualize_graph_node_percentage_metrics(graph_node_percentage_results_file,all_wikipathways_dir)
 
-    all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
-    edge_types_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/edge_type_comparison.csv',sep=',')
-    intermediate_nodes_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/intermediate_nodes_comparison.csv',sep=',')
+    ##FOr testing
+    ##all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
+    ##edge_types_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/edge_type_comparison.csv',sep=',')
+    ##intermediate_nodes_df = pd.read_csv('/Users/brooksantangelo/Documents/HunterLab/Cartoomics/git/Cartoomics/wikipathways_graphs/node_edge_evaluation/intermediate_nodes_comparison.csv',sep=',')
 
     #Output files and visualization for edge and node type evaluations
     output_node_edge_type_file(all_wikipathways_dir,edge_types_df,'edge_type_comparison')
