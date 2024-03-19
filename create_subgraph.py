@@ -167,7 +167,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
     df = pd.concat(all_paths)
     df.reset_index(drop=True, inplace=True)
     #Remove duplicate edges
-    df = df.drop_duplicates(subset=['S','P','O'])
+    df = df.drop_duplicates(subset=['S_ID','P_ID','O_ID','S','P','O'])
 
     output_num_paths_pairs(output_dir,num_paths_df,'CosineSimilarity')
 

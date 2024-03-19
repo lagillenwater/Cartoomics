@@ -340,7 +340,21 @@ def compare_literature_terms_across_pathways(all_subgraphs_cosine_sim_df):
     idf_evaluation_df.to_csv(output_folder+'/subgraph_idf_evaluation.csv',sep=',',index=False)
     logging.info('Create subgraph idf evaluation file: %s',output_folder+'/subgraph_idf_evaluation.csv')'''
 
+def output_nodes_not_in_KG(all_wikipathways_dir,nodes_not_in_KG):
 
+    results_fields = ['Curie','Uri']
+
+    output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+    #Check for existence of output directory
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    results_file = output_folder + '/idf_nodes_not_in_KG.csv'
+
+    with open(results_file, 'w') as f:
+        write = csv.writer(f)
+        write.writerow(results_fields)
+        write.writerows(nodes_not_in_KG)
 
 def output_idf_metrics(all_wikipathways_dir,idf_metrics):
 
