@@ -6,6 +6,7 @@ from scipy.spatial import distance
 from collections import defaultdict
 from assign_nodes import unique_nodes
 from functools import reduce
+from operator import itemgetter
 
 
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
@@ -118,6 +119,7 @@ def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weight
     #Remove duplicates for bidirectional nodes, only matters when search type=all for mode
     path_nodes = list(set(tuple(x) for x in path_nodes))
     path_nodes = [list(tup) for tup in path_nodes]
+    path_nodes = sorted(path_nodes,key = itemgetter(1))
 
     #Dictionary of all triples that are shortest paths, not currently used
     #mechanism_dfs = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
@@ -289,8 +291,12 @@ def select_max_path(value_list,path_nodes):
 
     #Get max value from value_list, use that idx of path_nodes then create mechanism
     max_index = value_list.index(max(value_list))
+    print('max index')
+    print(max_index)
     #Must be list of lists for define_path_triples function
     chosen_path_nodes = [path_nodes[max_index]]
+    print('chosen_path_nodes')
+    print(chosen_path_nodes)
 
     return chosen_path_nodes
 
@@ -393,6 +399,9 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
 
     path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+    print('path_nodes')
+    print(len(path_nodes))
+    print(path_nodes)
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
@@ -414,9 +423,10 @@ def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,a
     
     return subgraph_cosine_sim
 
-def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
+def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, path_nodes = 'none'):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+    if path_nodes == 'none':
+        path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
 
     df,all_paths_pdp_values,chosen_path_nodes_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
 
