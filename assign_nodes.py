@@ -687,11 +687,12 @@ def skip_node_in_edgelist(edgelist_df,removed_nodes):
 			for i in all_pairs:
 				s = list(i)[0]
 				o = list(i)[1]
+				#All node_subjects can be indexed to row that contains them as a subject
 				if all(w in edgelist_df.columns.tolist() for w in other_columns):
 					s_label = edgelist_df.loc[edgelist_df['source'] == s,'source_label'].values[0]
-					o_label = edgelist_df.loc[edgelist_df['target'] == o,'target_label'].values[0]
+					o_label = edgelist_df.loc[edgelist_df['source'] == o,'source_label'].values[0]
 					s_id = edgelist_df.loc[edgelist_df['source'] == s,'source_id'].values[0]
-					o_id = edgelist_df.loc[edgelist_df['target'] == o,'target_id'].values[0]
+					o_id = edgelist_df.loc[edgelist_df['source'] == o,'source_id'].values[0]
 					new_edges.append([s,o,s_label,o_label,s_id,o_id])
 				else:
 					new_edges.append([s,o])
