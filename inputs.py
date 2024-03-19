@@ -86,7 +86,6 @@ def generate_arguments():
     if pdp not in ['true', 'false']:
         parser.print_help()
         sys.exit(1)
-    
 
     return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping
 

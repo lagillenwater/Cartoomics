@@ -5,6 +5,8 @@ from scipy import spatial
 from scipy.spatial import distance
 from collections import defaultdict
 from assign_nodes import unique_nodes
+from functools import reduce
+from operator import itemgetter
 
 
 #Go from label to entity_uri (for PKL original labels file) or Label to Idenifier (for microbiome PKL)
@@ -68,14 +70,14 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
             #For all shortest path search
             if len(path_nodes) > 1:
                 #Generate df
-                full_df.columns = ['S','P','O']
+                full_df.columns = ['S_ID','P_ID','O_ID']
                 mechanism_dfs['mech#_'+str(count)] = full_df
                 count += 1
 
         #For shortest path search
         if len(path_nodes) == 1:
             #Generate df
-            full_df.columns = ['S','P','O']
+            full_df.columns = ['S_ID','P_ID','O_ID']
             return full_df
 
     #Return dictionary if all shortest paths search
@@ -117,6 +119,7 @@ def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weight
     #Remove duplicates for bidirectional nodes, only matters when search type=all for mode
     path_nodes = list(set(tuple(x) for x in path_nodes))
     path_nodes = [list(tup) for tup in path_nodes]
+    path_nodes = sorted(path_nodes,key = itemgetter(1))
 
     #Dictionary of all triples that are shortest paths, not currently used
     #mechanism_dfs = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
@@ -138,26 +141,28 @@ def get_embedding(emb,node):
 
 def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all,kg_type,guiding_term,input_nodes_df):
 
+    #Set target embedding value to target node if no guiding term is provided
     if guiding_term.empty:
-        n1 = g_nodes[path_nodes[0][len(path_nodes[0])-1]]
+        n1 = g_nodes[path_nodes[0][len(path_nodes[0])-1]]  
 
+    #Set target embedding value to guiding term if it exists
     else:
         try:
             n1 = guiding_term['term_id']
         except KeyError:
             n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
-        
+
     n1_int = convert_path_nodes(n1,entity_map)
     target_emb = get_embedding(emb,n1_int)
 
     #Dict of all embeddings to reuse if they exist
     embeddings = defaultdict(list)
 
-    #List of total cosine similarity for each path in path_nodes, should be same length as path_nodes
-    paths_total_cs = []
+    #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_cs_values = []
 
     for l in path_nodes:
-        cs = 0
+        cs = []
         for i in range(0,len(l)-1):
             n1 = g_nodes[l[i]]
             n1_int = convert_path_nodes(n1,entity_map)
@@ -166,22 +171,102 @@ def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,lab
                 embeddings[n1_int] = e
             else:
                 embeddings[n1_int] = e
-            cs += 1 - spatial.distance.cosine(e,target_emb)
-        paths_total_cs.append(cs)
+            cs.append(1 - spatial.distance.cosine(e,target_emb))
+        all_paths_cs_values.append(cs)
 
-    chosen_path_nodes_cs = select_path(paths_total_cs,path_nodes)
+    #Get sum of all cosine values in value_list
+    value_list = list(map(sum, all_paths_cs_values))
+    chosen_path_nodes_cs = select_max_path(value_list,path_nodes)
 
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_cs,search_type)
 
     df = convert_to_labels(df,labels_all,kg_type,input_nodes_df)
 
-    return df,paths_total_cs
+    return df,all_paths_cs_values,chosen_path_nodes_cs[0]
+
+def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,labels_all,kg_type,guiding_term):
+
+    annotated_node_labels = unique_nodes(annotated_nodes[['source','target']])
+
+    #Set target embedding value to guiding term if it exists
+    try:
+        n1 = guiding_term['term_id']
+    except KeyError:
+        n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
+
+    n1_int = convert_path_nodes(n1,entity_map)
+    target_emb = get_embedding(emb,n1_int)
+
+    #Dict of all embeddings to reuse if they exist
+    embeddings = defaultdict(list)
+
+    #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_cs_values = []
+
+    #Searches for cosine similarity between each node and the guiding term
+    for node in node_labels:
+        if node in annotated_node_labels:
+            try:
+                n1 = annotated_nodes.loc[annotated_nodes['source'] == node,'source_id'].values[0]
+            except IndexError:
+                n1 = annotated_nodes.loc[annotated_nodes['target'] == node,'target_id'].values[0]
+        else:
+            n1 = get_uri(labels_all,node, kg_type)
+        n1_int = convert_path_nodes(n1,entity_map)
+        if n1_int not in list(embeddings.keys()):
+            e = get_embedding(emb,n1_int)
+            embeddings[n1_int] = e
+        else:
+            embeddings[n1_int] = e
+        cs = 1 - spatial.distance.cosine(e,target_emb)
+        all_paths_cs_values.append(cs)
+
+    #Calculate average cosine similarity to this guiding term for entire subgraph
+    avg_cosine_sim = sum(all_paths_cs_values) / len(all_paths_cs_values)
+
+    return avg_cosine_sim
+
+def calc_cosine_sim_from_uri_list(emb,entity_map,node_uris,labels_all,kg_type,guiding_term):
+
+    #Set target embedding value to guiding term if it exists
+    try:
+        n1 = guiding_term['term_id']
+    except KeyError:
+        n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
+
+    n1_int = convert_path_nodes(n1,entity_map)
+    target_emb = get_embedding(emb,n1_int)
+
+    #Dict of all embeddings to reuse if they exist
+    embeddings = defaultdict(list)
+
+    #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_cs_values = []
+
+    #Searches for cosine similarity between each node and the guiding term
+    for n1 in node_uris:
+        n1_int = convert_path_nodes(n1,entity_map)
+        if n1_int not in list(embeddings.keys()):
+            e = get_embedding(emb,n1_int)
+            embeddings[n1_int] = e
+        else:
+            embeddings[n1_int] = e
+        cs = 1 - spatial.distance.cosine(e,target_emb)
+        all_paths_cs_values.append(cs)
+
+    #Calculate average cosine similarity to this guiding term for entire subgraph
+    avg_cosine_sim = sum(all_paths_cs_values) / len(all_paths_cs_values)
+
+    return avg_cosine_sim
 
 def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_type,input_nodes_df):
 
     #List of pdp for each path in path_nodes, should be same length as path_nodes
-    paths_pdp = []
+    #paths_pdp = []
+
+    #List of lists of pdp for each node in paths of path_nodes, should be same length as path_nodes
+    all_paths_pdp_values = []
 
     for l in path_nodes:
         pdp = 1
@@ -190,55 +275,78 @@ def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_typ
             dp_damped = pow(dp,-w)
             pdp = pdp*dp_damped
 
-        paths_pdp.append(pdp)
+        #paths_pdp.append(pdp)
+        all_paths_pdp_values.append(pdp)
 
-    chosen_path_nodes_pdp = select_path(paths_pdp,path_nodes)
+    chosen_path_nodes_pdp = select_max_path(all_paths_pdp_values,path_nodes)
 
     #Will only return 1 dataframe
     df = define_path_triples(g_nodes,triples_df,chosen_path_nodes_pdp,search_type)
 
     df = convert_to_labels(df,labels_all,kg_type,input_nodes_df)
 
-    return df,paths_pdp
+    return df,all_paths_pdp_values,chosen_path_nodes_pdp
 
-def select_path(value_list,path_nodes):
+def select_max_path(value_list,path_nodes):
 
-    #Get max cs from total_cs_path, use that idx of path_nodes then create mechanism
+    #Get max value from value_list, use that idx of path_nodes then create mechanism
     max_index = value_list.index(max(value_list))
+    print('max index')
+    print(max_index)
     #Must be list of lists for define_path_triples function
     chosen_path_nodes = [path_nodes[max_index]]
+    print('chosen_path_nodes')
+    print(chosen_path_nodes)
 
     return chosen_path_nodes
 
 def convert_to_labels(df,labels_all,kg_type,input_nodes_df):
 
+    #df['S'] = 'none'
+    #df['P'] = 'none'
+    #df['O'] = 'none'
+    all_s = []
+    all_p = []
+    all_o = []
+
     if kg_type == 'pkl':
         for i in range(len(df)):
             try:
-                df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S'],'source_label'].values[0]
+                #df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
+                S = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
             except IndexError:
-                df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S'],'label'].values[0]
-            df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P'],'label'].values[0]
+                #df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S_ID'],'label'].values[0]
+                S = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S_ID'],'label'].values[0]
+            #df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P_ID'],'label'].values[0]
+            P = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P_ID'],'label'].values[0]
             try:
-                df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O'],'target_label'].values[0]
+                #df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
+                O = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
             except IndexError:
-                df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O'],'label'].values[0]
+                #df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O_ID'],'label'].values[0]
+                O = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O_ID'],'label'].values[0]
+            all_s.append(S)
+            all_p.append(P)
+            all_o.append(O)
     if kg_type == 'kg-covid19':
         for i in range(len(df)):
             try:
-                df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S'],'source_label'].values[0]
+                df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
             except IndexError:
-                s_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['S'],'label'].values[0]
+                s_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['S_ID'],'label'].values[0]
                 if s_label != "":
                     df.iloc[i].loc['S'] = s_label
-            df.iloc[i].loc['P'] = df.iloc[i].loc['P'].split(':')[-1]
+            df.iloc[i].loc['P'] = df.iloc[i].loc['P_ID'].split(':')[-1]
             try:
-                df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O'],'target_label'].values[0]
+                df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
             except IndexError:
-                o_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['O'],'label'].values[0]
+                o_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['O_ID'],'label'].values[0]
                 if o_label != "":
                     df.iloc[i].loc['O'] = o_label 
 
+    df['S'] = all_s
+    df['P'] = all_p
+    df['O'] = all_o
     df = df.reset_index(drop=True)
     return df
 
@@ -290,21 +398,39 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 
 def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
+    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+    print('path_nodes')
+    print(len(path_nodes))
+    print(path_nodes)
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
-    df,paths_total_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
+    df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
 
-    return path_nodes,df,paths_total_cs
+    return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs
 
-def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
+def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
+    #Add average cosine similarity of subgraph for this term to dictionary
+    l = {}
+    l['Term'] = term_row['term_label']
+    l['Average_Cosine_Similarity'] = avg_cosine_sim
+    l['Algorithm'] = algorithm
+    l['Pathway_ID'] = wikipathway
+    l['Compared_Pathway'] = compared_pathway
 
-    df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
+    subgraph_cosine_sim.append(l)
+    
+    return subgraph_cosine_sim
 
-    return path_nodes,df,paths_pdp
+def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, path_nodes = 'none'):
+
+    if path_nodes == 'none':
+        path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+
+    df,all_paths_pdp_values,chosen_path_nodes_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
+
+    return path_nodes,df,all_paths_pdp_values,chosen_path_nodes_pdp[0]
 
 # expand nodes by drugs 1 hop away
 def drugNeighbors(graph,nodes, kg_type,input_nodes_df):
