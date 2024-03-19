@@ -1,3 +1,4 @@
+import numpy as np
 from inputs import *
 from create_graph import create_graph
 from assign_nodes import interactive_search_wrapper
@@ -9,39 +10,77 @@ from graph_similarity_metrics import *
 from assign_nodes import normalize_node_api,convert_to_uri,get_label
 from find_path import get_uri
 from create_subgraph import get_wikipathways_subgraph
-from evaluation import output_idf_metrics
+from evaluation import output_nodes_not_in_KG,output_idf_metrics
+from tqdm import tqdm
+from assign_nodes import map_input_to_nodes,manage_user_input
+
+
+
 from wikipathways_converter import get_wikipathways_list
 from constants import (
     WIKIPATHWAYS_SUBFOLDER
 )
 
-def process_idf_file(file,labels,kg_type):
+def process_idf_file(file,labels,kg_type,all_wikipathways_dir):
 
-    cols = ['idf','curie']
+    exists = 'false'
 
-    df = pd.read_csv(file,sep=',',header=None, names=cols)
+    output_dir = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
+    output_idf_filename = 'concept_idf_annotated.csv'
+    for fname in os.listdir(output_dir):
+        if fname == output_idf_filename:
+            exists = 'true'
+            df = pd.read_csv(output_dir + '/' + fname)
 
-    df['uri'] = 'none'
-    df['label'] = 'none'
-    for i in range(len(df)):
-        curie = df.iloc[i].loc['curie']
-        #Transform to known ontogies if needed
-        curie = normalize_node_api(curie)
-        uri = convert_to_uri(curie)
-        df.iloc[i].loc['uri'] = uri
-        df.iloc[i].loc['label'] = get_label(labels,uri,kg_type)
+    if exists == 'false':
+        cols = ['idf','curie']
 
+        df = pd.read_csv(file,sep=',',header=None, names=cols)
+
+        nodes_not_in_KG = []
+
+        uris = []
+        all_labels = []
+        for i in tqdm(range(len(df))):
+            curie = df.iloc[i].loc['curie']
+            #Transform to known ontogies if needed
+            try:
+                uri = convert_to_uri(curie)
+            except IndexError:
+                uri = 'none'
+                nodes_not_in_KG.append([curie,uri])
+            uris.append(uri)
+            try:
+                l = get_label(labels,uri,kg_type)
+            except IndexError:
+                nodes_not_in_KG.append([curie,uri])
+                l = 'none'
+            all_labels.append(l)
+
+        df['uri'] = uris
+        df['label'] = all_labels
+        output_nodes_not_in_KG(all_wikipathways_dir,nodes_not_in_KG)
+        print('writing to: ',output_dir + '/' + output_idf_filename)
+        df.to_csv(output_dir + '/' + output_idf_filename,sep=',',index=False)
     return df
 
-def get_subgraph_idf(subgraphs_idf_metrics,labels,kg_type,subgraph_df,idf_df,wikipathway,algorithm):
+def get_subgraph_idf(subgraphs_idf_metrics,labels,kg_type,subgraph_df,idf_df,wikipathway,algorithm,g):
 
     #Structure of subgraphs_idf_metrics: Pathway_ID,Algorithm,Node,IDF
 
     unique_nodes = list(subgraph_df.S.unique()) + list(subgraph_df.O.unique())
 
     for node in unique_nodes:
-        node_uri = get_uri(labels,node,kg_type)
-        idf = idf_df.loc[idf_df['uri'] == node_uri,'idf'].values[0]
+        found_nodes,nrow,exact_match = map_input_to_nodes(node,g,'true')
+        if exact_match: 
+            node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,g,exact_match)
+            node_uri = id_given
+        else:
+            node_uri = 'none'
+        try:
+            idf = idf_df.loc[idf_df['uri'] == node_uri,'idf'].values[0]
+        except IndexError:
+            idf = np.nan
         subgraphs_idf_metrics.append([wikipathway,algorithm,node,idf])
 
     return subgraphs_idf_metrics
@@ -64,7 +103,7 @@ def main():
 
     idf_file = os.getcwd() + "/Wikipathways_Text_Annotation/concept_idf.sorted.csv"
 
-    idf_df = process_idf_file(idf_file,g.labels_all,kg_type)
+    idf_df = process_idf_file(idf_file,g.labels_all,kg_type,all_wikipathways_dir)
 
     #List for all idf metrics
     subgraphs_idf_metrics = []
@@ -77,18 +116,20 @@ def main():
 
             subgraph_df = pd.read_csv(output_dir + '/CosineSimilarity/Subgraph.csv',sep='|')
 
-            subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,subgraph_df,idf_df,wikipathway,'CosineSimilarity')
+            subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,subgraph_df,idf_df,wikipathway,'CosineSimilarity',g)
 
         if pdp == 'true':
 
             subgraph_df = pd.read_csv(output_dir + '/PDP/Subgraph.csv',sep='|')
 
-            subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,subgraph_df,idf_df,wikipathway,'PDP')
+            subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,subgraph_df,idf_df,wikipathway,'PDP',g)
+
+        w_annotated_edgelist = pd.read_csv(output_dir + '/_annotated_diagram_Input_Nodes_.csv',sep='|')
 
         #Get original wikipathways edgelist
-        wikipathways_subgraph_df = get_wikipathways_subgraph(s)
+        wikipathways_subgraph_df = get_wikipathways_subgraph(w_annotated_edgelist)
 
-        subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,wikipathways_subgraph_df,idf_df,wikipathway,'original')
+        subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,wikipathways_subgraph_df,idf_df,wikipathway,'original',g)
 
         #Output files and visualization for edge and node type evaluations
         idf_file = output_idf_metrics(all_wikipathways_dir,subgraphs_idf_metrics)
