@@ -291,20 +291,13 @@ def select_max_path(value_list,path_nodes):
 
     #Get max value from value_list, use that idx of path_nodes then create mechanism
     max_index = value_list.index(max(value_list))
-    print('max index')
-    print(max_index)
     #Must be list of lists for define_path_triples function
     chosen_path_nodes = [path_nodes[max_index]]
-    print('chosen_path_nodes')
-    print(chosen_path_nodes)
 
     return chosen_path_nodes
 
 def convert_to_labels(df,labels_all,kg_type,input_nodes_df):
 
-    #df['S'] = 'none'
-    #df['P'] = 'none'
-    #df['O'] = 'none'
     all_s = []
     all_p = []
     all_o = []
@@ -312,37 +305,33 @@ def convert_to_labels(df,labels_all,kg_type,input_nodes_df):
     if kg_type == 'pkl':
         for i in range(len(df)):
             try:
-                #df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
                 S = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
             except IndexError:
-                #df.iloc[i].loc['S'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S_ID'],'label'].values[0]
                 S = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S_ID'],'label'].values[0]
-            #df.iloc[i].loc['P'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P_ID'],'label'].values[0]
             P = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['P_ID'],'label'].values[0]
             try:
-                #df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
                 O = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
             except IndexError:
-                #df.iloc[i].loc['O'] = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O_ID'],'label'].values[0]
                 O = labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O_ID'],'label'].values[0]
             all_s.append(S)
             all_p.append(P)
             all_o.append(O)
+    #Need to test for kg-covid19 that S_ID/P_ID/O_ID addition to df works 
     if kg_type == 'kg-covid19':
         for i in range(len(df)):
             try:
-                df.iloc[i].loc['S'] = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
+                S = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
             except IndexError:
                 s_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['S_ID'],'label'].values[0]
                 if s_label != "":
-                    df.iloc[i].loc['S'] = s_label
-            df.iloc[i].loc['P'] = df.iloc[i].loc['P_ID'].split(':')[-1]
+                    S = s_label
+            P = df.iloc[i].loc['P_ID'].split(':')[-1]
             try:
-                df.iloc[i].loc['O'] = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
+                O = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
             except IndexError:
                 o_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['O_ID'],'label'].values[0]
                 if o_label != "":
-                    df.iloc[i].loc['O'] = o_label 
+                    O = o_label 
 
     df['S'] = all_s
     df['P'] = all_p
@@ -399,9 +388,6 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
 
     path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
-    print('path_nodes')
-    print(len(path_nodes))
-    print(path_nodes)
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
