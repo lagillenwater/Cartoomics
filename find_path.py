@@ -325,9 +325,9 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 
     return df,manually_chosen_uris
 
-def prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
+def prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series(),networkx_graph):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
+    path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type, networkx_graph)
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
     df,paths_total_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term)
