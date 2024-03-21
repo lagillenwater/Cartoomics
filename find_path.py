@@ -325,7 +325,7 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 
     return df,manually_chosen_uris
 
-def prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series(),networkx_graph):
+def prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, networkx_graph,guiding_term=pd.Series()):
 
     path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type, networkx_graph)
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
