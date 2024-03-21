@@ -126,7 +126,7 @@ def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weight
 
 ### networkx implementation of find all shortest paths. Still uses both graphs (3/21/24)(LG)
 
-def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type, networkx_graph):
+def find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type, networkx_graph):
 
     try:
         if node_pair['source_id'] != 'not_needed':
