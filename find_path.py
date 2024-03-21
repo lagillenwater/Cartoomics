@@ -334,9 +334,9 @@ def prioritize_path_cs(node_pair,graph,g_nodes,labels_all,triples_df,weights,sea
 
     return path_nodes,df,paths_total_cs
 
-def prioritize_path_pdp(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type):
+def prioritize_path_pdp(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, networkx_graph):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type)
+    path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type,networkx_graph)
 
     df,paths_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type)
 
