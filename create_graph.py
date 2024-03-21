@@ -73,7 +73,8 @@ def process_kg_covid19_files(triples_file,labels_file):
 
 
 ### convert igraph to networkx graph
-def kg_to_undirected_networkx(kg_graph):
-    igraph = kg_graph.igraph
-    G = igraph.to_undirected()
+def kg_to_undirected_networkx(g):
+    kg_igraph = g.igraph
+    G = kg_igraph.to_networkx()
+    G = G.to_undirected()
     return G
