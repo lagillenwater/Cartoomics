@@ -67,23 +67,30 @@ def process_idf_file(file,labels,kg_type,all_wikipathways_dir):
 def get_subgraph_idf(subgraphs_idf_metrics,labels,kg_type,subgraph_df,idf_df,wikipathway,algorithm,g):
 
     #Structure of subgraphs_idf_metrics: Pathway_ID,Algorithm,Node,IDF
-
     unique_nodes = list(subgraph_df.S.unique()) + list(subgraph_df.O.unique())
 
     for node in unique_nodes:
-        found_nodes,nrow,exact_match = map_input_to_nodes(node,g,'true')
-        if exact_match: 
-            node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,g,exact_match)
-            node_uri = id_given
-        else:
-            node_uri = 'none'
-        try:
-            idf = idf_df.loc[idf_df['uri'] == node_uri,'idf'].values[0]
-        except IndexError:
-            idf = np.nan
+
+        idf = get_node_idf(node,g,idf_df)
         subgraphs_idf_metrics.append([wikipathway,algorithm,node,idf])
 
     return subgraphs_idf_metrics
+
+def get_node_idf(node,g,idf_df):
+    
+    found_nodes,nrow,exact_match = map_input_to_nodes(node,g,'true')
+    
+    if exact_match: 
+        node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,g,exact_match)
+        node_uri = id_given
+    else:
+        node_uri = 'none'
+    try:
+        idf = idf_df.loc[idf_df['uri'] == node_uri,'idf'].values[0]
+    except IndexError:
+        idf = np.nan
+
+    return idf
 
 def main():
 
@@ -105,8 +112,13 @@ def main():
 
     idf_df = process_idf_file(idf_file,g.labels_all,kg_type,all_wikipathways_dir)
 
+
+    #####
+    #For comparison to subgraphs
+    #####
+
     #List for all idf metrics
-    subgraphs_idf_metrics = []
+    '''subgraphs_idf_metrics = []
 
     for wikipathway in wikipathways:
 
@@ -129,11 +141,40 @@ def main():
         #Get original wikipathways edgelist
         wikipathways_subgraph_df = get_wikipathways_subgraph(w_annotated_edgelist)
 
-        subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,wikipathways_subgraph_df,idf_df,wikipathway,'original',g)
+        subgraphs_idf_metrics = get_subgraph_idf(subgraphs_idf_metrics,g.labels_all,kg_type,wikipathways_subgraph_df,idf_df,wikipathway,'original',g)'''
 
         #Output files and visualization for edge and node type evaluations
-        idf_file = output_idf_metrics(all_wikipathways_dir,subgraphs_idf_metrics)
+        #idf_file = output_idf_metrics(all_wikipathways_dir,subgraphs_idf_metrics)
 
+    #####
+    #For comparison to subgraphs
+    #####
+
+    #####
+    #For comparison to abstract terms
+    #####
+
+    literature_comparison_file = all_wikipathways_dir +'/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv'
+    literature_comparison_df = pd.read_csv(literature_comparison_file)
+
+    node_idfs = {}
+    #For appending to df
+    node_idfs_list = []
+
+    for node in literature_comparison_df.Term_ID.unique():
+        idf = idf_df.loc[idf_df['uri'] == node,'idf']
+        node_idfs[node] = idf
+
+    for i in range(len(literature_comparison_df)):
+        term = literature_comparison_df.iloc[i].loc['Term']
+        try:
+            node_idfs_list.append(node_idfs[term])
+        except KeyError:
+            node_idfs_list.append(np.nan)
+
+    literature_comparison_df['IDF'] = node_idfs_list
+
+    #literature_comparison_df.to_csv(all_wikipathways_dir +'/literature_comparison/Evaluation_Files/literature_comparison_evaluation_with_IDF.csv',sep=',',index=False)
 
 if __name__ == '__main__':
     main()

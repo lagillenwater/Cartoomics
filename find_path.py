@@ -185,7 +185,7 @@ def calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,lab
 
     return df,all_paths_cs_values,chosen_path_nodes_cs[0]
 
-def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,labels_all,kg_type,guiding_term):
+def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,labels_all,kg_type,embeddings,guiding_term):
 
     annotated_node_labels = unique_nodes(annotated_nodes[['source','target']])
 
@@ -195,12 +195,16 @@ def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,l
     except KeyError:
         n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
 
-    n1_int = convert_path_nodes(n1,entity_map)
-    target_emb = get_embedding(emb,n1_int)
-
     #Dict of all embeddings to reuse if they exist
-    embeddings = defaultdict(list)
+    #embeddings = defaultdict(list)
 
+    n1_int = convert_path_nodes(n1,entity_map)
+    if n1_int not in list(embeddings.keys()):
+        target_emb= get_embedding(emb,n1_int)
+        embeddings[n1_int] = target_emb
+    else:
+        target_emb = embeddings[n1_int]
+    
     #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
     all_paths_cs_values = []
 
@@ -218,29 +222,33 @@ def calc_cosine_sim_from_label_list(emb,entity_map,node_labels,annotated_nodes,l
             e = get_embedding(emb,n1_int)
             embeddings[n1_int] = e
         else:
-            embeddings[n1_int] = e
+            e = embeddings[n1_int]
         cs = 1 - spatial.distance.cosine(e,target_emb)
         all_paths_cs_values.append(cs)
 
     #Calculate average cosine similarity to this guiding term for entire subgraph
     avg_cosine_sim = sum(all_paths_cs_values) / len(all_paths_cs_values)
 
-    return avg_cosine_sim
+    return avg_cosine_sim,embeddings
 
-def calc_cosine_sim_from_uri_list(emb,entity_map,node_uris,labels_all,kg_type,guiding_term):
+def calc_cosine_sim_from_uri_list(emb,entity_map,node_uris,labels_all,kg_type,embeddings,guiding_term):
 
     #Set target embedding value to guiding term if it exists
     try:
         n1 = guiding_term['term_id']
     except KeyError:
         n1 = get_uri(labels_all,guiding_term['term_label'], kg_type)
+    
+    #Dict of all embeddings to reuse if they exist
+    #embeddings = defaultdict(list)
 
     n1_int = convert_path_nodes(n1,entity_map)
-    target_emb = get_embedding(emb,n1_int)
-
-    #Dict of all embeddings to reuse if they exist
-    embeddings = defaultdict(list)
-
+    if n1_int not in list(embeddings.keys()):
+        target_emb= get_embedding(emb,n1_int)
+        embeddings[n1_int] = target_emb
+    else:
+        target_emb = embeddings[n1_int]
+    
     #List of lists of cosine similarity for each node in paths of path_nodes, should be same length as path_nodes
     all_paths_cs_values = []
 
@@ -251,14 +259,14 @@ def calc_cosine_sim_from_uri_list(emb,entity_map,node_uris,labels_all,kg_type,gu
             e = get_embedding(emb,n1_int)
             embeddings[n1_int] = e
         else:
-            embeddings[n1_int] = e
+            e = embeddings[n1_int]
         cs = 1 - spatial.distance.cosine(e,target_emb)
         all_paths_cs_values.append(cs)
 
     #Calculate average cosine similarity to this guiding term for entire subgraph
     avg_cosine_sim = sum(all_paths_cs_values) / len(all_paths_cs_values)
 
-    return avg_cosine_sim
+    return avg_cosine_sim,embeddings
 
 def calc_pdp(path_nodes,graph,w,g_nodes,triples_df,search_type,labels_all,kg_type,input_nodes_df):
 
@@ -336,6 +344,8 @@ def convert_to_labels(df,labels_all,kg_type,input_nodes_df):
     df['S'] = all_s
     df['P'] = all_p
     df['O'] = all_o
+    #Reorder columns
+    df = df[['S','P','O','S_ID','P_ID','O_ID']]
     df = df.reset_index(drop=True)
     return df
 
@@ -385,9 +395,10 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 
     return df,manually_chosen_uris
 
-def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
+def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, path_nodes, guiding_term=pd.Series()):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+    if path_nodes == 'none':
+        path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
 
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
@@ -400,6 +411,7 @@ def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,a
     #Add average cosine similarity of subgraph for this term to dictionary
     l = {}
     l['Term'] = term_row['term_label']
+    l['Term_ID']= term_row['term_id']
     l['Average_Cosine_Similarity'] = avg_cosine_sim
     l['Algorithm'] = algorithm
     l['Pathway_ID'] = wikipathway
@@ -409,7 +421,7 @@ def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,a
     
     return subgraph_cosine_sim
 
-def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, path_nodes = 'none'):
+def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, path_nodes):
 
     if path_nodes == 'none':
         path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)

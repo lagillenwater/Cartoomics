@@ -18,6 +18,8 @@ def main():
 
     kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
 
+    ablation = 'true'
+
     input_dir = os.getcwd() + '/' + WIKIPATHWAYS_SUBFOLDER
 
     triples_list_file,labels_file = get_wikipathways_graph_files(input_dir,kg_type,input_type,guiding_term,input_substring)
@@ -30,6 +32,10 @@ def main():
 
     all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
+    if ablation == 'true':
+
+        all_wikipathways_dir = all_wikipathways_dir + '_ablations'
+
     #List for all graph similarity metrics
     graph_similarity_metrics = []
     #List for all graph node percentage metrics
@@ -40,6 +46,10 @@ def main():
 
     for wikipathway in wikipathways:
 
+        if ablation == 'true':
+
+            wikipathway = wikipathway + '_ablation_0'
+       
         output_dir = all_wikipathways_dir + '/' + wikipathway + '_output'
 
 
