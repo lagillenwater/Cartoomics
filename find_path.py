@@ -160,7 +160,7 @@ def find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_
     node1_nx = graph.vs.find(name = node1).index
     node2_nx = graph.vs.find(name = node2).index
 
-    path_nodes = networkx.all_shortest_paths(UG,node1_nx,node2_nx)
+    path_nodes = networkx.all_shortest_paths(networkx_graph,node1_nx,node2_nx)
 
     #Remove duplicates for bidirectional nodes, only matters when search type=all for mode
     path_nodes = list(set(tuple(x) for x in path_nodes))
