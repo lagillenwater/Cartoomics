@@ -86,7 +86,7 @@ def num_nodes_comparison(output_dir,**subgraph_dfs):
     logging.info('Create number of nodes comparison file: %s',output_folder+'/num_nodes_comparison.csv')
     return df
 
-def get_ontology_lables(noa_df,labels_all,kg_type):
+def get_ontology_lables(noa_df,labels_all,kg_type,subgraph_df):
 
     ont_types = ['/CHEBI_','/PR_','/PW_','/gene','/MONDO_','/HP_','/VO_','/EFO_','NCBITaxon_','/GO_','/DOID_','/reactome','/SO_',
     'ENSEMBL:','UniProt','GO:','NCBIGene','CHEMBL.','ensembl','/CL_']
@@ -99,7 +99,13 @@ def get_ontology_lables(noa_df,labels_all,kg_type):
     for i in range(len(noa_df)):
         ont_found = 'false'
         if noa_df.iloc[i].loc['Attribute'] == 'Extra':
-            uri = get_uri(labels_all,noa_df.iloc[i].loc['Node'],kg_type)
+            #For when we were not outputting node ID
+            #uri = get_uri(labels_all,noa_df.iloc[i].loc['Node'],kg_type)
+            #Use subgraph to get uri
+            try:
+                uri = subgraph_df.loc[subgraph_df['S'] == noa_df.iloc[i].loc['Node'],'S_ID'].values[0]
+            except IndexError:
+                uri = subgraph_df.loc[subgraph_df['O'] == noa_df.iloc[i].loc['Node'],'O_ID'].values[0]
             num_intermediate_nodes += 1
             for j in ont_types:
                 if j in uri:
@@ -117,7 +123,7 @@ def get_ontology_lables(noa_df,labels_all,kg_type):
     return ont_labels, counts, num_intermediate_nodes
 
 
-def intermediate_nodes_comparison(intermediate_nodes_df,labels_all,kg_type,wikipathway,**noa_dfs):
+def intermediate_nodes_comparison(intermediate_nodes_df,labels_all,kg_type,wikipathway,subgraph_df,**noa_dfs):
 
     all_ont_labels = []
 
@@ -128,7 +134,7 @@ def intermediate_nodes_comparison(intermediate_nodes_df,labels_all,kg_type,wikip
     for nd in noa_dfs.items():
         n_df = nd[1]
         #Get unique ontology types from this subgraph, add to running list for each subgraph, counts not used here
-        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
+        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type,subgraph_df)
         all_ont_labels.extend(ont_labels)
         
     #List of all unique ontology types from all subgraphs
@@ -144,7 +150,7 @@ def intermediate_nodes_comparison(intermediate_nodes_df,labels_all,kg_type,wikip
         algorithm = []
         pathway = []
         n_df = nd[1]
-        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type)
+        ont_labels, counts, num_intermediate_nodes = get_ontology_lables(n_df,labels_all,kg_type,subgraph_df)
         #Add any ontology types not already in subgraph
         for i in all_ont_labels:
             if i not in ont_labels:
@@ -355,7 +361,7 @@ def output_nodes_not_in_KG(all_wikipathways_dir,nodes_not_in_KG):
 
 def output_idf_metrics(all_wikipathways_dir,idf_metrics):
 
-    results_fields = ['Pathway_ID','Algorithm','Node','IDF']
+    results_fields = ['Pathway_ID','Algorithm','Node','Node_ID','IDF']
 
     output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
     #Check for existence of output directory
