@@ -282,10 +282,12 @@ The outputs will be the same as stated above in subgraph generation, within the 
 
 ### Command Line Arguments: compare subgraphs
 
+
 The wikipathways_graph_evaluations script will output graph similarity metrics and node/edge evaluation metrics. The script will calculate the following graph similarity metrics over the original edgelist and the subgraph created for all pathways specified:
 - Jaccard Similarity
 - Overlap Coefficient
 - Graph Edit Distance 
+
 
 Additionally, the script will output the following node and edge metrics for all pathways specified:
 - % of nodes in each ontology
@@ -300,6 +302,7 @@ python wikipathways_graph_evaluations.py --knowledge-graph pkl --input-type anno
 **Note that all subgraph files (described above) must be generated**
  
 ### Expected Outputs
+
 
 All of the graph similarity files will be output in a graph_similarity subfolder within the wikipathways_graphs subfolder './wikipathways_graphs/graph_similarity'.
   
@@ -318,6 +321,7 @@ PDP,WP5373,0.33,0.33
 ### Jaccard and Overlap Histogram
   
 A .png file of all Jaccard and Overlap scores per Wikipathways diagram per algorithm. 
+
 
 ### Command Line Arguments: Wikipathways Literature Comparison
 

@@ -5,6 +5,7 @@ from scipy import spatial
 from scipy.spatial import distance
 from collections import defaultdict
 from assign_nodes import unique_nodes
+import networkx
 from functools import reduce
 from operator import itemgetter
 
@@ -44,7 +45,7 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
     #Keep track of # of mechanisms generated for this node pair in file name for all shortest paths
     count = 1 
 
-    #When there is no connection in graph, path_nodes will equal 1 ([[]])
+    #When there is no connection in graph, path_nodes will equal 1 ([[]]) or when there's a self loop
     if len(path_nodes[0]) != 0:
         for p in range(len(path_nodes)):
             #Dataframe to append each triple to
@@ -66,15 +67,15 @@ def define_path_triples(g_nodes,triples_df,path_nodes,search_type):
                     full_df = pd.concat([full_df,df])
                 full_df = full_df.reset_index(drop=True)
                 n1 = n2
-            
+                                        
             #For all shortest path search
             if len(path_nodes) > 1:
                 #Generate df
                 full_df.columns = ['S_ID','P_ID','O_ID']
                 mechanism_dfs['mech#_'+str(count)] = full_df
                 count += 1
-
-        #For shortest path search
+                
+            #For shortest path search
         if len(path_nodes) == 1:
             #Generate df
             full_df.columns = ['S_ID','P_ID','O_ID']
@@ -125,6 +126,55 @@ def find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,weight
     #mechanism_dfs = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
     
     return path_nodes
+
+
+### networkx implementation of find all shortest paths. Still uses both graphs (3/21/24)(LG)
+
+def find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type, kg_type, networkx_graph):
+
+    try:
+        if node_pair['source_id'] != 'not_needed':
+            node1 = node_pair['source_id']
+        else:
+            node1 = get_uri(labels_all,node_pair['source_label'], kg_type)
+    #Handle case where no ID was input for any nodes or only 1 node
+    except KeyError: 
+        node1 = get_uri(labels_all,node_pair['source_label'], kg_type)
+   
+    try:
+        if node_pair['target_id'] != 'not_needed':
+            node2 = node_pair['target_id']
+        else:
+            node2 = get_uri(labels_all,node_pair['target_label'], kg_type)
+    #Handle case where no ID was input for any nodes or only 1 node
+    except KeyError:
+        node2 = get_uri(labels_all,node_pair['target_label'], kg_type)
+    
+    #Add weights if specified
+    # if weights:
+    #     w = graph.es["weight"]
+    # else:
+    #     w = None
+
+    #Dict to store all dataframes of shortest mechanisms for this node pair
+    mechanism_dfs = {}
+
+    #list of nodes
+    
+    node1_nx = graph.vs.find(name = node1).index
+    node2_nx = graph.vs.find(name = node2).index
+
+    path_nodes = networkx.all_shortest_paths(networkx_graph,node1_nx,node2_nx)
+
+    #Remove duplicates for bidirectional nodes, only matters when search type=all for mode
+    path_nodes = list(set(tuple(x) for x in path_nodes))
+    path_nodes = [list(tup) for tup in path_nodes]
+
+    #Dictionary of all triples that are shortest paths, not currently used
+    #mechanism_dfs = define_path_triples(g_nodes,triples_df,path_nodes,search_type)
+    
+    return path_nodes
+
 
 def convert_path_nodes(path_node,entity_map):
 
@@ -385,10 +435,14 @@ def find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,trip
 
     return df,manually_chosen_uris
 
-def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, guiding_term=pd.Series()):
 
-    path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, networkx_graph, guiding_term=pd.Series()):
 
+   # igraph implementation
+   # path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+
+
+    path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type, networkx_graph)
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
     df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
@@ -409,10 +463,12 @@ def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,a
     
     return subgraph_cosine_sim
 
-def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, path_nodes = 'none'):
+
+def prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight, kg_type, networkx_graph, path_nodes = 'none'):
 
     if path_nodes == 'none':
-        path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+        path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type,networkx_graph)
+    
 
     df,all_paths_pdp_values,chosen_path_nodes_pdp = calc_pdp(path_nodes,graph,pdp_weight,g_nodes,triples_df,search_type,labels_all, kg_type,input_nodes_df)
 
