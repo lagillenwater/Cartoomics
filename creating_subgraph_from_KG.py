@@ -1,5 +1,6 @@
 from inputs import *
 from create_graph import create_graph
+from create_graph import kg_to_undirected_networkx
 from assign_nodes import *
 from create_subgraph import subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
@@ -8,16 +9,10 @@ from create_subgraph import *
 from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
-from memory_management import *
-#import resource
+
 
 def main():
 
-    # resource.setrlimit(resource.RLIMIT_AS, (8000000, 16000000))
-    # resource.setrlimit(resource.RLIMIT_DATA, (8000000,16000000))
-    print("limiting memory")
-    limit_memory(percentage = .8) # limits memory to avoid memory faults
-    
     input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type,pdp_weight,input_type,pfocr_url,cosine_similarity,pdp,guiding_term,input_substring,enable_skipping = generate_arguments()
 
     triples_list_file,labels_file,input_file = get_graph_files(input_dir,output_dir, kg_type,input_type,pfocr_url,guiding_term,input_substring)
@@ -43,10 +38,12 @@ def main():
     if weights == True:
         g = automatic_defined_edge_exclusion(g,kg_type)
 
+    networkx_g = kg_to_undirected_networkx(g)
+
     if cosine_similarity == 'true':
         print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
         
-        subgraph_cs,path_total_cs = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type)
+        subgraph_cs,path_total_cs = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g)
 
         print("Outputting CS visualization......")
 
@@ -56,7 +53,7 @@ def main():
 
         print("Finding subgraph using user input for PDP......")
 
-        subgraph_pdp,path_pdp = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type)
+        subgraph_pdp,path_pdp = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g)
         
         print("Outputting PDP visualization......")
 
