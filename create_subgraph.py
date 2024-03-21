@@ -135,8 +135,8 @@ def automatic_defined_edge_exclusion(graph,kg_type):
         graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
     return(graph)
 
-    
-def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_graph, find_graph_similarity = False):
+ 
+def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_graph, find_graph_similarity = False,existing_path_nodes = 'none'):
 
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
@@ -153,9 +153,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph)
-
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph,existing_path_nodes)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -176,8 +174,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
 
     return df,all_paths_cs_values,all_chosen_path_nodes
 
-
-def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,output_dir, kg_type, networkx_graph):
+def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,output_dir, kg_type, networkx_graph, existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -193,9 +190,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-
-        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type, networkx_graph)
-
+        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type, networkx_graph,existing_path_nodes)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -214,7 +209,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
 
     return df,paths_pdp,all_chosen_path_nodes
 
-def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type):
+def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -228,7 +223,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,term_row)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,existing_path_nodes,term_row)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -249,22 +244,22 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
     return df,all_paths_cs_values,term_foldername
 
 
-def get_cosine_sim_one_pathway(g,comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,annotated_nodes,all_subgraphs_cosine_sim,node_type,compared_pathway):
+def get_cosine_sim_one_pathway(g,comparison_terms_df,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,subgraph_nodes,annotated_nodes,all_subgraphs_cosine_sim,node_type,compared_pathway):
 
     #For each guiding term calculate cosine values to all nodes in supgraph
     for t in tqdm(range(len(comparison_terms_df))):
         term_row = comparison_terms_df.iloc[t]
         if node_type == 'labels':
-            avg_cosine_sim = calc_cosine_sim_from_label_list(emb,entity_map,subgraph_nodes,annotated_nodes,g.labels_all,kg_type,term_row)
+            avg_cosine_sim,embeddings = calc_cosine_sim_from_label_list(emb,entity_map,subgraph_nodes,annotated_nodes,g.labels_all,kg_type,embeddings,term_row)
         elif node_type == 'uris':
-            avg_cosine_sim = calc_cosine_sim_from_uri_list(emb,entity_map,subgraph_nodes,g.labels_all,kg_type,term_row)
+            avg_cosine_sim,embeddings = calc_cosine_sim_from_uri_list(emb,entity_map,subgraph_nodes,g.labels_all,kg_type,embeddings,term_row)
         #Organize all path cosine similarity values into dictionary per term
         all_subgraphs_cosine_sim = generate_comparison_terms_dict(all_subgraphs_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway)
 
-    return all_subgraphs_cosine_sim
+    return all_subgraphs_cosine_sim,embeddings
 
 
-def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
+def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
 
     #Get all nodes from subgraph not in original edgelist
     subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
@@ -274,15 +269,15 @@ def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,algo
 
     #When passed only the terms of that wikipathway abstract
     if isinstance(comparison_terms,pd.DataFrame):
-       all_subgraphs_cosine_sim = get_cosine_sim_one_pathway(g,comparison_terms,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,wikipathway)
+       all_subgraphs_cosine_sim,embeddings = get_cosine_sim_one_pathway(g,comparison_terms,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,wikipathway)
 
     #When passed the terms of all wikipathway abstracts as dictionary
     elif isinstance(comparison_terms,dict):
         for w in comparison_terms.keys():
             w_comparison_terms_df = comparison_terms[w]
-            all_subgraphs_cosine_sim = get_cosine_sim_one_pathway(g,w_comparison_terms_df,kg_type,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,w)
+            all_subgraphs_cosine_sim,embeddings = get_cosine_sim_one_pathway(g,w_comparison_terms_df,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,w)
 
-    return all_subgraphs_cosine_sim
+    return all_subgraphs_cosine_sim,embeddings
 
 def get_wikipathways_subgraph(annotated_wikipathways_subgraph_df):
 

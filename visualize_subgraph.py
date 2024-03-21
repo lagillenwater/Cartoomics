@@ -28,7 +28,7 @@ def create_node_attributes(input_nodes_df,subgraph_df):
 
     for i in range(len(subgraph_df)):
         #Only add subject and object columns, not the predicate
-        for col in [3,5]:
+        for col in [0,2]:
             l = []
             node = subgraph_df.iloc[i,col]
             if node in original_nodes:
@@ -110,8 +110,8 @@ def output_visualization(input_nodes_df,subgraph_df,output_dir):
 
     create_sif_file(subgraph_df,output_dir)
 
-    #Not outputting graph visualization
-    create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
+    ##Not outputting graph visualization
+    ##create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
 
     logging.info('Subgraph visualization complete.')
 
