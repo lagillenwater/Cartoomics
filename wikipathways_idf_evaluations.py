@@ -67,16 +67,25 @@ def process_idf_file(file,labels,kg_type,all_wikipathways_dir):
 def get_subgraph_idf(subgraphs_idf_metrics,labels,kg_type,subgraph_df,idf_df,wikipathway,algorithm,g):
 
     #Structure of subgraphs_idf_metrics: Pathway_ID,Algorithm,Node,IDF
-    unique_nodes = list(subgraph_df.S.unique()) + list(subgraph_df.O.unique())
+    unique_nodes = list(subgraph_df.S_ID.unique()) + list(subgraph_df.O_ID.unique())
 
-    for node in unique_nodes:
-
-        idf = get_node_idf(node,g,idf_df)
-        subgraphs_idf_metrics.append([wikipathway,algorithm,node,idf])
+    for node_id in unique_nodes:
+        try:
+            node = subgraph_df.loc[subgraph_df['S_ID'] == node_id,'S'].values[0]
+        except IndexError:
+            node = subgraph_df.loc[subgraph_df['O_ID'] == node_id,'O'].values[0]
+        idf = get_node_id_idf(node_id,g,idf_df)
+        subgraphs_idf_metrics.append([wikipathway,algorithm,node,node_id,idf])
 
     return subgraphs_idf_metrics
 
-def get_node_idf(node,g,idf_df):
+def get_node_id_idf(node_id,g,idf_df):
+
+    idf = idf_df.loc[idf_df['uri'] == node_id,'idf']
+
+    return idf
+
+def get_node_idf_from_label(node,g,idf_df):
     
     found_nodes,nrow,exact_match = map_input_to_nodes(node,g,'true')
     
@@ -157,24 +166,20 @@ def main():
     literature_comparison_file = all_wikipathways_dir +'/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv'
     literature_comparison_df = pd.read_csv(literature_comparison_file)
 
-    node_idfs = {}
     #For appending to df
     node_idfs_list = []
 
-    for node in literature_comparison_df.Term_ID.unique():
-        idf = idf_df.loc[idf_df['uri'] == node,'idf']
-        node_idfs[node] = idf
-
     for i in range(len(literature_comparison_df)):
-        term = literature_comparison_df.iloc[i].loc['Term']
+        term_id = literature_comparison_df.iloc[i].loc['Term_ID']
         try:
-            node_idfs_list.append(node_idfs[term])
-        except KeyError:
-            node_idfs_list.append(np.nan)
+            idf = idf_df.loc[idf_df['uri'] == term_id,'idf'].values[0]
+        except IndexError:
+            idf = np.nan
+        node_idfs_list.append(idf)
 
     literature_comparison_df['IDF'] = node_idfs_list
 
-    #literature_comparison_df.to_csv(all_wikipathways_dir +'/literature_comparison/Evaluation_Files/literature_comparison_evaluation_with_IDF.csv',sep=',',index=False)
+    literature_comparison_df.to_csv(all_wikipathways_dir +'/literature_comparison/Evaluation_Files/literature_comparison_evaluation_with_IDF.csv',sep=',',index=False)
 
 if __name__ == '__main__':
     main()

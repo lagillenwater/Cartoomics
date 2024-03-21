@@ -18,7 +18,8 @@ def main():
 
     kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
 
-    ablation = 'true'
+    #ablation = 'true'
+    ablation = 'false'
 
     input_dir = os.getcwd() + '/' + WIKIPATHWAYS_SUBFOLDER
 
@@ -61,7 +62,7 @@ def main():
             #Get node and edge type metrics
             input_nodes,subgraph_cs,cs_noa_df,path_total_cs = get_subgraph_dfs(output_dir,'annotated_diagram','CosineSimilarity')
             edge_types_df = edge_type_comparison(edge_types_df,wikipathway,CosineSimilarity=subgraph_cs)
-            intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,CosineSimilarity=cs_noa_df)
+            intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,subgraph_cs,CosineSimilarity=cs_noa_df)
 
             #Get node percentage metrics
             graph_node_percentage_metrics = generate_graph_mapping_statistics(graph_node_percentage_metrics,wikipathway,'CosineSimilarity',all_wikipathways_dir)
@@ -74,7 +75,7 @@ def main():
             #Get node and edge type metrics
             input_nodes,subgraph_pdp,pdp_noa_df,path_pdp = get_subgraph_dfs(output_dir,'annotated_diagram','PDP')
             edge_types_df = edge_type_comparison(edge_types_df,wikipathway,PDP=subgraph_pdp)
-            intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,PDP=pdp_noa_df)
+            intermediate_nodes_df = intermediate_nodes_comparison(intermediate_nodes_df,g.labels_all,kg_type,wikipathway,subgraph_pdp,PDP=pdp_noa_df)
 
             #Get node percentage metrics
             graph_node_percentage_metrics = generate_graph_mapping_statistics(graph_node_percentage_metrics,wikipathway,'PDP',all_wikipathways_dir)

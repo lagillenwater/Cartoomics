@@ -56,7 +56,7 @@ def main():
 
         print("Outputting CS visualization......")
 
-    #    cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
+        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
 
     if pdp == 'true':
 
@@ -75,7 +75,7 @@ def main():
 
         print("Outputting PDP visualization......")
 
-     #   pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
+        pdp_noa_df = output_visualization(s,subgraph_pdp,output_dir+'/PDP')
 
     if guiding_term:
         print("Finding subgraph using user input for Guiding Term(s)......")
@@ -95,7 +95,7 @@ def main():
 
             print("Outputting Guiding Term(s) visualization......")
 
-      #      pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
+            pdp_noa_df = output_visualization(s,subgraph_guiding_term,output_dir+'/'+output_foldername)
 
 
 if __name__ == '__main__':

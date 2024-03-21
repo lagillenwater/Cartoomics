@@ -215,7 +215,7 @@ def map_input_to_nodes(node,kg,enable_skipping):
 	search_loop = True
 	exact_match = False
 	while(search_loop):
-		print("User Search Node: ", node)
+		#print("User Search Node: ", node)
 		found_nodes,exact_match = find_node(node,kg)
 		#Handle when node label is returned for exact match, which will be a string not a df
 		if isinstance(found_nodes, str):
@@ -225,8 +225,8 @@ def map_input_to_nodes(node,kg,enable_skipping):
 		#Do not require more user input when enable skipping true
 		elif enable_skipping:
 			nrow = found_nodes.shape[0]
-			print("No exact search terms returned, skipping enabled")
-			logging.info("No exact search terms returned, skipping enabled")
+			#print("No exact search terms returned, skipping enabled")
+			logging.info("No exact search terms returned, skipping enabled: ",node)
 			return found_nodes,nrow,exact_match
 		else:	
 			nrow = found_nodes.shape[0]
@@ -235,7 +235,7 @@ def map_input_to_nodes(node,kg,enable_skipping):
 				node = input("Please try another input term: ")
 			else:
 				search_loop = False	
-	print("Found", nrow, "features in KG")
+	#print("Found", nrow, "features in KG")
 	logging.info('Found %s features in KG',nrow)
 
 	return found_nodes,nrow,exact_match
@@ -648,10 +648,10 @@ def skip_self_loops(input_df):
 def skip_node_in_edgelist(edgelist_df,removed_nodes):
 
 	other_columns = ['source_label','target_label','source_id','target_id']
-	print('Removing nodes')
+	#print('Removing nodes')
 
-	for node in tqdm(removed_nodes):
-		print(node)
+	for node in removed_nodes:
+		#print(node)
 		new_edges = []
 		node_objects = list(set(edgelist_df.loc[edgelist_df.source == node,'target'].tolist()))
 		node_subjects = list(set(edgelist_df.loc[edgelist_df.target == node,'source'].tolist()))

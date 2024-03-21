@@ -48,8 +48,9 @@ def generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,labels,enable_s
             id = curie.split(":")[1]
             curie = "GO_" + id
         curie = curie.replace('_',":")
-        #Transform to known ontogies if needed
-        curie = normalize_node_api(curie)
+        ##Transform to known ontologies
+        if "DRUGBANK" in curie:
+            curie = normalize_node_api(curie)
         uri = convert_to_uri(curie)
 
         if enable_skipping:
