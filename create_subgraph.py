@@ -209,7 +209,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
 
     return df,paths_pdp,all_chosen_path_nodes
 
-def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,existing_path_nodes = 'none'):
+def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_graph,existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -223,7 +223,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,existing_path_nodes,term_row)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph,existing_path_nodes,term_row)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
