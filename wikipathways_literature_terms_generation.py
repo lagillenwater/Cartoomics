@@ -2,7 +2,7 @@ import os
 import csv
 import pandas as pd
 import argparse
-from assign_nodes import convert_to_uri,normalize_node_api,create_skipped_node_file
+from assign_nodes import convert_to_uri,normalize_node_api,create_skipped_node_file,map_input_to_nodes,manage_user_input
 from graph_similarity_metrics import get_wikipathways_graph_files
 from create_graph import create_graph
 
@@ -23,17 +23,11 @@ def generate_keywords_file(output_path,metadata_df,wikipathway):
     df.to_csv(output_path,index=False)
 
 #Generates annotated file using concept annotations
-def generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,labels,enable_skipping):
+def generate_abstract_file_concept_annotations(file,labels,enable_skipping):
 
-    df = pd.DataFrame(columns = ['term','term_label','term_id'])
-    wikipathway_output_dir = all_wikipathways_dir + "/" + wikipathway + "_output"
-    df_file = wikipathway_output_dir + "/_literature_comparison_Input_Nodes_.csv"
+    df = pd.DataFrame(columns = ['term','term_label','term_id','NER_Method'])
 
-    #For comparing cosine similarity across all abstracts
-    df_specific_file = all_wikipathways_dir + "/literature_comparison/" + wikipathway + "_literature_comparison_Input_Nodes_.csv"
-
-    pmid_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations/" + pmid + ".bionlp"
-    pmid_df = pd.read_csv(pmid_file,header=None,sep='\t')
+    pmid_df = pd.read_csv(file,header=None,sep='\t')
     pmid_df.columns = [['TermID','Term_Info','Label']]
 
     guiding_term_skipped_nodes = []
@@ -68,17 +62,41 @@ def generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,labels,enable_s
             annotated_terms['term_label'] = pmid_df.iloc[i].loc['Label'].iloc[0]
             #Add term_id
             annotated_terms['term_id'] = uri
+            #Add method
+            annotated_terms['NER_Method'] = 'lab'
             d = pd.DataFrame([annotated_terms])
             df = pd.concat([d,df])
 
-    #Creates a skipped_node file per input diagram
-    if enable_skipping:
-        create_skipped_node_file(guiding_term_skipped_nodes,wikipathway_output_dir,'guidingTerms')
+    return df,guiding_term_skipped_nodes
 
-    df = df.drop_duplicates()
-    df.to_csv(df_file,sep='|',index=False)
-    #Write the same file to a general folder for comparing cosine similarity across all abstracts
-    df.to_csv(df_specific_file,sep='|',index=False)
+#assumes skipping is enabled
+def generate_abstract_file_models(file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,method):
+
+    df = pd.read_csv(file,sep=',')
+    df = df.loc[df['PubMed_id'] == wikipathway]
+
+    new_node_rows = []
+
+    for i in range(len(df)):
+        node_label = df.iloc[i].loc['entity']
+
+        found_nodes,nrow,exact_match = map_input_to_nodes(node_label,g,'true')
+        
+        if exact_match: 
+            node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,g,exact_match)
+            node_uri = id_given
+        else:
+            node_uri = 'none'
+            guiding_term_skipped_nodes.append(node_label)
+
+        new_node_rows.append([node_label,node_label,node_uri,method])
+
+    print(literature_annotations_df.columns)
+    annotations_df = pd.DataFrame(new_node_rows, columns = literature_annotations_df.columns) 
+
+    literature_annotations_df = pd.concat([literature_annotations_df,annotations_df])
+
+    return literature_annotations_df,guiding_term_skipped_nodes
 
 def main():
 
@@ -97,17 +115,47 @@ def main():
     wikipathways = metadata_df.Pathway_ID.unique()
     wikipathways = ALL_WIKIPATHWAYS
 
+    #Files to read
+    gpt4_file = os.getcwd() + "/Wikipathways_Text_Annotation/pfocr_abstracts_GPT4.csv"
+    ner_file = os.getcwd() + "/Wikipathways_Text_Annotation/pfocr_abstracts_NER_processed.csv"
+
     for wikipathway in wikipathways:
+
+        pmid = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,'PMID'].values[0])
+        #File to read
+        pmid_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations/" + pmid + ".bionlp"
 
         base_dir = all_wikipathways_dir + '/literature_comparison'
 
-        output_path = base_dir + '/' + wikipathway + '_Literature_Comparison_Terms.csv'
+        #output_path = base_dir + '/' + wikipathway + '_Literature_Comparison_Terms.csv'
 
         #generate_keywords_file(output_path,metadata_df,wikipathway)
 
         pmid = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,'PMID'].values[0])
 
-        generate_abstract_file(pmid,all_wikipathways_dir,wikipathway,g.labels_all,enable_skipping)
+        #For PMID specific concept annotations
+        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_concept_annotations(pmid_file,g.labels_all,enable_skipping)
+
+        #For NER concept annotation
+        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(ner_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'ner')
+
+        #For GPT concept annotation
+        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(gpt4_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'gpt')
+
+        wikipathway_output_dir = all_wikipathways_dir + "/" + wikipathway + "_output"
+        df_file = wikipathway_output_dir + "/_literature_comparison_Input_Nodes_.csv"
+
+        #For comparing cosine similarity across all abstracts
+        df_specific_file = all_wikipathways_dir + "/literature_comparison/" + wikipathway + "_literature_comparison_Input_Nodes_.csv"
+
+        literature_annotations_df = literature_annotations_df.drop_duplicates()
+        literature_annotations_df.to_csv(df_file,sep='|',index=False)
+        #Write the same file to a general folder for comparing cosine similarity across all abstracts
+        literature_annotations_df.to_csv(df_specific_file,sep='|',index=False)
+
+        #Creates a skipped_node file per input diagram
+        if enable_skipping:
+            create_skipped_node_file(guiding_term_skipped_nodes,wikipathway_output_dir,'guidingTerms')
 
 if __name__ == '__main__':
     main()
