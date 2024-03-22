@@ -451,9 +451,8 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples
     # path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
   
     if path_nodes == 'none':
-        path_nodes = find_all_shortest_paths(node_pair,graph,g_nodes,labels_all,triples_df,False,search_type, kg_type)
+        path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type, networkx_graph)
 
-    path_nodes = find_all_shortest_paths_networkx(node_pair,graph,g_nodes,labels_all,triples_df,False,'all', kg_type, networkx_graph)
     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
     emb,entity_map = e.generate_graph_embeddings(kg_type)
     df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,g_nodes,triples_df,search_type,labels_all, kg_type, guiding_term,input_nodes_df)
