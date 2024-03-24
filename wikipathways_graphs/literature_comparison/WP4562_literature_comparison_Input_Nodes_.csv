@@ -1,0 +1,29 @@
+term|term_label|term_id|NER_Method
+NF-κB|NF-κB|http://purl.obolibrary.org/obo/PR_000001754|lab
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|lab
+adult T-cell leukemia|adult T-cell leukemia|http://purl.obolibrary.org/obo/MONDO_0019471|lab
+Hodgkin lymphoma|Hodgkin lymphoma|http://purl.obolibrary.org/obo/MONDO_0004952|lab
+diffuse large B-cell lymphoma|diffuse large B-cell lymphoma|http://purl.obolibrary.org/obo/MONDO_0018905|lab
+lymphocyte proliferation|lymphocyte proliferation|http://purl.obolibrary.org/obo/GO_0046651|lab
+nf-κb|nf-κb|http://www.ncbi.nlm.nih.gov/gene/4790|ner
+malignancies|malignancies|none|ner
+lymphoid malignancies|lymphoid malignancies|none|ner
+diffuse large b-cell  lymphoma|diffuse large b-cell  lymphoma|http://purl.obolibrary.org/obo/MONDO_0018905|ner
+Hodgkin lymphoma|Hodgkin lymphoma|http://purl.obolibrary.org/obo/HP_0012189|ner
+adult t-cell leukemia|adult t-cell leukemia|http://purl.obolibrary.org/obo/MONDO_0019471|ner
+infections|infections|none|ner
+Helicobacter pylori|Helicobacter pylori|http://purl.obolibrary.org/obo/NCBITaxon_210|ner
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|ner
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|ner
+lymphoma|lymphoma|http://purl.obolibrary.org/obo/MONDO_0005062|ner
+nf-?b transcription factor family|nf-?b transcription factor family|none|gpt
+lymphocyte proliferation|lymphocyte proliferation|http://purl.obolibrary.org/obo/GO_0046651|gpt
+lymphocyte survival|lymphocyte survival|none|gpt
+diffuse large B-cell lymphoma|diffuse large B-cell lymphoma|http://purl.obolibrary.org/obo/MONDO_0018905|gpt
+Hodgkin lymphoma|Hodgkin lymphoma|http://purl.obolibrary.org/obo/HP_0012189|gpt
+adult t-cell leukemia|adult t-cell leukemia|http://purl.obolibrary.org/obo/MONDO_0019471|gpt
+persistent infections (e.g., helicobacter pylori)|persistent infections (e.g., helicobacter pylori)|none|gpt
+pro-inflammatory microenvironment|pro-inflammatory microenvironment|none|gpt
+self-reactive immune receptors|self-reactive immune receptors|none|gpt
+genetic lesions|genetic lesions|none|gpt
+nf-?b signaling|nf-?b signaling|none|gpt
