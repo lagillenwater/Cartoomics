@@ -50,10 +50,21 @@ def main():
         #w_comparison_file = all_wikipathways_dir + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
         w_comparison_file = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
         w_comparison_df = pd.read_csv(w_comparison_file, sep = "|")
+        #Remove duplicates and unassigned IDs from literature comparison files
+        w_comparison_df = w_comparison_df.loc[w_comparison_df['term_id'] != 'none']
+        w_comparison_df.drop_duplicates(subset=['term_id'], inplace=True)
         all_pathways_comparisons[w] = w_comparison_df
-
     
-
+    '''#Gets set of all terms from all abstracts
+    all_pathways_terms = []
+    for w in ALL_WIKIPATHWAYS:
+        w_comparison_file = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
+        w_comparison_df = pd.read_csv(w_comparison_file, sep = "|")
+        terms = w_comparison_df['term_df'].unique.tolist()
+        all_pathways_terms = all_pathways_terms + terms
+        
+    all_pathways_terms = list(set(all_pathways_terms))'''
+    
     #List for all cosine sim values to each guiding term
     all_subgraphs_cosine_sim = []
 
@@ -84,13 +95,13 @@ def main():
 
             subgraph_df = pd.read_csv(output_dir + '/CosineSimilarity/Subgraph.csv',sep='|')
 
-            all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
+            all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
 
         if pdp == 'true':
 
             subgraph_df = pd.read_csv(output_dir + '/PDP/Subgraph.csv',sep='|')
 
-            all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'labels')
+            all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
 
         #Get original wikipathways edgelist
         wikipathways_subgraph_df = get_wikipathways_subgraph(s)

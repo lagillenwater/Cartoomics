@@ -247,7 +247,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
 def get_cosine_sim_one_pathway(g,comparison_terms_df,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,subgraph_nodes,annotated_nodes,all_subgraphs_cosine_sim,node_type,compared_pathway):
 
     #For each guiding term calculate cosine values to all nodes in supgraph
-    for t in tqdm(range(len(comparison_terms_df))):
+    for t in range(len(comparison_terms_df)):
         term_row = comparison_terms_df.iloc[t]
         if node_type == 'labels':
             avg_cosine_sim,embeddings = calc_cosine_sim_from_label_list(emb,entity_map,subgraph_nodes,annotated_nodes,g.labels_all,kg_type,embeddings,term_row)
@@ -262,8 +262,8 @@ def get_cosine_sim_one_pathway(g,comparison_terms_df,kg_type,embeddings,algorith
 def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,all_subgraphs_cosine_sim,node_type):
 
     #Get all nodes from subgraph not in original edgelist
-    subgraph_nodes = unique_nodes(subgraph_df[['S','O']])
-    input_nodes = unique_nodes(s[['source','target']])
+    subgraph_nodes = unique_nodes(subgraph_df[['S_ID','O_ID']])
+    #input_nodes = unique_nodes(s[['source_id','target_id']])
     #If comparing to intermediate terms only in subgraph
     #intermediate_nodes = [i for i in subgraph_nodes if i not in input_nodes]
 
@@ -277,12 +277,17 @@ def compare_subgraph_guiding_terms(s,subgraph_df,g,comparison_terms,kg_type,embe
             w_comparison_terms_df = comparison_terms[w]
             all_subgraphs_cosine_sim,embeddings = get_cosine_sim_one_pathway(g,w_comparison_terms_df,kg_type,embeddings,algorithm,emb,entity_map,wikipathway,subgraph_nodes,s,all_subgraphs_cosine_sim,node_type,w)
 
+    '''elif isinstance(comparison_terms,list):
+        new_df_vals = []
+        for i in range(len(subgraph_df)):
+            new_df_vals.append()'''
+
     return all_subgraphs_cosine_sim,embeddings
 
 def get_wikipathways_subgraph(annotated_wikipathways_subgraph_df):
 
     wikipathways_subgraph_df = annotated_wikipathways_subgraph_df[['source_id',  'target_id']]
-    wikipathways_subgraph_df = wikipathways_subgraph_df.rename(columns={'source_id' : 'S', 'target_id': 'O'})
+    wikipathways_subgraph_df = wikipathways_subgraph_df.rename(columns={'source_id' : 'S_ID', 'target_id': 'O_ID'})
 
     return wikipathways_subgraph_df
 

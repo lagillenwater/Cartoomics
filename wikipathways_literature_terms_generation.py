@@ -78,7 +78,7 @@ def generate_abstract_file_models(file,wikipathway,g,literature_annotations_df,g
     new_node_rows = []
 
     for i in range(len(df)):
-        node_label = df.iloc[i].loc['entity']
+        node_label = df.iloc[i].loc['entity'].lower()
 
         found_nodes,nrow,exact_match = map_input_to_nodes(node_label,g,'true')
         
@@ -86,12 +86,18 @@ def generate_abstract_file_models(file,wikipathway,g,literature_annotations_df,g
             node_label,bad_input,id_given = manage_user_input(found_nodes,found_nodes,g,exact_match)
             node_uri = id_given
         else:
-            node_uri = 'none'
-            guiding_term_skipped_nodes.append(node_label)
+            if len(found_nodes) < 4:
+                for i in range(len(found_nodes)):
+                    if "MONDO" in found_nodes.iloc[i].loc['entity_uri']:
+                        node_uri = found_nodes.iloc[i].loc['entity_uri']
+                else:
+                    node_uri = 'none'
+            else:
+                node_uri = 'none'
+                guiding_term_skipped_nodes.append(node_label)
 
         new_node_rows.append([node_label,node_label,node_uri,method])
 
-    print(literature_annotations_df.columns)
     annotations_df = pd.DataFrame(new_node_rows, columns = literature_annotations_df.columns) 
 
     literature_annotations_df = pd.concat([literature_annotations_df,annotations_df])
