@@ -1,0 +1,196 @@
+S|P|O|S_ID|P_ID|O_ID
+PAK1|causes or contributes to condition|collecting duct carcinoma|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005220
+NF2|causes or contributes to condition|collecting duct carcinoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005220
+ITGB2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/3689|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+SRC|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/6714|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ITGB2|participates_in|Toll Like Receptor 4 (TLR4) Cascade|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166016
+MAPK10|participates_in|Toll Like Receptor 4 (TLR4) Cascade|http://www.ncbi.nlm.nih.gov/gene/5602|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166016
+MAPK8|participates_in|Toll Like Receptor 4 (TLR4) Cascade|http://www.ncbi.nlm.nih.gov/gene/5599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166016
+ITGB2|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+MAPK9|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/5601|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+ITGB2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3689|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PAK1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5058|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|ITGB2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3689
+valproic acid|interacts with|PAK2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5062
+PAK3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5063|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PAK4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10298|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PAK5|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/57144|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|PAK6|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/56924
+ITGB2|causes or contributes to condition|Calcinosis|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003761
+ITGB1|causes or contributes to condition|Calcinosis|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003761
+ITGB1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+SRC|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/6714|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ITGB1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3688|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAPK10|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5602|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|ITGB1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3688
+valproic acid|interacts with|MAPK8|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5599
+MAPK9|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5601|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB1|participates_in|RHO GTPase Effectors|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-195258
+PAK1|participates_in|RHO GTPase Effectors|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-195258
+ITGB1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK3|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+ITGB1|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+PAK4|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+ITGB3|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGB1|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGB3|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB2|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB3|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+PAK6|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+ITGB3|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+PAK5|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+valproic acid|interacts with|ITGB4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3691
+valproic acid|interacts with|MAPK10|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5602
+ITGB4|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+MAPK8|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/5599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+ITGB4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3691|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|PAK1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5058
+ITGB4|participates_in|Non-integrin membrane-ECM interactions|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000171
+ITGB3|participates_in|Non-integrin membrane-ECM interactions|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000171
+ITGB4|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGB1|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGB3|participates_in|Signaling by SCF-KIT|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1433557
+SRC|participates_in|Signaling by SCF-KIT|http://www.ncbi.nlm.nih.gov/gene/6714|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1433557
+ITGB3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3690|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB3|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+MAPK8|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+ITGB3|participates_in|FCERI mediated MAPK activation|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2871796
+MAPK9|participates_in|FCERI mediated MAPK activation|http://www.ncbi.nlm.nih.gov/gene/5601|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2871796
+ITGB3|participates_in|VEGFA-VEGFR2 Pathway|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-4420097
+PAK1|participates_in|VEGFA-VEGFR2 Pathway|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-4420097
+ITGB3|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PAK2|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+ITGB3|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PAK3|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+ITGB4|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/3691|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+SRC|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6714|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAP4K2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5871|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAP4K5|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/11183|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+WWTR1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+TEAD4|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+TEAD1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+WWTR1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+YAP1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+YAP1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+YAP1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+TEAD3|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+YAP1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+CTNNA1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/1495|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+LATS1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9113|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+CTNNA1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+CTNNB1 (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+TEAD3|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD2|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD4|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD2|participates_in|Regulation of lipid metabolism by PPARalpha|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-400206
+TEAD1|participates_in|Regulation of lipid metabolism by PPARalpha|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-400206
+TEAD3|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7005|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TEAD1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7003|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TEAD4|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+TEAD1|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+STK3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6788|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SAV1 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/60485|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ACTA1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/58|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ACTA2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/59|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ACTB|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/60|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ACTB|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/60|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ACTC1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/70|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TEAD3|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+WWTR1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+YWHAQ|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/10971|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+YAP1|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+YWHAQ|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10971|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+WWTR1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+MAP4K3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8491|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|MAP4K2 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5871
+valproic acid|interacts with|MAP4K4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/9448
+MAP4K1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/11184|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+LATS1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+WWTR1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+YAP1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+SGMS1 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/259230|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAP4K4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9448|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+aflatoxin B1|interacts with|MAP4K3|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8491
+aflatoxin B1|interacts with|MAP4K1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11184
+valproic acid|interacts with|MAP4K1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11184
+valproic acid|interacts with|MST1 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4485
+valproic acid|interacts with|SGMS1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/259230
+STK4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+STK4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4485|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SAV1 (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/60485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ITGB6|participates_in|Molecules associated with elastic fibres|http://www.ncbi.nlm.nih.gov/gene/3694|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2129379
+ITGB1|participates_in|Molecules associated with elastic fibres|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2129379
+ITGB6|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3694|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB2|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB3|participates_in|Molecules associated with elastic fibres|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2129379
+MAPK10|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade|http://www.ncbi.nlm.nih.gov/gene/5602|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168181
+MAPK9|participates_in|Toll Like Receptor 7/8 (TLR7/8) Cascade|http://www.ncbi.nlm.nih.gov/gene/5601|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168181
+LIMD1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8994|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|LIMD1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8994
+MAPK8|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166058
+MAPK9|participates_in|MyD88:MAL(TIRAP) cascade initiated on plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5601|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166058
+ITGB5|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+SRC|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/6714|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGB5|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3693|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAPK8|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5599|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB5|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+MAPK9|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5601|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PAK1|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PAK2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5062|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PAK3|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+PAK6|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/56924|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB5|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB7|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3695|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB5|participates_in|Molecules associated with elastic fibres|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2129379
+ITGB8|participates_in|Molecules associated with elastic fibres|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2129379
+ITGB6|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3694|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+NF2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4771|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PAK5|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK6|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK1|participates_in|Signaling by Rho GTPases|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194315
+PAK2|participates_in|Signaling by Rho GTPases|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194315
+PAK1|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK3|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK4|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK6|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+NF2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+YAP1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NF2|participates_in|Signaling by Rho GTPases|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194315
+ITGB5|participates_in|Non-integrin membrane-ECM interactions|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000171
+PAK2|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK3|participates_in|RHO GTPase Effectors|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-195258
+NF2|participates_in|RHO GTPase Effectors|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-195258
+PAK4|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK3|participates_in|Signaling by ROBO receptors|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-376176
+PAK5|participates_in|Signaling by ROBO receptors|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-376176
+PAK5|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK6|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+ITGB2|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGB1|participates_in|Non-integrin membrane-ECM interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000171
+ITGB8|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3696|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB6|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3694|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ITGB8|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+aflatoxin B1|interacts with|ITGB8|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3696
+aflatoxin B1|interacts with|PAK2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5062
+valproic acid|interacts with|ITGB6|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3694
+aflatoxin B1|interacts with|ITGB6|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3694
+ITGB6|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/3694|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+aflatoxin B1|interacts with|MAPK10|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5602
+ACTC1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/70|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ACTG1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/71|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+YAP1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/10413|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+ITGB7|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3695|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+aflatoxin B1|interacts with|ITGB7|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3695
+ITGB7|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/3695|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+aflatoxin B1|interacts with|PAK3|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5063
+ITGB8|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB7|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3695|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB4|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB1|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ACTG1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/71|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ACTG2 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/72|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217

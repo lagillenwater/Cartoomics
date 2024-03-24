@@ -357,7 +357,7 @@
 </node>
 <node id="DUSP2">
   <data key="d0">DUSP2</data>
-  <data key="d1">TK8NO</data>
+  <data key="d1">7R8V8</data>
   <data key="d2">a13c0</data>
   <data key="d3">1112.40436105049</data>
   <data key="d4">983.2464944056861</data>
@@ -370,7 +370,7 @@
 </node>
 <node id="PTPRC">
   <data key="d0">PTPRC</data>
-  <data key="d1">4QIPH</data>
+  <data key="d1">MAMQB</data>
   <data key="d2">a13c0</data>
   <data key="d3">1112.40436105049</data>
   <data key="d4">933.2464944056861</data>
@@ -475,7 +475,7 @@
 </node>
 <node id="GHR">
   <data key="d0">GHR</data>
-  <data key="d1">EYV9E</data>
+  <data key="d1">2O7JO</data>
   <data key="d2">ed488</data>
   <data key="d3">883.4080868920144</data>
   <data key="d4">405.1929826503845</data>
@@ -501,7 +501,7 @@
 </node>
 <node id="IL7R">
   <data key="d0">IL7R</data>
-  <data key="d1">POBVI</data>
+  <data key="d1">4EG68</data>
   <data key="d2">de938</data>
   <data key="d3">538.1197112023854</data>
   <data key="d4">368.4491074204511</data>
@@ -540,7 +540,7 @@
 </node>
 <node id="IL2RA">
   <data key="d0">IL2RA</data>
-  <data key="d1">4RP4Q</data>
+  <data key="d1">5W2YI</data>
   <data key="d2">bb866</data>
   <data key="d3">423.5557764967364</data>
   <data key="d4">366.81689642609103</data>
@@ -631,7 +631,7 @@
 </node>
 <node id="IFNAR1">
   <data key="d0">IFNAR1</data>
-  <data key="d1">RFQFT</data>
+  <data key="d1">S6LR3</data>
   <data key="d2">d9cf2</data>
   <data key="d3">1040.4739716193903</data>
   <data key="d4">303.3513863429515</data>
@@ -1103,21 +1103,21 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="PTPRD" target="DUSP2">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_4</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_4</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#nan</data>
 </edge>
 <edge source="PTPRD" target="PTPRC">
-  <data key="d11">f14da_4QIPH_unlabeled</data>
+  <data key="d11">f14da_MAMQB_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="PTPRD" target="PTPRT">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_4</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_4</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2481,21 +2481,21 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="DUSP2" target="PTPRC">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_1</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_1</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#nan</data>
 </edge>
 <edge source="DUSP2" target="PTPRT">
-  <data key="d11">TK8NO_e3cdc_unlabeled</data>
+  <data key="d11">7R8V8_e3cdc_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="DUSP2" target="PTPRD">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_1</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_1</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2509,21 +2509,21 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="PTPRC" target="DUSP2">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_2</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_2</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#nan</data>
 </edge>
 <edge source="PTPRC" target="PTPRT">
-  <data key="d11">4QIPH_e3cdc_unlabeled</data>
+  <data key="d11">MAMQB_e3cdc_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="PTPRC" target="PTPRD">
-  <data key="d11">4QIPH_f14da_unlabeled</data>
+  <data key="d11">MAMQB_f14da_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2537,21 +2537,21 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="PTPRT" target="DUSP2">
-  <data key="d11">e3cdc_TK8NO_unlabeled</data>
+  <data key="d11">e3cdc_7R8V8_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="PTPRT" target="PTPRC">
-  <data key="d11">e3cdc_4QIPH_unlabeled</data>
+  <data key="d11">e3cdc_MAMQB_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="PTPRT" target="PTPRD">
-  <data key="d11">TK8NO_4QIPH_e3cdc_f14da_3</data>
+  <data key="d11">7R8V8_MAMQB_e3cdc_f14da_3</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2666,7 +2666,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="GHR" target="GHR">
-  <data key="d11">d1f54_EYV9E_unlabeled</data>
+  <data key="d11">d1f54_2O7JO_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2708,7 +2708,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="IL7R" target="IL2RG">
-  <data key="d11">POBVI_db2a4_unlabeled</data>
+  <data key="d11">4EG68_db2a4_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2743,7 +2743,7 @@
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="IL2RG" target="IL2RA">
-  <data key="d11">4RP4Q_b6c04_baa63_3</data>
+  <data key="d11">5W2YI_b6c04_baa63_3</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2764,7 +2764,7 @@
   <data key="d15">#nan</data>
 </edge>
 <edge source="IL2RG" target="IL7R">
-  <data key="d11">db2a4_POBVI_unlabeled</data>
+  <data key="d11">db2a4_4EG68_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2788,14 +2788,14 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="IL2RA" target="IL2RB">
-  <data key="d11">4RP4Q_b6c04_unlabeled</data>
+  <data key="d11">5W2YI_b6c04_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="IL2RA" target="IL2RG">
-  <data key="d11">4RP4Q_b6c04_baa63_1</data>
+  <data key="d11">5W2YI_b6c04_baa63_1</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -2816,7 +2816,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="IL2RB" target="IL2RA">
-  <data key="d11">b6c04_4RP4Q_unlabeled</data>
+  <data key="d11">b6c04_5W2YI_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -3004,7 +3004,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="IFNAR1" target="IFNAR2">
-  <data key="d11">RFQFT_fb000_unlabeled</data>
+  <data key="d11">S6LR3_fb000_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -3025,7 +3025,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="IFNAR2" target="IFNAR1">
-  <data key="d11">fb000_RFQFT_unlabeled</data>
+  <data key="d11">fb000_S6LR3_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
