@@ -35,7 +35,7 @@ serous eoc|serous eoc|none|ner
 hgsoc|hgsoc|http://purl.obolibrary.org/obo/MONDO_0024885|ner
 sult1e1-mediated|sult1e1-mediated|none|ner
 epithelial ovarian cancer (eoc)|epithelial ovarian cancer (eoc)|none|gpt
-17?-estradiol (e2)|17?-estradiol (e2)|ttp://purl.obolibrary.org/obo/CHEBI_16469|gpt
+17?-estradiol (e2)|17?-estradiol (e2)|http://purl.obolibrary.org/obo/CHEBI_16469|gpt
 steroid sulfatase (sts)|steroid sulfatase (sts)|none|gpt
 estrogen sulfotransferase (sult1e1)|estrogen sulfotransferase (sult1e1)|http://purl.obolibrary.org/obo/PR_P49888|gpt
 estrogen receptor ? (er?)|estrogen receptor ? (er?)|none|gpt
