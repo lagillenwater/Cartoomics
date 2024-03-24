@@ -128,6 +128,7 @@ def main():
     for wikipathway in wikipathways:
 
         pmid = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,'PMID'].values[0])
+        print(pmid)
         #File to read
         pmid_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations/" + pmid + ".bionlp"
 
@@ -136,8 +137,6 @@ def main():
         #output_path = base_dir + '/' + wikipathway + '_Literature_Comparison_Terms.csv'
 
         #generate_keywords_file(output_path,metadata_df,wikipathway)
-
-        pmid = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,'PMID'].values[0])
 
         #For PMID specific concept annotations
         literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_concept_annotations(pmid_file,g.labels_all,enable_skipping)
