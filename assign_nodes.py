@@ -226,7 +226,7 @@ def map_input_to_nodes(node,kg,enable_skipping):
 		elif enable_skipping:
 			nrow = found_nodes.shape[0]
 			#print("No exact search terms returned, skipping enabled")
-			logging.info("No exact search terms returned, skipping enabled: ",node)
+			logging.info("No exact search terms returned, skipping enabled: %s",node)
 			return found_nodes,nrow,exact_match
 		else:	
 			nrow = found_nodes.shape[0]

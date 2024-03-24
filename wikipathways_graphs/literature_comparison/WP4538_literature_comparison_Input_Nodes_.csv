@@ -1,0 +1,14 @@
+term|term_label|term_id|NER_Method
+STAT3|STAT3|http://purl.obolibrary.org/obo/PR_000002089|lab
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|lab
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|lab
+STAT3|STAT3|http://www.ncbi.nlm.nih.gov/gene/6774|ner
+signal transducer and activator of transcription 3|signal transducer and activator of transcription 3|http://purl.obolibrary.org/obo/PR_000002089|ner
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|ner
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|ner
+stat3-mediated|stat3-mediated|none|ner
+inflammation|inflammation|http://purl.obolibrary.org/obo/MPATH_212|ner
+stat3 (signal transducer and activator of transcription 3)|stat3 (signal transducer and activator of transcription 3)|http://www.ncbi.nlm.nih.gov/gene/6774|gpt
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|gpt
+other diseases|other diseases|none|gpt
+inflammation|inflammation|http://purl.obolibrary.org/obo/MPATH_212|gpt

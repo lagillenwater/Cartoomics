@@ -1,0 +1,25 @@
+term|term_label|term_id|NER_Method
+EDMD|EDMD|http://purl.obolibrary.org/obo/MONDO_0016830|lab
+mouse|mouse|http://purl.obolibrary.org/obo/NCBITaxon_10088|lab
+gene|gene|http://purl.obolibrary.org/obo/SO_0000704|lab
+genes|genes|http://purl.obolibrary.org/obo/SO_0000704|lab
+cytoskeleton|cytoskeleton|http://purl.obolibrary.org/obo/GO_0005856|lab
+nucleus|nucleus|http://purl.obolibrary.org/obo/GO_0005634|lab
+nuclear membrane|nuclear membrane|http://purl.obolibrary.org/obo/GO_0031965|lab
+inner nuclear membrane|inner nuclear membrane|http://purl.obolibrary.org/obo/GO_0005637|lab
+nuclear envelope|nuclear envelope|http://purl.obolibrary.org/obo/GO_0005635|lab
+cardiomyopathy|cardiomyopathy|http://purl.obolibrary.org/obo/MONDO_0004994|lab
+muscle weakness|muscle weakness|http://purl.obolibrary.org/obo/HP_0001324|lab
+Emery-Dreifuss muscular dystrophy|Emery-Dreifuss muscular dystrophy|http://purl.obolibrary.org/obo/MONDO_0016830|lab
+muscle laminopathies|muscle laminopathies|none|ner
+emery-dreifuss muscular dystrophy|emery-dreifuss muscular dystrophy|http://purl.obolibrary.org/obo/MONDO_0016830|ner
+edmd|edmd|http://www.ncbi.nlm.nih.gov/gene/2010|ner
+contractures|contractures|none|ner
+skeletal muscle weakness|skeletal muscle weakness|none|ner
+cardiomyopathy|cardiomyopathy|none|ner
+Mus <genus>|Mus <genus>|http://purl.obolibrary.org/obo/NCBITaxon_10088|ner
+emery-dreifuss muscular dystrophy (edmd)|emery-dreifuss muscular dystrophy (edmd)|http://purl.obolibrary.org/obo/MONDO_0016830|gpt
+nuclear envelope proteins|nuclear envelope proteins|none|gpt
+inner nuclear membrane proteins|inner nuclear membrane proteins|none|gpt
+outer nuclear membrane proteins|outer nuclear membrane proteins|none|gpt
+mechanotransduction|mechanotransduction|none|gpt

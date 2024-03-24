@@ -1,0 +1,45 @@
+term|term_label|term_id|NER_Method
+EOC|EOC|http://purl.obolibrary.org/obo/MONDO_0005140|lab
+SULT1E1|SULT1E1|http://purl.obolibrary.org/obo/PR_000032783|lab
+ovarian cancer|ovarian cancer|http://purl.obolibrary.org/obo/MONDO_0008170|lab
+STS|STS|http://purl.obolibrary.org/obo/PR_000015781|lab
+platinum|platinum|http://purl.obolibrary.org/obo/CHEBI_33364|lab
+estrogen receptor|estrogen receptor|http://purl.obolibrary.org/obo/PR_000007204|lab
+steroid sulfatase|steroid sulfatase|http://purl.obolibrary.org/obo/PR_000015781|lab
+estrone sulfate|estrone sulfate|http://purl.obolibrary.org/obo/CHEBI_17474|lab
+steroid hormone|steroid hormone|http://purl.obolibrary.org/obo/CHEBI_26764|lab
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|lab
+ovary|ovary|http://purl.obolibrary.org/obo/UBERON_0000992|lab
+epithelial ovarian cancer|epithelial ovarian cancer|http://purl.obolibrary.org/obo/MONDO_0005140|lab
+17β-estradiol|17β-estradiol|http://purl.obolibrary.org/obo/CHEBI_16469|lab
+steroid|steroid|http://purl.obolibrary.org/obo/CHEBI_35341|ner
+ovarian carcinoma|ovarian carcinoma|http://purl.obolibrary.org/obo/DOID_4001|ner
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|ner
+ovarian cancer|ovarian cancer|http://purl.obolibrary.org/obo/MONDO_0008170|ner
+17β-estradiol|17β-estradiol|http://purl.obolibrary.org/obo/CHEBI_16469|ner
+epithelial ovarian  cancer|epithelial ovarian  cancer|http://purl.obolibrary.org/obo/MONDO_0005140|ner
+patients|patients|none|ner
+eoc|eoc|none|ner
+woman|woman|none|ner
+estrogen|estrogen|http://purl.obolibrary.org/obo/CHEBI_50114|ner
+estrogens|estrogens|none|ner
+sulfonated|sulfonated|none|ner
+estrone 3-sulfate|estrone 3-sulfate|http://purl.obolibrary.org/obo/CHEBI_17474|ner
+SULT1E1 (human)|SULT1E1 (human)|http://www.ncbi.nlm.nih.gov/gene/6783|ner
+STS|STS|http://purl.obolibrary.org/obo/SO_0000331|ner
+estrogen receptor α|estrogen receptor α|none|ner
+erα|erα|none|ner
+platinum-based|platinum-based|none|ner
+tumors|tumors|none|ner
+serous eoc|serous eoc|none|ner
+hgsoc|hgsoc|http://purl.obolibrary.org/obo/MONDO_0024885|ner
+sult1e1-mediated|sult1e1-mediated|none|ner
+epithelial ovarian cancer (eoc)|epithelial ovarian cancer (eoc)|none|gpt
+17?-estradiol (e2)|17?-estradiol (e2)|http://purl.obolibrary.org/obo/CHEBI_16469|gpt
+steroid sulfatase (sts)|steroid sulfatase (sts)|none|gpt
+estrogen sulfotransferase (sult1e1)|estrogen sulfotransferase (sult1e1)|http://purl.obolibrary.org/obo/PR_P49888|gpt
+estrogen receptor ? (er?)|estrogen receptor ? (er?)|none|gpt
+sulfatase pathway|sulfatase pathway|none|gpt
+high-grade serous ovarian cancer (hgsoc)|high-grade serous ovarian cancer (hgsoc)|http://purl.obolibrary.org/obo/MONDO_0024885|gpt
+estrogen production|estrogen production|none|gpt
+estrogen inactivation|estrogen inactivation|none|gpt

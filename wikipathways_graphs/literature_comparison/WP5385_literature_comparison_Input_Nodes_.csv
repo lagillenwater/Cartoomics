@@ -1,0 +1,16 @@
+term|term_label|term_id|NER_Method
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|lab
+diabetes|diabetes|http://purl.obolibrary.org/obo/MONDO_0005015|lab
+adult|adult|http://purl.obolibrary.org/obo/UBERON_0007023|lab
+humans|humans|http://purl.obolibrary.org/obo/NCBITaxon_9605|lab
+genes|genes|http://purl.obolibrary.org/obo/SO_0000704|lab
+stem cells|stem cells|http://purl.obolibrary.org/obo/CL_0000034|lab
+diabetes mellitus|diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005015|lab
+type 2 diabetes mellitus|type 2 diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005148|lab
+β-cell|β-cell|none|ner
+diabetes mellitus|diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005015|ner
+diabetes mellitus|diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005015|ner
+patients|patients|none|ner
+Homo|Homo|http://purl.obolibrary.org/obo/NCBITaxon_9605|ner
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|ner
+diabetes mellitus (type 1 and type 2)|diabetes mellitus (type 1 and type 2)|http://purl.obolibrary.org/obo/MONDO_0005015|gpt

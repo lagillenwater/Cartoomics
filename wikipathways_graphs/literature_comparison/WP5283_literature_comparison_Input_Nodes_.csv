@@ -1,0 +1,55 @@
+term|term_label|term_id|NER_Method
+neuropathy|neuropathy|http://purl.obolibrary.org/obo/MONDO_0005244|lab
+pain|pain|http://purl.obolibrary.org/obo/HP_0012531|lab
+neuron|neuron|http://purl.obolibrary.org/obo/CL_0000540|lab
+nociceptor|nociceptor|http://purl.obolibrary.org/obo/CL_0000198|lab
+microglia|microglia|http://purl.obolibrary.org/obo/CL_0000129|lab
+glucose|glucose|http://purl.obolibrary.org/obo/CHEBI_17234|lab
+oxygen|oxygen|http://purl.obolibrary.org/obo/CHEBI_25805|lab
+neurons|neurons|http://purl.obolibrary.org/obo/CL_0000540|lab
+hyperglycemia|hyperglycemia|http://purl.obolibrary.org/obo/MONDO_0002909|lab
+nitrogen|nitrogen|http://purl.obolibrary.org/obo/CHEBI_17997|lab
+hypoinsulinemia|hypoinsulinemia|http://purl.obolibrary.org/obo/HP_0040216|lab
+diabetes|diabetes|http://purl.obolibrary.org/obo/MONDO_0005015|lab
+nephropathy, hypertension|nephropathy, hypertension|http://purl.obolibrary.org/obo/MONDO_0008071|lab
+retinopathy|retinopathy|http://purl.obolibrary.org/obo/MONDO_0005283|lab
+central nervous systems|central nervous systems|http://purl.obolibrary.org/obo/UBERON_0001017|lab
+Schwann cells|Schwann cells|http://purl.obolibrary.org/obo/CL_0002573|lab
+renal glomerulus|renal glomerulus|http://purl.obolibrary.org/obo/UBERON_0000074|lab
+retina|retina|http://purl.obolibrary.org/obo/UBERON_0000966|lab
+capillary endothelial cells|capillary endothelial cells|http://purl.obolibrary.org/obo/CL_0002144|lab
+blood|blood|http://purl.obolibrary.org/obo/UBERON_0000178|lab
+Diabetes|Diabetes|http://purl.obolibrary.org/obo/MONDO_0005015|lab
+Neuropathy|Neuropathy|http://purl.obolibrary.org/obo/MONDO_0005244|lab
+Neurons|Neurons|http://purl.obolibrary.org/obo/CL_0000540|lab
+diabetic pain|diabetic pain|none|ner
+neuropathy|neuropathy|http://purl.obolibrary.org/obo/DOID_870|ner
+diabetes mellitus|diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005015|ner
+hyperglycemia|hyperglycemia|none|ner
+sugar|sugar|none|ner
+glucose|glucose|http://purl.obolibrary.org/obo/CHEBI_17234|ner
+Retinopathy|Retinopathy|http://purl.obolibrary.org/obo/HP_0000488|ner
+Nephropathy|Nephropathy|http://purl.obolibrary.org/obo/HP_0000112|ner
+Hypertension|Hypertension|http://purl.obolibrary.org/obo/HP_0000822|ner
+Hypoinsulinemia|Hypoinsulinemia|http://purl.obolibrary.org/obo/HP_0040216|ner
+inherited lipid metabolism disorder|inherited lipid metabolism disorder|http://purl.obolibrary.org/obo/MONDO_0002525|ner
+polyol|polyol|http://purl.obolibrary.org/obo/CHEBI_26191|ner
+reactive oxygen|reactive oxygen|http://purl.obolibrary.org/obo/CHEBI_26523|ner
+reactive nitrogen|reactive nitrogen|http://purl.obolibrary.org/obo/CHEBI_62764|ner
+microangiopathy|microangiopathy|http://purl.obolibrary.org/obo/MONDO_0032814|ner
+oxygen|oxygen|http://purl.obolibrary.org/obo/CHEBI_25805|ner
+diabetes mellitus|diabetes mellitus|http://purl.obolibrary.org/obo/MONDO_0005015|gpt
+diabetic pain neuropathy|diabetic pain neuropathy|none|gpt
+hyperglycemia|hyperglycemia|http://purl.obolibrary.org/obo/MONDO_0002909|gpt
+Retinopathy|Retinopathy|http://purl.obolibrary.org/obo/HP_0000488|gpt
+Nephropathy|Nephropathy|http://purl.obolibrary.org/obo/HP_0000112|gpt
+Hypertension|Hypertension|http://purl.obolibrary.org/obo/HP_0000822|gpt
+neuropathy|neuropathy|http://purl.obolibrary.org/obo/DOID_870|gpt
+polyol pathway|polyol pathway|http://purl.obolibrary.org/obo/PW_0001520|gpt
+reactive oxygen species|reactive oxygen species|http://purl.obolibrary.org/obo/CHEBI_26523|gpt
+reactive nitrogen species|reactive nitrogen species|http://purl.obolibrary.org/obo/CHEBI_62764|gpt
+advanced glycation end products|advanced glycation end products|none|gpt
+na+/k+ atpase pump|na+/k+ atpase pump|none|gpt
+microglia|microglia|http://purl.obolibrary.org/obo/CL_0000129|gpt
+microangiopathy|microangiopathy|http://purl.obolibrary.org/obo/MONDO_0032814|gpt
+nociceptor neurons|nociceptor neurons|none|gpt
