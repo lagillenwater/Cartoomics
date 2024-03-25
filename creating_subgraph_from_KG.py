@@ -50,8 +50,8 @@ def main():
     if cosine_similarity == 'true':
         print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
 
-        #Returns list of all chosen paths for subgraph as all_chosen_path_nodes
-        subgraph_cs,all_paths_cs_values,all_chosen_path_nodes = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g)
+        #Returns list of all shortest paths for subgraph as all_path_nodes
+        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g)
 
 
         print("Outputting CS visualization......")
@@ -67,11 +67,11 @@ def main():
 
             print('pdp and cosine true')
 
-            subgraph_pdp,path_pdp,all_chosen_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g,all_chosen_path_nodes)
+            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g,all_path_nodes)
     
         else:
 
-            subgraph_pdp,path_pdp,all_chosen_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g)
+            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g)
 
         print("Outputting PDP visualization......")
 
@@ -86,7 +86,7 @@ def main():
             #Don't need to find shortest paths again if already run for cosine similarity
             if cosine_similarity == 'true' or pdp == 'true':
 
-                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g,all_chosen_path_nodes)
+                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g,all_path_nodes)
 
             else:
 
