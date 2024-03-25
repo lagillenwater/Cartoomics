@@ -1,0 +1,182 @@
+S|P|O|S_ID|P_ID|O_ID
+valproic acid|interacts with|AKT1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/207
+valproic acid|interacts with|Rab43|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/339122
+B-Raf|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+ERK 2|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5594|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+Smad7|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4092|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+AKT1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+Smad7|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/4092|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+AKT2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+AKT3|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+calmodulin (human)|subClassOf|CaM|http://purl.obolibrary.org/obo/PR_000049859|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000004978
+calmodulin (human)|subClassOf|Homo sapiens protein|http://purl.obolibrary.org/obo/PR_000049859|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000029067
+CREB-regulated transcription coactivator 2 (human)|subClassOf|Homo sapiens protein|http://purl.obolibrary.org/obo/PR_Q53ET0|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000029067
+CREB-regulated transcription coactivator 2 (human)|has_gene_template|CRTC2|http://purl.obolibrary.org/obo/PR_Q53ET0|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/200186
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_P42336|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|participates_in|GPVI-mediated activation cascade|http://purl.obolibrary.org/obo/PR_P42336|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+AKT2|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+TGFB1|participates_in|TGFBR1 LBD Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/7040|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3656535
+TGFB1R|participates_in|TGFBR1 LBD Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/7046|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3656535
+AKT2|participates_in|Membrane Trafficking|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-199991
+Rab43|participates_in|Membrane Trafficking|http://www.ncbi.nlm.nih.gov/gene/339122|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-199991
+AKT2|participates_in|DAP12 interactions|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2172127
+FOXO1|participates_in|DAP12 interactions|http://www.ncbi.nlm.nih.gov/gene/2308|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2172127
+AKT2|participates_in|Intrinsic Pathway for Apoptosis|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109606
+AKT3|participates_in|Intrinsic Pathway for Apoptosis|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109606
+AKT3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10000|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Rab43|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/339122|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+AKT1|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+AKT3|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+AKT3|participates_in|Signaling by EGFR|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-177929
+FOXO1|participates_in|Signaling by EGFR|http://www.ncbi.nlm.nih.gov/gene/2308|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-177929
+K-Ras|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3845|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Rasf1a|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/11186|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TGFB1R|participates_in|Downregulation of TGF-beta receptor signaling|http://www.ncbi.nlm.nih.gov/gene/7046|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173788
+Smad7|participates_in|Downregulation of TGF-beta receptor signaling|http://www.ncbi.nlm.nih.gov/gene/4092|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173788
+K-Ras|participates_in|Paradoxical activation of RAF signaling by kinase inactive BRAF|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6802955
+B-Raf|participates_in|Paradoxical activation of RAF signaling by kinase inactive BRAF|http://www.ncbi.nlm.nih.gov/gene/673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6802955
+T3|interacts with|mitogen-activated protein kinase 1 (human)|http://purl.obolibrary.org/obo/CHEBI_18258|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P28482
+mitogen-activated protein kinase 1 (human)|has_gene_template|ERK 2|http://purl.obolibrary.org/obo/PR_P28482|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5594
+desiccated thyroid extract|has part|3,3',5-triiodo-L-thyronine|http://purl.obolibrary.org/obo/CHEBI_9584|http://purl.obolibrary.org/obo/BFO_0000051|http://purl.obolibrary.org/obo/CHEBI_18258
+desiccated thyroid extract|has part|T4|http://purl.obolibrary.org/obo/CHEBI_9584|http://purl.obolibrary.org/obo/BFO_0000051|http://purl.obolibrary.org/obo/CHEBI_18332
+ERK 1|causes or contributes to condition|Prostate neoplasm|http://www.ncbi.nlm.nih.gov/gene/5595|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100787
+FOXO1|causes or contributes to condition|Prostate neoplasm|http://www.ncbi.nlm.nih.gov/gene/2308|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100787
+CDK2|participates_in|Cell Cycle|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1640170
+FOXM1 (human)|participates_in|Cell Cycle|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1640170
+IR|participates_in|Signaling by EGFR|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-177929
+K-Ras|participates_in|Signaling by EGFR|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-177929
+AKT1|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+AKT2|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+AKT1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/207|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+FOXO1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/2308|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ERK 2|participates_in|MAPK family signaling cascades|http://www.ncbi.nlm.nih.gov/gene/5594|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5683057
+FOXO1|participates_in|MAPK family signaling cascades|http://www.ncbi.nlm.nih.gov/gene/2308|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5683057
+CDK4|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+FOXM1 (human)|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+B-Raf|participates_in|SHC1 events in EGFR signaling|http://www.ncbi.nlm.nih.gov/gene/673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-180336
+ERK 1|participates_in|SHC1 events in EGFR signaling|http://www.ncbi.nlm.nih.gov/gene/5595|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-180336
+T3|interacts with|mitogen-activated protein kinase 3 (human)|http://purl.obolibrary.org/obo/CHEBI_18258|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P27361
+mitogen-activated protein kinase 3 (human)|has_gene_template|ERK 1|http://purl.obolibrary.org/obo/PR_P27361|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5595
+CRTC2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/200186|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+FOXM1 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/2305|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+CDK4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Rasf1a|has gene product|Ras association domain-containing protein 1 (human)|http://www.ncbi.nlm.nih.gov/gene/11186|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9NS23
+Ras association domain-containing protein 1 (human)|molecularly interacts with|serine-protein kinase ATM (human)|http://purl.obolibrary.org/obo/PR_Q9NS23|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q13315
+serine-protein kinase ATM (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_Q13315|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+VEGFR-1|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+AKT1|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+CaM|subClassOf|protein|http://purl.obolibrary.org/obo/PR_000004978|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+zinc finger SWIM domain-containing protein 8 (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_A7E2V4|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+zinc finger SWIM domain-containing protein 8 (human)|participates_in|Developmental Biology|http://purl.obolibrary.org/obo/PR_A7E2V4|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+Pdx1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3651|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit gamma isoform (human)|subClassOf|Homo sapiens protein|http://purl.obolibrary.org/obo/PR_P48736|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000029067
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit gamma isoform (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_P48736|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+immunoglobulin lambda variable 2-14 (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_P01704|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+immunoglobulin lambda variable 2-14 (human)|participates_in|Signaling by the B Cell Receptor (BCR)|http://purl.obolibrary.org/obo/PR_P01704|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-983705
+AKT1|participates_in|Signaling by the B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-983705
+immunoglobulin kappa variable 3-11 (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_P04433|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+immunoglobulin kappa variable 3-11 (human)|participates_in|Immune System|http://purl.obolibrary.org/obo/PR_P04433|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+AKT2|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+immunoglobulin heavy variable 4-34 (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_P06331|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+immunoglobulin heavy variable 4-34 (human)|participates_in|Immune System|http://purl.obolibrary.org/obo/PR_P06331|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+cMyc|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+protein|subClassOf|molecular entity|http://purl.obolibrary.org/obo/PR_000000001|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_23367
+molecular entity|participates_in|Cell Cycle|http://purl.obolibrary.org/obo/CHEBI_23367|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1640170
+CDK4|participates_in|Cell Cycle|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1640170
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|participates_in|Membrane Trafficking|http://purl.obolibrary.org/obo/PR_O00443|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-199991
+phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit alpha (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_O00443|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+EZH2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|participates_in|Developmental Biology|http://purl.obolibrary.org/obo/PR_P42336|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+Pdx1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3651|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Insulin|participates_in|Signaling by the B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/3630|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-983705
+IR|participates_in|Signaling by the B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-983705
+IGF-1|participates_in|Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)|http://www.ncbi.nlm.nih.gov/gene/3479|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2404192
+IGF-1R|participates_in|Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2404192
+IGF-1R|participates_in|IGF1R signaling cascade|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428924
+K-Ras|participates_in|IGF1R signaling cascade|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428924
+AKT2|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+cMyc|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+AKT3|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+FOXO1|participates_in|Regulation of gene expression in beta cells|http://www.ncbi.nlm.nih.gov/gene/2308|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210745
+Pdx1|participates_in|Regulation of gene expression in beta cells|http://www.ncbi.nlm.nih.gov/gene/3651|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210745
+valproic acid|interacts with|PGF (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5228
+valproic acid|interacts with|VEGFR-1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2321
+Ras GTPase-activating protein 4B (human)|molecularly interacts with|calcium(2+)|http://purl.obolibrary.org/obo/PR_C9J798|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_29108
+Ras GTPase-activating protein 4B (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_C9J798|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (human)|participates_in|Costimulation by the CD28 family|http://purl.obolibrary.org/obo/PR_P42336|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-388841
+AKT3|participates_in|Costimulation by the CD28 family|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-388841
+CRTC2|participates_in|Circadian Clock|http://www.ncbi.nlm.nih.gov/gene/200186|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-400253
+ATP(4-)|participates_in|Circadian Clock|http://purl.obolibrary.org/obo/CHEBI_30616|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-400253
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit beta isoform (human)|molecularly interacts with|ATP(4-)|http://purl.obolibrary.org/obo/PR_P42338|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_30616
+phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit beta isoform (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_P42338|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+cMyc|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4609|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+CDK2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/1017|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+putative zinc finger protein 727 (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_A8MUV8|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+putative zinc finger protein 727 (human)|participates_in|Generic Transcription Pathway|http://purl.obolibrary.org/obo/PR_A8MUV8|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+CDK2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+valproic acid|interacts with|DLK1 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8788
+valproic acid|interacts with|ERK 1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5595
+cMyc|causes or contributes to condition|Glioblastoma multiforme|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012174
+CDK2|causes or contributes to condition|Glioblastoma multiforme|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012174
+cMyc|participates_in|G1/S Transition|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69206
+CDK4|participates_in|G1/S Transition|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69206
+PDGFa|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5154|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+K-Ras|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+EZH2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/2146|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+EZH2|participates_in|Chromatin modifying enzymes|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3247509
+CDK4|participates_in|Chromatin modifying enzymes|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3247509
+EZH2|causes or contributes to condition|Prostate neoplasm|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100787
+cMyc|causes or contributes to condition|Prostate neoplasm|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100787
+EZH2|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+AKT2|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+AKT1|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+EZH2|participates_in|Cellular responses to stress|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2262752
+CDK2|participates_in|Cellular responses to stress|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2262752
+FOXM1 (human)|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+AKT3|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+CDK2|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+CDK4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+AKT3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+diazinon|interacts with|CDK4|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1019
+diazinon|interacts with|Rasf1a|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11186
+AKT2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+CDK4|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/1019|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+AKT1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/207|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+AKT3|participates_in|Cyclin E associated events during G1/S transition |http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69202
+cMyc|participates_in|Cyclin E associated events during G1/S transition |http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69202
+putative tubulin-like protein alpha-4B (human)|subClassOf|protein|http://purl.obolibrary.org/obo/PR_Q9H853|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000001
+putative tubulin-like protein alpha-4B (human)|participates_in|Cell Cycle, Mitotic|http://purl.obolibrary.org/obo/PR_Q9H853|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69278
+FOXM1 (human)|participates_in|Cell Cycle, Mitotic|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69278
+CDK2|participates_in|Meiotic recombination|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912446
+CDK4|participates_in|Meiotic recombination|http://www.ncbi.nlm.nih.gov/gene/1019|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912446
+ERK 2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5594|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+ERK 1|participates_in|Interleukin receptor SHC signaling|http://www.ncbi.nlm.nih.gov/gene/5595|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912526
+ERK 2|participates_in|Interleukin receptor SHC signaling|http://www.ncbi.nlm.nih.gov/gene/5594|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912526
+ERK 1|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/5595|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+EZH2|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/2146|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+phosphatidylinositol 3-kinase regulatory subunit gamma (human)|has function|PI3K|http://purl.obolibrary.org/obo/PR_Q92569|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0016303
+phosphatidylinositol 3-kinase regulatory subunit gamma (human)|participates_in|Developmental Biology|http://purl.obolibrary.org/obo/PR_Q92569|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+AKT1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+AKT3|participates_in|Regulation of gene expression in beta cells|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210745
+cMyc|causes or contributes to condition|Hypertrophic cardiomyopathy|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001639
+Rasf1a|causes or contributes to condition|Hypertrophic cardiomyopathy|http://www.ncbi.nlm.nih.gov/gene/11186|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001639
+cMyc|participates_in|Mitotic G1 phase and G1/S transition|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-453279
+AKT2|participates_in|Mitotic G1 phase and G1/S transition|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-453279
+cMyc|causes or contributes to condition|prostate adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005082
+AKT1|causes or contributes to condition|prostate adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005082
+cMyc|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4609|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+Pdx1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/3651|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+AKT2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/208|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Rasf1a|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/11186|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+AKT1|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+Rasf1a|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/11186|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+FOXM1 (human)|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+AKT2|participates_in|Regulation of TP53 Degradation|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6804757
+CDK2|participates_in|Regulation of TP53 Degradation|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6804757
+AKT2|participates_in|Regulation of beta-cell development|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-186712
+Pdx1|participates_in|Regulation of beta-cell development|http://www.ncbi.nlm.nih.gov/gene/3651|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-186712
+AKT2|participates_in|Cell Cycle|http://www.ncbi.nlm.nih.gov/gene/208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1640170
+CDK2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/1017|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+AKT1|participates_in|Regulation of gene expression in beta cells|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210745
+Pref-1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/8788|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ERK 2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5594|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
