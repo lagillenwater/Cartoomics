@@ -6,7 +6,7 @@ library(optparse)
 
 option_list <- list(
     make_option(c("-i", "--input_file"), type = "character", default = NULL, help = "literature evaluation file", metavar="character"),
-    make_option(c("-o", "--output_directory"), type = "character", default = NULL, help = "output directory for heatmaps", metavar="character"),
+    make_option(c("-o", "--output_directory"), type = "character", default = NULL, help = "output directory for heatmaps", metavar="character")
 )
 
 opt_parse <- OptionParser(option_list=option_list)
@@ -108,7 +108,8 @@ pdfOutWrapper <- function(average_data, condition) {
         averageHeatmapWrapper(average_data,x)
     })
     c_heatmaps <-  heatmaps[[1]] + heatmaps[[2]] + heatmaps[[3]]
-    pdf(paste0(opt$output_directory,"/relative_difference_",condition,".pdf"), width = 18, height = 8)
+        pdf(paste0(opt$output_directory,"relative_difference_",condition,".pdf"), width = 18, height = 8)
+        print(paste("outputting ", condition, "heatmap at ", paste0(opt$output_directory,"relative_difference_",condition,".pdf")))
     draw(c_heatmaps, heatmap_legend_side = "bottom", column_title = paste0("Average similarity  ---  ", condition))
     dev.off()
 }
