@@ -1,6 +1,15 @@
 #### R script for generating a heatmap from NER similarity data
+
+## Install complex heatmap if not installed
+if (!requireNamespace("ComplexHeatmap", quietly=TRUE)) {
+    if (!requireNamespace("BiocManager", quietly=TRUE)) {
+        install.packages("BiocManager", repos = "http://cran.us.r-project.org")
+        }
+    BiocManager::install("ComplexHeatmap")
+}
+
+## load libraries
 library(ComplexHeatmap)
-library(openxlsx)
 library(tidyverse)
 library(optparse)
 
@@ -11,12 +20,6 @@ option_list <- list(
 
 opt_parse <- OptionParser(option_list=option_list)
 opt <- parse_args(opt_parse)
-
-
-
-
-
-
 
 
 ### Data
