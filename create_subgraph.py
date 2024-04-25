@@ -1,4 +1,5 @@
 # Given a starting graph of node pairs, find all paths between them to create a subgraph
+from constants import PHEKNOWLATOR_BROAD_NODES_DICT
 from find_path import find_shortest_path,find_shortest_path_pattern
 from find_path import prioritize_path_cs,prioritize_path_pdp
 from find_path import calc_cosine_sim_from_label_list,calc_cosine_sim_from_uri_list,generate_comparison_terms_dict,unique_nodes
@@ -7,6 +8,21 @@ from tqdm import tqdm
 from evaluation import output_path_lists
 from evaluation import output_num_paths_pairs
 from igraph import * 
+import os
+import glob
+import sys
+import logging.config
+from pythonjsonlogger import jsonlogger
+
+# logging
+log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
+try:
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+except FileNotFoundError:
+    log_dir, log_config = '../builds/logs', glob.glob('../builds/logging.ini', recursive=True)
+    if not os.path.exists(log_dir): os.mkdir(log_dir)
+logger = logging.getLogger(__name__)
+logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
 
 def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type):
 
@@ -135,6 +151,21 @@ def automatic_defined_edge_exclusion(graph,kg_type):
         graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
     return(graph)
 
+# Nodes to remove
+def automatic_defined_node_exclusion(graph,kg_type):
+    if kg_type == 'pkl':
+        to_drop = list(PHEKNOWLATOR_BROAD_NODES_DICT.values())
+    for uri in to_drop:
+        # Get the indices of vertices with the label 'protein_coding_gene'
+        indices_to_delete = [v.index for v in graph.igraph.vs if v["name"] == uri]
+        # Delete the vertices by their indices
+        try:
+            graph.igraph.delete_vertices(indices_to_delete)
+        except KeyError:
+            print('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
+            logging.error('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
+            sys.exit(1)
+    return(graph)
  
 def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_graph, find_graph_similarity = False,existing_path_nodes = 'none'):
 

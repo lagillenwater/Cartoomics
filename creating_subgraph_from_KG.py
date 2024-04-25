@@ -2,7 +2,7 @@ from inputs import *
 from create_graph import create_graph
 from create_graph import kg_to_undirected_networkx
 from assign_nodes import interactive_search_wrapper, skip_self_loops
-from create_subgraph import subgraph_prioritized_path_cs
+from create_subgraph import automatic_defined_node_exclusion, subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_exclusion
@@ -44,6 +44,7 @@ def main():
     if weights == True:
         #g = user_defined_edge_exclusion(g,kg_type)
         g = automatic_defined_edge_exclusion(g,kg_type)
+        g = automatic_defined_node_exclusion(g,kg_type)
 
     networkx_g = kg_to_undirected_networkx(g)
     
