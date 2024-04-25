@@ -1,0 +1,63 @@
+S|P|O|S_ID|P_ID|O_ID
+NF2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4771|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+STK3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6788|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MINK1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/50488|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+NDRG1 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10397|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SAV1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/60485|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+NF2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+STK4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+STK38L|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/23012|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+CXCL10|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/3627|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+STK3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/6788|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+TEAD2|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD4 (human)|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+STK4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4485|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SAV1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/60485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+STK4|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/4485|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+NDRG1 (human)|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/10397|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+CXCL10|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3627|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+MAP4K1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/11184|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAP4K2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5871|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MINK1|participates_in|Cellular Senescence|http://www.ncbi.nlm.nih.gov/gene/50488|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2559583
+TNIK|participates_in|Cellular Senescence|http://www.ncbi.nlm.nih.gov/gene/23043|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2559583
+valproic acid|interacts with|MINK1 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/50488
+valproic acid|interacts with|MAP4K1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11184
+valproic acid|interacts with|MAP4K2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5871
+MAP4K4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9448|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MAP4K3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8491|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TNIK|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/23043|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+LATS2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/26524|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+LATS1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9113|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+valproic acid|interacts with|STK38L|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/23012
+valproic acid|interacts with|MAP4K4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/9448
+aflatoxin B1|interacts with|MAP4K1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11184
+aflatoxin B1|interacts with|MAP4K3|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8491
+YAP1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+WWTR1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+YAP1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+YAP1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+YAP1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+TEAD3|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+LATS1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+WWTR1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+TEAD4 (human)|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+YAP1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+WWTR1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+WWTR1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+TEAD1|participates_in|PPARA activates gene expression|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1989781
+WWTR1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD3|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+YAP1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+LATS1|causes or contributes to condition|Subependymal giant-cell astrocytoma|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009718
+LATS2|causes or contributes to condition|Subependymal giant-cell astrocytoma|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009718
+LATS2|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+RASSF1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/11186|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TEAD1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD3|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+TEAD1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+TEAD4 (human)|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+TEAD3|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436

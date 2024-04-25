@@ -1,0 +1,16 @@
+entity_type	integer_id	entity_uri	label	description/definition	synonym
+NODES	1	uri1	label1	Description 1.	None
+NODES	2	uri2	label2	Description 2.	None
+NODES	3	uri3	label3	Description 3.	None
+NODES	4	uri4	label4	Description 4.	None
+NODES	5	uri5	label5	Description 5.	None
+NODES	6	uri6	label6	Description 6.	None
+NODES	7	uri7	label7	Description 7.	None
+NODES	8	uri8	label8	Description 8.	None
+NODES	9	uri9	label9	Description 9.	None
+NODES	10	uri10	label10	Description 10.	None
+RELATIONS	11	R1	labelR1	Description R1.	None
+RELATIONS	12	R2	labelR2	Description R2.	None
+RELATIONS	13	R3	labelR3	Description R3.	None
+RELATIONS	14	R4	labelR4	Description R4.	None
+RELATIONS	15	R5	labelR5	Description R5.	None

@@ -1,0 +1,232 @@
+PubMed_id,entity,type
+WP4532,Cytoplasmic dynein-1,Genes/Proteins (NCBI)
+WP4532,Dynein-2,Genes/Proteins (NCBI)
+WP4532,Microtubule,GO terms
+WP4532,Axoneme,GO terms
+WP4532,Eukaryotic cilia,Phenotypes (HPO) / GO terms
+WP4532,Flagella,Phenotypes (HPO) / GO terms
+WP4532,ATP-driven motor complexes,GO terms
+WP4533,TGF-? (Transforming growth factor-?),Genes/Proteins (NCBI)
+WP4533,Smad,Genes/Proteins (NCBI)
+WP4533,Ski (Sloan-Kettering Institute),Genes/Proteins (NCBI)
+WP4533,SnoN (Ski novel),Genes/Proteins (NCBI)
+WP4533,R-Smad/Smad4 complexes,Genes/Proteins (NCBI)
+WP4533,p300/CBP,Genes/Proteins (NCBI)
+WP4533,TGF-?/Smad signaling pathway,Pathways (Reactome)
+WP4533,Fibrosis,Diseases (MONDO)
+WP4533,Cancer,Diseases (MONDO)
+WP4534,Yes-associated protein (YAP),Genes/Proteins (NCBI)
+WP4534,WW domain containing transcription regulator 1 (TAZ),Genes/Proteins (NCBI)
+WP4534,Carcinogenesis,Diseases (MONDO)
+WP4534,Cancer progression,Diseases (MONDO)
+WP4534,"Embryonic development, organ size control, regeneration",Phenotypes (HPO)
+WP4534,Hippo pathway,Pathways (Reactome)
+WP4534,Non-Hippo mechanisms,Pathways (Reactome)
+WP4535,Emery-Dreifuss muscular dystrophy (EDMD),Diseases (MONDO)
+WP4535,Nuclear envelope proteins,Genes/Proteins (NCBI)
+WP4535,Inner nuclear membrane proteins,Genes/Proteins (NCBI)
+WP4535,Outer nuclear membrane proteins,Genes/Proteins (NCBI)
+WP4535,Mechanotransduction,Pathways (Reactome)
+WP4537,Cardiovascular disease,Diseases (MONDO)
+WP4537,MST1/2,Genes/Proteins (NCBI)
+WP4537,SAV1,Genes/Proteins (NCBI)
+WP4537,LATS1/2,Genes/Proteins (NCBI)
+WP4537,MOB1,Genes/Proteins (NCBI)
+WP4537,YAP/TAZ,Genes/Proteins (NCBI)
+WP4537,RASSF1A,Genes/Proteins (NCBI)
+WP4537,Nf2 (Merlin),Genes/Proteins (NCBI)
+WP4537,MAP4Ks,Genes/Proteins (NCBI)
+WP4537,NDR1/2,Genes/Proteins (NCBI)
+WP4537,Hippo signaling pathway,Pathways (Reactome)
+WP4537,Cardiomyocyte loss,Phenotypes (HPO)
+WP4537,Hypertrophy,Phenotypes (HPO)
+WP4537,Angiogenesis,GO terms
+WP4537,Regeneration,GO terms
+WP4537,Apoptosis,GO terms
+WP4537,Autophagy,GO terms
+WP4538,STAT3 (Signal transducer and activator of transcription 3),Genes/Proteins (NCBI)
+WP4538,Cancer,Diseases (MONDO)
+WP4538,Other diseases,Diseases (MONDO)
+WP4538,Inflammation,Phenotypes (HPO) / GO terms
+WP4539,Autism Spectrum Disorder (ASD),Diseases (MONDO)
+WP4539,Ion channels,Genes/Proteins (NCBI)
+WP4539,Neuronal development,GO terms
+WP4539,Regulation of synaptic function,GO terms
+WP4539,Synapse formation,GO terms
+WP4540,Malignant Mesothelioma (MM),Diseases (MONDO)
+WP4540,CDKN2A/ARF,Genes/Proteins (NCBI)
+WP4540,NF2,Genes/Proteins (NCBI)
+WP4540,BAP1,Genes/Proteins (NCBI)
+WP4540,Merlin,Genes/Proteins (NCBI)
+WP4540,LATS1/2,Genes/Proteins (NCBI)
+WP4540,YAP1/TAZ,Genes/Proteins (NCBI)
+WP4540,CCDN1,Genes/Proteins (NCBI)
+WP4540,CTGF,Genes/Proteins (NCBI)
+WP4540,Hippo Pathway,Pathways (Reactome)
+WP4541,Malignant Mesothelioma (MM),Diseases (MONDO)
+WP4541,CDKN2A/ARF,Genes/Proteins (NCBI)
+WP4541,NF2,Genes/Proteins (NCBI)
+WP4541,BAP1,Genes/Proteins (NCBI)
+WP4541,Merlin,Genes/Proteins (NCBI)
+WP4541,LATS1/2,Genes/Proteins (NCBI)
+WP4541,YAP1/TAZ,Genes/Proteins (NCBI)
+WP4541,CCDN1,Genes/Proteins (NCBI)
+WP4541,CTGF,Genes/Proteins (NCBI)
+WP4541,Hippo Pathway,Pathways (Reactome)
+WP4542,Cancer,Diseases (MONDO)
+WP4542,MST1/2,Genes/Proteins (NCBI)
+WP4542,LATS1/2,Genes/Proteins (NCBI)
+WP4542,YAP,Genes/Proteins (NCBI)
+WP4542,TAZ,Genes/Proteins (NCBI)
+WP4542,Hippo Pathway,Pathways (Reactome?)
+WP4542,Immune response,Phenotypes (HPO) / GO terms
+WP4542,Development/function of leukocytes,GO terms
+WP4553,Diffuse Large B-cell Lymphoma (DLBCL),Diseases (MONDO)
+WP4553,FBXL10 (KDM2B or JHDM1B),Genes/Proteins (NCBI)
+WP4553,ERK1/2,Genes/Proteins (NCBI)
+WP4553,DUSP6,Genes/Proteins (NCBI)
+WP4553,ERK1/2 signaling pathway,Pathways (Reactome?)
+WP4553,Cell proliferation,Phenotypes (HPO) / GO terms
+WP4553,Apoptosis,GO terms
+WP4553,Tumor growth,Phenotypes (HPO)
+WP4553,Phosphatase activity,GO terms
+WP4553,Histone modifications,GO terms
+WP4562,NF-?B transcription factor family,Genes/Proteins (NCBI)
+WP4562,Lymphocyte proliferation,GO terms
+WP4562,Lymphocyte survival,GO terms
+WP4562,Diffuse Large B-cell Lymphoma,Diseases (MONDO)
+WP4562,Hodgkin Lymphoma,Diseases (MONDO)
+WP4562,Adult T-cell Leukemia,Diseases (MONDO)
+WP4562,"Persistent infections (e.g., Helicobacter pylori)",Phenotypes (HPO) / ChEBI terms
+WP4562,Pro-inflammatory microenvironment,GO terms
+WP4562,Self-reactive immune receptors,Genes/Proteins (NCBI) / Phenotypes (HPO)
+WP4562,Genetic lesions,Phenotypes (HPO)
+WP4562,NF-?B signaling,Pathways (Reactome)
+WP4564,p75 neurotrophin receptor (p75NTR),Genes/Proteins (NCBI)
+WP4564,Neural crest cells (NCCs),Phenotypes (HPO) / GO terms
+WP4564,Epithelial-to-mesenchymal transition,GO terms
+WP4564,Contact inhibition of locomotion,GO terms
+WP4564,Cancer cell migration and invasion,Diseases (MONDO) / GO terms
+WP4564,Tumor necrosis factor family of receptors,Genes/Proteins (NCBI)
+WP4564,Coreceptors and/or effectors of p75NTR,Genes/Proteins (NCBI)
+WP4564,Signaling pathways related to NCC migration,Pathways (Reactome)
+WP4564,Cancer,Diseases (MONDO)
+WP4565,p75 neurotrophin receptor (p75NTR),Genes/Proteins (NCBI)
+WP4565,Neural crest cells (NCCs),Phenotypes (HPO) / GO terms
+WP4565,Epithelial-to-mesenchymal transition,GO terms
+WP4565,Contact inhibition of locomotion,GO terms
+WP4565,Cancer cell migration and invasion,Diseases (MONDO) / GO terms
+WP4565,Tumor necrosis factor family of receptors,Genes/Proteins (NCBI)
+WP4565,Coreceptors and/or effectors of p75NTR,Genes/Proteins (NCBI)
+WP4565,Signaling pathways related to NCC migration,Pathways (Reactome)
+WP4565,Cancer,Diseases (MONDO)
+WP4760,Spinocerebellar ataxias (SCAs),Diseases (MONDO)
+WP4760,PRKCG (PKC?),Genes/Proteins (NCBI)
+WP4760,SCA14,Diseases (MONDO)
+WP4760,CAR8 (Carbonic anhydrase related protein 8),Genes/Proteins (NCBI)
+WP4760,ITPR1 (IP3R1),Genes/Proteins (NCBI)
+WP4760,Calcium signaling,Pathways (Reactome)
+WP4760,PKC? signaling pathway,Pathways (Reactome)
+WP4760,Purkinje cell dendritic development,GO terms/Phenotypes (HPO)
+WP4760,Calcium homeostasis in Purkinje cells,GO terms
+WP4760,Intracellular calcium homeostasis,GO terms
+WP4760,Cerebellar atrophy,Phenotypes (HPO)
+WP4760,Ataxia,Phenotypes (HPO)
+WP4829,?-aminobutyric acid (GABA),ChEBI Terms
+WP4829,GABAA receptors (GABAAR),Genes/Proteins (NCBI)
+WP4829,GABAB receptors (GABABR),Genes/Proteins (NCBI)
+WP4829,Chloride ion homeostasis,GO terms
+WP4829,Brain-derived neurotrophic factor (BDNF),Genes/Proteins (NCBI)
+WP4829,proBDNF,Genes/Proteins (NCBI)
+WP4829,Tropomyosin related kinase B (TrkB),Genes/Proteins (NCBI)
+WP4829,p75 neurotrophin receptor (p75NTR),Genes/Proteins (NCBI)
+WP4829,Epilepsy,Diseases (MONDO)
+WP4829,GABAergic synaptic transmission,GO terms
+WP4829,Depolarizing action of GABAAR,Phenotypes (HPO) / GO terms
+WP4829,GABABR mediated inhibition,GO terms
+WP4856,Charcot-Marie-Tooth (CMT) disease,Diseases (MONDO)
+WP4856,Peripheral neuropathy,Phenotypes (HPO)
+WP4856,Genes involved in membrane traffic,Genes/Proteins (NCBI)
+WP4856,Vesicle formation,GO terms
+WP4856,Phosphoinositide metabolism,GO terms
+WP4856,Lysosomal degradation,GO terms
+WP4856,Mitochondrial fission and fusion,GO terms
+WP4856,Endosomal proteins,Genes/Proteins (NCBI)
+WP4856,Cytoskeletal proteins,Genes/Proteins (NCBI)
+WP4856,Intracellular traffic,GO terms
+WP5283,Diabetes,Diseases (MONDO)
+WP5283,Diabetic pain neuropathy,Diseases (MONDO)
+WP5283,Hyperglycemia,Phenotypes (HPO) / ChEBI terms
+WP5283,Retinopathy,Diseases (MONDO)
+WP5283,Nephropathy,Diseases (MONDO)
+WP5283,Hypertension,Diseases (MONDO)
+WP5283,Neuropathy,Diseases (MONDO)
+WP5283,Polyol pathway,Pathways (Reactome)
+WP5283,Reactive oxygen species,ChEBI terms
+WP5283,Reactive nitrogen species,ChEBI terms
+WP5283,Advanced glycation end products,ChEBI terms
+WP5283,Na+/K+ ATPase pump,Genes/Proteins (NCBI)
+WP5283,Microglia,Phenotypes (HPO) / GO terms
+WP5283,Microangiopathy,Diseases (MONDO) / Phenotypes (HPO)
+WP5283,Nociceptor neurons,GO terms
+WP5358,Diabetes mellitus (Type 1 and Type 2),Diseases (MONDO)
+WP5358,?-cell proliferation,GO terms
+WP5358,?-cell number deficiency,Phenotypes (HPO)
+WP5358,?-cell function deficiency,Phenotypes (HPO)
+WP5358,Islet transplantation,Therapeutic Approaches (Not a direct category but relevant to clinical approaches)
+WP5358,Progenitors/Stem cells to ?-cells differentiation,GO terms
+WP5358,Replication of pre-existing ?-cells,GO terms
+WP5358,Activation of endogenous ?-cell progenitors,GO terms
+WP5358,Cellular signaling pathways,Pathways (Reactome)
+WP5358,?-cell survival,GO terms
+WP5358,Therapeutic adult ?-cell regeneration,GO terms / Therapeutic Approaches
+WP5368,Epithelial ovarian cancer (EOC),Diseases (MONDO)
+WP5368,17?-estradiol (E2),ChEBI Terms
+WP5368,Steroid sulfatase (STS),Genes/Proteins (NCBI)
+WP5368,Estrogen sulfotransferase (SULT1E1),Genes/Proteins (NCBI)
+WP5368,Estrogen receptor ? (ER?),Genes/Proteins (NCBI)
+WP5368,Sulfatase pathway,Pathways (Reactome?)
+WP5368,High-grade serous ovarian cancer (HGSOC),Diseases (MONDO)
+WP5368,Estrogen production,GO terms
+WP5368,Estrogen inactivation,GO terms
+WP5372,Asparagine endopeptidase (AEP),Genes/Proteins (NCBI)
+WP5372,Alzheimer's disease,Diseases (MONDO)
+WP5372,Parkinson's disease,Diseases (MONDO)
+WP5372,Frontotemporal dementia,Diseases (MONDO)
+WP5372,Amyloid precursor protein (APP),Genes/Proteins (NCBI)
+WP5372,Amyloid-? (A?),ChEBI Terms
+WP5372,Tau,Genes/Proteins (NCBI)
+WP5372,?-synuclein,Genes/Proteins (NCBI)
+WP5372,SET,Genes/Proteins (NCBI)
+WP5372,TAR DNA-binding protein 43,Genes/Proteins (NCBI)
+WP5372,?-secretase activity regulation,GO terms
+WP5372,Neurodegenerative diseases,Diseases (MONDO)
+WP5373,Osteoarthritis (OA),Diseases (MONDO)
+WP5373,Articular cartilage chondrocyte,Phenotypes (HPO) / GO terms
+WP5373,Endochondral ossification,GO terms
+WP5373,Growth plates,Phenotypes (HPO) / GO terms
+WP5373,Chondrocyte cell fate,GO terms
+WP5382,Glaucoma,Diseases (MONDO)
+WP5382,Trabecular meshwork,Phenotypes (HPO)
+WP5382,Wnt signaling pathway,Pathways (Reactome)
+WP5382,Lysophosphatidic acid (LPA) pathway,Pathways (Reactome)
+WP5382,Transforming growth factor-? (TGF-?) pathway,Pathways (Reactome)
+WP5382,Yes-associated protein (YAP),Genes/Proteins (NCBI)
+WP5382,Transcriptional co-activator with PDZ-binding motif (TAZ),Genes/Proteins (NCBI)
+WP5382,Hippo pathway,Pathways (Reactome)
+WP5382,Cell proliferation,GO terms
+WP5382,Cell death,GO terms
+WP5382,Cell differentiation,GO terms
+WP5385,Diabetes mellitus (Type 1 and Type 2),Diseases (MONDO)
+WP5386,?-cell proliferation,GO terms
+WP5387,?-cell number deficiency,Phenotypes (HPO)
+WP5388,?-cell function deficiency,Phenotypes (HPO)
+WP5389,Islet transplantation,Therapeutic Approaches (Not a direct category but relevant to clinical approaches)
+WP5390,Progenitors/Stem cells to ?-cells differentiation,GO terms
+WP5391,Replication of pre-existing ?-cells,GO terms
+WP5392,Activation of endogenous ?-cell progenitors,GO terms
+WP5393,Cellular signaling pathways,Pathways (Reactome)
+WP5394,?-cell survival,GO terms
+WP5395,Therapeutic adult ?-cell regeneration,GO terms / Therapeutic Approaches
+WP5396,Epithelial ovarian cancer (EOC),Diseases (MONDO)
+WP5397,17?-estradiol (E2),ChEBI Terms

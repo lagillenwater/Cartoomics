@@ -1,0 +1,465 @@
+PubMed_id,entity,type
+WP4532,Dynein-2,GeneOrGeneProduct
+WP4532,human,OrganismTaxon
+WP4532,WDR60,GeneOrGeneProduct 
+WP4532,TCTEX1,GeneOrGeneProduct 
+WP4532,WDR34,GeneOrGeneProduct 
+WP4532,LC8,GeneOrGeneProduct
+WP4533,SnoN,GeneOrGeneProduct 
+WP4533,TGF-β,GeneOrGeneProduct
+WP4533,transforming growth factor-β (,GeneOrGeneProduct 
+WP4533,TGF-β,GeneOrGeneProduct
+WP4533,TGF-β,GeneOrGeneProduct 
+WP4533,Smad,GeneOrGeneProduct
+WP4533,SnoN,GeneOrGeneProduct 
+WP4533,TGF-β,GeneOrGeneProduct 
+WP4533,Smad4,GeneOrGeneProduct 
+WP4533,p300,GeneOrGeneProduct 
+WP4533,CBP,GeneOrGeneProduct
+WP4533,SnoN,GeneOrGeneProduct
+WP4533,TGF-β,GeneOrGeneProduct 
+WP4533,SnoN,GeneOrGeneProduct
+WP4533,TGF-β,GeneOrGeneProduct 
+WP4533,TGF-β,GeneOrGeneProduct
+WP4533,TGF-β,GeneOrGeneProduct 
+WP4533,SnoN,GeneOrGeneProduct 
+WP4533,fibrosis,DiseaseOrPhenotypicFeature 
+WP4533,cancer,DiseaseOrPhenotypicFeature
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ,GeneOrGeneProduct
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ,GeneOrGeneProduct
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ,GeneOrGeneProduct 
+WP4534,carcinogenesis,DiseaseOrPhenotypicFeature
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ-mediated,GeneOrGeneProduct 
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ,GeneOrGeneProduct
+WP4534,YAP,GeneOrGeneProduct 
+WP4534,TAZ,GeneOrGeneProduct 
+WP4534,cancer,DiseaseOrPhenotypicFeature
+WP4535,Muscle Laminopathies,DiseaseOrPhenotypicFeature
+WP4535,Emery-Dreifuss muscular dystrophy,DiseaseOrPhenotypicFeature 
+WP4535,EDMD,DiseaseOrPhenotypicFeature 
+WP4535,contractures,DiseaseOrPhenotypicFeature 
+WP4535,skeletal muscle weakness,DiseaseOrPhenotypicFeature 
+WP4535,cardiomyopathy,DiseaseOrPhenotypicFeature
+WP4535,EDMD,DiseaseOrPhenotypicFeature
+WP4535,EDMD,DiseaseOrPhenotypicFeature
+WP4535,EDMD,DiseaseOrPhenotypicFeature 
+WP4535,mouse,OrganismTaxon
+WP4535,EDMD,DiseaseOrPhenotypicFeature
+WP4537,Cardiovascular disease,DiseaseOrPhenotypicFeature 
+WP4537,death,DiseaseOrPhenotypicFeature
+WP4537,Cardiac deterioration,DiseaseOrPhenotypicFeature 
+WP4537,cardiomyocyte loss,DiseaseOrPhenotypicFeature
+WP4537,cardiac disease,DiseaseOrPhenotypicFeature
+WP4537,tumor,DiseaseOrPhenotypicFeature 
+WP4537,mammalian,OrganismTaxon 
+WP4537,MST1,GeneOrGeneProduct 
+WP4537,TAZ,GeneOrGeneProduct
+WP4537,RASSF1A,GeneOrGeneProduct 
+WP4537,Nf2,GeneOrGeneProduct 
+WP4537,MAP4Ks,GeneOrGeneProduct 
+WP4537,NDR1,GeneOrGeneProduct
+WP4537,YAP,GeneOrGeneProduct
+WP4537,cancers,DiseaseOrPhenotypicFeature
+WP4537,tumor,DiseaseOrPhenotypicFeature
+WP4537,cardiovascular disease,DiseaseOrPhenotypicFeature 
+WP4537,hypertrophy,DiseaseOrPhenotypicFeature
+WP4537,cardiovascular disease,DiseaseOrPhenotypicFeature
+WP4538,STAT3,GeneOrGeneProduct
+WP4538,Signal transducer and activator of transcription 3,GeneOrGeneProduct 
+WP4538,STAT3,GeneOrGeneProduct
+WP4538,STAT3,GeneOrGeneProduct
+WP4538,STAT3,GeneOrGeneProduct 
+WP4538,cancer,DiseaseOrPhenotypicFeature
+WP4538,human,OrganismTaxon 
+WP4538,STAT3-mediated,GeneOrGeneProduct 
+WP4538,inflammation,DiseaseOrPhenotypicFeature
+WP4538,STAT3,GeneOrGeneProduct
+WP4539,Autism,DiseaseOrPhenotypicFeature
+WP4539,Autism spectrum disorder,DiseaseOrPhenotypicFeature 
+WP4539,ASD,DiseaseOrPhenotypicFeature 
+WP4539,neurodevelopmental psychiatric disorders,DiseaseOrPhenotypicFeature 
+WP4539,intellectual disabilities,DiseaseOrPhenotypicFeature
+WP4539,ASD,DiseaseOrPhenotypicFeature
+WP4539,patients,OrganismTaxon 
+WP4539,ASD,DiseaseOrPhenotypicFeature 
+WP4539,ASD,DiseaseOrPhenotypicFeature
+WP4539,ASD,DiseaseOrPhenotypicFeature
+WP4539,patients,OrganismTaxon 
+WP4539,ASD,DiseaseOrPhenotypicFeature
+WP4539,ASD,DiseaseOrPhenotypicFeature 
+WP4539,ASD,DiseaseOrPhenotypicFeature
+WP4540,Cancers,DiseaseOrPhenotypicFeature
+WP4540,Malignant Mesothelioma,DiseaseOrPhenotypicFeature
+WP4540,Cancer,DiseaseOrPhenotypicFeature
+WP4540,Cancer,DiseaseOrPhenotypicFeature
+WP4540,Malignant mesothelioma,DiseaseOrPhenotypicFeature 
+WP4540,MM,DiseaseOrPhenotypicFeature 
+WP4540,tumor,DiseaseOrPhenotypicFeature
+WP4540,MM,DiseaseOrPhenotypicFeature 
+WP4540,CDKN2A,GeneOrGeneProduct 
+WP4540,ARF,GeneOrGeneProduct 
+WP4540,NF2,GeneOrGeneProduct 
+WP4540,BAP1,GeneOrGeneProduct
+WP4540,MM,DiseaseOrPhenotypicFeature
+WP4540,NF2,GeneOrGeneProduct 
+WP4540,merlin,GeneOrGeneProduct
+WP4540,LATS1,GeneOrGeneProduct 
+WP4540,MM,DiseaseOrPhenotypicFeature
+WP4540,YAP1,GeneOrGeneProduct 
+WP4540,TAZ,GeneOrGeneProduct
+WP4540,YAP1,GeneOrGeneProduct 
+WP4540,TAZ,GeneOrGeneProduct 
+WP4540,CCDN1,GeneOrGeneProduct 
+WP4540,CTGF,GeneOrGeneProduct 
+WP4540,MM,DiseaseOrPhenotypicFeature
+WP4540,MM,DiseaseOrPhenotypicFeature 
+WP4540,YAP1,GeneOrGeneProduct 
+WP4540,TAZ,GeneOrGeneProduct
+WP4541,Cancers,DiseaseOrPhenotypicFeature
+WP4541,Malignant Mesothelioma,DiseaseOrPhenotypicFeature
+WP4541,Cancer,DiseaseOrPhenotypicFeature
+WP4541,Cancer,DiseaseOrPhenotypicFeature
+WP4541,Malignant mesothelioma,DiseaseOrPhenotypicFeature 
+WP4541,MM,DiseaseOrPhenotypicFeature 
+WP4541,tumor,DiseaseOrPhenotypicFeature
+WP4541,MM,DiseaseOrPhenotypicFeature 
+WP4541,CDKN2A,GeneOrGeneProduct 
+WP4541,ARF,GeneOrGeneProduct 
+WP4541,NF2,GeneOrGeneProduct 
+WP4541,BAP1,GeneOrGeneProduct
+WP4541,MM,DiseaseOrPhenotypicFeature
+WP4541,NF2,GeneOrGeneProduct 
+WP4541,merlin,GeneOrGeneProduct
+WP4541,LATS1,GeneOrGeneProduct 
+WP4541,MM,DiseaseOrPhenotypicFeature
+WP4541,YAP1,GeneOrGeneProduct 
+WP4541,TAZ,GeneOrGeneProduct
+WP4541,YAP1,GeneOrGeneProduct 
+WP4541,TAZ,GeneOrGeneProduct 
+WP4541,CCDN1,GeneOrGeneProduct 
+WP4541,CTGF,GeneOrGeneProduct 
+WP4541,MM,DiseaseOrPhenotypicFeature
+WP4541,MM,DiseaseOrPhenotypicFeature 
+WP4541,YAP1,GeneOrGeneProduct 
+WP4541,TAZ,GeneOrGeneProduct
+WP4542,Cancers,DiseaseOrPhenotypicFeature
+WP4542,Cancer,DiseaseOrPhenotypicFeature
+WP4542,mammalian,OrganismTaxon
+WP4542,MST1/2,GeneOrGeneProduct 
+WP4542,LATS1/2,GeneOrGeneProduct 
+WP4542,YAP,GeneOrGeneProduct 
+WP4542,TAZ,GeneOrGeneProduct 
+WP4542,cancer,DiseaseOrPhenotypicFeature
+WP4553,Death,DiseaseOrPhenotypicFeature
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,diffuse large B-cell lymphoma,DiseaseOrPhenotypicFeature
+WP4553,cancers,DiseaseOrPhenotypicFeature
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,KDM2B,GeneOrGeneProduct 
+WP4553,JHDM1B,GeneOrGeneProduct 
+WP4553,human,OrganismTaxon 
+WP4553,diffuse large B-cell lymphoma,DiseaseOrPhenotypicFeature
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DLBCL,CellLine
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DLBCL,CellLine 
+WP4553,tumor,DiseaseOrPhenotypicFeature 
+WP4553,mouse,OrganismTaxon
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DUSP6,GeneOrGeneProduct
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DUSP6,GeneOrGeneProduct 
+WP4553,DUSP6,GeneOrGeneProduct
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DLBCL,CellLine
+WP4553,ERK1/2,GeneOrGeneProduct 
+WP4553,FBXL10-depleted,GeneOrGeneProduct 
+WP4553,DUSP6,GeneOrGeneProduct
+WP4553,FBXL10,GeneOrGeneProduct 
+WP4553,DLBCL,DiseaseOrPhenotypicFeature
+WP4562,NF-κB,GeneOrGeneProduct 
+WP4562,Malignancies,DiseaseOrPhenotypicFeature
+WP4562,NF-κB,GeneOrGeneProduct 
+WP4562,lymphoid malignancies,DiseaseOrPhenotypicFeature 
+WP4562,diffuse large B-cell  lymphoma,DiseaseOrPhenotypicFeature 
+WP4562,Hodgkin lymphoma,DiseaseOrPhenotypicFeature 
+WP4562,adult T-cell leukemia,DiseaseOrPhenotypicFeature
+WP4562,infections,DiseaseOrPhenotypicFeature 
+WP4562,Helicobacter pylori,OrganismTaxon 
+WP4562,cancer,DiseaseOrPhenotypicFeature 
+WP4562,NF-κB,GeneOrGeneProduct 
+WP4562,malignancies,DiseaseOrPhenotypicFeature
+WP4562,NF-κB,GeneOrGeneProduct
+WP4562,NF-κB,GeneOrGeneProduct
+WP4562,malignancy,DiseaseOrPhenotypicFeature 
+WP4562,NF-κB,GeneOrGeneProduct 
+WP4562,NF-κB,GeneOrGeneProduct 
+WP4562,lymphoid malignancies,DiseaseOrPhenotypicFeature 
+WP4562,lymphoma,DiseaseOrPhenotypicFeature
+WP4564,Cancer,DiseaseOrPhenotypicFeature
+WP4564,nerve growth  factor,GeneOrGeneProduct 
+WP4564,tumor necrosis,GeneOrGeneProduct
+WP4564,p75NTR,GeneOrGeneProduct 
+WP4564,p75NTR,GeneOrGeneProduct
+WP4564,p75NTR,GeneOrGeneProduct 
+WP4564,cancer,DiseaseOrPhenotypicFeature
+WP4564,p75NTR,GeneOrGeneProduct 
+WP4564,cancer,DiseaseOrPhenotypicFeature
+WP4564,p75NTR,GeneOrGeneProduct 
+WP4564,cancer,DiseaseOrPhenotypicFeature 
+WP4564,p75NTR,GeneOrGeneProduct
+WP4564,p75NTR,GeneOrGeneProduct
+WP4564,cancer,DiseaseOrPhenotypicFeature 
+WP4564,cancer,DiseaseOrPhenotypicFeature 
+WP4564,p75NTR,GeneOrGeneProduct 
+WP4564,cancer,DiseaseOrPhenotypicFeature
+WP4564,p75NTR,GeneOrGeneProduct
+WP4565,Cancer,DiseaseOrPhenotypicFeature
+WP4565,nerve growth  factor,GeneOrGeneProduct 
+WP4565,tumor necrosis,GeneOrGeneProduct
+WP4565,p75NTR,GeneOrGeneProduct 
+WP4565,p75NTR,GeneOrGeneProduct
+WP4565,p75NTR,GeneOrGeneProduct 
+WP4565,cancer,DiseaseOrPhenotypicFeature
+WP4565,p75NTR,GeneOrGeneProduct 
+WP4565,cancer,DiseaseOrPhenotypicFeature
+WP4565,p75NTR,GeneOrGeneProduct 
+WP4565,cancer,DiseaseOrPhenotypicFeature 
+WP4565,p75NTR,GeneOrGeneProduct
+WP4565,p75NTR,GeneOrGeneProduct
+WP4565,cancer,DiseaseOrPhenotypicFeature 
+WP4565,cancer,DiseaseOrPhenotypicFeature 
+WP4565,p75NTR,GeneOrGeneProduct 
+WP4565,cancer,DiseaseOrPhenotypicFeature
+WP4565,p75NTR,GeneOrGeneProduct
+WP4760,Calcium,ChemicalEntity 
+WP4760,IP3R1,GeneOrGeneProduct 
+WP4760,CAR8,GeneOrGeneProduct 
+WP4760,Spinocerebellar Ataxias,DiseaseOrPhenotypicFeature
+WP4760,Spinocerebellar ataxias,DiseaseOrPhenotypicFeature 
+WP4760,SCAs,DiseaseOrPhenotypicFeature 
+WP4760,cerebellar diseases,DiseaseOrPhenotypicFeature 
+WP4760,ataxia,DiseaseOrPhenotypicFeature 
+WP4760,cerebellar atrophy,DiseaseOrPhenotypicFeature
+WP4760,SCAs,DiseaseOrPhenotypicFeature 
+WP4760,calcium,ChemicalEntity
+WP4760,spinocerebellar ataxia,DiseaseOrPhenotypicFeature 
+WP4760,type 14,GeneOrGeneProduct 
+WP4760,SCA14,GeneOrGeneProduct 
+WP4760,PRKCG,GeneOrGeneProduct
+WP4760,PKCγ,GeneOrGeneProduct 
+WP4760,calcium,ChemicalEntity
+WP4760,PKCγ,GeneOrGeneProduct 
+WP4760,calcium,ChemicalEntity 
+WP4760,cerebellar ataxia,DiseaseOrPhenotypicFeature
+WP4760,SCAs,DiseaseOrPhenotypicFeature
+WP4760,PKCγ,GeneOrGeneProduct 
+WP4760,SCA14,GeneOrGeneProduct
+WP4760,Carbonic anhydrase related protein 8,GeneOrGeneProduct 
+WP4760,CAR8,GeneOrGeneProduct 
+WP4760,Itpr1,GeneOrGeneProduct 
+WP4760,SCA14,GeneOrGeneProduct 
+WP4760,mouse,OrganismTaxon
+WP4760,IP3R1,GeneOrGeneProduct 
+WP4760,CAR8,GeneOrGeneProduct 
+WP4760,PKCγ,GeneOrGeneProduct
+WP4760,calcium,ChemicalEntity 
+WP4760,ataxia,DiseaseOrPhenotypicFeature 
+WP4760,mouse,OrganismTaxon 
+WP4760,human,OrganismTaxon
+WP4760,calcium,ChemicalEntity 
+WP4760,calcium,ChemicalEntity 
+WP4760,SCAs,DiseaseOrPhenotypicFeature
+WP4760,PKCγ,GeneOrGeneProduct 
+WP4760,calcium,ChemicalEntity 
+WP4760,cerebellar dysfunction,DiseaseOrPhenotypicFeature 
+WP4760,Purkinje cell loss,DiseaseOrPhenotypicFeature
+WP4829,BDNF,GeneOrGeneProduct
+WP4829,mammalian,OrganismTaxon 
+WP4829,γ-aminobutyric acid,ChemicalEntity 
+WP4829,GABA,ChemicalEntity
+WP4829,GABAAR,GeneOrGeneProduct
+WP4829,GABAAR,GeneOrGeneProduct 
+WP4829,chloride,ChemicalEntity
+WP4829,GABAAR,GeneOrGeneProduct 
+WP4829,GABABR,GeneOrGeneProduct
+WP4829,BDNF,GeneOrGeneProduct
+WP4829,BDNF,GeneOrGeneProduct 
+WP4829,proBDNF,GeneOrGeneProduct
+WP4829,BDNF,GeneOrGeneProduct 
+WP4829,TrkB,GeneOrGeneProduct 
+WP4829,proBDNF,GeneOrGeneProduct
+WP4829,mBDNF-TrkB,GeneOrGeneProduct 
+WP4829,GABA,ChemicalEntity 
+WP4829,epilepsy,DiseaseOrPhenotypicFeature
+WP4856,Charcot-Marie-Tooth disease,DiseaseOrPhenotypicFeature
+WP4856,human,OrganismTaxon
+WP4856,organ-specific disorders,DiseaseOrPhenotypicFeature
+WP4856,neuronal diseases,DiseaseOrPhenotypicFeature
+WP4856,CMT) disease,DiseaseOrPhenotypicFeature 
+WP4856,peripheral neuropathies,DiseaseOrPhenotypicFeature
+WP4856,sensory neuropathy,DiseaseOrPhenotypicFeature
+WP4856,peripheral  neuropathy,DiseaseOrPhenotypicFeature 
+WP4856,sensory loss,DiseaseOrPhenotypicFeature
+WP4856,CMT neuropathy,DiseaseOrPhenotypicFeature
+WP4856,CMT disease,DiseaseOrPhenotypicFeature 
+WP4856,phosphoinositide,ChemicalEntity
+WP4856,CMT disease,DiseaseOrPhenotypicFeature 
+WP4856,peripheral neuropathy,DiseaseOrPhenotypicFeature
+WP5283,Diabetic Pain,DiseaseOrPhenotypicFeature 
+WP5283,Neuropathy,DiseaseOrPhenotypicFeature
+WP5283,Diabetes,DiseaseOrPhenotypicFeature
+WP5283,Diabetes,DiseaseOrPhenotypicFeature 
+WP5283,hyperglycemia,DiseaseOrPhenotypicFeature
+WP5283,sugar,ChemicalEntity 
+WP5283,glucose,ChemicalEntity
+WP5283,hyperglycemia,DiseaseOrPhenotypicFeature 
+WP5283,retinopathy,DiseaseOrPhenotypicFeature 
+WP5283,nephropathy,DiseaseOrPhenotypicFeature 
+WP5283,hypertension,DiseaseOrPhenotypicFeature 
+WP5283,neuropathy,DiseaseOrPhenotypicFeature
+WP5283,Diabetic pain,DiseaseOrPhenotypicFeature 
+WP5283,neuropathy,DiseaseOrPhenotypicFeature 
+WP5283,diabetes,DiseaseOrPhenotypicFeature 
+WP5283,hypertension,DiseaseOrPhenotypicFeature 
+WP5283,hypoinsulinemia,DiseaseOrPhenotypicFeature 
+WP5283,dyslipidemia,DiseaseOrPhenotypicFeature
+WP5283,diabetic pain,DiseaseOrPhenotypicFeature
+WP5283,hyperglycemia,DiseaseOrPhenotypicFeature 
+WP5283,polyol,ChemicalEntity 
+WP5283,reactive oxygen,ChemicalEntity 
+WP5283,reactive nitrogen,ChemicalEntity
+WP5283,hyperglycemia,DiseaseOrPhenotypicFeature 
+WP5283,microangiopathy,DiseaseOrPhenotypicFeature
+WP5283,diabetic pain,DiseaseOrPhenotypicFeature 
+WP5283,neuropathy,DiseaseOrPhenotypicFeature
+WP5283,oxygen,ChemicalEntity 
+WP5283,glucose,ChemicalEntity 
+WP5283,diabetic pain,DiseaseOrPhenotypicFeature 
+WP5283,neuropathy,DiseaseOrPhenotypicFeature
+WP5283,diabetic pain,DiseaseOrPhenotypicFeature 
+WP5283,neuropathy,DiseaseOrPhenotypicFeature
+WP5358,β-cell,CellLine 
+WP5358,diabetes,DiseaseOrPhenotypicFeature
+WP5358,diabetes mellitus,DiseaseOrPhenotypicFeature
+WP5358,diabetes mellitus,DiseaseOrPhenotypicFeature 
+WP5358,diabetes mellitus,DiseaseOrPhenotypicFeature
+WP5358,diabetes,DiseaseOrPhenotypicFeature 
+WP5358,patients,OrganismTaxon 
+WP5358,diabetes,DiseaseOrPhenotypicFeature
+WP5358,humans,OrganismTaxon
+WP5358,β-cell,CellLine 
+WP5358,diabetes,DiseaseOrPhenotypicFeature
+WP5358,human,OrganismTaxon
+WP5368,steroid,ChemicalEntity 
+WP5368,epithelial ovarian cancer,DiseaseOrPhenotypicFeature
+WP5368,Cancer,DiseaseOrPhenotypicFeature
+WP5368,Ovarian Cancer,DiseaseOrPhenotypicFeature
+WP5368,Cancer,DiseaseOrPhenotypicFeature
+WP5368,Cancer,DiseaseOrPhenotypicFeature
+WP5368,17β-estradiol,ChemicalEntity 
+WP5368,epithelial ovarian  cancer,DiseaseOrPhenotypicFeature
+WP5368,patients,OrganismTaxon 
+WP5368,EOC,DiseaseOrPhenotypicFeature 
+WP5368,woman,OrganismTaxon 
+WP5368,estrogen,ChemicalEntity 
+WP5368,ovarian cancer,DiseaseOrPhenotypicFeature 
+WP5368,estrogens,ChemicalEntity 
+WP5368,cancer,DiseaseOrPhenotypicFeature 
+WP5368,sulfonated,ChemicalEntity 
+WP5368,steroid,ChemicalEntity 
+WP5368,estrone sulfate,ChemicalEntity
+WP5368,steroid,ChemicalEntity 
+WP5368,SULT1E1,GeneOrGeneProduct
+WP5368,SULT1E1,GeneOrGeneProduct 
+WP5368,STS,GeneOrGeneProduct 
+WP5368,estrogen receptor α,GeneOrGeneProduct 
+WP5368,ERα,GeneOrGeneProduct 
+WP5368,patients,OrganismTaxon 
+WP5368,EOC,DiseaseOrPhenotypicFeature 
+WP5368,platinum-based,ChemicalEntity
+WP5368,STS,GeneOrGeneProduct 
+WP5368,SULT1E1,GeneOrGeneProduct 
+WP5368,ERα,GeneOrGeneProduct
+WP5368,SULT1E1,GeneOrGeneProduct 
+WP5368,EOC,DiseaseOrPhenotypicFeature 
+WP5368,tumors,DiseaseOrPhenotypicFeature 
+WP5368,EOC,DiseaseOrPhenotypicFeature 
+WP5368,tumors,DiseaseOrPhenotypicFeature
+WP5368,SULT1E1,GeneOrGeneProduct 
+WP5368,ERα,GeneOrGeneProduct
+WP5368,serous EOC,DiseaseOrPhenotypicFeature 
+WP5368,HGSOC,DiseaseOrPhenotypicFeature 
+WP5368,ovarian cancer,DiseaseOrPhenotypicFeature 
+WP5368,SULT1E1,GeneOrGeneProduct
+WP5368,SULT1E1-mediated,GeneOrGeneProduct 
+WP5368,estrogen,ChemicalEntity 
+WP5368,EOC,DiseaseOrPhenotypicFeature 
+WP5368,HGSOC,DiseaseOrPhenotypicFeature
+WP5368,patients,OrganismTaxon 
+WP5368,EOC,DiseaseOrPhenotypicFeature
+WP5372,δ-secretase,GeneOrGeneProduct 
+WP5372,neurodegenerative diseases,DiseaseOrPhenotypicFeature
+WP5372,Mammalian,OrganismTaxon 
+WP5372,asparagine,ChemicalEntity 
+WP5372,cysteine,ChemicalEntity 
+WP5372,asparagine,ChemicalEntity
+WP5372,AEP,GeneOrGeneProduct 
+WP5372,neurological diseases,DiseaseOrPhenotypicFeature 
+WP5372,Alzheimer's disease,DiseaseOrPhenotypicFeature 
+WP5372,Parkinson's  disease,DiseaseOrPhenotypicFeature 
+WP5372,frontotemporal dementia,DiseaseOrPhenotypicFeature
+WP5372,amyloid precursor protein,GeneOrGeneProduct
+WP5372,APP,GeneOrGeneProduct
+WP5372,tau,GeneOrGeneProduct 
+WP5372,α-synuclein,GeneOrGeneProduct 
+WP5372,SET,GeneOrGeneProduct 
+WP5372,TAR DNA-binding protein 43,GeneOrGeneProduct
+WP5372,δ-secretase,GeneOrGeneProduct
+WP5372,δ-secretase,GeneOrGeneProduct 
+WP5372,neurodegenerative  diseases,DiseaseOrPhenotypicFeature 
+WP5372,δ-secretase,GeneOrGeneProduct 
+WP5372,neurodegenerative diseases,DiseaseOrPhenotypicFeature
+WP5373,Osteoarthritis,DiseaseOrPhenotypicFeature
+WP5373,Osteoarthritis,DiseaseOrPhenotypicFeature 
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5373,pain,DiseaseOrPhenotypicFeature
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5373,OA,DiseaseOrPhenotypicFeature 
+WP5373,OA,DiseaseOrPhenotypicFeature
+WP5382,LPA,GeneOrGeneProduct 
+WP5382,glaucoma,DiseaseOrPhenotypicFeature
+WP5382,People,OrganismTaxon
+WP5382,People,OrganismTaxon
+WP5382,Glaucoma,DiseaseOrPhenotypicFeature 
+WP5382,blindness,DiseaseOrPhenotypicFeature
+WP5382,lysophosphatidic acid,ChemicalEntity 
+WP5382,transforming  growth factor‑β,GeneOrGeneProduct 
+WP5382,glaucoma,DiseaseOrPhenotypicFeature
+WP5382,YAP,GeneOrGeneProduct 
+WP5382,TAZ,GeneOrGeneProduct
+WP5382,Drosophila,OrganismTaxon
+WP5382,YAP,GeneOrGeneProduct 
+WP5382,TAZ,GeneOrGeneProduct 
+WP5382,glaucoma,DiseaseOrPhenotypicFeature
+WP5382,glaucoma,DiseaseOrPhenotypicFeature
+WP5385,β-cell,CellLine 
+WP5385,diabetes,DiseaseOrPhenotypicFeature
+WP5385,diabetes mellitus,DiseaseOrPhenotypicFeature
+WP5385,diabetes mellitus,DiseaseOrPhenotypicFeature 
+WP5385,diabetes mellitus,DiseaseOrPhenotypicFeature
+WP5385,diabetes,DiseaseOrPhenotypicFeature 
+WP5385,patients,OrganismTaxon 
+WP5385,diabetes,DiseaseOrPhenotypicFeature
+WP5385,humans,OrganismTaxon
+WP5385,β-cell,CellLine 
+WP5385,diabetes,DiseaseOrPhenotypicFeature
+WP5385,human,OrganismTaxon

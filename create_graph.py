@@ -3,7 +3,7 @@ import pandas as pd
 import csv
 import json
 from igraph import * 
-
+import networkx
 
 ###Read in all files, outputs triples and labels as a df
 def process_pkl_files(triples_file,labels_file):
@@ -16,6 +16,8 @@ def process_pkl_files(triples_file,labels_file):
 
     labels = pd.read_csv(labels_file, sep = '	', quoting=csv.QUOTE_NONE)
     labels.columns.str.lower()
+    for c in labels.columns:
+        labels[[c]] = labels[[c]]. fillna('None')
 
     #Remove brackets from URI
     labels['entity_uri'] = labels['entity_uri'].str.replace("<","")
@@ -67,3 +69,12 @@ def process_kg_covid19_files(triples_file,labels_file):
 
     
     return triples_df,labels
+
+
+
+### convert igraph to networkx graph
+def kg_to_undirected_networkx(g):
+    kg_igraph = g.igraph
+    G = kg_igraph.to_networkx()
+    G = G.to_undirected()
+    return G

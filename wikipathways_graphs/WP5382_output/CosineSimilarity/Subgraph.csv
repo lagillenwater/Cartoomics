@@ -1,0 +1,54 @@
+S|P|O|S_ID|P_ID|O_ID
+Sparc|causes or contributes to condition|Nephropathy|http://www.ncbi.nlm.nih.gov/gene/6678|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000112
+lead atom|is substance that treats|Nephropathy|http://purl.obolibrary.org/obo/CHEBI_25016|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000112
+lead atom|molecularly interacts with|Cell adhesion|http://purl.obolibrary.org/obo/CHEBI_25016|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0007155
+14-3-3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7532|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TAZ|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/25937|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Smad2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4087|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Smad3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4088|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+14-3-3|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/7532|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+Smad4|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/4089|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TAZ|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+CCN2 (human)|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/1490|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+Sparc|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6678|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+POSTN (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10631|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Sparc|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/6678|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+SERPINE1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/5054|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+Smad2|participates_in|Signaling by TGF-beta Receptor Complex in Cancer|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3304351
+Smad3|participates_in|Signaling by TGF-beta Receptor Complex in Cancer|http://www.ncbi.nlm.nih.gov/gene/4088|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3304351
+TAZ|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+Smad2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TAZ|participates_in|Signaling by TGF-beta Receptor Complex|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170834
+Smad3|participates_in|Signaling by TGF-beta Receptor Complex|http://www.ncbi.nlm.nih.gov/gene/4088|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170834
+Smad4|participates_in|Signaling by TGF-beta Receptor Complex|http://www.ncbi.nlm.nih.gov/gene/4089|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170834
+valproic acid|interacts with|Smad2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4087
+valproic acid|interacts with|CNN2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1490
+valproic acid|interacts with|Periostin|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/10631
+Smad2|participates_in|SMAD2/SMAD3:SMAD4 heterotrimer regulates transcription|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173796
+SERPINE1|participates_in|SMAD2/SMAD3:SMAD4 heterotrimer regulates transcription|http://www.ncbi.nlm.nih.gov/gene/5054|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173796
+TAZ|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+SERPINE1|participates_in|Gene expression (Transcription)|http://www.ncbi.nlm.nih.gov/gene/5054|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74160
+Smad2|participates_in|TGF-beta receptor signaling activates SMADs|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173789
+Smad4|participates_in|TGF-beta receptor signaling activates SMADs|http://www.ncbi.nlm.nih.gov/gene/4089|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173789
+TGF-β|causes or contributes to condition|Emphysema|http://www.ncbi.nlm.nih.gov/gene/7040|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002097
+TGFβ-II-R|causes or contributes to condition|Emphysema|http://www.ncbi.nlm.nih.gov/gene/7048|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002097
+aflatoxin B1|interacts with|Smad4|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4089
+aflatoxin B1|interacts with|CNN2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1490
+Smad4|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4089|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Smad4|participates_in|SMAD2/SMAD3:SMAD4 heterotrimer regulates transcription|http://www.ncbi.nlm.nih.gov/gene/4089|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173796
+Smad4|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4089|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+TGFβ-I-R|participates_in|TGFBR1 KD Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/7046|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3656532
+Smad2|participates_in|TGFBR1 KD Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3656532
+Smad3|participates_in|TGFBR1 KD Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/4088|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3656532
+TGFβ-I-R|participates_in|Diseases of signal transduction by growth factor receptors and second messengers|http://www.ncbi.nlm.nih.gov/gene/7046|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5663202
+TGFβ-II-R|participates_in|Diseases of signal transduction by growth factor receptors and second messengers|http://www.ncbi.nlm.nih.gov/gene/7048|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5663202
+TGFβ-I-R|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7046|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TGFBR3 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7049|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Smad3|participates_in|SMAD2/3 MH2 Domain Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/4088|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3315487
+Smad4|participates_in|SMAD2/3 MH2 Domain Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/4089|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3315487
+Smad2|participates_in|SMAD2/3 Phosphorylation Motif Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/4087|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3304356
+TGFβ-II-R|participates_in|SMAD2/3 Phosphorylation Motif Mutants in Cancer|http://www.ncbi.nlm.nih.gov/gene/7048|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3304356
+Smad3|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4088|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+SERPINE1|participates_in|Signaling by TGF-beta Receptor Complex|http://www.ncbi.nlm.nih.gov/gene/5054|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170834
+valproic acid|interacts with|Smad3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4088
+TGFβ-II-R|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7048|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217

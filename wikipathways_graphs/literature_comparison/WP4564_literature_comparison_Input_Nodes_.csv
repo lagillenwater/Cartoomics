@@ -1,0 +1,32 @@
+term|term_label|term_id|NER_Method
+cell migration|cell migration|http://purl.obolibrary.org/obo/GO_0016477|lab
+p75NTR|p75NTR|http://purl.obolibrary.org/obo/PR_000001405|lab
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|lab
+neural crest|neural crest|http://purl.obolibrary.org/obo/UBERON_0002342|lab
+stem cell|stem cell|http://purl.obolibrary.org/obo/CL_0000034|lab
+NCCs|NCCs|http://purl.obolibrary.org/obo/CL_0011012|lab
+adults|adults|http://purl.obolibrary.org/obo/UBERON_0007023|lab
+locomotion|locomotion|http://purl.obolibrary.org/obo/GO_0040011|lab
+mesenchymal|mesenchymal|http://purl.obolibrary.org/obo/UBERON_0003104|lab
+extracellular matrix|extracellular matrix|http://purl.obolibrary.org/obo/GO_0031012|lab
+embryo|embryo|http://purl.obolibrary.org/obo/UBERON_0000922|lab
+Neural crest cells|Neural crest cells|http://purl.obolibrary.org/obo/CL_0011012|lab
+nervous system|nervous system|http://purl.obolibrary.org/obo/UBERON_0001016|lab
+tumor|tumor|http://purl.obolibrary.org/obo/MONDO_0005070|lab
+neurotrophin|neurotrophin|http://purl.obolibrary.org/obo/PR_000021998|lab
+Cell Migration|Cell Migration|http://purl.obolibrary.org/obo/GO_0016477|lab
+neurotrophins|neurotrophins|http://purl.obolibrary.org/obo/PR_000021998|lab
+Cancer|Cancer|http://purl.obolibrary.org/obo/MONDO_0004992|lab
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|ner
+nerve growth  factor|nerve growth  factor|none|ner
+tumor necrosis|tumor necrosis|none|ner
+p75ntr|p75ntr|http://www.ncbi.nlm.nih.gov/gene/4804|ner
+p75 neurotrophin receptor (p75ntr)|p75 neurotrophin receptor (p75ntr)|http://www.ncbi.nlm.nih.gov/gene/4804|gpt
+neural crest cells (nccs)|neural crest cells (nccs)|none|gpt
+epithelial-to-mesenchymal transition|epithelial-to-mesenchymal transition|none|gpt
+contact inhibition of locomotion|contact inhibition of locomotion|none|gpt
+cancer cell migration and invasion|cancer cell migration and invasion|none|gpt
+tumor necrosis factor family of receptors|tumor necrosis factor family of receptors|none|gpt
+coreceptors and/or effectors of p75ntr|coreceptors and/or effectors of p75ntr|none|gpt
+signaling pathways related to ncc migration|signaling pathways related to ncc migration|none|gpt
+cancer|cancer|http://purl.obolibrary.org/obo/MONDO_0004992|gpt

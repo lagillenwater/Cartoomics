@@ -1,0 +1,69 @@
+S|P|O|S_ID|P_ID|O_ID
+Amyloid-beta|subClassOf|polypeptide|http://purl.obolibrary.org/obo/CHEBI_64645|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_15841
+corticotropin|subClassOf|polypeptide|http://purl.obolibrary.org/obo/CHEBI_3892|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_15841
+corticotropin|is substance that treats|Depression|http://purl.obolibrary.org/obo/CHEBI_3892|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000716
+fibroblastic neoplasm|has phenotype|Depression|http://purl.obolibrary.org/obo/MONDO_0006209|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000716
+fibroblastic neoplasm|disease has location|fibroblast|http://purl.obolibrary.org/obo/MONDO_0006209|http://purl.obolibrary.org/obo/RO_0004026|http://purl.obolibrary.org/obo/CL_0000057
+fibroblastic neoplasm|disease arises from structure|fibroblast|http://purl.obolibrary.org/obo/MONDO_0006209|http://purl.obolibrary.org/obo/RO_0004030|http://purl.obolibrary.org/obo/CL_0000057
+GM00364 cell|derives_from|fibroblast|http://purl.obolibrary.org/obo/CLO_0025557|http://purl.obolibrary.org/obo/RO_0001000|http://purl.obolibrary.org/obo/CL_0000057
+GM00364 cell|is disease model for|Alzheimer's disease|http://purl.obolibrary.org/obo/CLO_0025557|http://purl.obolibrary.org/obo/CLO_0000179|http://www.ebi.ac.uk/efo/EFO_0000249
+C/EBP10A𝛽|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/1051|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+δ-secretase|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5641|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PP2A|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5516|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Microtubule-associated protein tau|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4137|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Dopamine|is substance that treats|Neurodegeneration|http://purl.obolibrary.org/obo/CHEBI_18243|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002180
+DOPAL|is substance that treats|Neurodegeneration|http://purl.obolibrary.org/obo/CHEBI_27978|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002180
+α-synuclein|causes or contributes to condition|Neurodegeneration|http://www.ncbi.nlm.nih.gov/gene/6622|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002180
+STAT1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6772|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+TrkB|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+AKT 3|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+δ-secretase|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/5641|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+PP2A|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/5516|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+AKT 3|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+BACE1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/23621|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+δ-secretase|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/5641|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+cyclophosphamide hydrate|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_4026|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+cyclophosphamide hydrate|is substance that treats|B-cell neoplasm|http://purl.obolibrary.org/obo/CHEBI_4026|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0004095
+B-cell neoplasm|disease has location|B cell|http://purl.obolibrary.org/obo/MONDO_0004095|http://purl.obolibrary.org/obo/RO_0004026|http://purl.obolibrary.org/obo/CL_0000236
+B-cell neoplasm|disease arises from structure|B cell|http://purl.obolibrary.org/obo/MONDO_0004095|http://purl.obolibrary.org/obo/RO_0004030|http://purl.obolibrary.org/obo/CL_0000236
+ND00333 cell|derives_from|B cell|http://purl.obolibrary.org/obo/CLO_0026995|http://purl.obolibrary.org/obo/RO_0001000|http://purl.obolibrary.org/obo/CL_0000236
+ND00333 cell|is disease model for|Parkinson's disease|http://purl.obolibrary.org/obo/CLO_0026995|http://purl.obolibrary.org/obo/CLO_0000179|http://www.ebi.ac.uk/efo/EFO_0002508
+TrkB|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4915|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+BACE1|participates_in|Metabolism of proteins|http://www.ncbi.nlm.nih.gov/gene/23621|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+polypeptide|participates_in|Metabolism of proteins|http://purl.obolibrary.org/obo/CHEBI_15841|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+AKT 1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+polypeptide|participates_in|Innate Immune System|http://purl.obolibrary.org/obo/CHEBI_15841|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+SRPK2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6733|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+α-synuclein|causes or contributes to condition|Wilson disease|http://www.ncbi.nlm.nih.gov/gene/6622|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0010200
+Wilson disease|has phenotype|Cryptorchidism|http://purl.obolibrary.org/obo/MONDO_0010200|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000028
+B cell deficiency|has phenotype|Cryptorchidism|http://purl.obolibrary.org/obo/MONDO_0002211|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000028
+B cell deficiency|disease has location|B cell|http://purl.obolibrary.org/obo/MONDO_0002211|http://purl.obolibrary.org/obo/RO_0004026|http://purl.obolibrary.org/obo/CL_0000236
+ND05872 cell|derives_from|B cell|http://purl.obolibrary.org/obo/CLO_0028199|http://purl.obolibrary.org/obo/RO_0001000|http://purl.obolibrary.org/obo/CL_0000236
+ND05872 cell|is disease model for|Parkinson's disease|http://purl.obolibrary.org/obo/CLO_0028199|http://purl.obolibrary.org/obo/CLO_0000179|http://www.ebi.ac.uk/efo/EFO_0002508
+α-synuclein|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6622|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+BDNF|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+TrkB|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+AKT 1|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+AKT 3|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/10000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+APP|participates_in|Disease|http://www.ncbi.nlm.nih.gov/gene/351|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1643685
+polypeptide|participates_in|Disease|http://purl.obolibrary.org/obo/CHEBI_15841|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1643685
+polypeptide|participates_in|Immune System|http://purl.obolibrary.org/obo/CHEBI_15841|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+δ-secretase|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5641|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+GHRL|causes or contributes to condition|Neurodegeneration|http://www.ncbi.nlm.nih.gov/gene/51738|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002180
+GHRL|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/51738|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SET|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6418|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SET|participates_in|Cell Cycle, Mitotic|http://www.ncbi.nlm.nih.gov/gene/6418|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69278
+PP2A|participates_in|Cell Cycle, Mitotic|http://www.ncbi.nlm.nih.gov/gene/5516|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-69278
+Microtubule-associated protein tau|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4137|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+STAT1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/6772|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+Microtubule-associated protein tau|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/4137|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+fibroblastic neoplasm|has phenotype|Hepatocellular carcinoma|http://purl.obolibrary.org/obo/MONDO_0006209|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0001402
+AG05770 cell|derives_from|fibroblast|http://purl.obolibrary.org/obo/CLO_0035236|http://purl.obolibrary.org/obo/RO_0001000|http://purl.obolibrary.org/obo/CL_0000057
+AG05770 cell|is disease model for|Alzheimer's disease|http://purl.obolibrary.org/obo/CLO_0035236|http://purl.obolibrary.org/obo/CLO_0000179|http://www.ebi.ac.uk/efo/EFO_0000249
+AKT 1|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/207|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+δ-secretase|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/5641|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+mycophenolic acid|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_168396|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+mycophenolic acid|is substance that treats|B-cell neoplasm|http://purl.obolibrary.org/obo/CHEBI_168396|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0004095
+ND01423 cell|derives_from|B cell|http://purl.obolibrary.org/obo/CLO_0017410|http://purl.obolibrary.org/obo/RO_0001000|http://purl.obolibrary.org/obo/CL_0000236
+ND01423 cell|is disease model for|Alzheimer's disease|http://purl.obolibrary.org/obo/CLO_0017410|http://purl.obolibrary.org/obo/CLO_0000179|http://www.ebi.ac.uk/efo/EFO_0000249
+TARDBP (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/23435|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217

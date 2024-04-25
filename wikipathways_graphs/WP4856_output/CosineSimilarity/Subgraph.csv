@@ -1,0 +1,44 @@
+S|P|O|S_ID|P_ID|O_ID
+RAB3A|participates_in|Neuronal System|http://www.ncbi.nlm.nih.gov/gene/5864|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112316
+voltage-dependent calcium channel gamma-2 subunit (human)|participates_in|Neuronal System|http://purl.obolibrary.org/obo/PR_Q9Y698|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112316
+voltage-dependent calcium channel gamma-2 subunit (human)|participates_in|transmission of nerve impulse|http://purl.obolibrary.org/obo/PR_Q9Y698|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0019226
+neuron|capable of|transmission of nerve impulse|http://purl.obolibrary.org/obo/CL_0000540|http://purl.obolibrary.org/obo/RO_0002215|http://purl.obolibrary.org/obo/GO_0019226
+NDRG1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10397|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB11B|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9230|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB25|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/57111|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RABAC1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10567|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB4A|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5867|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SH3TC2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/79628|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB4A|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5867|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+RAB4B|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/53916|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+RAB4A|participates_in|Post-translational protein modification|http://www.ncbi.nlm.nih.gov/gene/5867|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+RAB11B|participates_in|Post-translational protein modification|http://www.ncbi.nlm.nih.gov/gene/9230|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+RAB4B|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/53916|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB4B|participates_in|RAB geranylgeranylation|http://www.ncbi.nlm.nih.gov/gene/53916|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8873719
+RAB11B|participates_in|RAB geranylgeranylation|http://www.ncbi.nlm.nih.gov/gene/9230|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8873719
+RAB4B|participates_in|Post-translational protein modification|http://www.ncbi.nlm.nih.gov/gene/53916|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+RAB25|participates_in|Post-translational protein modification|http://www.ncbi.nlm.nih.gov/gene/57111|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+RAB25|participates_in|RAB geranylgeranylation|http://www.ncbi.nlm.nih.gov/gene/57111|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8873719
+RAB7A|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/7879|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+GDAP1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/54332|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MFN2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9927|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+NDRG1|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/10397|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+SH3TC2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/79628|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+RAB11A|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8766|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB3A|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5864|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB3B|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5865|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+RAB3B|participates_in|Post-translational protein modification|http://www.ncbi.nlm.nih.gov/gene/5865|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+spectrin beta chain, non-erythrocytic 4 (human)|participates_in|Post-translational protein modification|http://purl.obolibrary.org/obo/PR_Q9H254|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-597592
+spectrin beta chain, non-erythrocytic 4 (human)|participates_in|transmission of nerve impulse|http://purl.obolibrary.org/obo/PR_Q9H254|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0019226
+SBF2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/81846|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MTMR2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8898|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SBF2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/81846|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+LITAF|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/9516|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+MTMR2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/8898|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+HSPB1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3315|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FGD4 (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/121512|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FIG4 (human)|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/9896|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+RAB11A|participates_in|Metabolism of proteins|http://www.ncbi.nlm.nih.gov/gene/8766|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+RAB4B|participates_in|Metabolism of proteins|http://www.ncbi.nlm.nih.gov/gene/53916|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+RAB11A|participates_in|RAB geranylgeranylation|http://www.ncbi.nlm.nih.gov/gene/8766|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8873719
+RAB25|participates_in|Metabolism of proteins|http://www.ncbi.nlm.nih.gov/gene/57111|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499

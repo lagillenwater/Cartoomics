@@ -1,0 +1,44 @@
+term|term_label|term_id|NER_Method
+membrane|membrane|http://purl.obolibrary.org/obo/GO_0016020|lab
+peripheral neuropathy|peripheral neuropathy|http://purl.obolibrary.org/obo/MONDO_0005244|lab
+CMT disease|CMT disease|http://purl.obolibrary.org/obo/MONDO_0015626|lab
+intracellular|intracellular|http://purl.obolibrary.org/obo/GO_0005622|lab
+endosomal|endosomal|http://purl.obolibrary.org/obo/GO_0005768|lab
+genes|genes|http://purl.obolibrary.org/obo/SO_0000704|lab
+lysosomal|lysosomal|http://purl.obolibrary.org/obo/GO_0005764|lab
+phosphoinositide metabolism|phosphoinositide metabolism|http://purl.obolibrary.org/obo/GO_0046488|lab
+vesicle formation|vesicle formation|http://purl.obolibrary.org/obo/GO_0006900|lab
+neuropathy|neuropathy|http://purl.obolibrary.org/obo/MONDO_0005244|lab
+limbs|limbs|http://purl.obolibrary.org/obo/UBERON_0002101|lab
+peripheral nerves|peripheral nerves|http://purl.obolibrary.org/obo/UBERON_0001021|lab
+HMSN|HMSN|http://purl.obolibrary.org/obo/MONDO_0015358|lab
+hereditary motor and sensory neuropathy|hereditary motor and sensory neuropathy|http://purl.obolibrary.org/obo/MONDO_0015358|lab
+Charcot-Marie-Tooth (CMT) disease|Charcot-Marie-Tooth (CMT) disease|http://purl.obolibrary.org/obo/MONDO_0015626|lab
+tissue|tissue|http://purl.obolibrary.org/obo/UBERON_0000479|lab
+nervous system|nervous system|http://purl.obolibrary.org/obo/UBERON_0001016|lab
+organ|organ|http://purl.obolibrary.org/obo/UBERON_0000062|lab
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|lab
+Charcot-Marie-Tooth disease|Charcot-Marie-Tooth disease|http://purl.obolibrary.org/obo/MONDO_0015626|lab
+charcot-marie-tooth disease|charcot-marie-tooth disease|http://purl.obolibrary.org/obo/MONDO_0015626|ner
+human|human|http://purl.obolibrary.org/obo/NCBITaxon_9606|ner
+organ-specific disorders|organ-specific disorders|none|ner
+neuronal diseases|neuronal diseases|none|ner
+cmt) disease|cmt) disease|http://purl.obolibrary.org/obo/MONDO_0015626|ner
+peripheral neuropathies|peripheral neuropathies|none|ner
+sensory neuropathy|sensory neuropathy|http://purl.obolibrary.org/obo/HP_0000763|ner
+peripheral  neuropathy|peripheral  neuropathy|http://purl.obolibrary.org/obo/HP_0009830|ner
+sensory loss|sensory loss|none|ner
+cmt neuropathy|cmt neuropathy|none|ner
+cmt disease|cmt disease|none|ner
+phosphoinositide|phosphoinositide|http://purl.obolibrary.org/obo/CHEBI_18179|ner
+peripheral neuropathy|peripheral neuropathy|http://purl.obolibrary.org/obo/HP_0009830|ner
+charcot-marie-tooth (cmt) disease|charcot-marie-tooth (cmt) disease|http://purl.obolibrary.org/obo/MONDO_0015626|gpt
+peripheral neuropathy|peripheral neuropathy|http://purl.obolibrary.org/obo/HP_0009830|gpt
+genes involved in membrane traffic|genes involved in membrane traffic|none|gpt
+vesicle budding from membrane|vesicle budding from membrane|http://purl.obolibrary.org/obo/GO_0006900|gpt
+phosphatidylinositol metabolic process|phosphatidylinositol metabolic process|http://purl.obolibrary.org/obo/GO_0046488|gpt
+lysosomal degradation|lysosomal degradation|none|gpt
+mitochondrial fission and fusion|mitochondrial fission and fusion|none|gpt
+endosomal proteins|endosomal proteins|none|gpt
+cytoskeletal proteins|cytoskeletal proteins|none|gpt
+intracellular traffic|intracellular traffic|none|gpt

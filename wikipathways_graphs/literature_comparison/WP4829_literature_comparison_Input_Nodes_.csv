@@ -1,0 +1,35 @@
+term|term_label|term_id|NER_Method
+GABA|GABA|http://purl.obolibrary.org/obo/CHEBI_16865|lab
+p75NTR|p75NTR|http://purl.obolibrary.org/obo/PR_000001405|lab
+TrkB|TrkB|http://purl.obolibrary.org/obo/PR_000011470|lab
+neurotrophin|neurotrophin|http://purl.obolibrary.org/obo/PR_000021998|lab
+tropomyosin related kinase B|tropomyosin related kinase B|http://purl.obolibrary.org/obo/PR_000011470|lab
+BDNF|BDNF|http://purl.obolibrary.org/obo/PR_000004716|lab
+brain derived neurotrophic factor|brain derived neurotrophic factor|http://purl.obolibrary.org/obo/PR_000004716|lab
+GABAergic synaptic transmission|GABAergic synaptic transmission|http://purl.obolibrary.org/obo/GO_0051932|lab
+chloride ion homeostasis|chloride ion homeostasis|http://purl.obolibrary.org/obo/GO_0055064|lab
+neurons|neurons|http://purl.obolibrary.org/obo/CL_0000540|lab
+γ-aminobutyric acid|γ-aminobutyric acid|http://purl.obolibrary.org/obo/CHEBI_16865|lab
+BDNF (human)|BDNF (human)|http://www.ncbi.nlm.nih.gov/gene/627|ner
+mammalian|mammalian|none|ner
+γ-aminobutyric acid|γ-aminobutyric acid|http://purl.obolibrary.org/obo/CHEBI_16865|ner
+gaba|gaba|http://purl.obolibrary.org/obo/CHEBI_16865|ner
+gabaar|gabaar|http://www.ncbi.nlm.nih.gov/gene/2554|ner
+chloride|chloride|http://purl.obolibrary.org/obo/CHEBI_17996|ner
+gababr|gababr|http://www.ncbi.nlm.nih.gov/gene/2554|ner
+probdnf|probdnf|none|ner
+trkb|trkb|http://www.ncbi.nlm.nih.gov/gene/4915|ner
+mbdnf-trkb|mbdnf-trkb|none|ner
+epilepsy|epilepsy|http://purl.obolibrary.org/obo/MONDO_0005027|ner
+?-aminobutyric acid (gaba)|?-aminobutyric acid (gaba)|http://purl.obolibrary.org/obo/CHEBI_16865|gpt
+gabaa receptors (gabaar)|gabaa receptors (gabaar)|http://www.ncbi.nlm.nih.gov/gene/2554|gpt
+gabab receptors (gababr)|gabab receptors (gababr)|http://www.ncbi.nlm.nih.gov/gene/2554|gpt
+chloride ion homeostasis|chloride ion homeostasis|http://purl.obolibrary.org/obo/GO_0055064|gpt
+brain-derived neurotrophic factor (bdnf)|brain-derived neurotrophic factor (bdnf)|http://www.ncbi.nlm.nih.gov/gene/627|gpt
+probdnf|probdnf|none|gpt
+tropomyosin related kinase b (trkb)|tropomyosin related kinase b (trkb)|http://www.ncbi.nlm.nih.gov/gene/4915|gpt
+p75 neurotrophin receptor (p75ntr)|p75 neurotrophin receptor (p75ntr)|http://www.ncbi.nlm.nih.gov/gene/4804|gpt
+epilepsy|epilepsy|http://purl.obolibrary.org/obo/MONDO_0005027|gpt
+gabaergic synaptic transmission|gabaergic synaptic transmission|http://purl.obolibrary.org/obo/GO_0051932|gpt
+depolarizing action of gabaar|depolarizing action of gabaar|none|gpt
+gababr mediated inhibition|gababr mediated inhibition|none|gpt

@@ -1,0 +1,104 @@
+S|P|O|S_ID|P_ID|O_ID
+CYP19A1|participates_in|Cytochrome P450 - arranged by substrate type|http://www.ncbi.nlm.nih.gov/gene/1588|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-211897
+Estradiol-17beta|participates_in|Cytochrome P450 - arranged by substrate type|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-211897
+HSD17B1|participates_in|Estrogen biosynthesis|http://www.ncbi.nlm.nih.gov/gene/3292|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-193144
+Estradiol-17beta|participates_in|Estrogen biosynthesis|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-193144
+HSD17B1|participates_in|Visual phototransduction|http://www.ncbi.nlm.nih.gov/gene/3292|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2187338
+NADH(2-)|participates_in|Visual phototransduction|http://purl.obolibrary.org/obo/CHEBI_57945|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2187338
+HSD17B1|has gene product|17-beta-hydroxysteroid dehydrogenase type 1 (human)|http://www.ncbi.nlm.nih.gov/gene/3292|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P14061
+17-beta-hydroxysteroid dehydrogenase type 1 (human)|molecularly interacts with|NAD anion|http://purl.obolibrary.org/obo/PR_P14061|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_57540
+STS|subClassOf|tag|http://purl.obolibrary.org/obo/SO_0000331|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000324
+engineered_tag|subClassOf|tag|http://purl.obolibrary.org/obo/SO_0000807|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000324
+engineered_tag|has_quality|engineered|http://purl.obolibrary.org/obo/SO_0000807|http://purl.obolibrary.org/obo/so#has_quality|http://purl.obolibrary.org/obo/SO_0000783
+engineered_gene|has_quality|engineered|http://purl.obolibrary.org/obo/SO_0000280|http://purl.obolibrary.org/obo/so#has_quality|http://purl.obolibrary.org/obo/SO_0000783
+engineered_gene|subClassOf|gene|http://purl.obolibrary.org/obo/SO_0000280|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+CXCR4 (human)|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/7852|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+CXCR4 (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/7852|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+estrone|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/CHEBI_17263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+engineered_tag|subClassOf|engineered_region|http://purl.obolibrary.org/obo/SO_0000807|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000804
+engineered_gene|subClassOf|engineered_region|http://purl.obolibrary.org/obo/SO_0000280|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000804
+HEXB|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/3074|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+HEXB|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/3074|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+DHEA|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_28689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+FAS (human)|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/355|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+Estradiol-17beta|interacts with|FAS (human)|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/355
+17-beta-hydroxysteroid dehydrogenase type 6 (human)|molecularly interacts with|testosterone|http://purl.obolibrary.org/obo/PR_O14756|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_17347
+17-beta-hydroxysteroid dehydrogenase type 6 (human)|molecularly interacts with|Estradiol-17beta|http://purl.obolibrary.org/obo/PR_O14756|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_16469
+estradiol 3-sulphate|has functional parent|Estradiol-17beta|http://purl.obolibrary.org/obo/CHEBI_4866|http://purl.obolibrary.org/obo/chebi#has_functional_parent|http://purl.obolibrary.org/obo/CHEBI_16469
+Estradiol-17beta|is substance that treats|Coronary artery atherosclerosis|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0001677
+ESR2|causes or contributes to condition|Coronary artery atherosclerosis|http://www.ncbi.nlm.nih.gov/gene/2100|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001677
+Estradiol-17beta|interacts with|estrogen receptor (human)|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P03372
+estrogen receptor (human)|has_gene_template|ESR1|http://purl.obolibrary.org/obo/PR_P03372|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2099
+Estradiol-17beta|interacts with|UDP-glucuronosyltransferase 1A3 (human)|http://purl.obolibrary.org/obo/CHEBI_16469|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P35503
+UDP-glucuronosyltransferase 1A3 (human)|molecularly interacts with|estrone|http://purl.obolibrary.org/obo/PR_P35503|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_17263
+estrone sulphate|has functional parent|estrone|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/chebi#has_functional_parent|http://purl.obolibrary.org/obo/CHEBI_17263
+estrone|interacts with|cytochrome P450 1A1 (human)|http://purl.obolibrary.org/obo/CHEBI_17263|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P04798
+cytochrome P450 1A1 (human)|molecularly interacts with|Estradiol-17beta|http://purl.obolibrary.org/obo/PR_P04798|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_16469
+SULT1E1|participates_in|Biological oxidations|http://www.ncbi.nlm.nih.gov/gene/6783|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-211859
+DHEA-S|participates_in|Biological oxidations|http://purl.obolibrary.org/obo/CHEBI_16814|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-211859
+SULT1E1|participates_in|Cytosolic sulfonation of small molecules|http://www.ncbi.nlm.nih.gov/gene/6783|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-156584
+estradiol 3-sulphate|participates_in|Cytosolic sulfonation of small molecules|http://purl.obolibrary.org/obo/CHEBI_4866|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-156584
+SULT1E1|has gene product|sulfotransferase 1E1 (human)|http://www.ncbi.nlm.nih.gov/gene/6783|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P49888
+sulfotransferase 1E1 (human)|molecularly interacts with|PAP|http://purl.obolibrary.org/obo/PR_P49888|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_58343
+sulfotransferase 1E1 (human)|molecularly interacts with|PAPS(4-)|http://purl.obolibrary.org/obo/PR_P49888|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_58339
+DHEA-S|has functional parent|DHEA|http://purl.obolibrary.org/obo/CHEBI_16814|http://purl.obolibrary.org/obo/chebi#has_functional_parent|http://purl.obolibrary.org/obo/CHEBI_28689
+DHEA|interacts with|steroid 17-alpha-hydroxylase/17,20 lyase (human)|http://purl.obolibrary.org/obo/CHEBI_28689|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P05093
+steroid 17-alpha-hydroxylase/17,20 lyase (human)|molecularly interacts with|Androstenedione|http://purl.obolibrary.org/obo/PR_P05093|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_16422
+sulfotransferase 1A4 (human)|molecularly interacts with|PAPS(4-)|http://purl.obolibrary.org/obo/PR_P0DMN0|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_58339
+sulfotransferase 1A4 (human)|participates_in|Cytosolic sulfonation of small molecules|http://purl.obolibrary.org/obo/PR_P0DMN0|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-156584
+estrone sulphate|participates_in|Cytosolic sulfonation of small molecules|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-156584
+HSD17B2|has gene product|17-beta-hydroxysteroid dehydrogenase type 2 (human)|http://www.ncbi.nlm.nih.gov/gene/3294|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P37059
+17-beta-hydroxysteroid dehydrogenase type 2 (human)|molecularly interacts with|NADH dianion|http://purl.obolibrary.org/obo/PR_P37059|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_57945
+HSD17B3|has gene product|testosterone 17-beta-dehydrogenase 3 (human)|http://www.ncbi.nlm.nih.gov/gene/3293|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P37058
+testosterone 17-beta-dehydrogenase 3 (human)|molecularly interacts with|testosterone|http://purl.obolibrary.org/obo/PR_P37058|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_17347
+testosterone 17-beta-dehydrogenase 3 (human)|molecularly interacts with|NADPH tetraanion|http://purl.obolibrary.org/obo/PR_P37058|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_57783
+HSD17B3|participates_in|Androgen biosynthesis|http://www.ncbi.nlm.nih.gov/gene/3293|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-193048
+NADP(3-)|participates_in|Androgen biosynthesis|http://purl.obolibrary.org/obo/CHEBI_58349|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-193048
+17-beta-hydroxysteroid dehydrogenase type 6 (human)|molecularly interacts with|NAD anion|http://purl.obolibrary.org/obo/PR_O14756|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_57540
+17-beta-hydroxysteroid dehydrogenase type 6 (human)|molecularly interacts with|estrone|http://purl.obolibrary.org/obo/PR_O14756|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_17263
+HSD3B1|has gene product|3 beta-hydroxysteroid dehydrogenase/Delta 5-->4-isomerase type 1 (human)|http://www.ncbi.nlm.nih.gov/gene/3283|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P14060
+3 beta-hydroxysteroid dehydrogenase/Delta 5-->4-isomerase type 1 (human)|molecularly interacts with|Androstenedione|http://purl.obolibrary.org/obo/PR_P14060|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_16422
+ESR2|causes or contributes to condition|diffuse astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2100|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016686
+ESR1|causes or contributes to condition|diffuse astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2099|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016686
+ESR1|causes or contributes to condition|pilocytic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2099|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016691
+ESR2|causes or contributes to condition|pilocytic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2100|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016691
+3-oxo-5-alpha-steroid 4-dehydrogenase 1 (human)|molecularly interacts with|Androstenedione|http://purl.obolibrary.org/obo/PR_P18405|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_16422
+3-oxo-5-alpha-steroid 4-dehydrogenase 1 (human)|molecularly interacts with|testosterone|http://purl.obolibrary.org/obo/PR_P18405|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_17347
+SLCO1B1|has gene product|solute carrier organic anion transporter family member 1B1 (human)|http://www.ncbi.nlm.nih.gov/gene/10599|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9Y6L6
+estrone sulphate|interacts with|solute carrier organic anion transporter family member 1B1 (human)|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_Q9Y6L6
+SLCO1B1|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/10599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+DHEA-S|participates_in|Transport of organic anions|http://purl.obolibrary.org/obo/CHEBI_16814|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO1B1|participates_in|Bile acid and bile salt metabolism|http://www.ncbi.nlm.nih.gov/gene/10599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194068
+SLCO1A2|participates_in|Bile acid and bile salt metabolism|http://www.ncbi.nlm.nih.gov/gene/6579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194068
+SLCO1B3|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/28234|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO2B1|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/11309|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+valproic acid|interacts with|SLCO1B1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/10599
+valproic acid|interacts with|SLCO4A1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/28231
+SLCO1B1|participates_in|Transport of small molecules|http://www.ncbi.nlm.nih.gov/gene/10599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+SLCO4C1|participates_in|Transport of small molecules|http://www.ncbi.nlm.nih.gov/gene/353189|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+SLCO1B3|has gene product|solute carrier organic anion transporter family member 1B3 (human)|http://www.ncbi.nlm.nih.gov/gene/28234|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9NPD5
+estrone sulphate|interacts with|solute carrier organic anion transporter family member 1B3 (human)|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_Q9NPD5
+DHEA-S|interacts with|solute carrier organic anion transporter family member 1B3 (human)|http://purl.obolibrary.org/obo/CHEBI_16814|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_Q9NPD5
+aflatoxin B1|interacts with|SLCO1B3|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/28234
+aflatoxin B1|interacts with|SLCO1A2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/6579
+SLCO1B3|participates_in|Recycling of bile acids and salts|http://www.ncbi.nlm.nih.gov/gene/28234|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-159418
+SLCO1B1|participates_in|Recycling of bile acids and salts|http://www.ncbi.nlm.nih.gov/gene/10599|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-159418
+SLCO1B3|participates_in|Transport of vitamins, nucleosides, and related molecules|http://www.ncbi.nlm.nih.gov/gene/28234|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425397
+SLCO2B1|participates_in|Transport of vitamins, nucleosides, and related molecules|http://www.ncbi.nlm.nih.gov/gene/11309|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425397
+SLCO4A1|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/28231|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO1B3|participates_in|Transport of small molecules|http://www.ncbi.nlm.nih.gov/gene/28234|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+estrone sulphate|participates_in|Transport of organic anions|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO4A1|participates_in|Transport of small molecules|http://www.ncbi.nlm.nih.gov/gene/28231|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+SLCO4A1|participates_in|SLC-mediated transmembrane transport|http://www.ncbi.nlm.nih.gov/gene/28231|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425407
+SLCO2B1|participates_in|SLC-mediated transmembrane transport|http://www.ncbi.nlm.nih.gov/gene/11309|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425407
+SLCO4C1|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/353189|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO4A1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/28231|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SLCO1A2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/6579|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+DHEA-S|participates_in|Transport of vitamins, nucleosides, and related molecules|http://purl.obolibrary.org/obo/CHEBI_16814|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425397
+SLCO1A2|participates_in|Transport of organic anions|http://www.ncbi.nlm.nih.gov/gene/6579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-879518
+SLCO4C1|participates_in|Transport of vitamins, nucleosides, and related molecules|http://www.ncbi.nlm.nih.gov/gene/353189|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425397
+SLCO4C1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/353189|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+SLCO1A2|has gene product|solute carrier organic anion transporter family member 1A2 (human)|http://www.ncbi.nlm.nih.gov/gene/6579|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P46721
+estrone sulphate|interacts with|solute carrier organic anion transporter family member 1A2 (human)|http://purl.obolibrary.org/obo/CHEBI_17474|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P46721
+SLCO1A2|participates_in|Transport of vitamins, nucleosides, and related molecules|http://www.ncbi.nlm.nih.gov/gene/6579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-425397
+aflatoxin B1|interacts with|SLCO2B1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/11309

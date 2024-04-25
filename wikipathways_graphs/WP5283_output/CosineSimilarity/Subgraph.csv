@@ -1,0 +1,300 @@
+S|P|O|S_ID|P_ID|O_ID
+INOS|causes or contributes to condition|essential hypertension|http://www.ncbi.nlm.nih.gov/gene/4843|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001134
+NO|is substance that treats|essential hypertension|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0001134
+MMP8|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP13|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP10|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4319|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP13|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP9|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP23B|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/8510|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP19|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4327|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP11|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4320|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP17 (human)|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4326|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP10|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4319|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP24|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/10893|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP11|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4320|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP27|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/64066|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP12|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP11|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4320|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP19|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4327|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP2|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP1|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4312|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP9|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP2|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP11|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4320|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP12|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP9|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP1|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4312|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP10|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4319|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP25|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/64386|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP24|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/10893|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP9|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP19|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4327|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+PRKCH|participates_in|Signaling by GPCR|http://www.ncbi.nlm.nih.gov/gene/5583|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-372790
+PRKCG|participates_in|Signaling by GPCR|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-372790
+MMP2|causes or contributes to condition|Aortic rupture|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031649
+MMP9|causes or contributes to condition|Aortic rupture|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031649
+MMP7|causes or contributes to condition|Spontaneous abortion|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0005268
+MMP19|causes or contributes to condition|Spontaneous abortion|http://www.ncbi.nlm.nih.gov/gene/4327|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0005268
+MMP8|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP8|participates_in|Neutrophil degranulation|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6798695
+MMP25|participates_in|Neutrophil degranulation|http://www.ncbi.nlm.nih.gov/gene/64386|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6798695
+MMP15|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4324|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP25|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/64386|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP24|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/10893|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP8|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP17 (human)|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4326|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP8|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4317|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP14|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4323|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP11|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4320|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP10|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4319|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP21|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/118856|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP1|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4312|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP9|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4318|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+MMP21|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/118856|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+MMP24|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/10893|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP14|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4323|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP20|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/9313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+PRKCQ|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5588|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCG|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5582|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP1|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4312|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP14|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4323|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP2|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4313|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP20|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/9313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP20|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/9313|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP20|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/9313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP19|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4327|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP25|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/64386|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+aflatoxin B1|interacts with|MMP9|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4318
+aflatoxin B1|interacts with|MMP27|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/64066
+MMP2|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+MMP25|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/64386|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+MMP2|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP13|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP14|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4323|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP1|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4312|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP20|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/9313|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+MMP2|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4313|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+valproic acid|interacts with|MMP9|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4318
+valproic acid|interacts with|MMP17|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4326
+MMP2|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+valproic acid|interacts with|MMP2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4313
+valproic acid|interacts with|MMP11|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4320
+MMP13|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4322|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP12|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4321|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKD3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/23683|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCG|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKCB (human)|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKCE|participates_in|Signaling by GPCR|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-372790
+PRKCQ|participates_in|G alpha (q) signalling events|http://www.ncbi.nlm.nih.gov/gene/5588|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-416476
+PRKCE|participates_in|G alpha (q) signalling events|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-416476
+valproic acid|interacts with|PRKCZ|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5590
+valproic acid|interacts with|PRKD3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/23683
+PRKCD|participates_in|DAG and IP3 signaling|http://www.ncbi.nlm.nih.gov/gene/5580|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1489509
+PRKCA|participates_in|DAG and IP3 signaling|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1489509
+PRKCD|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5580|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCD|participates_in|Ca-dependent events|http://www.ncbi.nlm.nih.gov/gene/5580|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-111996
+PRKCG|participates_in|Ca-dependent events|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-111996
+PRKCD|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5580|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PRKCE|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PRKCH|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5583|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCI|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5584|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCZ|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5590|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PRKCB (human)|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PRKCA|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PRKCZ|participates_in|Platelet activation, signaling and aggregation|http://www.ncbi.nlm.nih.gov/gene/5590|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-76002
+PRKCG|participates_in|Platelet activation, signaling and aggregation|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-76002
+PRKCQ|participates_in|G alpha (z) signalling events|http://www.ncbi.nlm.nih.gov/gene/5588|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-418597
+PRKCA|participates_in|G alpha (z) signalling events|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-418597
+PRKD3|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/23683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PRKCA|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PRKCB (human)|participates_in|G alpha (z) signalling events|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-418597
+PRKCH|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5583|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKCA|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+Glucose|is substance that treats|autoimmune thyroid disease|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0005623
+NO|is substance that treats|autoimmune thyroid disease|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0005623
+AGE|subClassOf|carbohydrate derivative|http://purl.obolibrary.org/obo/CHEBI_84123|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_63299
+aminoglycoside|subClassOf|carbohydrate derivative|http://purl.obolibrary.org/obo/CHEBI_47779|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_63299
+aminoglycoside|is substance that treats|Hearing impairment|http://purl.obolibrary.org/obo/CHEBI_47779|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000365
+BDNF (human)|causes or contributes to condition|Hearing impairment|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000365
+aminoglycoside|molecularly interacts with|nuclear outer membrane-endoplasmic reticulum membrane network|http://purl.obolibrary.org/obo/CHEBI_47779|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0042175
+valproic acid|molecularly interacts with|nuclear outer membrane-endoplasmic reticulum membrane network|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0042175
+valproic acid|interacts with|TKR|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8277
+aminoglycoside|molecularly interacts with|response to antibiotic|http://purl.obolibrary.org/obo/CHEBI_47779|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0046677
+NO|molecularly interacts with|response to antibiotic|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0046677
+Nav1.8|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/6336|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+BDNF (human)|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/627|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+PRKCI|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5584|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PRKCE|participates_in|Platelet activation, signaling and aggregation|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-76002
+PRKCB (human)|participates_in|Platelet activation, signaling and aggregation|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-76002
+PRKCE|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PRKCA|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PRKCE|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5581|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCE|participates_in|PLC-gamma1 signalling|http://www.ncbi.nlm.nih.gov/gene/5581|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167021
+PRKCG|participates_in|PLC-gamma1 signalling|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167021
+protein kinase C gamma type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_P05129|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C gamma type (human)|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://purl.obolibrary.org/obo/PR_P05129|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+K+|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://purl.obolibrary.org/obo/CHEBI_29103|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+PKC|subClassOf|protein serine/threonine kinase activity|http://purl.obolibrary.org/obo/GO_0004697|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/GO_0004674
+valproic acid|molecularly interacts with|protein serine/threonine kinase activity|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0004674
+valproic acid|interacts with|BDNF|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/627
+PRKCG|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5582|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PRKCA|participates_in|Ca-dependent events|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-111996
+PRKCD|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5580|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PRKCZ|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5590|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKCH|participates_in|G alpha (q) signalling events|http://www.ncbi.nlm.nih.gov/gene/5583|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-416476
+NMDA|participates_in|Metabolism of proteins|http://purl.obolibrary.org/obo/CHEBI_31882|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+Ca2+|participates_in|Metabolism of proteins|http://purl.obolibrary.org/obo/CHEBI_29108|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+benzo[a]pyrene|interacts with|MMP19|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4327
+benzo[a]pyrene|interacts with|MMP27|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/64066
+MMP17 (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4326|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+PRKCQ|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5588|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+MMP17 (human)|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4326|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP13|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4322|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+MMP14|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4323|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+PRKCZ|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/5590|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+PRKCI|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/5584|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+MMP14|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4323|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+NO|is substance that treats|Status epilepticus without prominent motor symptoms|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0031475
+BDNF (human)|causes or contributes to condition|Status epilepticus without prominent motor symptoms|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031475
+PRKCQ|participates_in|GPCR downstream signalling|http://www.ncbi.nlm.nih.gov/gene/5588|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-388396
+PRKCD|participates_in|GPCR downstream signalling|http://www.ncbi.nlm.nih.gov/gene/5580|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-388396
+MMP7|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP16|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4325|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+MMP3|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/4314|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+valproic acid|interacts with|MMP14|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4323
+MMP12|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP16|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4325|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+MMP7|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4316|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+NAD(+)|subClassOf|NAD|http://purl.obolibrary.org/obo/CHEBI_15846|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_13389
+NAD(+)|interacts with|protein DEK (human)|http://purl.obolibrary.org/obo/CHEBI_15846|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P35659
+Fructose|interacts with|protein DEK (human)|http://purl.obolibrary.org/obo/CHEBI_28757|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P35659
+MMP15|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP3|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+Glut-1|participates_in|Cellular hexose transport|http://www.ncbi.nlm.nih.gov/gene/6513|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-189200
+Glut-3|participates_in|Cellular hexose transport|http://www.ncbi.nlm.nih.gov/gene/6515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-189200
+ROS|participates_in|Cellular response to chemical stress|http://purl.obolibrary.org/obo/CHEBI_26523|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-9711123
+NO|participates_in|Cellular response to chemical stress|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-9711123
+MMP7|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP16|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4325|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP7|participates_in|Collagen degradation|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1442490
+MMP28|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/79148|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP12|causes or contributes to condition|Spontaneous abortion|http://www.ncbi.nlm.nih.gov/gene/4321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0005268
+O2- radical|subClassOf|ROS|http://purl.obolibrary.org/obo/CHEBI_61073|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_26523
+e-|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_10545|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+solute carrier family 2, facilitated glucose transporter member 1 (human)|participates_in|Metabolism|http://purl.obolibrary.org/obo/PR_P11166|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+ATP|interacts with|solute carrier family 2, facilitated glucose transporter member 1 (human)|http://purl.obolibrary.org/obo/CHEBI_15422|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P11166
+MMP15|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+protein kinase C beta type (human)|molecularly interacts with|Ca2+|http://purl.obolibrary.org/obo/PR_P05771|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_29108
+protein kinase C beta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_P05771|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+TRPV1|participates_in|Transport of small molecules|http://www.ncbi.nlm.nih.gov/gene/7442|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+Ca2+|participates_in|Transport of small molecules|http://purl.obolibrary.org/obo/CHEBI_29108|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-382551
+TRPA1|participates_in|TRP channels|http://www.ncbi.nlm.nih.gov/gene/8989|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3295583
+Ca2+|participates_in|TRP channels|http://purl.obolibrary.org/obo/CHEBI_29108|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3295583
+MMP7|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+anthocyanin cation|subClassOf|carbohydrate derivative|http://purl.obolibrary.org/obo/CHEBI_35218|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_63299
+anthocyanin cation|is substance that treats|Hyperglycemia|http://purl.obolibrary.org/obo/CHEBI_35218|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0003074
+AGER (human)|causes or contributes to condition|Hyperglycemia|http://www.ncbi.nlm.nih.gov/gene/177|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003074
+Glut-3|has gene product|solute carrier family 2, facilitated glucose transporter member 3 (human)|http://www.ncbi.nlm.nih.gov/gene/6515|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P11169
+Glucose|interacts with|solute carrier family 2, facilitated glucose transporter member 3 (human)|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P11169
+Glucose|is substance that treats|Focal impaired awareness seizure|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002384
+ATP|is substance that treats|Focal impaired awareness seizure|http://purl.obolibrary.org/obo/CHEBI_15422|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002384
+"Sorbitol 
+dehydrogenase"|participates_in|Fructose biosynthesis|http://www.ncbi.nlm.nih.gov/gene/6652|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5652227
+NADH(2-)|participates_in|Fructose biosynthesis|http://purl.obolibrary.org/obo/CHEBI_57945|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5652227
+NADH(2-)|is conjugate base of|NADH|http://purl.obolibrary.org/obo/CHEBI_57945|http://purl.obolibrary.org/obo/chebi#is_conjugate_base_of|http://purl.obolibrary.org/obo/CHEBI_16908
+Fructose|molecularly interacts with|regulation of molecular function|http://purl.obolibrary.org/obo/CHEBI_28757|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0065009
+carbohydrate|molecularly interacts with|regulation of molecular function|http://purl.obolibrary.org/obo/CHEBI_16646|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0065009
+carbohydrate derivative|has functional parent|carbohydrate|http://purl.obolibrary.org/obo/CHEBI_63299|http://purl.obolibrary.org/obo/chebi#has_functional_parent|http://purl.obolibrary.org/obo/CHEBI_16646
+NADPH|subClassOf|NADP|http://purl.obolibrary.org/obo/CHEBI_16474|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_25523
+Glut-1|has gene product|solute carrier family 2, facilitated glucose transporter member 1 (human)|http://www.ncbi.nlm.nih.gov/gene/6513|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P11166
+Glucose|interacts with|solute carrier family 2, facilitated glucose transporter member 1 (human)|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P11166
+N-glycosyl compound|subClassOf|carbohydrate derivative|http://purl.obolibrary.org/obo/CHEBI_21731|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_63299
+uracil octosyl acid 5'-phosphate|subClassOf|N-glycosyl compound|http://purl.obolibrary.org/obo/CHEBI_133866|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_21731
+uracil octosyl acid 5'-phosphate|subClassOf|monoalkyl phosphate|http://purl.obolibrary.org/obo/CHEBI_133866|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_25381
+methyl dihydrogen phosphate|subClassOf|monoalkyl phosphate|http://purl.obolibrary.org/obo/CHEBI_340824|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_25381
+MMP16|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4325|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+PRKCI|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5584|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKCB (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+MMP3|participates_in|Assembly of collagen fibrils and other multimeric structures|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2022090
+MMP13|participates_in|Assembly of collagen fibrils and other multimeric structures|http://www.ncbi.nlm.nih.gov/gene/4322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2022090
+Glucose|interacts with|proteasome subunit beta type-5 (human)|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P28074
+proteasome subunit beta type-5 (human)|participates_in|Cellular responses to stimuli|http://purl.obolibrary.org/obo/PR_P28074|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8953897
+e-|participates_in|Cellular responses to stimuli|http://purl.obolibrary.org/obo/CHEBI_10545|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8953897
+Glucose|molecularly interacts with|biosynthetic process|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0009058
+carbohydrate|molecularly interacts with|biosynthetic process|http://purl.obolibrary.org/obo/CHEBI_16646|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0009058
+protein kinase C beta type (human)|has_gene_template|PRKCB|http://purl.obolibrary.org/obo/PR_P05771|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5579
+protein kinase C alpha type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_P17252|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C alpha type (human)|has_gene_template|PRKCA|http://purl.obolibrary.org/obo/PR_P17252|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5578
+serine/threonine-protein kinase D3 (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_O94806|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+serine/threonine-protein kinase D3 (human)|has_gene_template|PRKD3|http://purl.obolibrary.org/obo/PR_O94806|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/23683
+protein kinase C gamma type (human)|has_gene_template|PRKCG|http://purl.obolibrary.org/obo/PR_P05129|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5582
+protein kinase C iota type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_P41743|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C iota type (human)|has_gene_template|PRKCI|http://purl.obolibrary.org/obo/PR_P41743|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5584
+protein kinase C eta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_P24723|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C eta type (human)|has_gene_template|PRKCH|http://purl.obolibrary.org/obo/PR_P24723|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5583
+protein kinase C delta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q05655|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C delta type (human)|has_gene_template|PRKCD|http://purl.obolibrary.org/obo/PR_Q05655|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5580
+protein kinase C theta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q04759|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C theta type (human)|has_gene_template|PRKCQ|http://purl.obolibrary.org/obo/PR_Q04759|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5588
+protein kinase C epsilon type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q02156|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C epsilon type (human)|has_gene_template|PRKCE|http://purl.obolibrary.org/obo/PR_Q02156|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5581
+protein kinase C zeta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q05513|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C zeta type (human)|has_gene_template|PRKCZ|http://purl.obolibrary.org/obo/PR_Q05513|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/5590
+valproic acid|interacts with|MMP23B|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8510
+valproic acid|interacts with|MMP21|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/118856
+MMP3|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+MMP8|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+aflatoxin B1|interacts with|MMP15|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4324
+aflatoxin B1|interacts with|MMP16|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4325
+e-|participates_in|DNA Double Strand Break Response|http://purl.obolibrary.org/obo/CHEBI_10545|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5693606
+ROS|participates_in|DNA Double Strand Break Response|http://purl.obolibrary.org/obo/CHEBI_26523|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5693606
+valproic acid|interacts with|MMP15|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4324
+NO|molecularly interacts with|protein binding|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0005515
+asparagine--tRNA ligase, cytoplasmic (human)|has function|protein binding|http://purl.obolibrary.org/obo/PR_O43776|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005515
+MMP3|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4314|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP9|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/4318|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+MMP3|participates_in|Collagen formation|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474290
+MMP20|participates_in|Collagen formation|http://www.ncbi.nlm.nih.gov/gene/9313|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474290
+MMP3|participates_in|Degradation of the extracellular matrix|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474228
+Glucose|is substance that treats|lactic acidosis|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0006040
+valproic acid|is substance that treats|lactic acidosis|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0006040
+MMP7|participates_in|Collagen formation|http://www.ncbi.nlm.nih.gov/gene/4316|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474290
+MMP9|participates_in|Collagen formation|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474290
+MMP3|causes or contributes to condition|diffuse astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016686
+MMP9|causes or contributes to condition|diffuse astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4318|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016686
+MMP25|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/64386|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+PRKCA|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PRKCB (human)|participates_in|GPCR downstream signalling|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-388396
+Glucose|interacts with|solute carrier family 2, facilitated glucose transporter member 7 (human)|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_Q6PXP3
+Fructose|interacts with|solute carrier family 2, facilitated glucose transporter member 7 (human)|http://purl.obolibrary.org/obo/CHEBI_28757|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_Q6PXP3
+MMP3|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+MMP1|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/4312|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+MMP15|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+PRKCA|participates_in|Glutamate binding, activation of AMPA receptors and synaptic plasticity|http://www.ncbi.nlm.nih.gov/gene/5578|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-399721
+PRKCB (human)|participates_in|Glutamate binding, activation of AMPA receptors and synaptic plasticity|http://www.ncbi.nlm.nih.gov/gene/5579|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-399721
+MMP15|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+PRKCB (human)|subClassOf|protein_coding_gene|http://www.ncbi.nlm.nih.gov/gene/5579|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0001217
+Nav1.6|causes or contributes to condition|Status epilepticus|http://www.ncbi.nlm.nih.gov/gene/6334|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002133
+BDNF (human)|causes or contributes to condition|Status epilepticus|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002133
+MMP3|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/4314|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+MMP8|participates_in|Activation of Matrix Metalloproteinases|http://www.ncbi.nlm.nih.gov/gene/4317|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1592389
+tubulin--tyrosine ligase (human)|molecularly interacts with|K+|http://purl.obolibrary.org/obo/PR_Q8NG68|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_29103
+tubulin--tyrosine ligase (human)|participates_in|Metabolism of proteins|http://purl.obolibrary.org/obo/PR_Q8NG68|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392499
+pyruvate kinase PKLR (human)|molecularly interacts with|K+|http://purl.obolibrary.org/obo/PR_P30613|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/CHEBI_29103
+pyruvate kinase PKLR (human)|molecularly interacts with|transketolase-like protein 1 (human)|http://purl.obolibrary.org/obo/PR_P30613|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_P51854
+transketolase-like protein 1 (human)|has_gene_template|TKR|http://purl.obolibrary.org/obo/PR_P51854|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/8277
+K+|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_29103|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+NO|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+valproic acid|interacts with|pyruvate kinase PKLR (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P30613
+NMDA|is substance that treats|Neurodegeneration|http://purl.obolibrary.org/obo/CHEBI_31882|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002180
+valproic acid|is substance that treats|Neurodegeneration|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002180
+BDNF (human)|causes or contributes to condition|Neurodegeneration|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002180
+valproic acid|molecularly interacts with|response to oxidative stress|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0006979
+NO|molecularly interacts with|response to oxidative stress|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0006979
+NO|is substance that treats|Neurodegeneration|http://purl.obolibrary.org/obo/CHEBI_16480|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002180
+Glucose|molecularly interacts with|positive regulation of locomotion|http://purl.obolibrary.org/obo/CHEBI_17234|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0040017
+hydrogen peroxide|molecularly interacts with|positive regulation of locomotion|http://purl.obolibrary.org/obo/CHEBI_16240|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0040017
+hydrogen peroxide|subClassOf|ROS|http://purl.obolibrary.org/obo/CHEBI_16240|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_26523
+Nav1.7|subClassOf|gene|http://www.ncbi.nlm.nih.gov/gene/6335|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/SO_0000704
+BDNF (human)|causes or contributes to condition|Focal impaired awareness seizure|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002384

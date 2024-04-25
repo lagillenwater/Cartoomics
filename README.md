@@ -1,6 +1,6 @@
 # Cartoomics Figure Generation 
 
-This Cartoomics repository consists of a workflow written in python that can generate an interaction network using a given knowledge graph from a user derived description of a cartoon image. The goal of this workflow is to generate complete and detailed pathway diagrams using the vast information contained within a knowledge graph.
+This Cartoomics repository consists of a workflow written in python that can generate an interaction network using a given knowledge graph from a automated or user derived description of a cartoon image. The goal of this workflow is to generate complete and detailed pathway diagrams using the vast information contained within a knowledge graph.
 
 ## Getting Started
 
@@ -27,6 +27,10 @@ py4cytoscape>=1.3.0
 csrgraph>=0.1.28
 nodevectors>=0.1.23
 igraph>=0.9.10
+bioservices>=1.11.2
+fiona>=1.9.5
+geopandas>=0.14.1
+shapely>=2.0.2
 ```
 
 ## Installation
@@ -76,17 +80,27 @@ Below is an example of running this with the PheKnowLator knowledge graph. To sp
 ```
 --knowledge-graph kg-covid19
 ```
-  
+
+Two different input edgelist types are supported:
+1. annotated_diagram: This is user derived, based on a cartoon image, or automatically generated from a Wikipathways diagram (described in more detail below)
+2. pathway_ocr: This is a automatically derived list of entities from within a Wikipathways diagram based on the Pathway Diagram Optical Character Recognition method (cite). When specified, a PFOCR url must be input either at execution time or later, if forgotten. 
+
+Below is an example of running with an annotated diagram. To specify the pathway_ocr input type, update the following command:
+
+```
+--input-type pathway_ocr --pfocr-url <url>
+```
+
 ### Command Line Argument: subgraph generation 
   
 To run the script, execute the following command once the input directory is prepared:
   
 ```
-python creating_subgraph_from_KG.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl
+python creating_subgraph_from_KG.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl --input-type annotated_diagram
 ```
 
 **Note that the output-dir should be in quotes**
- 
+
   
 ### Command Line Argument: evaluation files
   
@@ -95,9 +109,6 @@ To run the evaluation script, execute the following command once the subgraph ge
 ```
 python evaluate_all_subgraphs.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl
 ```
-
-**Note that the output-dir should be in quotes, and all subgraph files (described below) must be generated**
- 
 
 ## Expected Outputs
   
@@ -196,12 +207,163 @@ cs,pdp
 2,0
 ```
   
+## Wikipathways Diagram Input
+
+The following details how to run the Cartoomics algorithm over a set of Wikipathways Diagrams in an automated fashion. This set of command line arguments will enable one to compare the output of pathway diagrams from Wikipathways to those generated with the cartoomics algorithms described above. 
+
+### Command Line Arguments: Wikipathways Diagram download
+
+The wikipathway_converter script which will download a single or set of pathway diagram(s) specified in a text file or via the command line to an edgelist. Next, the entites represented will be automatically indexed to nodes in the given KG. Indexing will be done using the Wikipathways diagram node metadata file, exact match to a node label, exact match to a node synonym, or partial match to the node label or synonyms.
+
+
+The user can provide the following input types to specify the Wikipathways Diagrams to download and convert:
+1. Wikipathway ID(s): a list of one or more Wikipathways ids: e.g., '['WP5372']'
+2. PFOCR url(s): a list of one or more PFOCR urls, e.g. '['https://pfocr.wikipathways.org/figures/PMC6943888__40035_2019_179_Fig1_HTML.html']'
+3. PFOCR_urls_file: a txt file containing one or more PFOCR urls. The PFOCR_urls_list.txt file can be used for this.
+
+Below is an example of running this with the PheKnowLator knowledge graph. The annotated_diagram input type should always be used for this workflow.
+
+```
+python wikipathways_converter.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True
+```
+
+By default, if no nodes are found with the Wikipathways diagram node metadata file, exact match to a node label, or exact match to a node synonym, a partial match to the node label or synonyms will be used to index. When skipping is enabled, the node will be skipped and no triples with that node will be included in the subgraph. To enable skipping, udpate the following parameter:
+
+```
+python wikipathways_converter.py --wikipathway WIKIPATHWAY --input-type annotated_diagram --enable-skipping True
+```
+
+### Expected Outputs
+  
+#### Subgraph Files
+  
+The wikipathways_converter.py script will always generate the following files:
+  
+#### Wikipathways downloaded files
+
+The following files will exist per Wikipathay diagram in a subfolder named by the Wikipathways ID, e.g. /wikipathways_graphs/<WP_ID>
+
+1. WP4532_datanodeDF.csv: metadata file used to index nodes based on database, databaseID column
+2. WP4532_edgeList.csv: edgelist used for comparison to original Wikipathways diagram
+3. WP4532_graph.graphml: graphml file
+4. WP4532_interactDF.csv: image description
+  
+#### Wikipathways edgelist in Cartoomics format
+
+The following file will exist per Wikipathway diagram named by the Wikipathways ID, e.g., /wikipathways_graphs/annotated_diagram/<WP_ID>_example_input.csv
+
+```
+source|target
+TCTEX1D2|WDR35
+TCTEX1D2|IFT122
+```
+
+#### Wikipathways annotated edgelist to KG nodes
+
+The following file will exist per Wikipathway diagram in a subfolder named by the Wikipathways ID, e.g. /wikipathways_graphs/<WP_ID>_output/_annotated_diagram_Input_Nodes_.csv
+
+```
+source|target|source_label|target_label|source_id|target_id
+TCTEX1D2|WDR35|TCTEX1D2|WDR35|http://www.ncbi.nlm.nih.gov/gene/255758|http://www.ncbi.nlm.nih.gov/gene/57539
+TCTEX1D2|IFT122|TCTEX1D2|IFT122|http://www.ncbi.nlm.nih.gov/gene/255758|http://www.ncbi.nlm.nih.gov/gene/55764
+```
+
+### Command Line Arguments: Wikipathways subgraph generation
+
+This script can be run per Wikipathways diagram. To run the script for a Wikipathways diagram, execute the following command once the input directory is prepared:
+  
+```
+'python creating_subgraph_from_KG.py --input-dir ./wikipathways_graphs --output-dir ./wikipathways_graphs/<WP_ID>_output --knowledge-graph pkl --input-type annotated_diagram --input-substring <WP_ID>
+```
+
+**Note that the output-dir should be in quotes**
+
+The outputs will be the same as stated above in subgraph generation, within the /<WP_ID>_output subfolder.
+
+### Command Line Arguments: compare subgraphs
+
+
+The wikipathways_graph_evaluations script will output graph similarity metrics and node/edge evaluation metrics. The script will calculate the following graph similarity metrics over the original edgelist and the subgraph created for all pathways specified:
+- Jaccard Similarity
+- Overlap Coefficient
+- Graph Edit Distance 
+
+
+Additionally, the script will output the following node and edge metrics for all pathways specified:
+- % of nodes in each ontology
+- % of edge types
+
+To run the wikipathways_graph_evaluations script, specify the wikipathway diagrams as a list e.g., '['WP5372']':
+
+```
+python wikipathways_graph_evaluations.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways WIKIPATHWAYS --enable-skipping True
+```
+
+**Note that all subgraph files (described above) must be generated**
+ 
+### Expected Outputs
+
+
+All of the graph similarity files will be output in a graph_similarity subfolder within the wikipathways_graphs subfolder './wikipathways_graphs/graph_similarity'.
+  
+#### Graph Similarity Metrics 
+  
+A .csv file with the Jaccard and Overlap metrics per Wikipathways diagram per algorithm.
+
+```
+Algorithm,Pathway_ID,Jaccard,Overlap
+CosineSimilarity,WP554,0.33,0.66
+CosineSimilarity,WP5373,0.25,0.66 
+PDP,WP554,0.25,0.33
+PDP,WP5373,0.33,0.33
+```
+  
+### Jaccard and Overlap Histogram
+  
+A .png file of all Jaccard and Overlap scores per Wikipathways diagram per algorithm. 
+
+
+### Command Line Arguments: Wikipathways Literature Comparison
+
+The wikipathways_literature_comparison_evaluations script will compare each subgraph specified to a given set of one or more guiding terms extracted from literature using cosine similarity. The intermediate nodes in all subgraphs of the specified algorithms will be compared to each term specified after indexing. 
+
+The following file must exist, where WP_ID corresponds to the wikipathway(s) specified:
+
+```
+~/wikipathways_graphs/<WP_ID>_Literature_Comparison_Terms.csv
+```
+
+To run the wikipathways_literature_comparison_evaluations script, specify the wikipathway diagrams as a list e.g., '['WP5372']':
+
+```
+python wikipathways_literature_comparison_evaluations.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways WIKIPATHWAYS --enable-skipping True
+```
+
+### Expected Outputs
+
+All of the literature comparison files will be output in a literature_comparison subfolder within the wikipathways_graphs subfolder './wikipathways_graphs/literature_comparison'.
+
+**Note that all subgraph files (described above in Wikipathways subgraph generation) will be generated**
+  
+#### Literature Comparison Metrics
+
+All of the literature comparison files will be output in a literature_comparison subfolder within the wikipathways_graphs subfolder './wikipathways_graphs/literature_comparison'.
+
+A .csv file of the average Cosine Similarity scores per term, per subgraph, per algorithm specified will be output.
+
+```
+Term,Average_Cosine_Similarity,Algorithm,Pathway_ID
+Alzheimer's disease,-0.05,CosineSimilarity,WP4565
+Alzheimer's disease,-0.02,PDP,WP4565
+```
+
 ## Output Structure
   
 ```
 ├── Inputs
 │   ├── annotated_diagram
 │   │   └── _example_input.csv
+│   ├── GuidingTerm.csv
 │   ├── experimental_data
 │   ├── kg-covid19
 │   │   ├── merged-kg_Triples_Integer_Identifier_Map.tsv
@@ -238,7 +400,12 @@ cs,pdp
     │   ├── Subgraph.csv
     │   ├── Subgraph_Visualization.png
     │   └── Subgraph_attributes.noa
-    ├── annotated_diagram_Input_Nodes_.csv
+    ├── Guiding_Term_<specified_term>
+    │   ├── Subgraph.csv
+    │   ├── Subgraph_Visualization.png
+    │   └── Subgraph_attributes.noa
+    ├── _annotated_diagram_Input_Nodes_.csv
+    ├── _guiding_term_Input_Nodes_.csv
     ├── experimental_data_Input_Nodes_.csv
     └── pathway_ocr_Input_Nodes_.csv
 ```
