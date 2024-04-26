@@ -4,7 +4,9 @@
 if (!requireNamespace("ComplexHeatmap", quietly=TRUE)) {
     if (!requireNamespace("BiocManager", quietly=TRUE)) {
         install.packages("BiocManager", repos = "http://cran.us.r-project.org")
-        }
+    }
+    BiocManager::install("S4Vectors")
+    BiocManager::isntall("IRanges")
     BiocManager::install("ComplexHeatmap")
 }
 
@@ -145,5 +147,6 @@ w_idf_weighted <- ner_sim %>%
     mutate(Average_Cosine_Similarity = Average_Cosine_Similarity * IDF)
 
 pdfOutWrapper(w_idf_weighted, "IDF filtered   IDF weighted")
+
 
 
