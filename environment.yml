@@ -1,8 +1,8 @@
 name: "Cartoomics"
 channels:
   - conda-forge
-  - bioconda
 dependencies:
+  - libgcc-devel_linux-64
   - r-base=4.3.3
   - r-tidyverse
   - r-optparse
