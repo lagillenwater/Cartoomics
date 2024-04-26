@@ -13,6 +13,8 @@ import glob
 import sys
 import logging.config
 from pythonjsonlogger import jsonlogger
+import networkx as nx
+import igraph
 
 # logging
 log_dir, log, log_config = 'builds/logs', 'cartoomics_log.log', glob.glob('**/logging.ini', recursive=True)
@@ -24,7 +26,7 @@ except FileNotFoundError:
 logger = logging.getLogger(__name__)
 logging.config.fileConfig(log_config[0], disable_existing_loggers=False, defaults={'log_file': log_dir + '/' + log})
 
-def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type):
+def subgraph_shortest_path(input_nodes_df,graph,weights,search_type,kg_type):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -33,7 +35,7 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
     for i in range(len(input_nodes_df)):
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
-        shortest_path_df = find_shortest_path(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type)
+        shortest_path_df = find_shortest_path(start_node,end_node,graph,weights,search_type,kg_type,input_nodes_df)
         all_paths.append(shortest_path_df)
 
     df = pd.concat(all_paths)
@@ -43,7 +45,7 @@ def subgraph_shortest_path(input_nodes_df,graph,g_nodes,labels_all,triples_df,we
 
     return df
 
-def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,manually_chosen_uris):
+def subgraph_shortest_path_pattern(input_nodes_df,graph,weights,search_type,kg_type,manually_chosen_uris):
 
     input_nodes_df.columns = input_nodes_df.columns.str.lower()
 
@@ -52,7 +54,7 @@ def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,tripl
     for i in range(len(input_nodes_df)):
         start_node = input_nodes_df.iloc[i].loc['source']
         end_node = input_nodes_df.iloc[i].loc['target']
-        shortest_path_df,manually_chosen_uris = find_shortest_path_pattern(start_node,end_node,graph,g_nodes,labels_all,triples_df,weights,search_type,kg_type,input_nodes_df,manually_chosen_uris)
+        shortest_path_df,manually_chosen_uris = find_shortest_path_pattern(start_node,end_node,graph,weights,search_type,kg_type,input_nodes_df,manually_chosen_uris)
         if len(shortest_path_df) > 0:
             all_paths.append(shortest_path_df)
 
@@ -67,7 +69,7 @@ def subgraph_shortest_path_pattern(input_nodes_df,graph,g_nodes,labels_all,tripl
 
     return df,manually_chosen_uris
 
-# Have user define weights to upweight
+# Have user define weights to upweight -igraph type only
 def user_defined_edge_weights(graph, triples_df,kg_type ):
     if kg_type == 'pkl':
         edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
@@ -86,7 +88,7 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
         to_weight = graph.labels_all[graph.labels_all['label'].isin(to_weight)]['entity_uri'].tolist()
 
     if kg_type == 'kg-covid19':
-        edges = set(list(graph.igraph.es['predicate']))
+        edges = set(list(graph.graph_object.es['predicate']))
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
@@ -100,11 +102,11 @@ def user_defined_edge_weights(graph, triples_df,kg_type ):
             else:
                 to_weight.append(user_input)
 
-    edges= graph.igraph.es['predicate']
-    graph.igraph.es['weight'] = [10 if x in to_weight else 1 for x in edges]
+    edges= graph.graph_object.es['predicate']
+    graph.graph_object.es['weight'] = [10 if x in to_weight else 1 for x in edges]
     return(graph)
 
-# Have user define weights to upweight
+# Have user define weights to upweight - igraph type only
 def user_defined_edge_exclusion(graph,kg_type ):
     if kg_type == 'pkl':
         edges = graph.labels_all[graph.labels_all['entity_type'] == 'RELATIONS'].label.tolist()
@@ -123,7 +125,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
         to_drop = graph.labels_all[graph.labels_all['label'].isin(to_drop)]['entity_uri'].tolist()
         
     if kg_type == 'kg-covid19':
-        edges = set(list(graph.igraph.es['predicate']))
+        edges = set(list(graph.graph_object.es['predicate']))
         print("### Unique Edges in Knowledge Graph ###")
         print('\n'.join(edges))
         still_adding = True
@@ -137,7 +139,7 @@ def user_defined_edge_exclusion(graph,kg_type ):
             else:
                 to_drop.append(user_input)
     for edge in to_drop:
-        graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
+        graph.graph_object.delete_edges(graph.graph_object.es.select(predicate = edge))
     return(graph)
 
 
@@ -148,26 +150,45 @@ def automatic_defined_edge_exclusion(graph,kg_type):
     if kg_type != 'pkl':
         to_drop = ['biolink:category','biolink:in_taxon']
     for edge in to_drop:
-        graph.igraph.delete_edges(graph.igraph.es.select(predicate = edge))
-    return(graph)
+        # Remove from graph object
+        if isinstance(graph.graph_object, igraph.Graph):
+            graph.graph_object.delete_edges(graph.graph_object.es.select(predicate = edge))
+        if isinstance(graph.graph_object, nx.Graph):
+            edges_to_delete = [(source, target) for source, target, data in graph.graph_object.edges(data=True) if data.get("predicate") == edge]
+            graph.graph_object.remove_edges_from(edges_to_delete)
+        # Remove from df
+        graph.edgelist = graph.edgelist[graph.edgelist["predicate"] != edge]
+
+    return graph
 
 # Nodes to remove
 def automatic_defined_node_exclusion(graph,kg_type):
     if kg_type == 'pkl':
         to_drop = list(PHEKNOWLATOR_BROAD_NODES_DICT.values())
     for uri in to_drop:
-        # Get the indices of vertices with the label 'protein_coding_gene'
-        indices_to_delete = [v.index for v in graph.igraph.vs if v["name"] == uri]
-        # Delete the vertices by their indices
+        # Remove from graph object
+        # Get the indices of vertices with corresponding label
+        if isinstance(graph.graph_object, igraph.Graph):
+            indices_to_delete = [v.index for v in graph.graph_object.vs if v["name"] == uri]
+        if isinstance(graph.graph_object, nx.Graph):
+            indices_to_delete = [node for node, data in graph.graph_object.nodes(data=True) if node == uri]
+        # Remove the vertices by their indices
         try:
-            graph.igraph.delete_vertices(indices_to_delete)
+            if isinstance(graph.graph_object, igraph.Graph):
+                graph.graph_object.delete_vertices(indices_to_delete)
+            if isinstance(graph.graph_object, nx.Graph):
+                graph.graph_object.remove_nodes_from(indices_to_delete)
         except KeyError:
             print('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
             logging.error('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
             sys.exit(1)
-    return(graph)
+        # Remove from dfs
+        graph.labels_all = graph.labels_all[graph.labels_all["entity_uri"] != uri]
+        graph.edgelist = graph.edgelist[(graph.edgelist["subject"] != uri) | (graph.edgelist["object"] != uri)]
+    print(nx.number_of_nodes(graph.graph_object))
+    return graph
  
-def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_graph, find_graph_similarity = False,existing_path_nodes = 'none'):
+def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type, find_graph_similarity = False,existing_path_nodes = 'none'):
 
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
@@ -191,7 +212,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
         else:
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph,pair_path_nodes)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,pair_path_nodes)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -214,7 +235,7 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,g_nodes,labels_all,triples
 
     return df,all_paths_cs_values,all_path_nodes  #all_chosen_path_nodes
 
-def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,output_dir, kg_type, networkx_graph, existing_path_nodes = 'none'):
+def subgraph_prioritized_path_pdp(input_nodes_df,graph,weights,search_type,pdp_weight,output_dir, kg_type, networkx_graph, existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -238,7 +259,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,g_nodes,labels_all,triple
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,pdp_weight,kg_type, networkx_graph,pair_path_nodes)
+        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,weights,search_type,pdp_weight,kg_type,pair_path_nodes)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -276,7 +297,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
         else:
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,g_nodes,labels_all,triples_df,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph,pair_path_nodes,term_row)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,networkx_graph,pair_path_nodes,term_row)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]

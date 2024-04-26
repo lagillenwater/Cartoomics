@@ -94,4 +94,7 @@ PHEKNOWLATOR_BROAD_NODES_DICT = {
     'Metabolism of proteins': 'https://reactome.org/content/detail/R-HSA-392499',
     'tag': 'http://purl.obolibrary.org/obo/SO_0000324',
     'engineered': 'http://purl.obolibrary.org/obo/SO_0000783',
+    'transcript': 'http://purl.obolibrary.org/obo/SO_0000673',
+    'protein binding': 'http://purl.obolibrary.org/obo/GO_0005515',
+    'Homo sapiens protein': 'http://purl.obolibrary.org/obo/PR_000029067',
 }
