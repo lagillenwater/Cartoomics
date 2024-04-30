@@ -112,41 +112,47 @@ pdfOutWrapper <- function(average_data, condition) {
         heatmaps <- lapply(c( "CosineSimilarity", "PDP", "Original"), function(x) {
         averageHeatmapWrapper(average_data,x)
     })
-    c_heatmaps <-  heatmaps[[1]] + heatmaps[[2]] + heatmaps[[3]]
-        pdf(paste0(opt$output_directory,"relative_difference_",condition,".pdf"), width = 18, height = 8)
-        print(paste("outputting ", condition, "heatmap at ", paste0(opt$output_directory,"relative_difference_",condition,".pdf")))
-    draw(c_heatmaps, heatmap_legend_side = "bottom", column_title = paste0("Average similarity  ---  ", condition))
-    dev.off()
+        suppressWarnings(c_heatmaps <-  heatmaps[[1]] + heatmaps[[2]] + heatmaps[[3]])
+        pdf(paste0(opt$output_directory,"/average_",condition,".pdf"), width = 18, height = 8)
+        print(paste("outputting ", condition, "heatmap at ", paste0(opt$output_directory,"/average_",condition,".pdf")))
+        draw(c_heatmaps, heatmap_legend_side = "bottom", column_title = paste0("Average similarity  ---  ", condition))
+        dev.off()
 }
 
+## create output directory
+if(!dir.exists(opt$output_directory)) {
+    dir.create(opt$output_directory)
+}
+
+
 ## baseline
-pdfOutWrapper(ner_sim, "All terms")
+pdfOutWrapper(ner_sim, "All_terms")
 
 ### drop terms not mapped to IDF
 w_idf <- ner_sim %>%
     filter(!is.na(IDF))
-pdfOutWrapper(w_idf, "no IDF terms")
+pdfOutWrapper(w_idf, "no_IDF_terms")
 
 
 ### Impute missing terms with min value and weight similarities by term
 min_impute_idf <- ner_sim %>%
     mutate(new_IDF = replace_na(IDF, min(IDF, na.rm = T))) %>%
     mutate(Average_Cosine_Similarity = Average_Cosine_Similarity * new_IDF)
-pdfOutWrapper(min_impute_idf, "IDF weighted  - impute with min(IDF)")
+pdfOutWrapper(min_impute_idf, "IDF_weighted_impute_with_min(IDF)")
 
 
 ### Impute missing terms with the median value and weight similarities by term
 median_impute_idf <- ner_sim %>%
     mutate(new_IDF = replace_na(IDF, median(IDF, na.rm = T))) %>%
     mutate(Average_Cosine_Similarity = Average_Cosine_Similarity * new_IDF)
-pdfOutWrapper(median_impute_idf, "IDF weighted  - impute with median(IDF)")
+pdfOutWrapper(median_impute_idf, "IDF_weighted_impute_with_median(IDF)")
 
 ### filter those without IDF and weight similarities by term
 w_idf_weighted <- ner_sim %>%
     filter(!is.na(IDF)) %>%
     mutate(Average_Cosine_Similarity = Average_Cosine_Similarity * IDF)
 
-pdfOutWrapper(w_idf_weighted, "IDF filtered   IDF weighted")
+pdfOutWrapper(w_idf_weighted, "IDF_filtered_IDF_weighted")
 
 
 
