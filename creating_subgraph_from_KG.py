@@ -1,8 +1,7 @@
 from inputs import *
 from create_graph import create_graph
-from create_graph import kg_to_undirected_networkx
 from assign_nodes import interactive_search_wrapper, skip_self_loops
-from create_subgraph import subgraph_prioritized_path_cs
+from create_subgraph import automatic_defined_node_exclusion, subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_exclusion
@@ -10,7 +9,6 @@ from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
 from memory_management import *
-import networkx
 
 def main():
 
@@ -44,14 +42,15 @@ def main():
     if weights == True:
         #g = user_defined_edge_exclusion(g,kg_type)
         g = automatic_defined_edge_exclusion(g,kg_type)
+        g = automatic_defined_node_exclusion(g,kg_type)
 
-    networkx_g = kg_to_undirected_networkx(g)
+    #networkx_g = kg_to_undirected_networkx(g,g.edgelist,g.labels_all)
     
     if cosine_similarity == 'true':
         print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
 
         #Returns list of all shortest paths for subgraph as all_path_nodes
-        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g)
+        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type)
 
 
         print("Outputting CS visualization......")
@@ -65,13 +64,11 @@ def main():
         #Don't need to find shortest paths again if already run for cosine similarity
         if cosine_similarity == 'true':
 
-            print('pdp and cosine true')
-
-            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g,all_path_nodes)
+            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g,weights,search_type,pdp_weight,output_dir,kg_type,all_path_nodes)
     
         else:
 
-            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,pdp_weight,output_dir,kg_type,networkx_g)
+            subgraph_pdp,path_pdp,all_path_nodes = subgraph_prioritized_path_pdp(s,g,weights,search_type,pdp_weight,output_dir,kg_type)
 
         print("Outputting PDP visualization......")
 
@@ -86,11 +83,11 @@ def main():
             #Don't need to find shortest paths again if already run for cosine similarity
             if cosine_similarity == 'true' or pdp == 'true':
 
-                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g,all_path_nodes)
+                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.graph_object,g.graph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,all_path_nodes)
 
             else:
 
-                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,networkx_g)
+                subgraph_guiding_term,all_paths_cs_values,output_foldername = subgraph_prioritized_path_guiding_term(s,term_row,g.graph_object,g.graph_nodes,g.labels_all,g.edgelist,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type)
 
 
             print("Outputting Guiding Term(s) visualization......")

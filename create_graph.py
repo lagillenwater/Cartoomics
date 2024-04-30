@@ -2,8 +2,8 @@ from graph import KnowledgeGraph
 import pandas as pd
 import csv
 import json
-from igraph import * 
-import networkx
+from igraph import *
+import networkx as nx
 
 ###Read in all files, outputs triples and labels as a df
 def process_pkl_files(triples_file,labels_file):
@@ -27,7 +27,7 @@ def process_pkl_files(triples_file,labels_file):
     return triples_df,labels
 
 #Creates igraph object and a list of nodes
-def create_igraph_graph(edgelist_df,labels):
+def create_igraph_graph(edgelist_df):
 
     edgelist_df = edgelist_df[['subject', 'object', 'predicate']]
 
@@ -36,6 +36,16 @@ def create_igraph_graph(edgelist_df,labels):
     g_nodes = g.vs()['name']
 
     return g,g_nodes 
+
+#Creates igraph object and a list of nodes
+def create_networkx_graph(edgelist_df):
+
+    edgelist_df = edgelist_df[['subject', 'object', 'predicate']]
+    g = nx.from_pandas_edgelist(edgelist_df, source='subject', target='object', edge_attr='predicate', create_using=nx.Graph())
+    # Networkx takes the actual uri as the node label, so don't need to use 'name' here
+    g_nodes = [node for node, data in g.nodes(data=True)]
+
+    return g,g_nodes
 
 # Wrapper function
 # Includes a "kg_type" parameter for graph type. Options include 'pkl' for PheKnowLator and 'kg-covid19' for KG-Covid19
@@ -47,9 +57,10 @@ def create_graph(triples_file,labels_file, kg_type = "pkl"):
     else:
         raise Exception('Invalid graph type! Please set kg_type to "pkl" or "kg-covid19"')
 
-    g_igraph,g_nodes_igraph = create_igraph_graph(triples_df,labels)
+    g_igraph,g_nodes_igraph = create_igraph_graph(triples_df)
+    g_networkx_graph,g_nodes_networkx_graph = create_networkx_graph(triples_df)
     # Created a PKL class instance
-    pkl_graph = KnowledgeGraph(triples_df,labels,g_igraph,g_nodes_igraph)
+    pkl_graph = KnowledgeGraph(triples_df,labels,g_networkx_graph,g_nodes_networkx_graph)
 
     return pkl_graph
 
@@ -73,8 +84,12 @@ def process_kg_covid19_files(triples_file,labels_file):
 
 
 ### convert igraph to networkx graph
-def kg_to_undirected_networkx(g):
-    kg_igraph = g.igraph
-    G = kg_igraph.to_networkx()
-    G = G.to_undirected()
-    return G
+# def kg_to_undirected_networkx(g,triples_df,labels):
+#     import pdb;pdb.set_trace()
+#     kg_igraph = g.graph_object
+#     G = kg_igraph.to_networkx()
+#     G = G.to_undirected()
+#     G_nodes = [data['name'] for node, data in G.nodes(data=True)]
+#     # Created a PKL class instance
+#     pkl_graph = KnowledgeGraph(triples_df,labels,G,G_nodes)
+#     return pkl_graph
