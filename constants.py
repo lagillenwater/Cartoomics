@@ -84,6 +84,9 @@ KGCOVID19_SUBSTRINGS = {
 
 ALL_WIKIPATHWAYS = ['WP4532', 'WP4533', 'WP4534', 'WP4535', 'WP4537', 'WP4538', 'WP4539', 'WP4540','WP4541', 'WP4542', 'WP4553', 'WP4562', 'WP4564', 'WP4565', 'WP4760', 'WP4829', 'WP4856', 'WP5283', 'WP5358', 'WP5368', 'WP5372', 'WP5373', 'WP5382', 'WP5385']
 
+
+LITERATURE_SEARCH_TYPES = ["abstract","full_text"]
+
 PHEKNOWLATOR_BROAD_NODES_DICT = {
     'protein_coding_gene': 'http://purl.obolibrary.org/obo/SO_0001217',
     'Gene expression (Transcription)': 'https://reactome.org/content/detail/R-HSA-74160',
@@ -98,3 +101,4 @@ PHEKNOWLATOR_BROAD_NODES_DICT = {
     'protein binding': 'http://purl.obolibrary.org/obo/GO_0005515',
     'Homo sapiens protein': 'http://purl.obolibrary.org/obo/PR_000029067',
 }
+

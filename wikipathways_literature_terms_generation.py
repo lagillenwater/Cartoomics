@@ -8,6 +8,7 @@ from create_graph import create_graph
 
 from constants import (
     ALL_WIKIPATHWAYS,
+    LITERATURE_SEARCH_TYPES,
     PKL_SUBSTRINGS,
     PKL_OBO_URI,
     WIKIPATHWAYS_SUBFOLDER
@@ -26,17 +27,18 @@ def generate_keywords_file(output_path,metadata_df,wikipathway):
 def generate_abstract_file_concept_annotations(file,labels,enable_skipping):
 
     df = pd.DataFrame(columns = ['term','term_label','term_id','NER_Method'])
+    
 
-    pmid_df = pd.read_csv(file,header=None,sep='\t')
-    pmid_df.columns = [['TermID','Term_Info','Label']]
+    id_df = pd.read_csv(file,header=None,sep='\t')
+    id_df.columns = [['TermID','Term_Info','Label']]
 
     guiding_term_skipped_nodes = []
 
-    for i in range(len(pmid_df)):
+    for i in range(len(id_df)):
         annotated_terms = {}
         use_node = True
         
-        curie = pmid_df.iloc[i].loc['Term_Info'].iloc[0].split(' ')[0]
+        curie = id_df.iloc[i].loc['Term_Info'].iloc[0].split(' ')[0]
         #Remove _CC, _BP from GO terms
         if "GO_" in curie:
             id = curie.split(":")[1]
@@ -52,14 +54,14 @@ def generate_abstract_file_concept_annotations(file,labels,enable_skipping):
             try:
                 label = labels.loc[labels['entity_uri'] == uri,'label'].values[0]
             except IndexError:
-                guiding_term_skipped_nodes.append(pmid_df.iloc[i].loc['Label'].values[0])
+                guiding_term_skipped_nodes.append(id_df.iloc[i].loc['Label'].values[0])
                 use_node = False
 
         if use_node:
             #Add term
-            annotated_terms['term'] = pmid_df.iloc[i].loc['Label'].iloc[0]
+            annotated_terms['term'] = id_df.iloc[i].loc['Label'].iloc[0]
             #Add term_label
-            annotated_terms['term_label'] = pmid_df.iloc[i].loc['Label'].iloc[0]
+            annotated_terms['term_label'] = id_df.iloc[i].loc['Label'].iloc[0]
             #Add term_id
             annotated_terms['term_id'] = uri
             #Add method
@@ -118,49 +120,65 @@ def main():
     g = create_graph(triples_list_file,labels_file, 'pkl')
 
     metadata_df = pd.read_csv(metadata_file,sep=',')
-    wikipathways = metadata_df.Pathway_ID.unique()
-    wikipathways = ALL_WIKIPATHWAYS
+    # Using external list of wikipathways instead
+    # wikipathways = metadata_df.Pathway_ID.unique()
 
     #Files to read
     gpt4_file = os.getcwd() + "/Wikipathways_Text_Annotation/pfocr_abstracts_GPT4.csv"
     ner_file = os.getcwd() + "/Wikipathways_Text_Annotation/pfocr_abstracts_NER_processed.csv"
 
-    for wikipathway in wikipathways:
+    for wikipathway in ALL_WIKIPATHWAYS:
 
-        pmid = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,'PMID'].values[0])
-        print(pmid)
-        #File to read
-        pmid_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations/" + pmid + ".bionlp"
+        for search_type in LITERATURE_SEARCH_TYPES:
 
-        base_dir = all_wikipathways_dir + '/literature_comparison'
+            # Search by ID, PMID for abstracts, PMC for full text
+            if search_type == "abstract":
+                search_id = "PMID"
+            elif search_type == "full_text":
+                # PMC3514635 missing
+                search_id = "PMC"
+            
+            id = str(metadata_df.loc[metadata_df['Pathway_ID'] == wikipathway,search_id].values[0])
+            if id == "nan": continue
+            #File to read
+            id_file = os.getcwd() + "/Wikipathways_Text_Annotation/Concept_Annotations_" + search_type + "/" + id + ".bionlp"
 
-        #output_path = base_dir + '/' + wikipathway + '_Literature_Comparison_Terms.csv'
+            base_dir = all_wikipathways_dir + '/literature_comparison/' + search_type
+            wikipathway_output_dir = all_wikipathways_dir + "/" + wikipathway + "_output/"
+            wikipathway_specific_dir = wikipathway_output_dir + search_type
 
-        #generate_keywords_file(output_path,metadata_df,wikipathway)
+            # Create directories
+            os.makedirs(base_dir, exist_ok=True)
+            os.makedirs(wikipathway_specific_dir, exist_ok=True)
 
-        #For PMID specific concept annotations
-        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_concept_annotations(pmid_file,g.labels_all,enable_skipping)
 
-        #For NER concept annotation
-        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(ner_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'ner')
+            #output_path = base_dir + '/' + wikipathway + '_Literature_Comparison_Terms.csv'
 
-        #For GPT concept annotation
-        literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(gpt4_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'gpt')
+            #generate_keywords_file(output_path,metadata_df,wikipathway)
 
-        wikipathway_output_dir = all_wikipathways_dir + "/" + wikipathway + "_output"
-        df_file = wikipathway_output_dir + "/_literature_comparison_Input_Nodes_.csv"
+            #For Hunter Lab concept annotations
+            literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_concept_annotations(id_file,g.labels_all,enable_skipping)
 
-        #For comparing cosine similarity across all abstracts
-        df_specific_file = all_wikipathways_dir + "/literature_comparison/" + wikipathway + "_literature_comparison_Input_Nodes_.csv"
+            if search_type == "abstract":
+                #For NER concept annotation
+                literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(ner_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'ner')
 
-        literature_annotations_df = literature_annotations_df.drop_duplicates()
-        literature_annotations_df.to_csv(df_file,sep='|',index=False)
-        #Write the same file to a general folder for comparing cosine similarity across all abstracts
-        literature_annotations_df.to_csv(df_specific_file,sep='|',index=False)
+                #For GPT concept annotation
+                literature_annotations_df,guiding_term_skipped_nodes = generate_abstract_file_models(gpt4_file,wikipathway,g,literature_annotations_df,guiding_term_skipped_nodes,'gpt')
 
-        #Creates a skipped_node file per input diagram
-        if enable_skipping:
-            create_skipped_node_file(guiding_term_skipped_nodes,wikipathway_output_dir,'guidingTerms')
+            df_file = wikipathway_specific_dir + "/_literature_comparison_Input_Nodes_.csv"
+
+            #For comparing cosine similarity across all abstracts - used by wikipathways_literature_comparison_evaluations.py
+            df_specific_file = base_dir + "/" + wikipathway + "_literature_comparison_Input_Nodes_.csv"
+
+            literature_annotations_df = literature_annotations_df.drop_duplicates()
+            literature_annotations_df.to_csv(df_file,sep='|',index=False)
+            #Write the same file to a general folder for comparing cosine similarity across all abstracts
+            literature_annotations_df.to_csv(df_specific_file,sep='|',index=False)
+
+            #Creates a skipped_node file per input diagram
+            if enable_skipping:
+                create_skipped_node_file(guiding_term_skipped_nodes,wikipathway_output_dir,'guidingTerms')
 
 if __name__ == '__main__':
     main()

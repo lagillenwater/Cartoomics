@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+wikipathways_graphs/literature_comparison/Evaluation_Files
+wikipathways_graphs/literature_comparison/abstract
+wikipathways_graphs/literature_comparison/full_text
+wikipathways_graphs/pkl
+wikipathways_graphs/*_output
+
+
+**/.DS_Store
+

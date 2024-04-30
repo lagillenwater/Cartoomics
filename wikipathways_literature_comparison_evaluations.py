@@ -11,6 +11,7 @@ from wikipathways_converter import get_wikipathways_list
 from graph_similarity_metrics import *
 from constants import (
     ALL_WIKIPATHWAYS,
+    LITERATURE_SEARCH_TYPES,
     WIKIPATHWAYS_SUBFOLDER
 )
 
@@ -47,13 +48,14 @@ def main():
     #Gets literature comparison terms for many pathways 
     all_pathways_comparisons = {}
     for w in ALL_WIKIPATHWAYS:
-        #w_comparison_file = all_wikipathways_dir + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
-        w_comparison_file = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
-        w_comparison_df = pd.read_csv(w_comparison_file, sep = "|")
-        #Remove duplicates and unassigned IDs from literature comparison files
-        w_comparison_df = w_comparison_df.loc[w_comparison_df['term_id'] != 'none']
-        w_comparison_df.drop_duplicates(subset=['term_id'], inplace=True)
-        all_pathways_comparisons[w] = w_comparison_df
+        for search_type in LITERATURE_SEARCH_TYPES:
+            #w_comparison_file = all_wikipathways_dir + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
+            w_comparison_file = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER + "/literature_comparison/" + w + "_literature_comparison_Input_Nodes_.csv"
+            w_comparison_df = pd.read_csv(w_comparison_file, sep = "|")
+            #Remove duplicates and unassigned IDs from literature comparison files
+            w_comparison_df = w_comparison_df.loc[w_comparison_df['term_id'] != 'none']
+            w_comparison_df.drop_duplicates(subset=['term_id'], inplace=True)
+            all_pathways_comparisons[w] = w_comparison_df
     
     '''#Gets set of all terms from all abstracts
     all_pathways_terms = []
