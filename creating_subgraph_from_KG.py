@@ -8,7 +8,7 @@ from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_e
 from visualize_subgraph import output_visualization
 from evaluation import *
 from tqdm import tqdm
-from memory_management import *
+#from memory_management import *
 
 def main():
 
