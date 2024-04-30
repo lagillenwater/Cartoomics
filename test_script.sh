@@ -22,4 +22,7 @@
 #python creating_subgraph_from_KG.py --input-dir ./Test_Data/Inputs_Covid19  --output-dir ./Test_Data/Inputs_Covid19 --knowledge-graph kg-covid19 --input-type annotated_diagram --guiding-term True
 
 #Command to test wikipathways_converter with pfocr urls file
-python wikipathways_converter.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True --enable-skipping True
+#python wikipathways_converter.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True --enable-skipping True
+
+#Command to test wikipathways pipeline by ID with smaller graph
+python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4535']" --enable-skipping True

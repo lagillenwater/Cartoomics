@@ -83,3 +83,18 @@ KGCOVID19_SUBSTRINGS = {
 }
 
 ALL_WIKIPATHWAYS = ['WP4532', 'WP4533', 'WP4534', 'WP4535', 'WP4537', 'WP4538', 'WP4539', 'WP4540','WP4541', 'WP4542', 'WP4553', 'WP4562', 'WP4564', 'WP4565', 'WP4760', 'WP4829', 'WP4856', 'WP5283', 'WP5358', 'WP5368', 'WP5372', 'WP5373', 'WP5382', 'WP5385']
+
+PHEKNOWLATOR_BROAD_NODES_DICT = {
+    'protein_coding_gene': 'http://purl.obolibrary.org/obo/SO_0001217',
+    'Gene expression (Transcription)': 'https://reactome.org/content/detail/R-HSA-74160',
+    'Generic Transcription Pathway': 'https://reactome.org/content/detail/R-HSA-212436',
+    'Metabolism': 'https://reactome.org/content/detail/R-HSA-1430728',
+    'Developmental Biology': 'https://reactome.org/content/detail/R-HSA-1266738',
+    'gene': 'http://purl.obolibrary.org/obo/SO_0000704',
+    'Metabolism of proteins': 'https://reactome.org/content/detail/R-HSA-392499',
+    'tag': 'http://purl.obolibrary.org/obo/SO_0000324',
+    'engineered': 'http://purl.obolibrary.org/obo/SO_0000783',
+    'transcript': 'http://purl.obolibrary.org/obo/SO_0000673',
+    'protein binding': 'http://purl.obolibrary.org/obo/GO_0005515',
+    'Homo sapiens protein': 'http://purl.obolibrary.org/obo/PR_000029067',
+}

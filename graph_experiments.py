@@ -54,15 +54,15 @@ def get_nodes_from_input(input_df,s):
 
 
 #input_df is the selected nodes we want to search, s is the original mapped file with all source/target/source_label
-def one_path_search_patterns(input_df,igraph,igraph_nodes,labels_all,edgelist,search_type,kg_type,manually_chosen_uris):
+def one_path_search_patterns(input_df,graph,search_type,kg_type,manually_chosen_uris):
     
     #print("Finding subgraph using user input and 1 shortest path......")
 
-    subgraph_df,manually_chosen_uris = subgraph_shortest_path_pattern(input_df,igraph,igraph_nodes,labels_all,edgelist,False,search_type,kg_type,manually_chosen_uris)
+    subgraph_df,manually_chosen_uris = subgraph_shortest_path_pattern(input_df,graph,False,search_type,kg_type,manually_chosen_uris)
 
     if len(subgraph_df) > 0:
         #Check pattern
-        pattern = process_dfs(kg_type,subgraph_df,labels_all)
+        pattern = process_dfs(kg_type,subgraph_df,graph.labels_all)
 
 
     return manually_chosen_uris,pattern

@@ -1,6 +1,6 @@
 from inputs import *
 from create_graph import create_graph
-from create_subgraph import automatic_defined_edge_exclusion
+from create_subgraph import automatic_defined_edge_exclusion, automatic_defined_node_exclusion
 from graph_experiments import *
 import ast
 from collections import defaultdict
@@ -38,6 +38,7 @@ def main():
         g = create_graph(triples_list_file,labels_file, kg_type)
         if weights == True:
             g = automatic_defined_edge_exclusion(g,kg_type)
+            g = automatic_defined_node_exclusion(g,kg_type)
 
         manually_chosen_uris = {}
 
@@ -77,7 +78,7 @@ def main():
                     all_pairs['source'] = node_type1[m] 
                     all_pairs['target'] = node_type2[d] 
                     input_df = pd.DataFrame.from_dict([all_pairs])
-                    manually_chosen_uris,pattern = one_path_search_patterns(input_df,g.igraph,g.igraph_nodes,g.labels_all,g.edgelist,search_type,kg_type,manually_chosen_uris)
+                    manually_chosen_uris,pattern = one_path_search_patterns(input_df,g,search_type,kg_type,manually_chosen_uris)
 
                     patterns_all.append(pattern)
     
