@@ -26,3 +26,8 @@
 
 #Command to test wikipathways pipeline by ID with smaller graph
 python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4535']" --enable-skipping True
+
+#Command to test the wikipathways converter step for the ablation study
+#python wikipathways_converter_ablations.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True --enable-skipping True
+#Update call_all_pathways_wrapper.py input and output directories to include _ablation
+#Update wikipathways_graph_evaluations.py, wikipathways_literature_comparison_evaluations.py, with ablation=true
