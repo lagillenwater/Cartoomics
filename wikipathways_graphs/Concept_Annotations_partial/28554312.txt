@@ -1,5 +1,0 @@
-Conclusion
-Overall, the IP3R1, CAR8 and PKCγ related ataxic phenotypes could in part be explained by changes in IP3R1 activity leading to poorly controlled Ca2+ influx/efflux and poor control of the Ca2+ concentration in the cytoplasm. This concept is supported by the finding that mutations affecting the function of various molecules involved in this signaling pathway will cause several subtypes of SCA or other forms of cerebellar ataxia (Fig. ​1B1B). Once PKCγ- IP3R1 related Ca2+ signaling is disturbed the normal dendritic development of Purkinje cells is impaired as well as the integration of signals from other neurons, resulting in abnormal development, cerebellar dysfunction and eventually Purkinje cell loss.
-
-Figure 1B
-Many proteins of the PKCγ calcium signaling pathway are targets of mutations causing ataxia. Mutations causing cerebellar ataxia often have proteins of the PKCγ calcium signaling pathway as targets (shown in red). This highlights the importance of this pathway for the appropriate function of cerebellar Purkinje cells.
