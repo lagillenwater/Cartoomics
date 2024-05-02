@@ -1,3 +1,0 @@
-S|P|O|S_ID|P_ID|O_ID
-L-thyroxine|subClassOf|2-halophenol|http://purl.obolibrary.org/obo/CHEBI_18332|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_53291
-Triiodothyronine|subClassOf|2-halophenol|http://purl.obolibrary.org/obo/CHEBI_18258|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/CHEBI_53291

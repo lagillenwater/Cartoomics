@@ -57,7 +57,7 @@ def convert_wikipathways_input_ablation(all_wikipathways_dir,wikipathway,iterati
 
     random.seed(10)
 
-    wikipathways_edgelist = pd.read_csv(all_wikipathways_dir + '/' + wikipathway + iteration_substring + '/' + wikipathway + iteration_substring + '_edgeList.csv')
+    wikipathways_edgelist = pd.read_csv(all_wikipathways_dir + '/' + wikipathway + iteration_substring + '/' + wikipathway + '_edgeList.csv')
 
     edgelist_df = wikipathways_edgelist[['Source', 'Target']]
     edgelist_df = edgelist_df.rename(columns={'Source' : 'source', 'Target': 'target'})

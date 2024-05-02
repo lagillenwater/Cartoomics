@@ -1,5 +1,0 @@
-Hippo-YAP Pathway
-There are two additional renowned molecules positively regulating MST1/2. One of them is RASSF1 (Ras association domain family 1), a tumor suppressor member protein [12]. RASSF1A may keep MST1/2 at its phosphorylated state and prevent dephosphorylation by binding to MST1/2 [12]. The other molecule is Nf2 (neurofibromin2), a tumor suppressor and a proapoptosis kinase, which positively regulates the Hippo signaling through activation of MST1 [13]. The summary of the Hippo-Yap signaling pathway is shown in Figure 1.
-
-Figure 1
-The overview of Hippo-Yap signaling pathway. (a) YAP and TAZ are phosphorylated and held in cytoplasm when the Hippo-YAP pathway is at the “ON” status. (b) Unphosphorylated YAP and TAZ accumulate in the nucleus with TEAD when the Hippo-Yap pathway is at the “OFF” status.

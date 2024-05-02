@@ -1,12 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
-wikipathways_graphs/literature_comparison/Evaluation_Files
-wikipathways_graphs/literature_comparison/abstract
-wikipathways_graphs/literature_comparison/full_text
-wikipathways_graphs/pkl
-wikipathways_graphs/*_output
+wikipathways_graphs/
+!wikipathways_graphs/PFOCR_url_list.txt
 
+logs/
+builds/
 
 **/.DS_Store
 
