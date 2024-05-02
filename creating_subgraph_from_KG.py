@@ -41,8 +41,9 @@ def main():
 
     if weights == True:
         #g = user_defined_edge_exclusion(g,kg_type)
+        print("Excluding nodes and edges......")
         g = automatic_defined_edge_exclusion(g,kg_type)
-        g = automatic_defined_node_exclusion(g,kg_type)
+        g = automatic_defined_node_exclusion(g,kg_type,'./wikipathways_graphs')
 
     #networkx_g = kg_to_undirected_networkx(g,g.edgelist,g.labels_all)
     

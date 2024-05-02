@@ -25,7 +25,10 @@
 #python wikipathways_converter.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True --enable-skipping True
 
 #Command to test wikipathways pipeline by ID with smaller graph
-python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4535']" --enable-skipping True
+python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4533']" --enable-skipping True
+
+#Command to visualize wikipathways output
+#python visualize_in_cytoscape.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4533']" --enable-skipping True
 
 #Command to test the wikipathways converter step for the ablation study
 #python wikipathways_converter_ablations.py --knowledge-graph pkl --input-type annotated_diagram --pfocr-urls-file True --enable-skipping True

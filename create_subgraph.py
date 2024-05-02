@@ -1,5 +1,6 @@
 # Given a starting graph of node pairs, find all paths between them to create a subgraph
-from constants import PHEKNOWLATOR_BROAD_NODES_DICT
+from calculate_information_content import drop_low_information_content_nodes
+from constants import FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT #, PHEKNOWLATOR_BROAD_NODES_DICT
 from find_path import find_shortest_path,find_shortest_path_pattern
 from find_path import prioritize_path_cs,prioritize_path_pdp
 from find_path import calc_cosine_sim_from_label_list,calc_cosine_sim_from_uri_list,generate_comparison_terms_dict,unique_nodes
@@ -162,29 +163,38 @@ def automatic_defined_edge_exclusion(graph,kg_type):
     return graph
 
 # Nodes to remove
-def automatic_defined_node_exclusion(graph,kg_type):
+def automatic_defined_node_exclusion(graph,kg_type,output_dir,threshold = 0.3):
     if kg_type == 'pkl':
-        to_drop = list(PHEKNOWLATOR_BROAD_NODES_DICT.values())
-    for uri in to_drop:
-        # Remove from graph object
-        # Get the indices of vertices with corresponding label
-        if isinstance(graph.graph_object, igraph.Graph):
+        # To drop manually defined nodes
+        #to_drop = list(PHEKNOWLATOR_BROAD_NODES_DICT.values())
+        to_drop = []
+        # To drop nodes based on Information Content
+        for ont in tqdm(FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT):
+            to_drop = drop_low_information_content_nodes(to_drop,ont,output_dir,threshold)
+    print("Removing nodes from KG")
+    # Remove from graph object
+    if isinstance(graph.graph_object, igraph.Graph):
+        for uri in tqdm(to_drop):
+            # Get the indices of vertices with corresponding label
             indices_to_delete = [v.index for v in graph.graph_object.vs if v["name"] == uri]
-        if isinstance(graph.graph_object, nx.Graph):
-            indices_to_delete = [node for node, data in graph.graph_object.nodes(data=True) if node == uri]
-        # Remove the vertices by their indices
-        try:
-            if isinstance(graph.graph_object, igraph.Graph):
+            # Remove the vertices by their indices
+            try:
                 graph.graph_object.delete_vertices(indices_to_delete)
-            if isinstance(graph.graph_object, nx.Graph):
-                graph.graph_object.remove_nodes_from(indices_to_delete)
+            except KeyError:
+                print('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
+                logging.error('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
+                sys.exit(1)
+    if isinstance(graph.graph_object, nx.Graph):
+        # Remove nodes by their uri
+        try:
+            graph.graph_object.remove_nodes_from(to_drop)
         except KeyError:
             print('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
             logging.error('Specified node to be removed does not exist. Update PHEKNOWLATOR_BROAD_NODES_DICT in constants.py.')
             sys.exit(1)
-        # Remove from dfs
-        graph.labels_all = graph.labels_all[graph.labels_all["entity_uri"] != uri]
-        graph.edgelist = graph.edgelist[(graph.edgelist["subject"] != uri) | (graph.edgelist["object"] != uri)]
+    # Remove from dfs
+    graph.labels_all = graph.labels_all[~graph.labels_all["entity_uri"].isin(to_drop)]
+    graph.edgelist = graph.edgelist[~(graph.edgelist["subject"].isin(to_drop) | graph.edgelist["object"].isin(to_drop))]
     print(nx.number_of_nodes(graph.graph_object))
     return graph
  
