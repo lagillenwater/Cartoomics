@@ -1,8 +1,13 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
-wikipathways_graphs/
+wikipathways_graphs/annotated_diagram
+wikipathways_graphs/literature_comparison
+wikipathways_graphs/pkl
+wikipathways_graphs/WP*
 !wikipathways_graphs/PFOCR_url_list.txt
+!wikipathways_graphs/information_content/*.csv
+wikipathways_graphs/information_content/*_excluded.csv
 
 logs/
 builds/
