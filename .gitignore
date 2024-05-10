@@ -8,6 +8,7 @@ wikipathways_graphs/WP*
 !wikipathways_graphs/PFOCR_url_list.txt
 !wikipathways_graphs/information_content/*.csv
 wikipathways_graphs/information_content/*_excluded.csv
+wikipathways_graphs_ablations/
 
 logs/
 builds/
