@@ -109,4 +109,9 @@ FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT = [
     "PR",
     "MONDO",
     "CHEBI",
+    "VO",
+    "UBERON",
+    "CLO",
+    "PW",
+    "RO",
 ]
