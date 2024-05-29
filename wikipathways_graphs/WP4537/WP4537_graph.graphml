@@ -30,7 +30,7 @@
 </node>
 <node id="STK3">
   <data key="d0">STK3</data>
-  <data key="d1">VGK8E</data>
+  <data key="d1">JB7FB</data>
   <data key="d2">ffd38</data>
   <data key="d3">254.61897499999992</data>
   <data key="d4">202.56898750000002</data>
@@ -43,7 +43,7 @@
 </node>
 <node id="SAV1">
   <data key="d0">SAV1</data>
-  <data key="d1">DLEGL</data>
+  <data key="d1">YWDD1</data>
   <data key="d2">ffd38</data>
   <data key="d3">254.6189749999999</data>
   <data key="d4">222.56898750000002</data>
@@ -82,7 +82,7 @@
 </node>
 <node id="STK38L">
   <data key="d0">STK38L</data>
-  <data key="d1">Z2E6J</data>
+  <data key="d1">GP8ZI</data>
   <data key="d2">ebe73</data>
   <data key="d3">428.43636874999913</data>
   <data key="d4">363.45600624999975</data>
@@ -173,7 +173,7 @@
 </node>
 <node id="CXCL10">
   <data key="d0">CXCL10</data>
-  <data key="d1">WPI8O</data>
+  <data key="d1">1OT5Z</data>
   <data key="d2">bef65</data>
   <data key="d3">254.61897500000026</data>
   <data key="d4">372.0237187500003</data>
@@ -372,14 +372,14 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="STK3" target="SAV1">
-  <data key="d11">VGK8E_DLEGL_unlabeled</data>
+  <data key="d11">JB7FB_YWDD1_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="STK3" target="STK4">
-  <data key="d11">VGK8E_dfe5e_unlabeled</data>
+  <data key="d11">JB7FB_dfe5e_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -421,14 +421,14 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="SAV1" target="STK3">
-  <data key="d11">DLEGL_VGK8E_unlabeled</data>
+  <data key="d11">YWDD1_JB7FB_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="SAV1" target="STK4">
-  <data key="d11">VGK8E_DLEGL_dfe5e_2</data>
+  <data key="d11">JB7FB_YWDD1_dfe5e_2</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -470,14 +470,14 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="STK4" target="STK3">
-  <data key="d11">dfe5e_VGK8E_unlabeled</data>
+  <data key="d11">dfe5e_JB7FB_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="STK4" target="SAV1">
-  <data key="d11">VGK8E_DLEGL_dfe5e_3</data>
+  <data key="d11">JB7FB_YWDD1_dfe5e_3</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -554,14 +554,14 @@
   <data key="d15">#nan</data>
 </edge>
 <edge source="STK38L" target="NDRG1">
-  <data key="d11">Z2E6J_d5618_unlabeled</data>
+  <data key="d11">GP8ZI_d5618_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#unlabeled</data>
 </edge>
 <edge source="NDRG1" target="STK38L">
-  <data key="d11">d5618_Z2E6J_unlabeled</data>
+  <data key="d11">d5618_GP8ZI_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -932,14 +932,14 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="CXCL10" target="LATS1">
-  <data key="d11">WPI8O_aa29f_d1ea6_1</data>
+  <data key="d11">1OT5Z_aa29f_d1ea6_1</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
   <data key="d15">#nan</data>
 </edge>
 <edge source="CXCL10" target="LATS2">
-  <data key="d11">WPI8O_d1ea6_unlabeled</data>
+  <data key="d11">1OT5Z_d1ea6_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -1072,7 +1072,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="LATS1" target="CXCL10">
-  <data key="d11">WPI8O_aa29f_d1ea6_2</data>
+  <data key="d11">1OT5Z_aa29f_d1ea6_2</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>
@@ -1100,7 +1100,7 @@
   <data key="d15">#000000</data>
 </edge>
 <edge source="LATS2" target="CXCL10">
-  <data key="d11">d1ea6_WPI8O_unlabeled</data>
+  <data key="d11">d1ea6_1OT5Z_unlabeled</data>
   <data key="d12">group</data>
   <data key="d13">g</data>
   <data key="d14">a</data>

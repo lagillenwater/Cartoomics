@@ -1,0 +1,843 @@
+S|P|O|S_ID|P_ID|O_ID
+valproic acid|interacts with|PPP1R14A (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/94274
+valproic acid|interacts with|PPP1R12A|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4659
+EGFR|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+PDGFRB|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+EGFR|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+TEK|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+EGFR|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+FLT3|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+EGFR|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+NTRK1|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+EGFR|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+NTRK2|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CSF1R|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+merlin (human)|participates_in|Immune System|http://purl.obolibrary.org/obo/PR_P35240|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+merlin (human)|has_gene_template|NF2|http://purl.obolibrary.org/obo/PR_P35240|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/4771
+CSF1R|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+FGFR4|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+CSF1R|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+FLT1|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+CSF1R|causes or contributes to condition|Dementia|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000726
+valproic acid|is substance that treats|Dementia|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000726
+valproic acid|interacts with|FLT4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2324
+CSF1R|causes or contributes to condition|Leukemia|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001909
+pesticide|is substance that treats|Leukemia|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0001909
+pesticide|interacts with|NGFR|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4804
+CSF1R|causes or contributes to condition|Acute myeloid leukemia|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004808
+MET|causes or contributes to condition|Acute myeloid leukemia|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004808
+PDGFRA|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+PDGFRB|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+PDGFRA|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+TEK|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+CSF1R|causes or contributes to condition|leukoencephalopathy with vanishing white matter|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0011380
+leukoencephalopathy with vanishing white matter|has phenotype|Bipolar affective disorder|http://purl.obolibrary.org/obo/MONDO_0011380|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0007302
+NTRK1|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+CSF1R|causes or contributes to condition|hereditary diffuse leukoencephalopathy with axonal spheroids and pigmented glia|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009096
+hereditary diffuse leukoencephalopathy with axonal spheroids and pigmented glia|has phenotype|Depression|http://purl.obolibrary.org/obo/MONDO_0009096|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000716
+NTRK2|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+FGFR4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NF2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FGFR4|causes or contributes to condition|Lung adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030078
+FLT1|causes or contributes to condition|Lung adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030078
+FLT4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FGFR4|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+NGFR|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+FGFR4|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+MET|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+PDGFRA|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+FGFR4|participates_in|ARMS-mediated activation|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170984
+TEK|participates_in|ARMS-mediated activation|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170984
+FGFR4|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+FGFR4|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+NTRK2|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+FLT1|causes or contributes to condition|chromophobe renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0017885
+NF2|causes or contributes to condition|chromophobe renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0017885
+valproic acid|interacts with|EGFR|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1956
+valproic acid|interacts with|FGFR1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2260
+valproic acid|interacts with|FLT1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2321
+FGFR1|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+FGFR1|causes or contributes to condition|pilocytic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016691
+MET|causes or contributes to condition|pilocytic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016691
+FGFR1|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+FGFR1|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+FGFR1|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+FGFR1|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+FGFR1|causes or contributes to condition|Subependymal giant-cell astrocytoma|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009718
+NTRK2|causes or contributes to condition|Subependymal giant-cell astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009718
+EPHA2|causes or contributes to condition|Posterior subcapsular cataract|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007787
+neurofibromatosis type 2|has phenotype|Posterior subcapsular cataract|http://purl.obolibrary.org/obo/MONDO_0007039|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0007787
+neurofibromatosis type 2|disease has basis in dysfunction of|NF2|http://purl.obolibrary.org/obo/MONDO_0007039|http://purl.obolibrary.org/obo/RO_0004020|http://www.ncbi.nlm.nih.gov/gene/4771
+EPHA2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+EGFR|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+EPHA2|causes or contributes to condition|Neoplasm|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002664
+CSF1R|causes or contributes to condition|Neoplasm|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002664
+pesticide|interacts with|EGFR|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1956
+FGFR4|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+valproic acid|is substance that treats|Neoplasm|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002664
+pesticide|is substance that treats|Neoplasm|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002664
+MET|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PDGFRA|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PDGFRB|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+TEK|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+EPHA2|causes or contributes to condition|Noonan syndrome 1|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0008104
+Noonan syndrome 1|has phenotype|Splenomegaly|http://purl.obolibrary.org/obo/MONDO_0008104|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0001744
+FLT3|causes or contributes to condition|Splenomegaly|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001744
+EPHA2|causes or contributes to condition|Noonan syndrome with multiple lentigines|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0007893
+Noonan syndrome with multiple lentigines|has phenotype|Neuroblastoma|http://purl.obolibrary.org/obo/MONDO_0007893|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0003006
+NTRK1|causes or contributes to condition|Neuroblastoma|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003006
+NTRK2|causes or contributes to condition|Neuroblastoma|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003006
+EGFR|causes or contributes to condition|Malignant mesothelioma|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100001
+NF2|causes or contributes to condition|Malignant mesothelioma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100001
+EGFR|participates_in|Insulin receptor signalling cascade|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74751
+FGFR4|participates_in|Insulin receptor signalling cascade|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74751
+Noonan syndrome 1|has phenotype|Skeletal dysplasia|http://purl.obolibrary.org/obo/MONDO_0008104|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0002652
+FLT1|causes or contributes to condition|Skeletal dysplasia|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002652
+FLT1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NGFR|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FLT1|causes or contributes to condition|sarcomatoid renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0003012
+MET|causes or contributes to condition|sarcomatoid renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0003012
+PDGFRA|causes or contributes to condition|Burkitt lymphoma|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030080
+FLT3|causes or contributes to condition|Burkitt lymphoma|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030080
+PDGFRA|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+aflatoxin B1|interacts with|PDGFRA|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5156
+aflatoxin B1|interacts with|NTRK2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4915
+PDGFRB|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PDGFRB|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+PDGFRB|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+NTRK1|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+NTRK2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+TEK|causes or contributes to condition|Clear cell renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006770
+NF2|causes or contributes to condition|Clear cell renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006770
+TEK|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+aflatoxin B1|interacts with|TEK|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/7010
+FLT3|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+PDGFRA|participates_in|ARMS-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170984
+FLT3|has gene product|receptor-type tyrosine-protein kinase FLT3 (human)|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P36888
+receptor-type tyrosine-protein kinase FLT3 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_P36888|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NTRK1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+MIR98|causes or contributes to condition|Neoplasm of the colon|http://www.ncbi.nlm.nih.gov/gene/407054|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100273
+MYC|causes or contributes to condition|Neoplasm of the colon|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100273
+MIR98|causes or contributes to condition|Colon cancer|http://www.ncbi.nlm.nih.gov/gene/407054|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003003
+methotrexate|is substance that treats|Colon cancer|http://purl.obolibrary.org/obo/CHEBI_44185|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0003003
+methotrexate|interacts with|NRAS|http://purl.obolibrary.org/obo/CHEBI_44185|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4893
+MIR98|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/407054|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+HRAS|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/3265|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+methotrexate|interacts with|KRAS|http://purl.obolibrary.org/obo/CHEBI_44185|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3845
+CDH1|participates_in|Apoptosis|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109581
+CTNNB1|participates_in|Apoptosis|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109581
+CDH1|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CTNNA1|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH1|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH10|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1008|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH11|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1009|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH12|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH13|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+anaplastic astrocytoma|has phenotype|Splenomegaly|http://purl.obolibrary.org/obo/MONDO_0016684|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0001744
+NTRK2|causes or contributes to condition|anaplastic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016684
+PDGFRA|causes or contributes to condition|Melanoma|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002861
+NF2|causes or contributes to condition|Melanoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002861
+MET|causes or contributes to condition|Subependymal giant-cell astrocytoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009718
+FLT1|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PDGFRA|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+PDGFRB|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+FLT1|causes or contributes to condition|Clear cell renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006770
+valproic acid|is substance that treats|acute myeloid leukemia with minimal differentiation|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0005223
+FLT3|causes or contributes to condition|acute myeloid leukemia with minimal differentiation|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005223
+NTRK2|causes or contributes to condition|Lung adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030078
+FLT4|causes or contributes to condition|Clear cell renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/2324|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006770
+MET|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PDGFRA|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FLT4|participates_in|Signaling by VEGF|http://www.ncbi.nlm.nih.gov/gene/2324|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-194138
+MET|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PDGFRA|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+PDGFRB|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+TEK|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+pesticide|is substance that treats|Burkitt lymphoma|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0030080
+NTRK1|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+NGFR|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+MET|causes or contributes to condition|Papillary renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006766
+NF2|causes or contributes to condition|Papillary renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006766
+MET|participates_in|ARMS-mediated activation|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170984
+MET|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+MET|causes or contributes to condition|Neuroblastoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003006
+FGFR1|participates_in|PI3K Cascade|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109704
+FGFR4|participates_in|PI3K Cascade|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109704
+CDH1|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH15|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1013|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+FGFR1|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+CSF1R|causes or contributes to condition|Neoplasm of the breast|http://www.ncbi.nlm.nih.gov/gene/1436|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100013
+FGFR1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+FGFR2|causes or contributes to condition|Psychosis|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000709
+NTRK1|causes or contributes to condition|Psychosis|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000709
+FGFR2|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+KDR|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+INSR|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+KDR|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+FGFR3|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+IGF1R|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+KIT|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+FGFR1|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+KDR|participates_in|EPHA-mediated growth cone collapse|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3928663
+EPHA2|participates_in|EPHA-mediated growth cone collapse|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3928663
+KDR|causes or contributes to condition|granular cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0003197
+EGFR|causes or contributes to condition|granular cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0003197
+KDR|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+leukoencephalopathy with vanishing white matter|has phenotype|Schizophrenia|http://purl.obolibrary.org/obo/MONDO_0011380|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0100753
+KDR|causes or contributes to condition|Lung adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030078
+KDR|causes or contributes to condition|Cerebral hemorrhage|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001342
+FLT1|causes or contributes to condition|Cerebral hemorrhage|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001342
+FGFR2|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+KDR|causes or contributes to condition|capillary infantile hemangioma|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0011191
+FLT4|causes or contributes to condition|capillary infantile hemangioma|http://www.ncbi.nlm.nih.gov/gene/2324|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0011191
+KDR|causes or contributes to condition|Esophageal neoplasm|http://www.ncbi.nlm.nih.gov/gene/3791|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100751
+MET|causes or contributes to condition|Esophageal neoplasm|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100751
+PDGFRA|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+PDGFRB|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+TEK|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+receptor-type tyrosine-protein kinase FLT3 (human)|has_gene_template|FLT3|http://purl.obolibrary.org/obo/PR_P36888|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2322
+INSR|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+FGFR3|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+INSR|causes or contributes to condition|Congenital diaphragmatic hernia|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000776
+IGF1R|causes or contributes to condition|Congenital diaphragmatic hernia|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000776
+INSR|participates_in|Insulin receptor signalling cascade|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74751
+KIT|participates_in|Insulin receptor signalling cascade|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74751
+benzo[a]pyrene|interacts with|INSR|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3643
+benzo[a]pyrene|interacts with|FGFR1|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2260
+Noonan syndrome|has phenotype|Congenital diaphragmatic hernia|http://purl.obolibrary.org/obo/MONDO_0018997|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000776
+EPHA2|causes or contributes to condition|Noonan syndrome|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0018997
+NGFR|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+INSR|causes or contributes to condition|Insulin resistance|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000855
+EGFR|causes or contributes to condition|Insulin resistance|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000855
+FGFR2|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+FGFR2|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+ITGB4|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB8 (human)|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB5|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB6|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3694|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB5|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGB7|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3695|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+aflatoxin B1|interacts with|ITGB6|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3694
+aflatoxin B1|interacts with|ITGB7|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3695
+aflatoxin B1|interacts with|ITGB8|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3696
+TEAD1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD2|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+TEAD1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+TEAD3|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+TEAD4 (human)|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/7004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+TEAD2|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/8463|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+valproic acid|interacts with|TEAD3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/7005
+valproic acid|interacts with|TEAD4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/7004
+FGFR2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+FGFR2|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+FGFR2|causes or contributes to condition|Cleft palate|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000175
+FGFR3|causes or contributes to condition|Cleft palate|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000175
+KIT|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+FGFR2|causes or contributes to condition|Cleft upper lip|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000204
+FGFR1|causes or contributes to condition|Cleft upper lip|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000204
+FGFR2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+FGFR2|causes or contributes to condition|Neoplasm of the stomach|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006753
+EGFR|causes or contributes to condition|Neoplasm of the stomach|http://www.ncbi.nlm.nih.gov/gene/1956|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0006753
+FGFR2|participates_in|PI3K Cascade|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109704
+FGFR2|causes or contributes to condition|Cirrhosis|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001394
+FLT1|causes or contributes to condition|Cirrhosis|http://www.ncbi.nlm.nih.gov/gene/2321|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001394
+FGFR2|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+FGFR2|participates_in|VEGFR2 mediated cell proliferation|http://www.ncbi.nlm.nih.gov/gene/2263|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5218921
+INSR|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+FGFR4|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/2264|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+valproic acid|interacts with|IGF1R|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3480
+IGF1R|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+MET|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+PDGFRA|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+PDGFRB|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+TEK|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+bortezomib|interacts with|IGF1R|http://purl.obolibrary.org/obo/CHEBI_52717|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3480
+bortezomib|is substance that treats|acute myeloid leukemia with minimal differentiation|http://purl.obolibrary.org/obo/CHEBI_52717|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0005223
+IGF1R|causes or contributes to condition|Lewy bodies|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100315
+NTRK1|causes or contributes to condition|Lewy bodies|http://www.ncbi.nlm.nih.gov/gene/4914|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100315
+NTRK2|causes or contributes to condition|Lewy bodies|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100315
+KIT|causes or contributes to condition|Malignant mesothelioma|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100001
+KIT|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+FGFR1|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+IGF1R|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+KIT|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+KIT|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+aflatoxin B1|interacts with|KIT|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3815
+aflatoxin B1|interacts with|FGFR4|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2264
+KIT|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+KIT|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+KIT|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+KIT|participates_in|ARMS-mediated activation|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170984
+KIT|causes or contributes to condition|Acute myelomonocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004820
+FLT3|causes or contributes to condition|Acute myelomonocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/2322|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004820
+FGFR1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+pesticide|interacts with|IGF1R|http://purl.obolibrary.org/obo/CHEBI_25944|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3480
+IGF1R|causes or contributes to condition|Squamous cell lung carcinoma|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030359
+EPHA2|causes or contributes to condition|Squamous cell lung carcinoma|http://www.ncbi.nlm.nih.gov/gene/1969|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030359
+IGF1R|participates_in|IGF1R signaling cascade|http://www.ncbi.nlm.nih.gov/gene/3480|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428924
+FGFR1|participates_in|IGF1R signaling cascade|http://www.ncbi.nlm.nih.gov/gene/2260|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428924
+INSR|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+MET|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+INSR|causes or contributes to condition|Abnormal lung morphology|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002088
+PDGFRA|causes or contributes to condition|Abnormal lung morphology|http://www.ncbi.nlm.nih.gov/gene/5156|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002088
+PDGFRB|participates_in|Downstream signaling events of B Cell Receptor (BCR)|http://www.ncbi.nlm.nih.gov/gene/5159|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1168372
+INSR|participates_in|Signaling by SCF-KIT|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1433557
+TEK|participates_in|Signaling by SCF-KIT|http://www.ncbi.nlm.nih.gov/gene/7010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1433557
+INSR|causes or contributes to condition|Lewy bodies|http://www.ncbi.nlm.nih.gov/gene/3643|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100315
+FGFR3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+valproic acid|interacts with|FGFR3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2261
+FGFR3|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+FGFR3|participates_in|Signalling to RAS|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167044
+FGFR3|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+FGFR3|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+FGFR3|participates_in|Insulin receptor signalling cascade|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-74751
+FGFR3|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+FGFR3|causes or contributes to condition|giant cell glioblastoma|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016682
+MET|causes or contributes to condition|giant cell glioblastoma|http://www.ncbi.nlm.nih.gov/gene/4233|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016682
+FGFR3|participates_in|IRS-mediated signalling|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112399
+FGFR3|causes or contributes to condition|Lung adenocarcinoma|http://www.ncbi.nlm.nih.gov/gene/2261|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030078
+KIT|participates_in|IRS-related events triggered by IGF1R|http://www.ncbi.nlm.nih.gov/gene/3815|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2428928
+CDH1|has gene product|cadherin-1 (human)|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P12830
+cadherin-1 (human)|participates_in|homophilic cell adhesion via plasma membrane adhesion molecules|http://purl.obolibrary.org/obo/PR_P12830|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007156
+cadherin-16 (human)|participates_in|homophilic cell adhesion via plasma membrane adhesion molecules|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007156
+cadherin-16 (human)|has_gene_template|CDH16|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1014
+CDH17|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1015|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH18|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1016|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|CDH19|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/28513
+aflatoxin B1|interacts with|CDH7|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1005
+aflatoxin B1|interacts with|CDH8|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1006
+valproic acid|interacts with|CDH19|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/28513
+valproic acid|interacts with|CDH9|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1007
+CDH2|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CTNNB1|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH2|participates_in|Myogenesis|http://www.ncbi.nlm.nih.gov/gene/1000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-525793
+CTNNA1|participates_in|Myogenesis|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-525793
+CDH2|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1000|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+PTK2|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|PTK2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5747
+aflatoxin B1|interacts with|CDH20|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/28316
+valproic acid|interacts with|CDH2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1000
+valproic acid|interacts with|PCDHGB6 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/56100
+aflatoxin B1|interacts with|PCDHGB6 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/56100
+aflatoxin B1|interacts with|CDH22|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/64405
+CDH24|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/64403|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH3|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1001|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+valproic acid|interacts with|CDH4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1002
+CDH2|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/1000|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+CDH5|causes or contributes to condition|Breast carcinoma|http://www.ncbi.nlm.nih.gov/gene/1003|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0003002
+CDH6|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+valproic acid|interacts with|CDH7|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1005
+aflatoxin B1|interacts with|CDH6|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1004
+CDH8|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1006|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|is substance that treats|Neoplasm of the liver|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0002896
+CTNNB1|causes or contributes to condition|Neoplasm of the liver|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002896
+aflatoxin B1|interacts with|CADM2 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/253559
+CADM2 (human)|participates_in|Adherens junctions interactions|http://www.ncbi.nlm.nih.gov/gene/253559|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-418990
+CTNNA1|participates_in|Adherens junctions interactions|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-418990
+aflatoxin B1|interacts with|DST|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/667
+DST|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/667|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH24|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/64403|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+aflatoxin B1|interacts with|NECTIN4|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/81607
+NECTIN4|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/81607|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|CLDN18 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/51208
+CLDN18 (human)|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/51208|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH4|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1002|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|CDH5|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1003
+aflatoxin B1|interacts with|CLDN20 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/49861
+CLDN20 (human)|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/49861|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH9|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1007|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH22|causes or contributes to condition|Neoplasm of the large intestine|http://www.ncbi.nlm.nih.gov/gene/64405|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100834
+Neoplasm of the colon|subClassOf|Neoplasm of the large intestine|http://purl.obolibrary.org/obo/HP_0100273|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/HP_0100834
+CTNNB1|causes or contributes to condition|Neoplasm of the colon|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100273
+aflatoxin B1|interacts with|RASA1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5921
+RASA1|participates_in|VEGFA-VEGFR2 Pathway|http://www.ncbi.nlm.nih.gov/gene/5921|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-4420097
+CTNNA1|participates_in|VEGFA-VEGFR2 Pathway|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-4420097
+aflatoxin B1|interacts with|CLDN9 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/9080
+CLDN9 (human)|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/9080|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH24|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/64403|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+valproic acid|interacts with|CLDN19 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/149461
+CLDN19 (human)|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/149461|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH3|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1001|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH5|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH17|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/1015|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+CDH7|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/1005|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+CDH9|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1007|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH18|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1016|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+aflatoxin B1|interacts with|CDH18|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1016
+CDH18|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1016|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH9|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1007|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+valproic acid|is substance that treats|Cervical polyp|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0030159
+CTNNB1|causes or contributes to condition|Cervical polyp|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030159
+valproic acid|is substance that treats|Acute myeloid leukemia|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0004808
+CTNNA1|causes or contributes to condition|Acute myeloid leukemia|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004808
+CADM2 (human)|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/253559|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH5|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH4|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1002|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CTNNB1|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH7|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH7|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1005|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH8|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1006|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH8|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1006|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+MYC|participates_in|Diseases of signal transduction by growth factor receptors and second messengers|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5663202
+NRAS|participates_in|Diseases of signal transduction by growth factor receptors and second messengers|http://www.ncbi.nlm.nih.gov/gene/4893|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5663202
+MYC|causes or contributes to condition|Cervical polyp|http://www.ncbi.nlm.nih.gov/gene/4609|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030159
+HRAS|causes or contributes to condition|Cervical polyp|http://www.ncbi.nlm.nih.gov/gene/3265|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030159
+KRAS (human)|causes or contributes to condition|Cervical polyp|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030159
+NRAS|causes or contributes to condition|Costello syndrome|http://www.ncbi.nlm.nih.gov/gene/4893|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009026
+Costello syndrome|disease has basis in dysfunction of|HRAS|http://purl.obolibrary.org/obo/MONDO_0009026|http://purl.obolibrary.org/obo/RO_0004020|http://www.ncbi.nlm.nih.gov/gene/3265
+KRAS (human)|causes or contributes to condition|Costello syndrome|http://www.ncbi.nlm.nih.gov/gene/3845|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009026
+STK3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/6788|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+STK4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+SAV1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/60485|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+aflatoxin B1|interacts with|ANG (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/283
+valproic acid|interacts with|ANG (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/283
+diazinon|interacts with|CDH24|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/64403
+diazinon|interacts with|CDH5|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1003
+diazinon|interacts with|CDH7|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1005
+diazinon|interacts with|CDH8|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1006
+CDH3|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1001|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH4|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1002|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH4|participates_in|Myogenesis|http://www.ncbi.nlm.nih.gov/gene/1002|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-525793
+isoniazide|is substance that treats|Bipolar affective disorder|http://purl.obolibrary.org/obo/CHEBI_6030|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0007302
+isoniazide|is substance that treats|Neoplasm of the large intestine|http://purl.obolibrary.org/obo/CHEBI_6030|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0100834
+DRD5|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/1816|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+aflatoxin B1|interacts with|DRD5|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1816
+CDH17|causes or contributes to condition|Psychosis|http://www.ncbi.nlm.nih.gov/gene/1015|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000709
+valproic acid|is substance that treats|Psychosis|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000709
+CDH11|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1009|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH11|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1009|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|CDH11|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1009
+aflatoxin B1|interacts with|CDH12|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1010
+CDH11|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1009|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH13|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH11|has gene product|cadherin-11 (human)|http://www.ncbi.nlm.nih.gov/gene/1009|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P55287
+cadherin-11 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_P55287|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-16 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+valproic acid|interacts with|CDH10|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1008
+CDH12|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1010|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH12|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/1010|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+CDH13|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+CDH15|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1013|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH12|has gene product|cadherin-12 (human)|http://www.ncbi.nlm.nih.gov/gene/1010|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P55289
+cadherin-12 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_P55289|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+cadherin-16 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+valproic acid|interacts with|CDH11|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1009
+aflatoxin B1|interacts with|CDH10|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1008
+valproic acid|interacts with|cadherin-1 (human)|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://purl.obolibrary.org/obo/PR_P12830
+AFDN (human)|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/4301|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+aflatoxin B1|interacts with|AFDN (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4301
+sulforaphane|interacts with|CDH1 (human)|http://purl.obolibrary.org/obo/CHEBI_47807|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/999
+sulforaphane|is substance that treats|Neoplasm of the large intestine|http://purl.obolibrary.org/obo/CHEBI_47807|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0100834
+CDH1|causes or contributes to condition|Ulcerative colitis|http://www.ncbi.nlm.nih.gov/gene/999|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100279
+CDH3|causes or contributes to condition|Ulcerative colitis|http://www.ncbi.nlm.nih.gov/gene/1001|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100279
+CDH6|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1004|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH10|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/1008|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+CDH10|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1008|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH10|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1008|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH10|has gene product|cadherin-10 (human)|http://www.ncbi.nlm.nih.gov/gene/1008|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9Y6N8
+cadherin-10 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_Q9Y6N8|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+ITGB7|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3695|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+valproic acid|interacts with|CDH15|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1013
+valproic acid|molecularly interacts with|organelle|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0043226
+aflatoxin B1|molecularly interacts with|organelle|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0043226
+CDH15|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1013|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH5|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1003|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH8|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1006|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH16|has gene product|cadherin-16 (human)|http://www.ncbi.nlm.nih.gov/gene/1014|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_O75309
+cadherin-16 (human)|participates_in|cell adhesion|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007155
+catenin beta-1 (human)|participates_in|cell adhesion|http://purl.obolibrary.org/obo/PR_P35222|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007155
+catenin beta-1 (human)|has_gene_template|CTNNB1|http://purl.obolibrary.org/obo/PR_P35222|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1499
+cadherin-16 (human)|has function|protein binding|http://purl.obolibrary.org/obo/PR_O75309|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005515
+catenin alpha-1 (human)|has function|protein binding|http://purl.obolibrary.org/obo/PR_P35221|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005515
+catenin alpha-1 (human)|has_gene_template|CTNNA1|http://purl.obolibrary.org/obo/PR_P35221|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1495
+cadherin-17 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_Q12864|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-17 (human)|has_gene_template|CDH17|http://purl.obolibrary.org/obo/PR_Q12864|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1015
+cadherin-18 (human)|participates_in|homophilic cell adhesion via plasma membrane adhesion molecules|http://purl.obolibrary.org/obo/PR_Q13634|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007156
+cadherin-18 (human)|has_gene_template|CDH18|http://purl.obolibrary.org/obo/PR_Q13634|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1016
+valproic acid|molecularly interacts with|glutamatergic synapse|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0098978
+aflatoxin B1|molecularly interacts with|glutamatergic synapse|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0098978
+valproic acid|molecularly interacts with|protein binding|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0005515
+cadherin-20 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_Q9HBT6|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+cadherin-20 (human)|has_gene_template|CDH20|http://purl.obolibrary.org/obo/PR_Q9HBT6|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/28316
+cadherin-22 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_Q9UJ99|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+cadherin-22 (human)|has_gene_template|CDH22|http://purl.obolibrary.org/obo/PR_Q9UJ99|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/64405
+cadherin-24 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_Q86UP0|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+cadherin-24 (human)|has_gene_template|CDH24|http://purl.obolibrary.org/obo/PR_Q86UP0|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/64403
+cadherin-3 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_P22223|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-3 (human)|has_gene_template|CDH3|http://purl.obolibrary.org/obo/PR_P22223|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1001
+cadherin-4 (human)|participates_in|homophilic cell adhesion via plasma membrane adhesion molecules|http://purl.obolibrary.org/obo/PR_P55283|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007156
+cadherin-4 (human)|has_gene_template|CDH4|http://purl.obolibrary.org/obo/PR_P55283|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1002
+cadherin-5 (human)|has function|protein binding|http://purl.obolibrary.org/obo/PR_P33151|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005515
+cadherin-5 (human)|has_gene_template|CDH5|http://purl.obolibrary.org/obo/PR_P33151|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1003
+aflatoxin B1|molecularly interacts with|calcium ion binding|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-7 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_Q9ULB5|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-7 (human)|has_gene_template|CDH7|http://purl.obolibrary.org/obo/PR_Q9ULB5|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1005
+cadherin-8 (human)|has function|calcium ion binding|http://purl.obolibrary.org/obo/PR_P55286|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005509
+cadherin-8 (human)|has_gene_template|CDH8|http://purl.obolibrary.org/obo/PR_P55286|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1006
+cadherin-9 (human)|participates_in|calcium-dependent cell-cell adhesion via plasma membrane cell adhesion molecules|http://purl.obolibrary.org/obo/PR_Q9ULB4|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0016339
+cadherin-9 (human)|has_gene_template|CDH9|http://purl.obolibrary.org/obo/PR_Q9ULB4|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1007
+cadherin-2 (human)|has function|protein binding|http://purl.obolibrary.org/obo/PR_P19022|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0005515
+cadherin-2 (human)|has_gene_template|CDH2|http://purl.obolibrary.org/obo/PR_P19022|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1000
+CDH18|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/1016|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+CDH13|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+CTNNB1|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+CDH13|has gene product|cadherin-13 (human)|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P55290
+cadherin-13 (human)|participates_in|homophilic cell adhesion via plasma membrane adhesion molecules|http://purl.obolibrary.org/obo/PR_P55290|http://purl.obolibrary.org/obo/RO_0000056|http://purl.obolibrary.org/obo/GO_0007156
+CDH13|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+valproic acid|is substance that treats|Depression|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000716
+CDH13|participates_in|Cell-cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-421270
+CDH13|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+aflatoxin B1|is substance that treats|Hepatocellular carcinoma|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0001402
+CDH13|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/1012|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+CDH15|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/1013|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+CTNNB1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+CTNNA1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+benzo[a]pyrene|interacts with|CDH15|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1013
+benzo[a]pyrene|molecularly interacts with|cell adhesion|http://purl.obolibrary.org/obo/CHEBI_29865|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/GO_0007155
+valproic acid|interacts with|ITGB4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3691
+valproic acid|interacts with|ITGB6|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3694
+ITGB3|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+PAK6|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK4|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+valproic acid|interacts with|PAK6|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/56924
+valproic acid|interacts with|PAK1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5058
+PAK6|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK2|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK4|has gene product|serine/threonine-protein kinase PAK 4 (human)|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_O96013
+serine/threonine-protein kinase PAK 4 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_O96013|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PAK1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK4|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK1|causes or contributes to condition|chromophobe renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0017885
+PAK1|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+PAK2|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+PAK2|participates_in|RHO GTPases activate PAKs|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5627123
+NF2|participates_in|RHO GTPases activate PAKs|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5627123
+aflatoxin B1|interacts with|LIN28B|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/389421
+aflatoxin B1|is substance that treats|Neoplasm of the lung|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0100526
+aflatoxin B1|interacts with|ITGA1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3672
+PTK2|participates_in|MET promotes cell motility|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8875878
+ITGA2|participates_in|MET promotes cell motility|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8875878
+PTK2|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGA3|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3675|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PAK6|has gene product|serine/threonine-protein kinase PAK 6 (human)|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9NQU5
+serine/threonine-protein kinase PAK 6 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q9NQU5|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ITGA4|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PTK2|causes or contributes to condition|Rheumatoid arthritis|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001370
+ITGA6|causes or contributes to condition|Rheumatoid arthritis|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001370
+PTK2|causes or contributes to condition|Glioblastoma multiforme|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012174
+valproic acid|is substance that treats|Glioblastoma multiforme|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0012174
+valproic acid|interacts with|ITGA7|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3679
+PTK2|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+ITGAM|participates_in|Cytokine Signaling in Immune system|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280215
+ITGAM|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA8|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/8516|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+PTK2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+ITGA9|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3680|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+aflatoxin B1|interacts with|ITGA10|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8515
+valproic acid|interacts with|ITGA11|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/22801
+basigin (human)|participates_in|Hemostasis|http://purl.obolibrary.org/obo/PR_P35613|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+basigin (human)|participates_in|Integrin cell surface interactions|http://purl.obolibrary.org/obo/PR_P35613|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAD|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3681|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+valproic acid|interacts with|ITGAE|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3682
+ITGAL|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGAM|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+aflatoxin B1|interacts with|ITGAV|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3685
+PTK2|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+ITGA2B|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+ITGAX|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PTK2|causes or contributes to condition|Squamous cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002860
+ITGA5|causes or contributes to condition|Squamous cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002860
+ITGB1|participates_in|MET promotes cell motility|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8875878
+PAK3|participates_in|CD28 co-stimulation|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-389356
+PAK3|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PRKAR2A|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5576|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PAK3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKAR2A|has gene product|cAMP-dependent protein kinase type II-alpha regulatory subunit (human)|http://www.ncbi.nlm.nih.gov/gene/5576|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P13861
+cAMP-dependent protein kinase type II-alpha regulatory subunit (human)|participates_in|Signaling by ROBO receptors|http://purl.obolibrary.org/obo/PR_P13861|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-376176
+PAK4|participates_in|Signaling by ROBO receptors|http://www.ncbi.nlm.nih.gov/gene/10298|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-376176
+PAK1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5058|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PAK2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKAR2B|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5577|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKAR2B|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5577|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKAR1B|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5575|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+valproic acid|interacts with|PRKAR2B|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5577
+PAK5|causes or contributes to condition|Psychosis|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000709
+serine/threonine-protein kinase PAK 4 (human)|has_gene_template|PAK4|http://purl.obolibrary.org/obo/PR_O96013|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/10298
+valproic acid|interacts with|PAK2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5062
+PRKAR1B|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5575|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+neurofibromatosis type 2|has phenotype|Psychosis|http://purl.obolibrary.org/obo/MONDO_0007039|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000709
+PAK5|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK3|participates_in|Activation of RAC1|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-428540
+PAK5|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PAK2|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+serine/threonine-protein kinase PAK 5 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q9P286|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+serine/threonine-protein kinase PAK 5 (human)|has_gene_template|PAK5|http://purl.obolibrary.org/obo/PR_Q9P286|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/57144
+ITGB2|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGB3|participates_in|Frs2-mediated activation|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-170968
+ITGB4|participates_in|Cell-Cell communication|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1500931
+ITGA2|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA5|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA2|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGA6|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGA2|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGA7|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3679|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGA2|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+valproic acid|interacts with|ITGA2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3673
+valproic acid|interacts with|ITGA9|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3680
+ITGA2|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGA10|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/8515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGA2|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA11|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/22801|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAD|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3681|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+valproic acid|interacts with|ITGAL|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3683
+ITGA2|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+aflatoxin B1|interacts with|ITGA2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3673
+aflatoxin B1|interacts with|ITGA2B|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3674
+ITGA4|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAX|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+valproic acid|interacts with|ITGB2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3689
+ITGB3|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA5|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGA3|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3675|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGA3|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3675|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA7|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3679|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA9|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3680|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA2|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3673|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGB1|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+PTK2|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+ITGB5|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+CXCL10|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/3627|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ITGA1|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGA1|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA4|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA7|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3679|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGA1|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA1|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+ITGA1|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGA11|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/22801|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGAE|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3682|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA1|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGA1|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3672|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAX|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB1|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+ITGB4|participates_in|Laminin interactions|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000157
+cAMP-dependent protein kinase type II-alpha regulatory subunit (human)|participates_in|Axon guidance|http://purl.obolibrary.org/obo/PR_P13861|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+PAK5|participates_in|Axon guidance|http://www.ncbi.nlm.nih.gov/gene/57144|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-422475
+PRKAR2A|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5576|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+YAP1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LATS1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+WWTR1|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+aflatoxin B1|interacts with|VGLL4 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/9686
+aflatoxin B1|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+YAP1|causes or contributes to condition|Brain neoplasm|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030692
+CCND1|causes or contributes to condition|Brain neoplasm|http://www.ncbi.nlm.nih.gov/gene/595|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030692
+YAP1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PLCB4|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/5332|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+YAP1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+CTGF|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/1490|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+YAP1|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+FOXM1 (human)|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+LATS2|causes or contributes to condition|Astrocytoma|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009592
+LATS1|causes or contributes to condition|Astrocytoma|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009592
+YAP1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/10413|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+WWTR1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+CCND1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/595|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PLCB4|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5332|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+valproic acid|interacts with|CCND1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/595
+valproic acid|interacts with|CTGF|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1490
+CCND1|causes or contributes to condition|Leukemia|http://www.ncbi.nlm.nih.gov/gene/595|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001909
+FOXM1 (human)|causes or contributes to condition|Leukemia|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001909
+valproic acid|interacts with|PLCB4|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5332
+valproic acid|is substance that treats|Non-small cell lung carcinoma|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0030358
+FOXM1 (human)|causes or contributes to condition|Non-small cell lung carcinoma|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030358
+CTGF|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/1490|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+FOXM1 (human)|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/2305|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+WWTR1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+aflatoxin B1|interacts with|WWTR1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/25937
+aflatoxin B1|interacts with|CTGF|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1490
+TEAD1|participates_in|YAP1- and WWTR1 (TAZ)-stimulated gene expression|http://www.ncbi.nlm.nih.gov/gene/7003|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2032785
+LATS2|participates_in|Signaling by Hippo|http://www.ncbi.nlm.nih.gov/gene/26524|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2028269
+AJUBA|has gene product|LIM domain-containing protein ajuba (human)|http://www.ncbi.nlm.nih.gov/gene/84962|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q96IF1
+LIM domain-containing protein ajuba (human)|molecularly interacts with|serine/threonine-protein kinase LATS1 (human)|http://purl.obolibrary.org/obo/PR_Q96IF1|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_O95835
+serine/threonine-protein kinase LATS1 (human)|has_gene_template|LATS1|http://purl.obolibrary.org/obo/PR_O95835|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/9113
+valproic acid|interacts with|PPP1CA|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5499
+valproic acid|interacts with|PPP1CB|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5500
+valproic acid|interacts with|PPP1CC|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5501
+PPP1R12A|participates_in|RHO GTPases activate PAKs|http://www.ncbi.nlm.nih.gov/gene/4659|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5627123
+PPP1CA|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PPP1CA|participates_in|Downregulation of TGF-beta receptor signaling|http://www.ncbi.nlm.nih.gov/gene/5499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173788
+PPP1CB|participates_in|Downregulation of TGF-beta receptor signaling|http://www.ncbi.nlm.nih.gov/gene/5500|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173788
+PPP1CA|participates_in|TGF-beta receptor signaling activates SMADs|http://www.ncbi.nlm.nih.gov/gene/5499|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173789
+PPP1CC|participates_in|TGF-beta receptor signaling activates SMADs|http://www.ncbi.nlm.nih.gov/gene/5501|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2173789
+PPP1CB|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5500|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PPP1CC|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5501|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+CTNNB1|causes or contributes to condition|Malignant mesothelioma|http://www.ncbi.nlm.nih.gov/gene/1499|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100001
+AMOT (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/154796|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NF2|causes or contributes to condition|Renal neoplasm|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009726
+arsenic atom|is substance that treats|Renal neoplasm|http://purl.obolibrary.org/obo/CHEBI_27563|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0009726
+arsenic atom|interacts with|LIN28B|http://purl.obolibrary.org/obo/CHEBI_27563|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/389421
+PTK2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5747|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+cisplatin|is substance that treats|Renal neoplasm|http://purl.obolibrary.org/obo/CHEBI_27899|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0009726
+cisplatin|interacts with|CD44|http://purl.obolibrary.org/obo/CHEBI_27899|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/960
+NF2|has gene product|merlin (human)|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P35240
+DCAF1|participates_in|Immune System|http://www.ncbi.nlm.nih.gov/gene/9730|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+NF2|causes or contributes to condition|Renal cell carcinoma|http://www.ncbi.nlm.nih.gov/gene/4771|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0005584
+dexverapamil|is substance that treats|Renal cell carcinoma|http://purl.obolibrary.org/obo/CHEBI_77734|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0005584
+dexverapamil|is substance that treats|Paroxysmal atrial fibrillation|http://purl.obolibrary.org/obo/CHEBI_77734|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0004757
+CUL4A|causes or contributes to condition|Paroxysmal atrial fibrillation|http://www.ncbi.nlm.nih.gov/gene/8451|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004757
+aflatoxin B1|is substance that treats|Renal neoplasm|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0009726
+aflatoxin B1|interacts with|DDB1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1642
+RBX1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/9978|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+CTNNA1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/1495|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+LIM domain-containing protein ajuba (human)|molecularly interacts with|serine/threonine-protein kinase LATS2 (human)|http://purl.obolibrary.org/obo/PR_Q96IF1|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q9NRM7
+serine/threonine-protein kinase LATS2 (human)|has_gene_template|LATS2|http://purl.obolibrary.org/obo/PR_Q9NRM7|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/26524
+ITGA3|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3675|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA10|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/8515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+WWTR1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PRKACB|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKACB|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PRKACB|participates_in|C-type lectin receptors (CLRs)|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621481
+PAK3|participates_in|C-type lectin receptors (CLRs)|http://www.ncbi.nlm.nih.gov/gene/5063|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621481
+PRKACB|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+PAK6|causes or contributes to condition|Prostate cancer|http://www.ncbi.nlm.nih.gov/gene/56924|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0012125
+aflatoxin B1|interacts with|PRKACB|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5567
+aflatoxin B1|interacts with|PAK2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5062
+PRKACG|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5568|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKACG|participates_in|PKA activation|http://www.ncbi.nlm.nih.gov/gene/5568|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-163615
+PRKAR1A|participates_in|PKA activation|http://www.ncbi.nlm.nih.gov/gene/5573|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-163615
+PRKAR2A|participates_in|PKA activation|http://www.ncbi.nlm.nih.gov/gene/5576|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-163615
+valproic acid|interacts with|PRKACG|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5568
+PRKACG|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5568|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKACG|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5568|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PRKACG|participates_in|C-type lectin receptors (CLRs)|http://www.ncbi.nlm.nih.gov/gene/5568|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621481
+PRKAR1A|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5573|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+valproic acid|interacts with|PRKAR1A|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5573
+PRKAR1A|participates_in|Aquaporin-mediated transport|http://www.ncbi.nlm.nih.gov/gene/5573|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-445717
+PRKAR1B|participates_in|Aquaporin-mediated transport|http://www.ncbi.nlm.nih.gov/gene/5575|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-445717
+pigmented nodular adrenocortical disease, primary, 1|disease has basis in dysfunction of|PRKAR1A|http://purl.obolibrary.org/obo/MONDO_0012509|http://purl.obolibrary.org/obo/RO_0004020|http://www.ncbi.nlm.nih.gov/gene/5573
+pigmented nodular adrenocortical disease, primary, 1|has phenotype|Psychosis|http://purl.obolibrary.org/obo/MONDO_0012509|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0000709
+PRKACB|participates_in|PKA activation|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-163615
+acyl-coenzyme A thioesterase THEM4 (human)|participates_in|Immune System|http://purl.obolibrary.org/obo/PR_Q5T1C6|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+acyl-coenzyme A thioesterase THEM4 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q5T1C6|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+receptor-type tyrosine-protein phosphatase eta (human)|participates_in|Immune System|http://purl.obolibrary.org/obo/PR_Q12913|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168256
+receptor-type tyrosine-protein phosphatase eta (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q12913|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+DCAF1|has gene product|DDB1- and CUL4-associated factor 1 (human)|http://www.ncbi.nlm.nih.gov/gene/9730|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q9Y4B6
+DDB1- and CUL4-associated factor 1 (human)|molecularly interacts with|cullin-4A (human)|http://purl.obolibrary.org/obo/PR_Q9Y4B6|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q13619
+cullin-4A (human)|has_gene_template|CUL4A|http://purl.obolibrary.org/obo/PR_Q13619|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/8451
+DDB1- and CUL4-associated factor 1 (human)|molecularly interacts with|DNA damage-binding protein 1 (human)|http://purl.obolibrary.org/obo/PR_Q9Y4B6|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q16531
+DNA damage-binding protein 1 (human)|has_gene_template|DDB1|http://purl.obolibrary.org/obo/PR_Q16531|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/1642
+DCAF1|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/9730|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+RBX1|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/9978|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+valproic acid|interacts with|CUL4A|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8451
+valproic acid|is substance that treats|Astrocytoma|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0009592
+valproic acid|is substance that treats|anaplastic astrocytoma|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0016684
+LATS1|causes or contributes to condition|anaplastic astrocytoma|http://www.ncbi.nlm.nih.gov/gene/9113|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0016684
+CUL4A|participates_in|Recognition of DNA damage by PCNA-containing replication complex|http://www.ncbi.nlm.nih.gov/gene/8451|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-110314
+DDB1|participates_in|Recognition of DNA damage by PCNA-containing replication complex|http://www.ncbi.nlm.nih.gov/gene/1642|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-110314
+CUL4A|participates_in|Formation of Incision Complex in GG-NER|http://www.ncbi.nlm.nih.gov/gene/8451|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5696395
+RBX1|participates_in|Formation of Incision Complex in GG-NER|http://www.ncbi.nlm.nih.gov/gene/9978|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5696395
+aflatoxin B1|interacts with|WASF3 (human)|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/10810
+WASF3 (human)|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/10810|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+aflatoxin B1|interacts with|MET|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/4233
+RBX1|participates_in|Recognition of DNA damage by PCNA-containing replication complex|http://www.ncbi.nlm.nih.gov/gene/9978|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-110314
+PRKACA|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PRKACA|causes or contributes to condition|Cholangiocarcinoma|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030153
+PRKACB|causes or contributes to condition|Cholangiocarcinoma|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030153
+valproic acid|interacts with|PRKACA|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5566
+PRKACA|participates_in|PKA activation|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-163615
+PRKACA|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+PRKACA|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+PRKACA|participates_in|C-type lectin receptors (CLRs)|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621481
+PRKACA|participates_in|CD209 (DC-SIGN) signaling|http://www.ncbi.nlm.nih.gov/gene/5566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621575
+PAK2|participates_in|CD209 (DC-SIGN) signaling|http://www.ncbi.nlm.nih.gov/gene/5062|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5621575
+PRKACB|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+WWTR1|participates_in|Generic Transcription Pathway|http://www.ncbi.nlm.nih.gov/gene/25937|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-212436
+ITGAL|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGAV|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA2B|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGAX|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGB1|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGB2|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+valproic acid|interacts with|ITGAV|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3685
+ITGAE|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3682|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAL|causes or contributes to condition|Acute promyelocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004836
+ITGAM|causes or contributes to condition|Acute promyelocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004836
+ITGA2B|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGA10|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/8515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA10|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/8515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGB1|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGB3|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+valproic acid|interacts with|ITGB1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3688
+diazinon|interacts with|ITGA11|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/22801
+diazinon|interacts with|ITGB2|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/3689
+ITGAL|participates_in|Neutrophil degranulation|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6798695
+ITGAX|participates_in|Neutrophil degranulation|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-6798695
+ITGAL|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAL|causes or contributes to condition|Behcet disease|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0007191
+ITGB2|causes or contributes to condition|Behcet disease|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0007191
+ITGB1|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGAX|causes or contributes to condition|Acute promyelocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004836
+ITGB2|causes or contributes to condition|Acute promyelocytic leukemia|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0004836
+ITGB1|participates_in|Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-198933
+ITGB2|participates_in|Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-198933
+ITGB1|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGB1|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+ITGB4|participates_in|Cell junction organization|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-446728
+ITGB1|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGB1|causes or contributes to condition|Endometriosis|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030127
+ITGB8 (human)|causes or contributes to condition|Endometriosis|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030127
+ITGB2|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGB3|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGB2|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3689|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGB4|causes or contributes to condition|Gliosis|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002171
+ITGA2B|causes or contributes to condition|Cerebral hemorrhage|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001342
+ITGB3|causes or contributes to condition|Cerebral hemorrhage|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001342
+ITGAL|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGAL|causes or contributes to condition|Inflammation of the large intestine|http://www.ncbi.nlm.nih.gov/gene/3683|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002037
+ITGB8 (human)|causes or contributes to condition|Inflammation of the large intestine|http://www.ncbi.nlm.nih.gov/gene/3696|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002037
+ITGAV|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGAM|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGA2B|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGB1|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGAV|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA2B|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGAV|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGAV|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGB3|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGB4|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGAV|participates_in|Cross-presentation of particulate exogenous antigens (phagosomes)|http://www.ncbi.nlm.nih.gov/gene/3685|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236973
+ITGB5|participates_in|Cross-presentation of particulate exogenous antigens (phagosomes)|http://www.ncbi.nlm.nih.gov/gene/3693|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236973
+ITGAX|participates_in|Signaling by Interleukins|http://www.ncbi.nlm.nih.gov/gene/3687|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-449147
+ITGA2B|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGA4|participates_in|Adaptive Immune System|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1280218
+ITGA4|causes or contributes to condition|Inflammation of the large intestine|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002037
+ITGA5|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA6|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA5|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA8|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/8516|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA5|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+ITGA5|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/3678|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGA4|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA2B|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGB1|participates_in|L1CAM interactions|http://www.ncbi.nlm.nih.gov/gene/3688|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-373760
+ITGA6|participates_in|Extracellular matrix organization|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1474244
+ITGA4|causes or contributes to condition|Astrocytosis|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002446
+ITGB3|causes or contributes to condition|Astrocytosis|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002446
+ITGA7|participates_in|Integrin cell surface interactions|http://www.ncbi.nlm.nih.gov/gene/3679|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-216083
+ITGA4|participates_in|Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell|http://www.ncbi.nlm.nih.gov/gene/3676|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-198933
+ITGA6|participates_in|Hemostasis|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-109582
+ITGA8|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/8516|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+ITGAM|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+ITGA8|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/8516|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGB3|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/3690|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+ITGA10|participates_in|Developmental Biology|http://www.ncbi.nlm.nih.gov/gene/8515|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1266738
+ITGA9|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/3680|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+ITGAM|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/3684|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+ITGA9|participates_in|Signal transduction by L1|http://www.ncbi.nlm.nih.gov/gene/3680|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-445144
+ITGA2B|participates_in|Signal transduction by L1|http://www.ncbi.nlm.nih.gov/gene/3674|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-445144
+ITGA9|participates_in|ECM proteoglycans|http://www.ncbi.nlm.nih.gov/gene/3680|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000178
+ITGA6|participates_in|Syndecan interactions|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-3000170
+ITGA6|causes or contributes to condition|junctional epidermolysis bullosa with pyloric atresia|http://www.ncbi.nlm.nih.gov/gene/3655|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009183
+ITGB4|causes or contributes to condition|junctional epidermolysis bullosa with pyloric atresia|http://www.ncbi.nlm.nih.gov/gene/3691|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009183

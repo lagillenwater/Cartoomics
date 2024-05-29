@@ -2,8 +2,8 @@ Node|Attribute
 mitogen-activated protein kinase 1|Extra
 MAPK|Mechanism
 mitogen-activated protein kinase 1 (human)|Extra
-Toll Like Receptor TLR6:TLR2 Cascade|Extra
-CREB1 (human)|Extra
+MyD88 dependent cascade initiated on endosome|Extra
+CREB1|Mechanism
 aflatoxin B1|Extra
 AP2B1|Mechanism
 GABRP|Mechanism
@@ -32,9 +32,7 @@ Metabolism|Extra
 AP2A1|Mechanism
 GABRA1|Mechanism
 Hepatic encephalopathy|Extra
-Neuronal System|Extra
-CAMK2B (human)|Extra
-Schizophrenia|Extra
+CAMKK1 (human)|Extra
 gamma-aminobutyric acid receptor subunit beta-3 (human)|Extra
 gamma-aminobutyric acid receptor subunit epsilon (human)|Extra
 Alcoholism|Extra
@@ -42,18 +40,18 @@ gamma-aminobutyric acid receptor subunit beta-2 (human)|Extra
 gamma-aminobutyric acid receptor subunit delta (human)|Extra
 Seizure|Extra
 gamma-aminobutyric acid receptor subunit beta-1 (human)|Extra
+Schizophrenia|Extra
 gamma-aminobutyric acid receptor subunit theta (human)|Extra
 gamma-aminobutyric acid receptor subunit gamma-3 (human)|Extra
-ion transmembrane transport|Extra
-gamma-aminobutyric acid receptor subunit rho-3 (human)|Extra
+gamma-aminobutyric acid receptor subunit pi (human)|Extra
+GRIA3 (human)|Extra
 generalized epilepsy with febrile seizures plus|Extra
 Bipolar affective disorder|Extra
 gamma-aminobutyric acid receptor subunit alpha-4 (human)|Extra
-gamma-aminobutyric acid receptor subunit pi (human)|Extra
-gamma-aminobutyric acid receptor subunit alpha-2 (human)|Extra
 gamma-aminobutyric acid receptor subunit gamma-1 (human)|Extra
 Depression|Extra
-SERF1B (human)|Extra
+gamma-aminobutyric acid receptor subunit alpha-5 (human)|Extra
+ion transmembrane transport|Extra
 PIK3R1|Mechanism
 Developmental Biology|Extra
 PIK3CB|Mechanism
@@ -77,19 +75,17 @@ PI3K/AKT activation|Extra
 STAT3|Mechanism
 CREM|Mechanism
 PLCG1|Mechanism
-CREB1|Mechanism
 gamma-aminobutyric acid receptor subunit alpha-1 (human)|Extra
 Glioma|Extra
 Neoplasm of head and neck|Extra
 Complex febrile seizure|Extra
-Focal sensory seizure|Extra
 protein kinase C alpha type (human)|Extra
 PKC|Mechanism
-Signaling by GPCR|Extra
+Gastrin-CREB signalling pathway via PKC and MAPK|Extra
 protein kinase C zeta type (human)|Extra
-VEGFA-VEGFR2 Pathway|Extra
+phosphatidylinositol 3-kinase regulatory subunit alpha (human)|Extra
 Platelet activation, signaling and aggregation|Extra
-Simple febrile seizure|Extra
+Signaling by ERBB2|Extra
 protein kinase C beta type (human)|Extra
 NTRK2|Mechanism
 protein kinase C eta type (human)|Extra
@@ -107,7 +103,6 @@ proBDNF|Mechanism
 SHC1|Mechanism
 Status epilepticus without prominent motor symptoms|Extra
 Status epilepticus|Extra
-Intellectual disability|Extra
-Limb ataxia|Extra
-hepatic coma|Extra
-Incoordination|Extra
+rolandic epilepsy|Extra
+Sensory ataxia|Extra
+Dyssynergia|Extra
