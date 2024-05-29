@@ -101,13 +101,13 @@ def main():
 
                 subgraph_df = pd.read_csv(output_dir + '/CosineSimilarity/Subgraph.csv',sep='|')
 
-                all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
+                all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons[search_type],kg_type,embeddings,'CosineSimilarity',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
 
             if pdp == 'true':
 
                 subgraph_df = pd.read_csv(output_dir + '/PDP/Subgraph.csv',sep='|')
 
-                all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons,kg_type,embeddings,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
+                all_subgraphs_cosine_sim,embeddings = compare_subgraph_guiding_terms(s,subgraph_df,g,all_pathways_comparisons[search_type],kg_type,embeddings,'PDP',emb,entity_map,wikipathway,all_subgraphs_cosine_sim,'uris')
 
             #Get original wikipathways edgelist
             wikipathways_subgraph_df = get_wikipathways_subgraph(s)

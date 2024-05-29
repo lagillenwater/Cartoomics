@@ -310,7 +310,7 @@ def output_literature_comparison_df(output_dir,all_subgraphs_cosine_sim,search_t
     all_subgraphs_cosine_sim_df = pd.DataFrame.from_dict(all_subgraphs_cosine_sim, orient='columns')
 
     all_subgraphs_cosine_sim_df.to_csv(output_folder+'/literature_comparison_evaluation_' + search_type + '.csv',sep=',',index=False)
-    logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation.csv')
+    logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation_' + search_type + '.csv')
 
     return all_subgraphs_cosine_sim_df
 

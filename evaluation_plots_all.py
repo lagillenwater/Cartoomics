@@ -191,4 +191,3 @@ def visualize_literature_comparison_heatmap_all_pathways(all_subgraphs_zscore_df
     plt.savefig(plt_file,bbox_inches="tight")
     plt.close()
     logging.info('Created png: %s',plt_file)
-
