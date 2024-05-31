@@ -18,25 +18,44 @@ The program will output a subgraph generated using both the Cosine Similarity an
 ### Dependencies
 The following dependencies are listed in the environment.yml file, and installed in the installation step. This software has only been tested on Unix based OS systems, not Windows.
 ```
-Python>=3.8.3
-tqdm>=4.64.0
-gensim>=4.2.0
-numpy>=1.22.4
-scipy>=1.8.1
-py4cytoscape>=1.3.0
-csrgraph>=0.1.28
-nodevectors>=0.1.23
-igraph>=0.9.10
-bioservices>=1.11.2
-fiona>=1.9.5
-geopandas>=0.14.1
-shapely>=2.0.2
+- libgcc-devel_linux-64
+- r-base=4.3.3
+- r-tidyverse
+- r-optparse
+- r-getoptlong
+- r-clue
+- r-png
+- r-matrixstats
+- python==3.11.7
+- tqdm==4.66.1
+- gensim==4.3.2
+- numpy==1.26.3
+- scipy==1.12.0
+- pandas==2.1.4
+- pip
+- pip:
+  - csrgraph==0.1.28
+  - nodevectors==0.1.23
+  - igraph==0.11.3
+  - py4cytoscape==1.9.0
+  - python-json-logger==2.0.7
+  - matplotlib==3.8.2
+  - seaborn==0.13.2
+  - beautifulsoup4==4.12.3
+  - bioservices==1.11.2
+  - shapely==2.0.2
+  - fiona==1.9.5
+  - geopandas==0.14.2
+  - unidecode==1.3.8
+  - networkx==3.2.1
+  - requests==2.31.0
+  - oaklib==0.5.33
 ```
 
 ## Installation
 
 ```
-git clone https://github.com/bsantan/Cartoomics-Grant
+git clone git@github.com:UCDenver-ccp/Cartoomics.git
 ```
 
 First install mamba, which will be used to create the environment. To create an environment with all dependencies and activate the environment, run the following commands:
@@ -70,9 +89,11 @@ Add the necessary files for the knowledge graph (Triples file and Labels file) t
 The following values will be used if not otherwise specified:
 - embedding dimensions: embeddings of the knowledge graph will be generated using node2vec of dimension 128, unless otherwise specified
   --embedding-dimensions <int> (Default 128)
-- weights: edges will not be weighted unless otherwise specified. When set to True, edges defined in an interactive search will be excluded from the path search. 
-  --weights True (Default False)
+- weights: edges will not be weighted unless otherwise specified. When set to True, edges and nodes will be excluded according to an information content threshold by ontology. 
+  --weights False (Default True)
 - search type: the shortest path algorithm used (contained within the python-igraph package) will search for paths in all directions, unless otherwise specified
+  --search-type one (Default "all")
+- input substring: the substring to use in the output files and folders. This is required to support the wikipathways case, for example "WP4533" will output all graph convert files to WP4533 and all output files to WP4533_output 
   --search-type one (Default "all")
 
 Below is an example of running this with the PheKnowLator knowledge graph. To specify the kg-covid19 knowledge graph, update the following command:
@@ -96,11 +117,10 @@ Below is an example of running with an annotated diagram. To specify the pathway
 To run the script, execute the following command once the input directory is prepared:
   
 ```
-python creating_subgraph_from_KG.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl --input-type annotated_diagram
+python creating_subgraph_from_KG.py --input-dir INPUTDIR --output-dir OUTPUTDIR --knowledge-graph pkl --input-type annotated_diagram --input-substring INPUTSUBSTRING
 ```
 
 **Note that the output-dir should be in quotes**
-
   
 ### Command Line Argument: evaluation files
   
@@ -278,6 +298,14 @@ This script can be run per Wikipathways diagram. To run the script for a Wikipat
 
 **Note that the output-dir should be in quotes**
 
+To run all wikipathways graphs sequentially, execute the following commands:
+
+```
+python wikipathways_converter.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['<wikipathway ids>']" --enable-skipping True
+
+python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['<wikipathway ids>']" --enable-skipping True
+```
+
 The outputs will be the same as stated above in subgraph generation, within the /<WP_ID>_output subfolder.
 
 ### Command Line Arguments: compare subgraphs
@@ -327,7 +355,20 @@ A .png file of all Jaccard and Overlap scores per Wikipathways diagram per algor
 
 The wikipathways_literature_comparison_evaluations script will compare each subgraph specified to a given set of one or more guiding terms extracted from literature using cosine similarity. The intermediate nodes in all subgraphs of the specified algorithms will be compared to each term specified after indexing. 
 
-The following file must exist, where WP_ID corresponds to the wikipathway(s) specified:
+First, concepts that are annotated using different methodologies from the associated manuscripts to each wikipathway diagram are read in order for the Cartoomics output to be evaluated. The two files used are:
+
+```
+/Wikipathways_Text_Annotation/pfocr_abstracts_GPT4.csv
+/Wikipathways_Text_Annotation/pfocr_abstracts_NER_processed.csv
+```
+
+The following script will output the files necessary for the evaluation for each wikipathway that is annotated:
+
+```
+python wikipathways_literature_terms_generation.py 
+```
+
+Output:
 
 ```
 ~/wikipathways_graphs/<WP_ID>_Literature_Comparison_Terms.csv
@@ -337,6 +378,30 @@ To run the wikipathways_literature_comparison_evaluations script, specify the wi
 
 ```
 python wikipathways_literature_comparison_evaluations.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways WIKIPATHWAYS --enable-skipping True
+```
+
+Output:
+
+```
+/wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation.csv
+```
+
+Next, in order to scale the concept annotations by inverse document frequency the following script can be run:
+
+```
+python wikipathways_idf_evaluations.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways WIKIPATHWAYS --enable-skipping True
+```
+
+Output:
+
+```
+/wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_with_IDF.csv
+```
+
+To visualize these outputs, execute the following command:
+
+```
+Rscript literature_comparison_heatmap.R -i wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_with_IDF.csv -o wikipathways_graphs/literature_comparison/Evaluation_Files
 ```
 
 ### Expected Outputs
@@ -349,12 +414,20 @@ All of the literature comparison files will be output in a literature_comparison
 
 All of the literature comparison files will be output in a literature_comparison subfolder within the wikipathways_graphs subfolder './wikipathways_graphs/literature_comparison'.
 
-A .csv file of the average Cosine Similarity scores per term, per subgraph, per algorithm specified will be output.
+A .csv file of the average Cosine Similarity scores per term, per subgraph, per algorithm specified will be output (literature_comparison_evaluation.csv).
 
 ```
-Term,Average_Cosine_Similarity,Algorithm,Pathway_ID
-Alzheimer's disease,-0.05,CosineSimilarity,WP4565
-Alzheimer's disease,-0.02,PDP,WP4565
+Term,Term_ID,Average_Cosine_Similarity,Algorithm,Pathway_ID,Compared_Pathway
+Alzheimer's disease,-0.05,CosineSimilarity,WP4565,WP4532
+Alzheimer's disease,-0.02,PDP,WP4565,WP4532
+```
+
+A .csv file of the average Cosine Similarity scores per term, per subgraph, per algorithm specified will be output with the associated IDF per term (literature_comparison_evaluation_with_IDF.csv).
+
+```
+Term,Term_ID,Average_Cosine_Similarity,Algorithm,Pathway_ID,Compared_Pathway,IDF
+Alzheimer's disease,-0.05,CosineSimilarity,WP4565,WP4532,3.5785113
+Alzheimer's disease,-0.02,PDP,WP4565,WP4532,7.7235297
 ```
 
 ## Output Structure
