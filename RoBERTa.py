@@ -1,0 +1,57 @@
+from transformers import RobertaTokenizer, RobertaModel
+import torch
+from torch.nn.functional import cosine_similarity, pairwise_distance
+
+# Function to get embeddings
+def get_embeddings(model, tokenizer, sentence):
+    encoded_input = tokenizer(sentence, return_tensors='pt')
+    with torch.no_grad():
+        output = model(**encoded_input)
+    return output.last_hidden_state.mean(dim=1)
+
+# Initialize tokenizer and model
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+model = RobertaModel.from_pretrained('roberta-base')
+
+# Define sentences
+sentence1 = "I like books."
+sentence2 = "I love books."
+sentence3 = "I don't like reading books."
+
+# Get embeddings
+embeddings1 = get_embeddings(model, tokenizer, sentence1)
+embeddings2 = get_embeddings(model, tokenizer, sentence2)
+embeddings3 = get_embeddings(model, tokenizer, sentence3)
+
+# Calculate distances
+print("Cosine Distance between similar sentences:", 1 - cosine_similarity(embeddings1, embeddings2).item())
+print("Cosine Distance with negation:", 1 - cosine_similarity(embeddings1, embeddings3).item())
+
+
+###########################################################3
+
+# power transformation function for range increase
+
+
+def modified_power_scale(x, xmin, p):
+    """ Scale the distance using a modified power function to amplify differences. """
+    return (x - xmin) ** p
+
+# Constants
+xmin = 0.001  # Slightly less than our minimum expected value
+p = 0.25  # High power to significantly amplify differences
+
+# Values
+distance1 = 0.007
+distance2 = 0.008
+
+# Apply scaling
+scaled_distance1 = modified_power_scale(distance1, xmin, p)
+scaled_distance2 = modified_power_scale(distance2, xmin, p)
+
+print("Scaled Distance 1:", scaled_distance1)
+print("Scaled Distance 2:", scaled_distance2)
+
+
+
+
