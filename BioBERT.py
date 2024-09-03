@@ -16,9 +16,19 @@ def get_embeddings(model, tokenizer, sentence):
 tokenizer = AutoTokenizer.from_pretrained("dmis-lab/biobert-v1.1")
 model = AutoModel.from_pretrained("dmis-lab/biobert-v1.1")
 
+# # Define sentences
+# sentence1 = "SKI"
+# sentence2 = "SMAD1"
+# sentence3 = "PYROXD2"
+
+# # Define sentences
+# sentence1 = "NCBI:6497"
+# sentence2 = "NCBI:4086"
+# sentence3 = "NCBI:84795"
+
 # Define sentences
-sentence1 = "IFNG2"
-sentence2 = "IFNG1"
+sentence1 = "STAT1"
+sentence2 = "IFNG"
 sentence3 = "PYROXD2"
 
 # Get embeddings
@@ -27,8 +37,8 @@ embeddings2 = get_embeddings(model, tokenizer, sentence2)
 embeddings3 = get_embeddings(model, tokenizer, sentence3)
 
 # Calculate distances
-print("Cosine Distance between similar genes (IFNG2, IFNG1):", 1 - cosine_similarity(embeddings1, embeddings2).item())
-print("Cosine Distance between dissimilar genes (IFNG2, P53):", 1 - cosine_similarity(embeddings1, embeddings3).item())
+print("Cosine Distance between", sentence1, "and", sentence2, ":",  1 - cosine_similarity(embeddings1, embeddings2).item())
+print("Cosine Distance between", sentence1, "and", sentence3, ":",   1 - cosine_similarity(embeddings1, embeddings3).item())
 
 
 ###########################################################3
