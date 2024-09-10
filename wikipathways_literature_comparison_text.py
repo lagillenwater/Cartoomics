@@ -40,16 +40,10 @@ def main():
                 #Remove duplicates and unassigned IDs from literature comparison files
                 w_comparison_df = w_comparison_df.loc[w_comparison_df['term_id'] != 'none']
                 w_comparison_df.drop_duplicates(subset=['term_id'], inplace=True)
-
                 all_pathways_comparisons[search_type][w] = w_comparison_df
 
 
 
-    # dict for all text embeddings to ensure that we do not repeat embedding lookup
-    text_embeddings = dict()
-
-    # dict for all cosine similarities to avoid recalculating
-    cosine_similarities = dict()
 
     # Initialize tokenizer and model
     tokenizer = RobertaTokenizer.from_pretrained('allenai/biomed_roberta_base')
@@ -66,9 +60,13 @@ def main():
     for search_type in LITERATURE_SEARCH_TYPES:    
 
         literature_evaluation_comparison = []
-        
-        for algorithm in algorithms:
+        # dict for all text embeddings to ensure that we do not repeat embedding lookup
+        text_embeddings = dict()
 
+        # dict for all cosine similarities to avoid recalculating
+        cosine_similarities = dict()
+
+        for algorithm in algorithms:
 
             ner_terms_all_pathways = []
         
@@ -115,12 +113,15 @@ def main():
 
         literature_evaluation_comparison = pd.DataFrame(literature_evaluation_comparison, columns = ['Pathway_Term' , 'NER_Term', 'Cosine_Similarity','Pathway_ID','NER_ID', 'Algorithm'])
 
+        print(literature_evaluation_comparison.shape)
+        
+
         output_folder = all_wikipathways_dir+'/literature_comparison/Evaluation_Files'
 
-        #Check for existence of output directory
+            #Check for existence of output directory
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
-
+                
         literature_evaluation_comparison.to_csv(output_folder+'/literature_comparison_evaluation_TEXT_' + search_type + '.csv',sep=',',index=False)
         logging.info('Create literature comparison evaluation file: %s',output_folder+'/literature_comparison_evaluation_TEXT_' + search_type + '.csv')
 
