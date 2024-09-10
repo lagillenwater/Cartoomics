@@ -44,3 +44,4 @@
 
 python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "[ 'WP4533', 'WP4534', 'WP4537', 'WP4538', 'WP4539', 'WP4542', 'WP4553', 'WP4562']" --enable-skipping True
 Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_abstract.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps 
+Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_full_text.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps 
