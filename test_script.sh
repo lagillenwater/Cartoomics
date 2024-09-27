@@ -40,8 +40,10 @@
 
 
 ## literature based NER comparison
-## python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "[ 'WP4533','WP4534']" --enable-skipping True
+# python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "[ 'WP4533','WP4534']" --enable-skipping True
 
-python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "[ 'WP4533', 'WP4534', 'WP4537', 'WP4538', 'WP4539', 'WP4542', 'WP4553', 'WP4562']" --enable-skipping True
-Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_abstract.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps 
-Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_full_text.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps 
+python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP4532', 'WP4533', 'WP4534', 'WP4537', 'WP4538', 'WP4539', 'WP4542', 'WP4562', 'WP4564', 'WP4565', 'WP4760',  'WP5358', 'WP5368', 'WP5372', 'WP5373', 'WP5382', 'WP5385']" --enable-skipping True
+
+Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_abstract.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps_abstract
+
+Rscript literature_comparison_heatmap.R -i ./wikipathways_graphs/literature_comparison/Evaluation_Files/literature_comparison_evaluation_TEXT_full_text.csv -o ./wikipathways_graphs/literature_comparison/Evaluation_Files/heatmaps_full_text 
