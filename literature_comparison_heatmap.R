@@ -193,3 +193,4 @@ pdfOutWrapper(evaluation_df, "All_terms")
 
 
 
+evaluation_df %>% filter(Pathway_ID == "WP4533") %>% filter(Algorithm == "CosineSimilarity") %>% head
