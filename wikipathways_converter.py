@@ -98,7 +98,7 @@ def get_wikipathways_list(wikipathways,pfocr_urls,pfocr_urls_file):
 
 def main():
 
-    kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
+    kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping,metapath_search = generate_graphsim_arguments()
 
     input_dir = os.getcwd() + '/' + WIKIPATHWAYS_SUBFOLDER
 

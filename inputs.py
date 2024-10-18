@@ -53,6 +53,8 @@ def define_arguments():
 
     parser.add_argument("--enable-skipping",dest="EnableSkipping",required=False,default=False,help="Enables option to skip nodes when exact match or synonym is not found.",type=bool)
 
+    parser.add_argument("--metapath-search",dest="MetapathSearch",required=False,default=False,help="Search for paths using metapath(s).",type=bool)
+
     return parser
 
 # Wrapper function
@@ -75,6 +77,7 @@ def generate_arguments():
     guiding_term = args.GuidingTerm
     input_substring = args.InputSubstring
     enable_skipping = args.EnableSkipping
+    metapath_search = args.MetapathSearch
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -87,7 +90,7 @@ def generate_arguments():
         parser.print_help()
         sys.exit(1)
 
-    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping
+    return input_dir,output_dir,kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, pfocr_url, cosine_similarity, pdp, guiding_term, input_substring, enable_skipping, metapath_search
 
 #Define arguments for each required and optional input
 def define_arguments_metapaths():
@@ -160,7 +163,7 @@ def download_kg19(kg_dir):
     os.system('tar -xvzf ' + kg_dir + "kg-covid-19.tar.gz -C " + kg_dir)
     logging.info('Downloaded Node labels and Triples File: https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz: %s',kg_dir)
 
-def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False, input_substring = 'none'):
+def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding_term = False, metapath_search = False, input_substring = 'none'):
 
     #Search for annotated diagram input
     if input_type == 'annotated_diagram':
@@ -227,6 +230,12 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
         if not os.path.isfile(guiding_term_file):
             raise Exception('Missing file in input directory: ' + guiding_term_file)
             logging.error('Missing file in input directory: ' + guiding_term_file)
+    
+    if metapath_search:
+        metapath_search_file = input_dir + '/metapaths/Input_Metapaths.csv'
+        if not os.path.isfile(metapath_search_file):
+            raise Exception('Missing file in input directory: ' + metapath_search_file)
+            logging.error('Missing file in input directory: ' + metapath_search_file)
 
     if kg_type == "pkl":
         kg_dir = input_dir + '/' + kg_type + '/'

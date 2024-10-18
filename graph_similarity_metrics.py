@@ -64,6 +64,8 @@ def define_graphsim_arguments():
 
     parser.add_argument("--enable-skipping",dest="EnableSkipping",required=False,default=False,help="Enables option to skip nodes when exact match or synonym is not found.",type=bool)
 
+    parser.add_argument("--metapath-search",dest="MetapathSearch",required=False,default=False,help="Search for paths using metapath(s).",type=bool)
+
     return(parser)
 
 # Wrapper function
@@ -87,6 +89,7 @@ def generate_graphsim_arguments():
     pfocr_urls = args.PfocrUrls
     pfocr_urls_file = args.PfocrUrlsFile
     enable_skipping = args.EnableSkipping
+    metapath_search = args.MetapathSearch
 
     for arg, value in sorted(vars(args).items()):
         logging.info("Argument %s: %r", arg, value)
@@ -99,7 +102,7 @@ def generate_graphsim_arguments():
         parser.print_help()
         sys.exit(1)
 
-    return kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping
+    return kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping,metapath_search
 
 #Same as get_graph_files except does not get input example file, done later, and no pfocr_url or experimental dataset is possible
 def get_wikipathways_graph_files(input_dir,kg_type,input_type, guiding_term = False, input_substring = 'none'):

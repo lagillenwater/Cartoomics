@@ -56,6 +56,15 @@ def create_noa_file(subgraph_attribute_df,output_dir):
 
     l = subgraph_attribute_df.values.tolist()
 
+    # When original key is mapped to new key, mark as original
+    input_keys_file = output_dir + "/id_keys_df.csv"
+    if os.path.exists(input_keys_file):
+        n = pd.read_csv(input_keys_file,sep="|").values.tolist()
+        for i in range(len(l)):
+            if any(l[i][0] in sublist for sublist in n):
+                l[i][1] = "Mechanism"
+
+
     with open(noa_file, "w", newline="") as f:
         writer = csv.writer(f,delimiter='|')
         writer.writerow(["Node","Attribute"])
@@ -102,7 +111,7 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
     logging.info('Created cytoscape png: %s',png_file)
 
 # Wrapper Function
-def output_visualization(input_nodes_df,subgraph_df,output_dir):
+def output_visualization(input_nodes_df,subgraph_df,output_dir,id_key_file = None):
 
     subgraph_attributes_df = create_node_attributes(input_nodes_df,subgraph_df)
 

@@ -115,3 +115,14 @@ FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT = [
     "PW",
     "RO",
 ]
+
+METAPATH_SEARCH_MAPS = {
+    "protein" : "PR_",
+    "metabolite" : "CHEBI_",
+    "disease" : "MONDO_",
+    "reaction" : "R-HSA",
+    "gene" : "gene",
+    "all" : "%",
+    "process" : "GO_",
+    "experimental_factor" : "EFO_"
+}

@@ -276,18 +276,29 @@ def get_subgraph_dfs(output_dir,input_type,subgraph_algorithm):
     return input_nodes,subgraph_df,noa_df,path_list
 
 
-def output_path_lists(output_dir,path_list,subgraph_algorithm,idx):
+def output_path_lists(output_dir,path_list,subgraph_algorithm,idx,path_nodes):
 
     df = pd.DataFrame()
 
     df['Value'] = path_list
+
+    # Determine the maximum length of lists in path_nodes
+    max_length = max([len(path) if isinstance(path, list) else 1 for path in path_nodes])
+
+    # Dynamically create columns
+    for i in range(max_length):
+        df["Entity_" + str(i + 1)] = [path[i] if isinstance(path, list) and len(path) > i else path for path in path_nodes]
+
+    # df['1'] = [path[0] if isinstance(path, list) and len(path) > 0 else path for path in path_nodes] 
+    # df['2'] = [path[1] if isinstance(path, list) and len(path) > 0 else path for path in path_nodes]
+    # df['3'] = [path[2] if isinstance(path, list) and len(path) > 0 else path for path in path_nodes] 
 
     output_folder = output_dir+'/Evaluation_Files'
     #Check for existence of output directory
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv',sep=',',index=False)
+    df.to_csv(output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv',sep='|',index=False)
     logging.info('Create path list file: %s',output_folder+'/paths_list_'+subgraph_algorithm+'_'+str(idx)+'.csv')
 
 def output_num_paths_pairs(output_dir,num_paths_df,subgraph_algorithm):

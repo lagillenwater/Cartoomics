@@ -1,7 +1,7 @@
 # Given a starting graph of node pairs, find all paths between them to create a subgraph
 from calculate_information_content import drop_low_information_content_nodes
-from constants import FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT #, PHEKNOWLATOR_BROAD_NODES_DICT
-from find_path import find_shortest_path,find_shortest_path_pattern
+from constants import FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT, METAPATH_SEARCH_MAPS #, PHEKNOWLATOR_BROAD_NODES_DICT
+from find_path import expand_neighbors, find_shortest_path,find_shortest_path_pattern
 from find_path import prioritize_path_cs,prioritize_path_pdp
 from find_path import calc_cosine_sim_from_label_list,calc_cosine_sim_from_uri_list,generate_comparison_terms_dict,unique_nodes
 import pandas as pd
@@ -198,8 +198,7 @@ def automatic_defined_node_exclusion(graph,kg_type,output_dir,threshold = 0.3):
     print(nx.number_of_nodes(graph.graph_object))
     return graph
  
-def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type, find_graph_similarity = False,existing_path_nodes = 'none'):
-
+def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triples_file,output_dir,input_dir,embedding_dimensions,kg_type, search_algorithm, find_graph_similarity = False,existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -213,16 +212,29 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triple
     #Dict of all shortest paths for subgraph
     all_path_nodes = {}
 
+    id_keys_df = pd.DataFrame(columns = ["Original","New"])
+
+    if search_algorithm == "Metapath_Neighbors":
+        # Transform input_nodes into relevant metapath objects and append to original input_nodes_df
+        input_nodes_df,id_keys_df = expand_neighbors(input_nodes_df,input_dir,triples_file,id_keys_df,graph.labels_all,kg_type)
+        print("og input_nodes_df")
+        print(input_nodes_df)
+        input_nodes_df = input_nodes_df[~input_nodes_df["target_id"].str.contains("http:")]
+        print("new input_nodes_df")
+        print(input_nodes_df)
+
+
     for i in tqdm(range(len(input_nodes_df))):
         df_paths = pd.DataFrame()
         start_node = input_nodes_df.iloc[i].loc['source_label']
         end_node = input_nodes_df.iloc[i].loc['target_label']
+        start_node_uri = input_nodes_df.iloc[i].loc['source_id']
         if existing_path_nodes != 'none':
             pair_path_nodes = existing_path_nodes[start_node + end_node]
         else:
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,pair_path_nodes)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs,id_keys_df = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,search_algorithm,id_keys_df,pair_path_nodes)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -231,8 +243,9 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triple
         #Output path list to file where index will match the pair# in the _Input_Nodes_.csv
         #Get sum of all cosine values in value_list
         path_list = list(map(sum, all_paths_cs_values))
-        output_path_lists(output_dir,path_list,'CosineSimilarity',i)
+        output_path_lists(output_dir,path_list,'CosineSimilarity_'+search_algorithm,i,path_nodes)
         #all_chosen_path_nodes.append(chosen_path_nodes_cs)
+        # Keep track of every path found by uri so that you can search them later
         all_path_nodes[start_node + end_node] = path_nodes
 
     df = pd.concat(all_paths)
@@ -240,12 +253,17 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triple
     #Remove duplicate edges
     df = df.drop_duplicates(subset=['S_ID','P_ID','O_ID','S','P','O'])
     
+    # Write to file if data exists
+    print("id_keys_df: ",id_keys_df)
+    if len(id_keys_df) > 0:
+        if not os.path.exists(output_dir + '/CosineSimilarity_' + search_algorithm): os.mkdir(output_dir + '/CosineSimilarity_' + search_algorithm)
+        id_keys_df.to_csv(output_dir + '/CosineSimilarity_' + search_algorithm + "/id_keys_df.csv",sep='|',index=False)
 
-    output_num_paths_pairs(output_dir,num_paths_df,'CosineSimilarity')
+    output_num_paths_pairs(output_dir,num_paths_df,'CosineSimilarity_'+search_algorithm)
 
     return df,all_paths_cs_values,all_path_nodes  #all_chosen_path_nodes
 
-def subgraph_prioritized_path_pdp(input_nodes_df,graph,weights,search_type,pdp_weight,output_dir, kg_type, existing_path_nodes = 'none'):
+def subgraph_prioritized_path_pdp(input_nodes_df,graph,weights,search_type,triples_file,input_dir,pdp_weight,output_dir, kg_type, search_algorithm, existing_path_nodes = 'none'):
 
     input_nodes_df.columns= input_nodes_df.columns.str.lower()
 
@@ -269,7 +287,7 @@ def subgraph_prioritized_path_pdp(input_nodes_df,graph,weights,search_type,pdp_w
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,weights,search_type,pdp_weight,kg_type,pair_path_nodes)
+        path_nodes,pdp_shortest_path_df,paths_pdp,chosen_path_nodes_pdp = prioritize_path_pdp(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,pdp_weight,kg_type,search_algorithm,pair_path_nodes)
         all_paths.append(pdp_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]
@@ -307,7 +325,7 @@ def subgraph_prioritized_path_guiding_term(input_nodes_df,term_row,graph,g_nodes
         else:
             pair_path_nodes = 'none'
         node_pair = input_nodes_df.iloc[i]
-        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type,pair_path_nodes,term_row)
+        path_nodes,cs_shortest_path_df,all_paths_cs_values,chosen_path_nodes_cs = prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions,kg_type, pair_path_nodes,term_row)
         all_paths.append(cs_shortest_path_df)
         df_paths['source_node'] = [start_node]
         df_paths['target_node'] = [end_node]

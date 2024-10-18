@@ -14,7 +14,7 @@ from constants import (
 #Have Cytoscape running, will only output png of subgraph(s) when subgraph.csv and subgraph_attributions.noa exist
 def main():
 
-    kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping = generate_graphsim_arguments()
+    kg_type,embedding_dimensions,weights,search_type, pdp_weight,input_type, cosine_similarity, pdp, guiding_term, input_substring,wikipathways,pfocr_urls,pfocr_urls_file,enable_skipping,metapath_search = generate_graphsim_arguments()
 
     all_wikipathways_dir = os.getcwd() + "/" + WIKIPATHWAYS_SUBFOLDER
 
@@ -41,6 +41,14 @@ def main():
             subgraph_attributes_df = pd.read_csv(output_dir + '/PDP/Subgraph_attributes.noa',sep='|')
 
             create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir+'/PDP')
+
+        if metapath_search:
+
+            subgraph_df = pd.read_csv(output_dir + '/CosineSimilarity_Metapath/Subgraph.csv',sep='|')
+
+            subgraph_attributes_df = pd.read_csv(output_dir + '/CosineSimilarity_Metapath/Subgraph_attributes.noa',sep='|')
+
+            create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir+'/CosineSimilarity_Metapath')
 
 
 if __name__ == '__main__':
