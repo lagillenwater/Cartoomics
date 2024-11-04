@@ -140,8 +140,15 @@ def exact_match_identification(nodes,node):
 		return node_label,exact_match,no_match
 	#Return full df of exact matches if more than 1
 	if len(exact_matches) > 1:
-		exact_match = False
-		no_match = False
+		# For microbes get NCBITaxon ID only
+		filtered_matches = exact_matches[exact_matches["entity_uri"].str.contains("NCBITaxon:", case=False)]
+		if len(filtered_matches) > 0:
+			node_label = filtered_matches.iloc[0][["label"]].values[0]
+			exact_match = True
+			no_match = False
+		else: 
+			exact_match = False
+			no_match = False
 		return exact_matches,exact_match,no_match
 
 	#Return flag if no exact matches
