@@ -54,6 +54,8 @@ def create_graph(triples_file,labels_file, kg_type = "pkl"):
         triples_df,labels = process_pkl_files(triples_file,labels_file)
     elif kg_type == "kg-covid19":
         triples_df,labels = process_kg_covid19_files(triples_file,labels_file)
+    elif kg_type == "kg-microbe":
+        triples_df,labels = process_kg_microbe_files(triples_file,labels_file)
     else:
         raise Exception('Invalid graph type! Please set kg_type to "pkl" or "kg-covid19"')
 
@@ -79,6 +81,18 @@ def process_kg_covid19_files(triples_file,labels_file):
     labels.loc[pd.isna(labels["entity_uri"]),'entity_uri'] = labels.loc[pd.isna(labels["entity_uri"]),'id']
 
     
+    return triples_df,labels
+
+###Read in all kg_microbe files, outputs triples and labels as a df
+def process_kg_microbe_files(triples_file,labels_file):
+    triples_df = pd.read_csv(triples_file,sep = '\t', usecols = ['subject', 'object', 'predicate'])
+    triples_df.columns.str.lower()
+
+    labels = pd.read_csv(labels_file, sep = '\t', usecols = ['id','name','description','synonym', 'iri'])
+    labels.columns = ['entity_uri','label', 'description/definition','synonym','iri']
+    # labels.loc[pd.isna(labels["label"]),'label'] = labels.loc[pd.isna(labels["label"]),'entity_uri']
+    # labels.loc[pd.isna(labels["entity_uri"]),'entity_uri'] = labels.loc[pd.isna(labels["entity_uri"]),'id']
+
     return triples_df,labels
 
 

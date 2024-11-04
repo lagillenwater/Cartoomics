@@ -43,4 +43,6 @@
 
 # python wikipathways_literature_comparison_text.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "[ 'WP4533','WP4534']" --enable-skipping True
 
-python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP5372']" --metapath-search False
+# python call_all_pathways_wrapper.py --knowledge-graph pkl --input-type annotated_diagram --wikipathways "['WP5372']" --metapath-search False
+
+python creating_subgraph_from_KG.py --input-dir ./kg-microbe  --output-dir ./kg-microbe/outputs --knowledge-graph kg-microbe --input-type experimental_data --metapath-search True

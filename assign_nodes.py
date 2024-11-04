@@ -215,8 +215,9 @@ def map_input_to_nodes(node,kg,enable_skipping):
 	search_loop = True
 	exact_match = False
 	while(search_loop):
-		#print("User Search Node: ", node)
+		print("User Search Node: ", node)
 		found_nodes,exact_match = find_node(node,kg)
+		print(found_nodes, exact_match)
 		#Handle when node label is returned for exact match, which will be a string not a df
 		if isinstance(found_nodes, str):
 			search_loop = False	
@@ -499,7 +500,7 @@ def interactive_search_wrapper(g,user_input_file, output_dir, input_type,kg_type
 			print('Interactive Node Search')
 			logging.info('Interactive Node Search')
             #Interactively assign node
-			if input_type == 'annotated_diagram':
+			if input_type == 'annotated_diagram' or input_type == "experimental_data":
 				#Creates examples df without source_label and target_label
 				u = read_user_input(user_input_file[0])
 				n = unique_nodes(u)

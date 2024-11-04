@@ -378,21 +378,24 @@ def convert_to_labels(df,labels_all,kg_type,input_nodes_df):
             all_p.append(P)
             all_o.append(O)
     #Need to test for kg-covid19 that S_ID/P_ID/O_ID addition to df works 
-    if kg_type == 'kg-covid19':
+    if kg_type == 'kg-covid19' or kg_type == 'kg-microbe':
         for i in range(len(df)):
             try:
                 S = input_nodes_df.loc[input_nodes_df['source_id'] == df.iloc[i].loc['S_ID'],'source_label'].values[0]
             except IndexError:
-                s_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['S_ID'],'label'].values[0]
+                s_label =  labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['S_ID'],'label'].values[0]
                 if s_label != "":
                     S = s_label
             P = df.iloc[i].loc['P_ID'].split(':')[-1]
             try:
                 O = input_nodes_df.loc[input_nodes_df['target_id'] == df.iloc[i].loc['O_ID'],'target_label'].values[0]
             except IndexError:
-                o_label =  labels_all.loc[labels_all['id'] == df.iloc[i].loc['O_ID'],'label'].values[0]
+                o_label =  labels_all.loc[labels_all['entity_uri'] == df.iloc[i].loc['O_ID'],'label'].values[0]
                 if o_label != "":
                     O = o_label 
+            all_s.append(S)
+            all_p.append(P)
+            all_o.append(O)
 
     df['S'] = all_s
     df['P'] = all_p
@@ -459,17 +462,21 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triple
             # path_nodes = find_all_metapaths_files(node_pair,graph,kg_type,input_dir,triples_file)
             path_nodes,id_keys_df = find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_file,id_keys_df,graph.labels_all)
 
-
-    if len(path_nodes[0]) > 0:
-        e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
-        emb,entity_map = e.generate_graph_embeddings(kg_type)
-        df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,graph,search_type, kg_type, guiding_term,input_nodes_df)
+    ### Removing embeddings path prioritization for now
+    # if len(path_nodes[0]) > 0:
+    #     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
+    #     emb,entity_map = e.generate_graph_embeddings(kg_type)
+    #     df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,graph,search_type, kg_type, guiding_term,input_nodes_df)
 
     else:
         df = pd.DataFrame()
         all_paths_cs_values = []
         chosen_path_nodes_cs = []
 
+    # Temp solution to not using embeddings
+    df = pd.DataFrame()
+    all_paths_cs_values = [[]]
+    chosen_path_nodes_cs = [0] * len(path_nodes)
     return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs,id_keys_df
 
 def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway):
@@ -778,7 +785,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
     # Create a DuckDB connection
     conn = duckdb.connect(":memory:")
-
+    conn.execute("PRAGMA memory_limit='64GB'")
     all_path_nodes = []
 
     duckdb_load_table(conn, triples_list_file, "edges", ["subject", "predicate", "object"])
@@ -881,6 +888,42 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
 
+                else:
+                    create_subject_object_pair_table(
+                        conn,
+                        table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]),
+                        base_table_name = "edges",
+                        subject = re.sub(r'[/_]', '', s),
+                        object = re.sub(r'[/_]', '', o),
+                        subject_prefix = "%" + s + "%",
+                        predicate_prefix = "%" + p + "%",
+                        object_prefix = "%" + o + "%"
+                    )
+
+                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                    print("num paths: ",s,o,ct)
+
+                    if ct > 0:
+                        tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                    
+                    if ct == 0:
+                        # read in table with this protein as s or o, r, and and PR_ as o or s
+                        create_subject_object_pair_table(
+                            conn,
+                            table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]),
+                            base_table_name = "edges",
+                            subject = re.sub(r'[/_]', '', o),
+                            object = re.sub(r'[/_]', '', s),
+                            subject_prefix = "%" + o + "%",
+                            predicate_prefix = "%" + p + "%",
+                            object_prefix = "%" + s + "%"
+                        )
+
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                        print("num paths: ",o,s,ct)
+                        if ct > 0:
+                            tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+
             tables_paired = [list(pair) for pair in zip(tables, tables[1:])]
 
             if len(tables_paired) == 0: path_nodes = []
@@ -911,6 +954,12 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         SELECT "{subject_prefix}", "{comparison_prefix}","{object_prefix}" FROM full_metapath;
                         """
                     )
+                    ################ WORKING HERE ##################
+                    # query = (
+                    #     f"""
+                    #     SELECT * FROM full_metapath;
+                    #     """
+                    # )
 
                     result = conn.execute(query).fetchall()
 
@@ -919,12 +968,56 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     drop_table(conn, "full_metapath")
 
-        
-    all_path_nodes = sorted(all_path_nodes,key = itemgetter(1))
+    # Don't know why this is necessary, removed for now
+    # all_path_nodes = sorted(all_path_nodes,key = itemgetter(1))
+    all_path_nodes = combine_paths_in_metapath(all_path_nodes)
+    print("all_path_nodes")
+    print(all_path_nodes)
     if len(all_path_nodes) == 0:
         all_path_nodes = [[]]
 
     return all_path_nodes,id_keys_df
+
+# def find_matching_triples(given_list, rest_of_lists):
+#     matching_triples = []
+    
+#     # Iterate through each list of triples in rest_of_lists
+#     for triple in rest_of_lists:
+#         # Check if the second value in the triple exists in the given_list
+#         if triple[1] in given_list:
+#             matching_triples.append(triple)
+    
+#     return matching_triples
+
+def combine_paths_in_metapath(all_path_nodes):
+
+    # Find items among triples that are overlapping
+    overlap = list(set(all_path_nodes[0]).intersection(*all_path_nodes[1:]))
+
+    # Find list where item in overlap is first or last in that triple
+    triple_first = [i for i in all_path_nodes if i[0] not in overlap][0]
+    triple_last = [i for i in all_path_nodes if i[-1] not in overlap][0]
+    rest_of_triples = [value for value in all_path_nodes if value not in [triple_first, triple_last]]
+
+    # This only works for paths of length 4, so 2 triples for now
+    all_path_nodes = [triple_first, triple_last]
+    combined = all_path_nodes[0]
+
+    # Iterate through the rest of the lists
+    for current_list in all_path_nodes[1:]:
+        # Find the index of the overlapping value (if any)
+        overlap_index = None
+        for i, value in enumerate(current_list):
+            if value in triple_first:
+                overlap_index = i
+                break
+        
+        # If there's an overlap, combine lists
+        if overlap_index is not None:
+            # Append the non-overlapping part of the current list
+            combined.extend(x for x in current_list[overlap_index + 1:] if x not in combined)
+    
+    return [combined]
 
 def expand_neighbors(input_nodes_df,input_dir,triples_list_file,id_keys_df,labels,kg_type):
     """

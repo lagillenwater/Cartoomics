@@ -47,7 +47,7 @@ class Embeddings:
             emb = KeyedVectors.load_word2vec_format(self.input_dir + '/' + self.kg_type + '/' + embeddings_file, binary=False)
             if kg_type == 'pkl':
                 entity_map = json.load(open(self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')))
-            if kg_type == 'kg-covid19':
+            if kg_type == 'kg-covid19' or kg_type == 'kg-microbe':
                 entity_map = json.load(open(self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integer_Identifier_Map')))
 
         #Only generate embeddings if file doesn't exist
@@ -55,7 +55,7 @@ class Embeddings:
             if self.kg_type == 'pkl':
                 output_ints_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integers_node2vecInput')
                 output_ints_map_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_Integer_Identifier_Map')
-            if self.kg_type == 'kg-covid19':
+            if self.kg_type == 'kg-covid19' or self.kg_type == 'kg-microbe':
                 output_ints_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integers_node2vecInput')
 
                 output_ints_map_location = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_Integer_Identifier_Map')
@@ -64,8 +64,8 @@ class Embeddings:
                 if self.kg_type == 'pkl':
                     kg_data = set(tuple(x.replace('>','').replace('<','').split('\t')) for x in f_in.read().splitlines())
                     f_in.close()
-                if self.kg_type == 'kg-covid19':
-                    kg_data = set(tuple(x.split('\t'))[1:4] for x in f_in.read().splitlines())
+                if self.kg_type == 'kg-covid19' or self.kg_type == 'kg-microbe':
+                    kg_data = set(tuple(x.split('\t'))[0:4] for x in f_in.read().splitlines())
                     f_in.close()
 
             logging.info('Created Triples_Integers_node2vecInput file: %s',output_ints_location) 
@@ -97,7 +97,7 @@ class Embeddings:
                 #print('node2vecInput_cleaned: ',kg_data)
             if self.kg_type == 'pkl':
                 file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('Triples_Identifiers','Triples_node2vecInput_cleaned')
-            if self.kg_type == 'kg-covid19':
+            if self.kg_type == 'kg-covid19' or self.kg_type == 'kg-microbe':
                 file_out = self.input_dir + '/' + self.kg_type + '/' + base_name.replace('edges','Triples_node2vecInput_cleaned')
                                   
 

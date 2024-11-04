@@ -48,16 +48,16 @@ def main():
 
     # networkx_g = kg_to_undirected_networkx(g,g.edgelist,g.labels_all)
     
-    if cosine_similarity == 'true':
-        print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
+    # if cosine_similarity == 'true':
+    #     print("Finding subgraph using user input and KG embeddings for Cosine Similarity......")
 
-        #Returns list of all shortest paths for subgraph as all_path_nodes
-        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Shortest_Path")
+    #     #Returns list of all shortest paths for subgraph as all_path_nodes
+    #     subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Shortest_Path")
 
 
-        print("Outputting CS visualization......")
+    #     print("Outputting CS visualization......")
 
-        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
+    #     cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity')
 
     # if pdp == 'true':
 

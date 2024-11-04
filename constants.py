@@ -117,12 +117,14 @@ FILTER_ONTOLOGIES_BY_INFORMATION_CONTENT = [
 ]
 
 METAPATH_SEARCH_MAPS = {
-    "protein" : "PR_",
-    "metabolite" : "CHEBI_",
-    "disease" : "MONDO_",
+    # "protein" : "PR",
+    "protein" : "UniprotKB",
+    "metabolite" : "CHEBI",
+    "disease" : "MONDO",
     "reaction" : "R-HSA",
     "gene" : "gene",
     "all" : "%",
-    "process" : "GO_",
-    "experimental_factor" : "EFO_"
+    "process" : "GO",
+    "experimental_factor" : "EFO",
+    "microbe" : "NCBITaxon"
 }

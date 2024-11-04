@@ -193,7 +193,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
 
         input_file = []
         pfocr_id = user_input.split("/")[-1].split(".")[0]
-### Could add the Figure ID here. LG
+        ### Could add the Figure ID here. LG
         folder = input_dir+'/pathway_ocr_diagram/'
         if not os.path.isdir(folder):
             # raise Exception('Missing folder input directory: ' + folder)
@@ -223,6 +223,9 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
         if not os.path.isdir(folder):
             raise Exception('Missing folder input directory: ' + folder)
             logging.error('Missing folder input directory: ' + folder)
+        fname  = [v for v in os.listdir(folder) if 'example_input' in v]
+        if len(fname) == 1:
+            input_file = [folder + '/' + fname[0]]
 
     #Check for existence of guiding_terms file only
     if guiding_term:
@@ -263,7 +266,7 @@ def get_graph_files(input_dir,output_dir, kg_type,input_type, pfocr_url, guiding
         
 
     
-    if kg_type == "kg-covid19":
+    if kg_type == "kg-covid19" or kg_type == "kg-microbe":
         kg_dir = input_dir + '/' + kg_type + '/'
         if not os.path.exists(kg_dir):
             os.mkdir(kg_dir)
