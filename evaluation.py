@@ -1,5 +1,5 @@
 
-from find_path import get_uri
+from find_path import define_path_triples, get_uri
 import pandas as pd
 from igraph import * 
 import numpy as np

@@ -114,11 +114,12 @@ def main():
         #     duckdb_metapath_search(triples_list_file, triples_list, output_table_name, input_dir + "/metapaths")
 
         # Select paths that match
-        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath_Neighbors")
+        # subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath_Neighbors")
+        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath")
 
         print("Outputting CS visualization......")
 
-        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity_Metapath_Neighbors')
+        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity_Metapath')
 
 if __name__ == '__main__':
     main()

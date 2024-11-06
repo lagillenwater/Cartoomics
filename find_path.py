@@ -474,9 +474,11 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triple
         chosen_path_nodes_cs = []
 
     # Temp solution to not using embeddings
-    df = pd.DataFrame()
-    all_paths_cs_values = [[]]
-    chosen_path_nodes_cs = [0] * len(path_nodes)
+    all_paths_cs_values = [[0] for _ in range(len(path_nodes))]
+    chosen_path_nodes_cs = [path_nodes[0]]
+    # Taken from calc_cosine_sim
+    df = define_path_triples(graph,chosen_path_nodes_cs,search_type)
+    df = convert_to_labels(df,graph.labels_all,kg_type,input_nodes_df)
     return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs,id_keys_df
 
 def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway):
@@ -772,6 +774,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
     metapaths_list = get_all_input_metapaths(input_dir)
 
+    # List of each metapath by the given triples, eg: [[['NCBITaxon', '%', 'CHEBI'], ['CHEBI', '%', 'MONDO']]]
     triples_list = []
     for metapath in metapaths_list:
         l = [list(metapath[i:i+3]) for i in range(0, len(metapath) - 2, 2)]
@@ -780,12 +783,10 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
     print("triples_list")
     print(triples_list)
 
-    print("find_all_metapaths_duckdb")
-    print(triples_list)
-
     # Create a DuckDB connection
     conn = duckdb.connect(":memory:")
     conn.execute("PRAGMA memory_limit='64GB'")
+    # List of paths found that match metapaths, will match length of filtered_metapaths
     all_path_nodes = []
 
     duckdb_load_table(conn, triples_list_file, "edges", ["subject", "predicate", "object"])
@@ -805,12 +806,17 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
         # Doing this using Duckdb
 
         # First only get metapaths that match the input nodes
-        # Filter the metapaths based on the first and last values
+        # Filter the metapaths based on the first and last values, eg: [[['NCBITaxon', '%', 'CHEBI'], ['CHEBI', '%', 'MONDO']]]
         filtered_metapaths = [m for m in triples_list if m[0][0] in node1 and m[-1][-1] in node2]
+        print("filtered_metapaths")
+        print(filtered_metapaths)
 
-        # Search existing metapaths by node pair to return [[source,target]] pairs
+        # Search existing metapaths by node pair/triple to return [[source,target]] pairs
+        # Go through each metapath that matches node1, node2
         for m in filtered_metapaths:
+            # List of each paired table found with duckdb, eg: CHEBI_MONDO:XX, UniprotKB:MONDO:XX
             tables = []
+            # Go through each triple that is in the metapath
             for i, (s, p, o) in enumerate(m):
                 #if get_metapath_key(node1) == s and get_metapath_key(node2) == o:
                 if i == len(m) - 1:
@@ -827,7 +833,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     )
 
                     ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]))
-                    print("num paths: ",s,node2,ct)
+                    print("num paths last triple: ",s,node2,ct)
 
                     if ct > 0:
                         tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]))
@@ -846,7 +852,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         )
 
                         ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]))
-                        print("num paths: ",node2,s,ct)
+                        print("num paths last triple: ",node2,s,ct)
 
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]))
@@ -865,7 +871,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     )
 
                     ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
-                    print("num paths: ",node1,o,ct)
+                    print("num paths first triple: ",node1,o,ct)
 
                     if ct > 0:
                         tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
@@ -884,7 +890,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         )
 
                         ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
-                        print("num paths: ",o,node1,ct)
+                        print("num paths first triple: ",o,node1,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
 
@@ -901,7 +907,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     )
 
                     ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
-                    print("num paths: ",s,o,ct)
+                    print("num paths middle triple: ",s,o,ct)
 
                     if ct > 0:
                         tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
@@ -920,15 +926,24 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         )
 
                         ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
-                        print("num paths: ",o,s,ct)
+                        print("num paths middle triple: ",o,s,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
 
+            print("tables")
+            print(tables)
+            # 
             tables_paired = [list(pair) for pair in zip(tables, tables[1:])]
+            print("tables_paired")
+            print(tables_paired)
 
-            if len(tables_paired) == 0: path_nodes = []
+            # Confirm that values were found for each triple in metapath, ex: [['NCBITaxon:165179_CHEBI', 'CHEBI_MONDO:0005180']]
+            if len(tables_paired) < (len(m) - 1): path_nodes = []
             else:
+                # Get complete metapaths
                 for t in tables_paired:
+                    # List of path nodes for given triple
+                    # triples_path_nodes = []
                     print(t)
                     # Compare over the prefix that matches
                     t_prefixes = [s.split('_') for s in t]
@@ -962,17 +977,24 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     # )
 
                     result = conn.execute(query).fetchall()
+                    print(query)
+                    print(result)
 
+                    # Returns path from the given triple t
                     path_nodes = conn.execute(query).df().values.tolist()
                     all_path_nodes.extend(path_nodes)
 
                     drop_table(conn, "full_metapath")
+            
+                # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
+                if len(m) > 2:
+                    all_path_nodes = combine_paths_in_metapath(all_path_nodes)\
 
-    # Don't know why this is necessary, removed for now
-    # all_path_nodes = sorted(all_path_nodes,key = itemgetter(1))
-    all_path_nodes = combine_paths_in_metapath(all_path_nodes)
     print("all_path_nodes")
     print(all_path_nodes)
+    # Don't know why this is necessary, removed for now
+    # all_path_nodes = sorted(all_path_nodes,key = itemgetter(1))
+    
     if len(all_path_nodes) == 0:
         all_path_nodes = [[]]
 
@@ -991,33 +1013,36 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
 def combine_paths_in_metapath(all_path_nodes):
 
-    # Find items among triples that are overlapping
-    overlap = list(set(all_path_nodes[0]).intersection(*all_path_nodes[1:]))
+    if len(all_path_nodes) == 0:
+        return all_path_nodes
+    else:
+        # Find items among triples that are overlapping
+        overlap = list(set(all_path_nodes[0]).intersection(*all_path_nodes[1:]))
 
-    # Find list where item in overlap is first or last in that triple
-    triple_first = [i for i in all_path_nodes if i[0] not in overlap][0]
-    triple_last = [i for i in all_path_nodes if i[-1] not in overlap][0]
-    rest_of_triples = [value for value in all_path_nodes if value not in [triple_first, triple_last]]
+        # Find list where item in overlap is first or last in that triple
+        triple_first = [i for i in all_path_nodes if i[0] not in overlap][0]
+        triple_last = [i for i in all_path_nodes if i[-1] not in overlap][0]
+        rest_of_triples = [value for value in all_path_nodes if value not in [triple_first, triple_last]]
 
-    # This only works for paths of length 4, so 2 triples for now
-    all_path_nodes = [triple_first, triple_last]
-    combined = all_path_nodes[0]
+        # This only works for paths of length 4, so 2 triples for now
+        all_path_nodes = [triple_first, triple_last]
+        combined = all_path_nodes[0]
 
-    # Iterate through the rest of the lists
-    for current_list in all_path_nodes[1:]:
-        # Find the index of the overlapping value (if any)
-        overlap_index = None
-        for i, value in enumerate(current_list):
-            if value in triple_first:
-                overlap_index = i
-                break
+        # Iterate through the rest of the lists
+        for current_list in all_path_nodes[1:]:
+            # Find the index of the overlapping value (if any)
+            overlap_index = None
+            for i, value in enumerate(current_list):
+                if value in triple_first:
+                    overlap_index = i
+                    break
+            
+            # If there's an overlap, combine lists
+            if overlap_index is not None:
+                # Append the non-overlapping part of the current list
+                combined.extend(x for x in current_list[overlap_index + 1:] if x not in combined)
         
-        # If there's an overlap, combine lists
-        if overlap_index is not None:
-            # Append the non-overlapping part of the current list
-            combined.extend(x for x in current_list[overlap_index + 1:] if x not in combined)
-    
-    return [combined]
+        return [combined]
 
 def expand_neighbors(input_nodes_df,input_dir,triples_list_file,id_keys_df,labels,kg_type):
     """

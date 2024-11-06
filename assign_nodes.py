@@ -149,7 +149,7 @@ def exact_match_identification(nodes,node):
 		else: 
 			exact_match = False
 			no_match = False
-		return exact_matches,exact_match,no_match
+		return node_label,exact_match,no_match
 
 	#Return flag if no exact matches
 	else:
@@ -249,7 +249,6 @@ def map_input_to_nodes(node,kg,enable_skipping):
 	return found_nodes,nrow,exact_match
 
 def manage_user_input(found_nodes,user_input,kg,exact_match):
-
 
 	#Only continue search if node_label match not found according to exact_match flag
 	if exact_match:
