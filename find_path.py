@@ -889,10 +889,10 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + node1 + "%"
                         )
 
-                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
+                        ct = get_table_count("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
                         print("num paths first triple: ",o,node1,ct)
                         if ct > 0:
-                            tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
+                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
 
                 else:
                     create_subject_object_pair_table(
@@ -925,10 +925,10 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + s + "%"
                         )
 
-                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                        ct = get_table_count("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
                         print("num paths middle triple: ",o,s,ct)
                         if ct > 0:
-                            tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
 
             print("tables")
             print(tables)
