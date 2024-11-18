@@ -889,7 +889,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + node1 + "%"
                         )
 
-                        ct = get_table_count("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
                         print("num paths first triple: ",o,node1,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
@@ -925,7 +925,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + s + "%"
                         )
 
-                        ct = get_table_count("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
                         print("num paths middle triple: ",o,s,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
@@ -964,17 +964,17 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     ct = get_table_count(conn, "full_metapath")
                     print("full_metapath: ",ct)
 
-                    query = (
-                        f"""
-                        SELECT "{subject_prefix}", "{comparison_prefix}","{object_prefix}" FROM full_metapath;
-                        """
-                    )
-                    ################ WORKING HERE ##################
                     # query = (
                     #     f"""
-                    #     SELECT * FROM full_metapath;
+                    #     SELECT "{subject_prefix}", "{comparison_prefix}","{object_prefix}" FROM full_metapath;
                     #     """
                     # )
+                    ################ WORKING HERE ##################
+                    query = (
+                        f"""
+                        SELECT * FROM full_metapath;
+                        """
+                    )
 
                     result = conn.execute(query).fetchall()
                     print(query)
@@ -987,8 +987,12 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     drop_table(conn, "full_metapath")
             
                 # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
+                print("before combining")
+                print(all_path_nodes)
                 if len(m) > 2:
-                    all_path_nodes = combine_paths_in_metapath(all_path_nodes)\
+                    all_path_nodes = combine_paths_in_metapath(all_path_nodes,m[0][0])
+                    print("after combining")
+                    print(all_path_nodes)
 
     print("all_path_nodes")
     print(all_path_nodes)
@@ -1011,38 +1015,58 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
     
 #     return matching_triples
 
-def combine_paths_in_metapath(all_path_nodes):
+def merge_lists_on_overlap(list1, list2):
+    """_summary_
 
-    if len(all_path_nodes) == 0:
-        return all_path_nodes
-    else:
-        # Find items among triples that are overlapping
-        overlap = list(set(all_path_nodes[0]).intersection(*all_path_nodes[1:]))
+    Args:
+        list1 (list): A list of combined triples
+        list2 (list): A list of combined triples
 
-        # Find list where item in overlap is first or last in that triple
-        triple_first = [i for i in all_path_nodes if i[0] not in overlap][0]
-        triple_last = [i for i in all_path_nodes if i[-1] not in overlap][0]
-        rest_of_triples = [value for value in all_path_nodes if value not in [triple_first, triple_last]]
+    Returns:
+        list: Merged lists based on overlapping values if the values before the overlapping values between the 2 lists don't match and the values after the overlapping values between the 2 lists don't match.
+    """
+    merged_lists = []
+    
+    # Iterate through list1 and list2 to find consecutive overlapping elements
+    for i in range(len(list1) - 1):  # Loop through list1
+        for j in range(len(list2) - 1):  # Loop through list2
+            # Check for consecutive overlap
+            if list1[i] == list2[j] and list1[i+1] == list2[j+1]:
+                # Check if the elements before the overlap in both lists do not match
+                if i > 0 and j > 0 and list1[i-1] == list2[j-1]:
+                    continue  # Skip if the elements before overlap match
+                
+                # Check if the elements after the overlap in both lists do not match
+                if i + 2 < len(list1) and j + 2 < len(list2):
+                    if list1[i+2] == list2[j+2]:
+                        continue  # Skip if the elements after overlap match
+                
+                # Combine list1 before the overlap and list2 after the overlap
+                merged_list1 = list1[:i+2] + list2[j+2:]
+                merged_lists.append(merged_list1)
 
-        # This only works for paths of length 4, so 2 triples for now
-        all_path_nodes = [triple_first, triple_last]
-        combined = all_path_nodes[0]
+    return merged_lists
 
-        # Iterate through the rest of the lists
-        for current_list in all_path_nodes[1:]:
-            # Find the index of the overlapping value (if any)
-            overlap_index = None
-            for i, value in enumerate(current_list):
-                if value in triple_first:
-                    overlap_index = i
-                    break
-            
-            # If there's an overlap, combine lists
-            if overlap_index is not None:
-                # Append the non-overlapping part of the current list
-                combined.extend(x for x in current_list[overlap_index + 1:] if x not in combined)
-        
-        return [combined]
+def combine_paths_in_metapath(data, starting_prefix):
+    """_summary_
+
+    Args:
+        data (list of lists): A list of lists of combined triples.
+    """
+        # Initialize a list to store combinations of lists
+    combined_lists = []
+    
+    # Iterate over each possible pair of lists in the list_of_lists
+    for i, list1 in enumerate(data):
+        if list1[0].startswith(starting_prefix):  # Check if list1 starts with starting_prefix
+            for j, list2 in enumerate(data):
+                if not list2[0].startswith(starting_prefix): 
+                    result = merge_lists_on_overlap(list1, list2)
+                    if not result in combined_lists:
+                        combined_lists.extend(result)
+    combined_lists = [list(tup) for tup in set(tuple(lst) for lst in combined_lists)]
+
+    return combined_lists
 
 def expand_neighbors(input_nodes_df,input_dir,triples_list_file,id_keys_df,labels,kg_type):
     """
