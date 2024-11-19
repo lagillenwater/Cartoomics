@@ -964,12 +964,6 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                     ct = get_table_count(conn, "full_metapath")
                     print("full_metapath: ",ct)
 
-                    # query = (
-                    #     f"""
-                    #     SELECT "{subject_prefix}", "{comparison_prefix}","{object_prefix}" FROM full_metapath;
-                    #     """
-                    # )
-                    ################ WORKING HERE ##################
                     query = (
                         f"""
                         SELECT * FROM full_metapath;
@@ -982,15 +976,16 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     # Returns path from the given triple t
                     path_nodes = conn.execute(query).df().values.tolist()
-                    all_path_nodes.extend(path_nodes)
+                    all_path_nodes.append(path_nodes)
 
                     drop_table(conn, "full_metapath")
             
                 # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
                 print("before combining")
                 print(all_path_nodes)
-                if len(m) > 2:
-                    all_path_nodes = combine_paths_in_metapath(all_path_nodes,m[0][0])
+                if len(tables_paired) > 1:
+                    all_path_nodes = combine_paths_in_metapath(all_path_nodes, tables_paired)
+
                     print("after combining")
                     print(all_path_nodes)
 
@@ -1004,80 +999,34 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
     return all_path_nodes,id_keys_df
 
-# def find_matching_triples(given_list, rest_of_lists):
-#     matching_triples = []
+def combine_paths_in_metapath(all_path_nodes,tables_paired):
     
-#     # Iterate through each list of triples in rest_of_lists
-#     for triple in rest_of_lists:
-#         # Check if the second value in the triple exists in the given_list
-#         if triple[1] in given_list:
-#             matching_triples.append(triple)
-    
-#     return matching_triples
+    combined_path_nodes = []
 
-def find_longest_common_subsequence(list1, list2):
-    # Create a 2D table to store lengths of longest common subsequences
-    len_table = [[0] * (len(list2) + 1) for _ in range(len(list1) + 1)]
+    for i in range(len(tables_paired)-1):
+        # Get common paired tables
+        common_paired_table = list(set(tables_paired[i]) & set(tables_paired[i+1]))[0]
+        prefixes = common_paired_table.split("_")
+        # Get paths from each table pair
+        starting_paths = all_path_nodes[i]
+        ending_paths = all_path_nodes[i+1]
+        for s_p in starting_paths:
+            overlapping_start_prefixes = [value for value in s_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
+            for e_p in ending_paths:
+                overlapping_end_prefixes = [value for value in e_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
+                common_values = [val for val in overlapping_start_prefixes if val in overlapping_end_prefixes]
+                if len(common_values) == len(prefixes):
+                    # Find the indices of the common values in the list
+                    start_index = e_p.index(common_values[0]) if common_values[0] in e_p else -1
+                    end_index = e_p.index(common_values[-1]) if common_values[-1] in e_p else -1
 
-    # Fill the table
-    for i in range(1, len(list1) + 1):
-        for j in range(1, len(list2) + 1):
-            if list1[i - 1] == list2[j - 1]:
-                len_table[i][j] = len_table[i - 1][j - 1] + 1
-            else:
-                len_table[i][j] = max(len_table[i - 1][j], len_table[i][j - 1])
+                    # Remove elements from start_index to end_index inclusive
+                    if start_index != -1 and end_index != -1 and start_index <= end_index:
+                        filtered_data = e_p[:start_index] + e_p[end_index + 1:]
+                        new_path = s_p + filtered_data
+                        combined_path_nodes.append(new_path)
 
-    # Reconstruct the longest common subsequence
-    common_subsequence = []
-    i, j = len(list1), len(list2)
-    while i > 0 and j > 0:
-        if list1[i - 1] == list2[j - 1]:
-            common_subsequence.append(list1[i - 1])
-            i -= 1
-            j -= 1
-        elif len_table[i - 1][j] >= len_table[i][j - 1]:
-            i -= 1
-        else:
-            j -= 1
-
-    # The common subsequence is built backwards, so reverse it
-    return common_subsequence[::-1]
-
-def combine_lists_based_on_common_subsequence(list1, list2):
-    # Find the longest common subsequence
-    common_subsequence = find_longest_common_subsequence(list1, list2)
-    
-    if not common_subsequence:
-        return list1 + list2  # If no common subsequence, just concatenate
-    
-    # Find where the common subsequence appears in both lists
-    index1 = next(i for i in range(len(list1)) if list1[i:i+len(common_subsequence)] == common_subsequence)
-    index2 = next(i for i in range(len(list2)) if list2[i:i+len(common_subsequence)] == common_subsequence)
-    
-    # Combine the lists
-    combined_list = list1[:index1] + common_subsequence + list2[index2 + len(common_subsequence):]
-    
-    return combined_list
-
-def combine_paths_in_metapath(data, starting_prefix):
-    """_summary_
-
-    Args:
-        data (list of lists): A list of lists of combined triples.
-    """
-        # Initialize a list to store combinations of lists
-    combined_lists = []
-    
-    # Iterate over each possible pair of lists in the list_of_lists
-    for i, list1 in enumerate(data):
-        if list1[0].startswith(starting_prefix):  # Check if list1 starts with starting_prefix
-            for j, list2 in enumerate(data):
-                if not list2[0].startswith(starting_prefix):
-                    result = combine_lists_based_on_common_subsequence(list1, list2)
-                    if not result in combined_lists and len(result) > 0:
-                        combined_lists.append(result)
-
-    return combined_lists
+    return combined_path_nodes
 
 def expand_neighbors(input_nodes_df,input_dir,triples_list_file,id_keys_df,labels,kg_type):
     """
