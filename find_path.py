@@ -978,7 +978,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     result = conn.execute(query).fetchall()
                     print(query)
-                    print(result)
+                    # print(result)
 
                     # Returns path from the given triple t
                     path_nodes = conn.execute(query).df().values.tolist()
@@ -1015,37 +1015,49 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
     
 #     return matching_triples
 
-def merge_lists_on_overlap(list1, list2):
-    """_summary_
+def find_longest_common_subsequence(list1, list2):
+    # Create a 2D table to store lengths of longest common subsequences
+    len_table = [[0] * (len(list2) + 1) for _ in range(len(list1) + 1)]
 
-    Args:
-        list1 (list): A list of combined triples
-        list2 (list): A list of combined triples
+    # Fill the table
+    for i in range(1, len(list1) + 1):
+        for j in range(1, len(list2) + 1):
+            if list1[i - 1] == list2[j - 1]:
+                len_table[i][j] = len_table[i - 1][j - 1] + 1
+            else:
+                len_table[i][j] = max(len_table[i - 1][j], len_table[i][j - 1])
 
-    Returns:
-        list: Merged lists based on overlapping values if the values before the overlapping values between the 2 lists don't match and the values after the overlapping values between the 2 lists don't match.
-    """
-    merged_lists = []
+    # Reconstruct the longest common subsequence
+    common_subsequence = []
+    i, j = len(list1), len(list2)
+    while i > 0 and j > 0:
+        if list1[i - 1] == list2[j - 1]:
+            common_subsequence.append(list1[i - 1])
+            i -= 1
+            j -= 1
+        elif len_table[i - 1][j] >= len_table[i][j - 1]:
+            i -= 1
+        else:
+            j -= 1
+
+    # The common subsequence is built backwards, so reverse it
+    return common_subsequence[::-1]
+
+def combine_lists_based_on_common_subsequence(list1, list2):
+    # Find the longest common subsequence
+    common_subsequence = find_longest_common_subsequence(list1, list2)
     
-    # Iterate through list1 and list2 to find consecutive overlapping elements
-    for i in range(len(list1) - 1):  # Loop through list1
-        for j in range(len(list2) - 1):  # Loop through list2
-            # Check for consecutive overlap
-            if list1[i] == list2[j] and list1[i+1] == list2[j+1]:
-                # Check if the elements before the overlap in both lists do not match
-                if i > 0 and j > 0 and list1[i-1] == list2[j-1]:
-                    continue  # Skip if the elements before overlap match
-                
-                # Check if the elements after the overlap in both lists do not match
-                if i + 2 < len(list1) and j + 2 < len(list2):
-                    if list1[i+2] == list2[j+2]:
-                        continue  # Skip if the elements after overlap match
-                
-                # Combine list1 before the overlap and list2 after the overlap
-                merged_list1 = list1[:i+2] + list2[j+2:]
-                merged_lists.append(merged_list1)
-
-    return merged_lists
+    if not common_subsequence:
+        return list1 + list2  # If no common subsequence, just concatenate
+    
+    # Find where the common subsequence appears in both lists
+    index1 = next(i for i in range(len(list1)) if list1[i:i+len(common_subsequence)] == common_subsequence)
+    index2 = next(i for i in range(len(list2)) if list2[i:i+len(common_subsequence)] == common_subsequence)
+    
+    # Combine the lists
+    combined_list = list1[:index1] + common_subsequence + list2[index2 + len(common_subsequence):]
+    
+    return combined_list
 
 def combine_paths_in_metapath(data, starting_prefix):
     """_summary_
@@ -1060,11 +1072,10 @@ def combine_paths_in_metapath(data, starting_prefix):
     for i, list1 in enumerate(data):
         if list1[0].startswith(starting_prefix):  # Check if list1 starts with starting_prefix
             for j, list2 in enumerate(data):
-                if not list2[0].startswith(starting_prefix): 
-                    result = merge_lists_on_overlap(list1, list2)
-                    if not result in combined_lists:
-                        combined_lists.extend(result)
-    combined_lists = [list(tup) for tup in set(tuple(lst) for lst in combined_lists)]
+                if not list2[0].startswith(starting_prefix):
+                    result = combine_lists_based_on_common_subsequence(list1, list2)
+                    if not result in combined_lists and len(result) > 0:
+                        combined_lists.append(result)
 
     return combined_lists
 
