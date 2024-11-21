@@ -933,12 +933,28 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
             print("tables")
             print(tables)
             # 
-            tables_paired = [list(pair) for pair in zip(tables, tables[1:])]
+            # tables_paired = [list(pair) for pair in zip(tables, tables[1:])]
+            tables_paired = [list(pair) for pair in zip(tables, tables[1:])] if len(tables) > 1 else tables
+
             print("tables_paired")
             print(tables_paired)
 
             # Confirm that values were found for each triple in metapath, ex: [['NCBITaxon:165179_CHEBI', 'CHEBI_MONDO:0005180']]
             if len(tables_paired) < (len(m) - 1): path_nodes = []
+            elif len(tables_paired) == 1:
+                query = (
+                        f"""
+                        SELECT * FROM '{tables_paired[0]}';
+                        """
+                    )
+
+                result = conn.execute(query).fetchall()
+                print(query)
+                # print(result)
+
+                # Returns path from the given triple t
+                path_nodes = conn.execute(query).df().values.tolist()
+                all_path_nodes.append(path_nodes)
             else:
                 # Get complete metapaths
                 for t in tables_paired:
@@ -980,14 +996,13 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     drop_table(conn, "full_metapath")
             
-                # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
-                print("before combining")
-                print(all_path_nodes)
-                if len(tables_paired) > 1:
-                    all_path_nodes = combine_paths_in_metapath(all_path_nodes, tables_paired)
+    # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
+    print("before combining")
+    print(all_path_nodes)
+    all_path_nodes = recursive_path_combination(all_path_nodes, tables_paired)
 
-                    print("after combining")
-                    print(all_path_nodes)
+    print("after combining")
+    print(all_path_nodes)
 
     print("all_path_nodes")
     print(all_path_nodes)
@@ -999,12 +1014,23 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
     return all_path_nodes,id_keys_df
 
+def recursive_path_combination(all_path_nodes,tables_paired):
+
+    if len(all_path_nodes) == 1:
+        return all_path_nodes[0]
+    
+    # Apply function to first 2 elements
+    result = combine_paths_in_metapath(all_path_nodes[0:2],tables_paired[0:2])
+
+    # Previous tables_paired value will cover the result from last function call
+    return recursive_path_combination([result] + all_path_nodes[2:],tables_paired[1:])
+
 def combine_paths_in_metapath(all_path_nodes,tables_paired):
     
     combined_path_nodes = []
 
     for i in range(len(tables_paired)-1):
-        # Get common paired tables
+        # Get common paired tables between 2 subpaths or combined triples
         common_paired_table = list(set(tables_paired[i]) & set(tables_paired[i+1]))[0]
         prefixes = common_paired_table.split("_")
         # Get paths from each table pair

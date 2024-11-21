@@ -126,5 +126,6 @@ METAPATH_SEARCH_MAPS = {
     "all" : "%",
     "process" : "GO",
     "experimental_factor" : "EFO",
-    "microbe" : "NCBITaxon"
+    "microbe" : "NCBITaxon",
+    "rhea" : "RHEA"
 }

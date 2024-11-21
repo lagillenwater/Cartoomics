@@ -104,7 +104,8 @@ def main():
         triples_list,template_list = get_metapaths(metapaths_file)
         print(triples_list)
         print(template_list)
-        output_table_name = "_".join([template_list[0][0].split("_")[0],template_list[1][2].split("_")[0]])
+        # Not used, doesn't work for single triple metapaths
+        # output_table_name = "_".join([template_list[0][0].split("_")[0],template_list[1][2].split("_")[0]])
 
         # output_file = input_dir + "/metapaths/" + output_table_name + "_pairs.tsv"
         # print(output_file)
