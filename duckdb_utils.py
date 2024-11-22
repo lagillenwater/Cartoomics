@@ -64,6 +64,8 @@ def create_subject_object_pair_table(con, table_name, base_table_name, subject, 
     print(query)
     con.execute(query).fetchone()
 
+    return table_name
+
 def join_tables_subject_object(con, base_table_name, compared_table_name, output_table_name, output_subject, output_object, comparison):
 
     query = (
@@ -80,6 +82,23 @@ def join_tables_subject_object(con, base_table_name, compared_table_name, output
 
     print(query)
     con.execute(query)
+
+def create_filtered_subject_object_pair_table(con, base_table_name, compared_table_name, output_table_name, subject, object, subject_prefix, predicate_prefix, object_prefix):
+
+    query = (
+        f"""
+        CREATE TEMPORARY TABLE "{output_table_name}" AS
+        SELECT DISTINCT e.subject AS "{subject}", e.predicate, e.object AS "{object}"
+        FROM "{base_table_name}" e
+        WHERE e.subject IN (SELECT "{subject}" FROM "{compared_table_name}")
+        AND e.subject LIKE '{subject_prefix}' AND e.predicate LIKE '{predicate_prefix}' AND e.object LIKE '{object_prefix}';
+        """
+    )
+
+    print(query)
+    con.execute(query)
+
+    return output_table_name
 
 def remove_character_from_table(con,table_name,symbol,column_name):
 

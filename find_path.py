@@ -4,7 +4,7 @@ import re
 import duckdb
 from tqdm import tqdm
 from constants import METAPATH_SEARCH_MAPS, PKL_SUBSTRINGS
-from duckdb_utils import create_subject_object_pair_table, drop_table, duckdb_load_table, get_table_count, join_tables_subject_object, output_table_to_file, remove_character_from_table
+from duckdb_utils import create_filtered_subject_object_pair_table, create_subject_object_pair_table, drop_table, duckdb_load_table, get_table_count, join_tables_subject_object, output_table_to_file, remove_character_from_table
 from graph_embeddings import Embeddings
 import numpy as np
 import pandas as pd
@@ -819,12 +819,14 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
             # Go through each triple that is in the metapath
             for i, (s, p, o) in enumerate(m):
                 #if get_metapath_key(node1) == s and get_metapath_key(node2) == o:
+                # For last tables paired, use final node2 and previous filtered tables
                 if i == len(m) - 1:
                     # read in table with this protein as s or o, r, and and PR_ as o or s
-                    create_subject_object_pair_table(
+                    new_table_name = create_filtered_subject_object_pair_table(
                         conn,
-                        table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]),
                         base_table_name = "edges",
+                        compared_table_name = next_base_table_name,
+                        output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]),
                         subject = re.sub(r'[/_]', '', s),
                         object = re.sub(r'[/_]', '', node2),
                         subject_prefix = "%" + s + "%",
@@ -840,10 +842,11 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     if ct == 0:
                         # read in table with this protein as s or o, r, and and PR_ as o or s
-                        create_subject_object_pair_table(
+                        new_table_name = create_filtered_subject_object_pair_table(
                             conn,
-                            table_name = "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]),
                             base_table_name = "edges",
+                            compared_table_name = next_base_table_name,
+                            output_table_name = "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]),
                             subject = re.sub(r'[/_]', '', node2),
                             object = re.sub(r'[/_]', '', s),
                             subject_prefix = "%" + node2 + "%",
@@ -857,9 +860,10 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]))
 
+                # For first tables paired, create original object pair table
                 elif i == 0:
                     # read in table with this protein as s or o, r, and and PR_ as o or s
-                    create_subject_object_pair_table(
+                    new_table_name = create_subject_object_pair_table(
                         conn,
                         table_name = "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]),
                         base_table_name = "edges",
@@ -875,10 +879,11 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
 
                     if ct > 0:
                         tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
+                        next_base_table_name = new_table_name
                     
                     if ct == 0:
                         # read in table with this protein as s or o, r, and and PR_ as o or s
-                        create_subject_object_pair_table(
+                        new_table_name = create_subject_object_pair_table(
                             conn,
                             table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]),
                             base_table_name = "edges",
@@ -893,31 +898,36 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         print("num paths first triple: ",o,node1,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
+                            next_base_table_name = new_table_name
 
+                # For middle tables paired, use previous subject and object pairs and filtered table
                 else:
-                    create_subject_object_pair_table(
-                        conn,
-                        table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]),
-                        base_table_name = "edges",
-                        subject = re.sub(r'[/_]', '', s),
-                        object = re.sub(r'[/_]', '', o),
-                        subject_prefix = "%" + s + "%",
-                        predicate_prefix = "%" + p + "%",
-                        object_prefix = "%" + o + "%"
-                    )
+                    new_table_name = create_filtered_subject_object_pair_table(
+                            conn,
+                            base_table_name = "edges",
+                            compared_table_name = next_base_table_name,
+                            output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]),
+                            subject = re.sub(r'[/_]', '', s),
+                            object = re.sub(r'[/_]', '', o),
+                            subject_prefix = "%" + s + "%",
+                            predicate_prefix = "%" + p + "%",
+                            object_prefix = "%" + o + "%"
+                        )
 
                     ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
                     print("num paths middle triple: ",s,o,ct)
 
                     if ct > 0:
                         tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                        next_base_table_name = new_table_name
                     
                     if ct == 0:
                         # read in table with this protein as s or o, r, and and PR_ as o or s
-                        create_subject_object_pair_table(
+                        new_table_name = create_filtered_subject_object_pair_table(
                             conn,
-                            table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]),
                             base_table_name = "edges",
+                            compared_table_name = next_base_table_name,
+                            output_table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]),
                             subject = re.sub(r'[/_]', '', o),
                             object = re.sub(r'[/_]', '', s),
                             subject_prefix = "%" + o + "%",
@@ -929,6 +939,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         print("num paths middle triple: ",o,s,ct)
                         if ct > 0:
                             tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
+                            next_base_table_name = new_table_name
 
             print("tables")
             print(tables)
