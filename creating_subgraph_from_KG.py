@@ -2,7 +2,7 @@ from find_path import duckdb_metapath_search, expand_neighbors, get_metapaths
 from inputs import *
 from create_graph import create_graph
 from assign_nodes import interactive_search_wrapper, skip_self_loops
-from create_subgraph import automatic_defined_node_exclusion, subgraph_prioritized_path_cs
+from create_subgraph import automatic_defined_node_exclusion, subgraph_all_paths, subgraph_prioritized_path_cs
 from create_subgraph import subgraph_prioritized_path_pdp
 from create_subgraph import  subgraph_prioritized_path_guiding_term
 from create_subgraph import user_defined_edge_exclusion,automatic_defined_edge_exclusion
@@ -116,11 +116,15 @@ def main():
 
         # Select paths that match
         # subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath_Neighbors")
-        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath")
+        paths_dfs_list, all_path_nodes = subgraph_all_paths(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath")
+
+        print("paths_dfs_list")
+        print(paths_dfs_list)
 
         print("Outputting CS visualization......")
-
-        cs_noa_df = output_visualization(s,subgraph_cs,output_dir+'/CosineSimilarity_Metapath')
+        for idx, df in enumerate(paths_dfs_list):
+            subgraph_filename_substring = str(idx)
+            cs_noa_df = output_visualization(s,df,output_dir+'/Metapath',subgraph_filename_substring)
 
 if __name__ == '__main__':
     main()

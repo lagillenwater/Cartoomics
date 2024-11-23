@@ -47,9 +47,11 @@ def create_node_attributes(input_nodes_df,subgraph_df):
     return subgraph_attribute_df
 
 #subgraph_df is a dataframe with S, P, O headers and | delimited
-def create_noa_file(subgraph_attribute_df,output_dir):
+def create_noa_file(subgraph_attribute_df,output_dir,override_filename = False, ):
 
     noa_file = output_dir+"/Subgraph_attributes.noa"
+    if override_filename:
+        noa_file = output_dir + "/Subgraph_" + override_filename + ".csv"
     #Check for existence of output directory
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -72,9 +74,11 @@ def create_noa_file(subgraph_attribute_df,output_dir):
 
     logging.info('Created noa file: %s',noa_file)
 
-def create_sif_file(subgraph_df,output_dir):
+def create_sif_file(subgraph_df,output_dir,override_filename = False):
 
     sif_file = output_dir+"/Subgraph.csv"
+    if override_filename:
+        sif_file = output_dir + "/Subgraph_" + override_filename + ".csv"
     #Check for existence of output directory
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -111,13 +115,13 @@ def create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir):
     logging.info('Created cytoscape png: %s',png_file)
 
 # Wrapper Function
-def output_visualization(input_nodes_df,subgraph_df,output_dir,id_key_file = None):
+def output_visualization(input_nodes_df,subgraph_df,output_dir,override_filename = False, id_key_file = None):
 
     subgraph_attributes_df = create_node_attributes(input_nodes_df,subgraph_df)
 
-    create_noa_file(subgraph_attributes_df,output_dir)
+    create_noa_file(subgraph_attributes_df,output_dir,override_filename)
 
-    create_sif_file(subgraph_df,output_dir)
+    create_sif_file(subgraph_df,output_dir,override_filename)
 
     ##Not outputting graph visualization
     ##create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)

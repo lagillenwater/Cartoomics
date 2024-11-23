@@ -276,6 +276,13 @@ def get_subgraph_dfs(output_dir,input_type,subgraph_algorithm):
     return input_nodes,subgraph_df,noa_df,path_list
 
 
+def output_all_paths_dfs(path_nodes, graph, search_type, kg_type, input_nodes_df):
+
+
+
+    df = define_path_triples(graph,chosen_path_nodes_cs,search_type)
+    df = convert_to_labels(df,graph.labels_all,kg_type,input_nodes_df)
+
 def output_path_lists(output_dir,path_list,subgraph_algorithm,idx,path_nodes):
 
     df = pd.DataFrame()

@@ -54,6 +54,21 @@ def process_path_nodes_value(graph,value):
 
     return n
 
+def define_metapath_triples(path_nodes):
+
+    triples_df_dict = {}
+
+    for idx, path in enumerate(path_nodes):
+        # Covert path of combined triples into triples of S, P, O expecting only IDs
+        triples = []
+        for i in range(0, len(path) - 2, 2):  # Step by 2 to create overlapping triples
+            triples.append(path[i:i + 3])
+
+        # Create a DataFrame with headers S_ID, P_ID, and O_ID
+        triples_df = pd.DataFrame(triples, columns=["S_ID", "P_ID", "O_ID"])
+        triples_df_dict[idx] = triples_df
+
+    return triples_df_dict
 
 def define_path_triples(graph,path_nodes,search_type):
 
@@ -452,6 +467,18 @@ def find_shortest_path_pattern(start_node,end_node,graph,weights,search_type, kg
 
     return df,manually_chosen_uris
 
+def path_search_no_prioritization(node_pair, graph, triples_file,input_dir, kg_type, search_algorithm, id_keys_df, path_nodes = 'none'):
+
+    if path_nodes == 'none':
+        if search_algorithm == "Shortest_Path":
+            path_nodes = find_all_shortest_paths(node_pair,graph,False,'all', kg_type)
+        elif search_algorithm == "Metapath" or search_algorithm == "Metapath_Neighbors":
+            # Convert node pair into prefixes to search existing metapath files
+            # path_nodes = find_all_metapaths_files(node_pair,graph,kg_type,input_dir,triples_file)
+            path_nodes,id_keys_df = find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_file,id_keys_df,graph.labels_all)
+
+    return path_nodes,id_keys_df
+
 def prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triples_file,input_dir,embedding_dimensions, kg_type, search_algorithm, id_keys_df, path_nodes = 'none', guiding_term=pd.Series()):
   
     if path_nodes == 'none':
@@ -462,23 +489,16 @@ def prioritize_path_cs(input_nodes_df,node_pair,graph,weights,search_type,triple
             # path_nodes = find_all_metapaths_files(node_pair,graph,kg_type,input_dir,triples_file)
             path_nodes,id_keys_df = find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_file,id_keys_df,graph.labels_all)
 
-    ### Removing embeddings path prioritization for now
-    # if len(path_nodes[0]) > 0:
-    #     e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
-    #     emb,entity_map = e.generate_graph_embeddings(kg_type)
-    #     df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,graph,search_type, kg_type, guiding_term,input_nodes_df)
+    if len(path_nodes[0]) > 0:
+        e = Embeddings(triples_file,input_dir,embedding_dimensions, kg_type)
+        emb,entity_map = e.generate_graph_embeddings(kg_type)
+        df,all_paths_cs_values,chosen_path_nodes_cs = calc_cosine_sim(emb,entity_map,path_nodes,graph,search_type, kg_type, guiding_term,input_nodes_df)
 
     else:
         df = pd.DataFrame()
         all_paths_cs_values = []
         chosen_path_nodes_cs = []
 
-    # Temp solution to not using embeddings
-    all_paths_cs_values = [[0] for _ in range(len(path_nodes))]
-    chosen_path_nodes_cs = [path_nodes[0]]
-    # Taken from calc_cosine_sim
-    df = define_path_triples(graph,chosen_path_nodes_cs,search_type)
-    df = convert_to_labels(df,graph.labels_all,kg_type,input_nodes_df)
     return path_nodes,df,all_paths_cs_values,chosen_path_nodes_cs,id_keys_df
 
 def generate_comparison_terms_dict(subgraph_cosine_sim,term_row,avg_cosine_sim,algorithm,wikipathway,compared_pathway):
