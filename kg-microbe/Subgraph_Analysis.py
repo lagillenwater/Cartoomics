@@ -67,8 +67,7 @@ def main():
         file_path = os.path.join(subgraph_dir, filename)
 
         df = pd.read_csv(file_path, sep = "|")
-        # uniprot = df[df['O_ID'].str.contains("UniprotKB:", na=False)]["O_ID"].values[0]
-        uniprot = "UniprotKB:I5BYI5"
+        uniprot = df[df['O_ID'].str.contains("UniprotKB:", na=False)]["O_ID"].values[0]
         p = "biolink:enables"
         o = "EC:"
         new_table_name = create_subject_object_pair_table(
