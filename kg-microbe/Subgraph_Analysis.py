@@ -19,7 +19,18 @@ def duckdb_load_table(con, file, table_name, columns):
     """
     )
 
-    print(query)
+    # print(query)
+    con.execute(query)
+
+def drop_table(con, table_name):
+
+    query = (
+        f"""
+        DROP TABLE "{table_name}";
+        """
+    )
+
+    # print(query)
     con.execute(query)
 
 def create_subject_object_pair_table(con, table_name, base_table_name, subject, object, subject_prefix, predicate_prefix, object_prefix):
@@ -33,7 +44,7 @@ def create_subject_object_pair_table(con, table_name, base_table_name, subject, 
         """
     )
 
-    print(query)
+    # print(query)
     con.execute(query).fetchone()
 
     return table_name
@@ -41,7 +52,7 @@ def create_subject_object_pair_table(con, table_name, base_table_name, subject, 
 def main():
 
     triples_list_file = "kg-microbe/merged-kg_edges.tsv"
-    subgraph_dir = "outputs/Metapath_nersc"
+    subgraph_dir = "outputs/Metapath"
     ec_filepath = subgraph_dir + "EC_Uniprot_pairs.csv"
 
     # Create a DuckDB connection
@@ -78,6 +89,8 @@ def main():
         )
 
         result = conn.execute(query).fetchall()
+
+        drop_table(conn, "_".join([re.sub(r'[/_]', '', uniprot),re.sub(r'[/_]', '', o)]))
 
         new_data = {
             "Subgraph_Filename" : filename,
