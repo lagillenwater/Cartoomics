@@ -89,13 +89,17 @@ def main():
         )
 
         result = conn.execute(query).fetchall()
+        if len(result) == 0:
+            ec = "none"
+        else:
+            ec = result[-1]
 
         drop_table(conn, "_".join([re.sub(r'[/_]', '', uniprot),re.sub(r'[/_]', '', o)]))
 
         new_data = {
             "Subgraph_Filename" : filename,
             "UniprotKB" : uniprot,
-            "EC" : result[-1]
+            "EC" : ec
         }
         new_row = pd.DataFrame([new_data])
         # Concatenate to the main DataFrame
