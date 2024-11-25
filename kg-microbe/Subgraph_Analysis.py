@@ -89,11 +89,11 @@ def main():
             """
         )
 
-        result = conn.execute(query).fetchall()[0]
+        result = conn.execute(query).fetchall()
         if len(result) == 0:
             ec = "none"
         else:
-            ec = result[-1]
+            ec = result[0][-1]
 
         drop_table(conn, "_".join([re.sub(r'[/_]', '', uniprot),re.sub(r'[/_]', '', o)]))
 
