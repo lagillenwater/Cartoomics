@@ -1,6 +1,3 @@
-
-
-
 import os
 import re
 import duckdb
@@ -49,22 +46,12 @@ def create_subject_object_pair_table(con, table_name, base_table_name, subject, 
 
     return table_name
 
-def main():
-
-    triples_list_file = "kg-microbe/merged-kg_edges.tsv"
-    subgraph_dir = "outputs/Metapath"
-    ec_filepath = subgraph_dir + "/EC_Uniprot_pairs.csv"
-
-    # Create a DuckDB connection
-    conn = duckdb.connect(":memory:")
-    conn.execute("PRAGMA memory_limit='64GB'")
-
-    duckdb_load_table(conn, triples_list_file, "edges", ["subject", "predicate", "object"])
+def get_ecs(conn, input_dir, output_filename):
 
     ec_df = pd.DataFrame(columns = ["Subgraph_Filename", "UniprotKB", "EC"])
 
-    for filename in os.listdir(subgraph_dir):
-        file_path = os.path.join(subgraph_dir, filename)
+    for filename in os.listdir(input_dir):
+        file_path = os.path.join(input_dir, filename)
 
         df = pd.read_csv(file_path, sep = "|")
         uniprot = df[df['O_ID'].str.contains("UniprotKB:", na=False)]["O_ID"].values[0]
@@ -81,7 +68,6 @@ def main():
             object_prefix = "%" + o + "%"
         )
 
-        # ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', uniprot),re.sub(r'[/_]', '', o)])))
         query = (
             f"""
             SELECT * FROM '{"_".join([re.sub(r'[/_]', '', uniprot),re.sub(r'[/_]', '', o)])}';
@@ -105,7 +91,22 @@ def main():
         # Concatenate to the main DataFrame
         ec_df = pd.concat([ec_df, new_row], ignore_index=True)
 
-    ec_df.to_csv(ec_filepath, sep = "|")
+    ec_df.to_csv(output_filename, sep = "|")
+
+def main():
+
+    triples_list_file = "kg-microbe/merged-kg_edges.tsv"
+    subgraph_dir = "outputs/Metapath"
+    ec_filepath = subgraph_dir + "/EC_Uniprot_pairs.csv"
+
+    # Create a DuckDB connection
+    conn = duckdb.connect(":memory:")
+    conn.execute("PRAGMA memory_limit='64GB'")
+
+    duckdb_load_table(conn, triples_list_file, "edges", ["subject", "predicate", "object"])
+
+    get_ecs(conn, subgraph_dir, ec_filepath)
+
 
 if __name__ == '__main__':
     main()
