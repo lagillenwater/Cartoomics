@@ -1,0 +1,256 @@
+S|P|O|S_ID|P_ID|O_ID
+mitogen-activated protein kinase 3|subClassOf|MAPK|http://purl.obolibrary.org/obo/PR_000000104|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000019
+mitogen-activated protein kinase 3 (human)|subClassOf|mitogen-activated protein kinase 3|http://purl.obolibrary.org/obo/PR_P27361|http://www.w3.org/2000/01/rdf-schema#subClassOf|http://purl.obolibrary.org/obo/PR_000000104
+mitogen-activated protein kinase 3 (human)|participates_in|MAPK targets/ Nuclear events mediated by MAP kinases|http://purl.obolibrary.org/obo/PR_P27361|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-450282
+CREB1|participates_in|MAPK targets/ Nuclear events mediated by MAP kinases|http://www.ncbi.nlm.nih.gov/gene/1385|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-450282
+aflatoxin B1|interacts with|AP2B1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/163
+aflatoxin B1|interacts with|GABRP|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2568
+aflatoxin B1|interacts with|GABRE|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2564
+aflatoxin B1|is substance that treats|Hepatocellular carcinoma|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0001402
+GABRD|causes or contributes to condition|Hepatocellular carcinoma|http://www.ncbi.nlm.nih.gov/gene/2563|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001402
+AP2B1|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/163|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRG3|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRG2|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+aflatoxin B1|interacts with|GABRG1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2565
+GABRB3|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRQ (human)|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/55879|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRB2|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA6|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2559|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA5|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA4|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA3|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2556|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA2|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2555|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+AP2A2|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/161|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+valproic acid|interacts with|AP2A2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/161
+valproic acid|interacts with|GABRP|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2568
+GABRB1|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+GABRA2|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2555|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRA3|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2556|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRA4|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRA5|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRB3|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRB2|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRB1|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRA6|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2559|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRQ (human)|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/55879|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+aflatoxin B1|interacts with|GABRA2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2555
+valproic acid|interacts with|GABRA2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2555
+valproic acid|interacts with|GABRD|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2563
+GABRG3|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2567|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+GABRG2|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+AP2A2|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/161|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+aflatoxin B1|participates_in|Metabolism|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+AP2A1|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/160|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+AP2A1|participates_in|Nef Mediated CD8 Down-regulation|http://www.ncbi.nlm.nih.gov/gene/160|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-182218
+AP2B1|participates_in|Nef Mediated CD8 Down-regulation|http://www.ncbi.nlm.nih.gov/gene/163|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-182218
+AP2A2|participates_in|Nef Mediated CD8 Down-regulation|http://www.ncbi.nlm.nih.gov/gene/161|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-182218
+GABRA1|participates_in|GABA receptor activation|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-977443
+aflatoxin B1|interacts with|GABRA1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2554
+GABRA1|causes or contributes to condition|juvenile myoclonic epilepsy|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009696
+GABRD|causes or contributes to condition|juvenile myoclonic epilepsy|http://www.ncbi.nlm.nih.gov/gene/2563|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0009696
+GABRA1|causes or contributes to condition|hepatic coma|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001548
+GABRG2|causes or contributes to condition|hepatic coma|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001548
+GABRA1|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+GABRG1|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/2565|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+GABRB1|causes or contributes to condition|hepatic coma|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001548
+GABRA3|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/2556|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+valproic acid|interacts with|GABRG1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2565
+AP2A1|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/160|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+gamma-aminobutyric acid receptor subunit alpha-4 (human)|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://purl.obolibrary.org/obo/PR_P48169|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+gamma-aminobutyric acid receptor subunit alpha-4 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit delta (human)|http://purl.obolibrary.org/obo/PR_P48169|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_O14764
+gamma-aminobutyric acid receptor subunit delta (human)|has_gene_template|GABRD|http://purl.obolibrary.org/obo/PR_O14764|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2563
+valproic acid|interacts with|GABRA3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2556
+valproic acid|interacts with|GABRB3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2562
+GABRB3|has gene product|gamma-aminobutyric acid receptor subunit beta-3 (human)|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P28472
+gamma-aminobutyric acid receptor subunit beta-3 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit epsilon (human)|http://purl.obolibrary.org/obo/PR_P28472|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_P78334
+gamma-aminobutyric acid receptor subunit epsilon (human)|has_gene_template|GABRE|http://purl.obolibrary.org/obo/PR_P78334|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2564
+GABRB3|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+GABRD|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2563|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+GABRB3|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+GABRG1|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2565|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+aflatoxin B1|interacts with|GABRB2|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2561
+GABRB2|has gene product|gamma-aminobutyric acid receptor subunit beta-2 (human)|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P47870
+gamma-aminobutyric acid receptor subunit beta-2 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit delta (human)|http://purl.obolibrary.org/obo/PR_P47870|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_O14764
+GABRB2|causes or contributes to condition|Bipolar affective disorder|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0007302
+GABRB2|causes or contributes to condition|neurodevelopmental disorder|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0700092
+GABRB3|causes or contributes to condition|neurodevelopmental disorder|http://www.ncbi.nlm.nih.gov/gene/2562|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0700092
+valproic acid|is substance that treats|hepatic coma|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/MONDO_0001548
+GABRB1|has gene product|gamma-aminobutyric acid receptor subunit beta-1 (human)|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P18505
+gamma-aminobutyric acid receptor subunit beta-1 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit epsilon (human)|http://purl.obolibrary.org/obo/PR_P18505|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_P78334
+GABRB1|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+GABRG2|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+GABRE|has gene product|gamma-aminobutyric acid receptor subunit epsilon (human)|http://www.ncbi.nlm.nih.gov/gene/2564|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P78334
+gamma-aminobutyric acid receptor subunit epsilon (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit theta (human)|http://purl.obolibrary.org/obo/PR_P78334|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q9UN88
+gamma-aminobutyric acid receptor subunit theta (human)|has_gene_template|GABRQ|http://purl.obolibrary.org/obo/PR_Q9UN88|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/55879
+GABRQ (human)|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/55879|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+GABRD|has gene product|gamma-aminobutyric acid receptor subunit delta (human)|http://www.ncbi.nlm.nih.gov/gene/2563|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_O14764
+gamma-aminobutyric acid receptor subunit delta (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit epsilon (human)|http://purl.obolibrary.org/obo/PR_O14764|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_P78334
+valproic acid|interacts with|GABRG3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2567
+GABRG3|has gene product|gamma-aminobutyric acid receptor subunit gamma-3 (human)|http://www.ncbi.nlm.nih.gov/gene/2567|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_Q99928
+gamma-aminobutyric acid receptor subunit gamma-3 (human)|has function|benzodiazepine receptor activity|http://purl.obolibrary.org/obo/PR_Q99928|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0008503
+gamma-aminobutyric acid receptor subunit epsilon (human)|has function|benzodiazepine receptor activity|http://purl.obolibrary.org/obo/PR_P78334|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0008503
+GABRG2|causes or contributes to condition|Complex febrile seizure|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0011172
+valproic acid|is substance that treats|Complex febrile seizure|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0011172
+GABRG2|has gene product|gamma-aminobutyric acid receptor subunit gamma-2 (human)|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P18507
+gamma-aminobutyric acid receptor subunit gamma-2 (human)|has function|benzodiazepine receptor activity|http://purl.obolibrary.org/obo/PR_P18507|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0008503
+GABRG2|causes or contributes to condition|generalized epilepsy with febrile seizures plus|http://www.ncbi.nlm.nih.gov/gene/2566|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0018214
+GABRD|causes or contributes to condition|generalized epilepsy with febrile seizures plus|http://www.ncbi.nlm.nih.gov/gene/2563|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0018214
+valproic acid|interacts with|GABRQ|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/55879
+GABRG3|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2567|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+GABRB1|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+GABRA4|has gene product|gamma-aminobutyric acid receptor subunit alpha-4 (human)|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P48169
+gamma-aminobutyric acid receptor subunit alpha-4 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit pi (human)|http://purl.obolibrary.org/obo/PR_P48169|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_O00591
+gamma-aminobutyric acid receptor subunit pi (human)|has_gene_template|GABRP|http://purl.obolibrary.org/obo/PR_O00591|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2568
+gamma-aminobutyric acid receptor subunit alpha-4 (human)|has function|benzodiazepine receptor activity|http://purl.obolibrary.org/obo/PR_P48169|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0008503
+GABRA4|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+gamma-aminobutyric acid receptor subunit alpha-4 (human)|molecularly interacts with|gamma-aminobutyric acid receptor subunit gamma-1 (human)|http://purl.obolibrary.org/obo/PR_P48169|http://purl.obolibrary.org/obo/RO_0002436|http://purl.obolibrary.org/obo/PR_Q8N1C3
+gamma-aminobutyric acid receptor subunit gamma-1 (human)|has_gene_template|GABRG1|http://purl.obolibrary.org/obo/PR_Q8N1C3|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2565
+aflatoxin B1|interacts with|GABRA3|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2556
+aflatoxin B1|interacts with|GABRA6|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2559
+GABRA6|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2559|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+valproic acid|interacts with|GABRA5|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2558
+GABRA5|has gene product|gamma-aminobutyric acid receptor subunit alpha-5 (human)|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0002205|http://purl.obolibrary.org/obo/PR_P31644
+gamma-aminobutyric acid receptor subunit alpha-5 (human)|has function|benzodiazepine receptor activity|http://purl.obolibrary.org/obo/PR_P31644|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0008503
+GABRA5|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+GABRA5|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+PIK3R1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+AP2A1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/160|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+aflatoxin B1|interacts with|PIK3R1|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5295
+PIK3CB|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3CG|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3CB|participates_in|Regulation of signaling by CBL|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912631
+PIK3R3|participates_in|Regulation of signaling by CBL|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912631
+PIK3CB|participates_in|Tie2 Signaling|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210993
+PIK3R2|participates_in|Tie2 Signaling|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210993
+PIK3R1|participates_in|Tie2 Signaling|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210993
+PIK3CB|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+AP2A2|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/161|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+valproic acid|is substance that treats|Schizophrenia|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0100753
+PIK3CB|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit gamma-3 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q99928|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit gamma-3 (human)|has_gene_template|GABRG3|http://purl.obolibrary.org/obo/PR_Q99928|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2567
+gamma-aminobutyric acid receptor subunit gamma-2 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_P18507|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit gamma-2 (human)|has_gene_template|GABRG2|http://purl.obolibrary.org/obo/PR_P18507|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2566
+gamma-aminobutyric acid receptor subunit beta-2 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_P47870|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit beta-2 (human)|has_gene_template|GABRB2|http://purl.obolibrary.org/obo/PR_P47870|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2561
+PIK3CB|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+AP2B1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/163|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+valproic acid|interacts with|PIK3R2|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5296
+valproic acid|interacts with|GABRA1|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/2554
+PIK3R1|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3R1|participates_in|Regulation of signaling by CBL|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912631
+PIK3R1|participates_in|Signaling by ERBB4|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236394
+gamma-aminobutyric acid receptor subunit theta (human)|participates_in|Signaling by ERBB4|http://purl.obolibrary.org/obo/PR_Q9UN88|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236394
+PIK3R1|causes or contributes to condition|Glioma|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0009733
+valproic acid|is substance that treats|Glioma|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0009733
+PIK3R1|causes or contributes to condition|Alcoholism|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030955
+bisphenol A|interacts with|PIK3R1|http://purl.obolibrary.org/obo/CHEBI_33216|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5295
+bisphenol A|is substance that treats|Autism|http://purl.obolibrary.org/obo/CHEBI_33216|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000717
+GABRA4|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+PIK3CA|causes or contributes to condition|Schizophrenia|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100753
+valproic acid|interacts with|PIK3CA|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5290
+PIK3CA|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+PTEN|participates_in|Synthesis of PIPs at the plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5728|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1660499
+PIK3CG|participates_in|Synthesis of PIPs at the plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1660499
+PIK3R3|participates_in|Synthesis of PIPs at the plasma membrane|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1660499
+PIK3R2|participates_in|Synthesis of PIPs at the plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1660499
+PTEN|causes or contributes to condition|activated PI3K-delta syndrome|http://www.ncbi.nlm.nih.gov/gene/5728|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0018338
+PIK3R1|causes or contributes to condition|activated PI3K-delta syndrome|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0018338
+PIK3CB|participates_in|Synthesis of PIPs at the plasma membrane|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1660499
+PTEN|causes or contributes to condition|cutaneous melanoma|http://www.ncbi.nlm.nih.gov/gene/5728|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005012
+PIK3CA|causes or contributes to condition|cutaneous melanoma|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0005012
+STAT3|causes or contributes to condition|Cervical polyp|http://www.ncbi.nlm.nih.gov/gene/6774|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030159
+valproic acid|is substance that treats|Cervical polyp|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0030159
+valproic acid|interacts with|CREM|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/1390
+PLCG1|participates_in|PLC-gamma1 signalling|http://www.ncbi.nlm.nih.gov/gene/5335|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167021
+CREB1|participates_in|PLC-gamma1 signalling|http://www.ncbi.nlm.nih.gov/gene/1385|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-167021
+PIK3R2|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+PIK3CB|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+gamma-aminobutyric acid receptor subunit alpha-1 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_P14867|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit alpha-1 (human)|has_gene_template|GABRA1|http://purl.obolibrary.org/obo/PR_P14867|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2554
+PIK3CA|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3CA|participates_in|Regulation of signaling by CBL|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912631
+PIK3CA|participates_in|Tie2 Signaling|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-210993
+PIK3CA|participates_in|MET activates PI3K/AKT signaling|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8851907
+PIK3R1|participates_in|MET activates PI3K/AKT signaling|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-8851907
+PIK3CA|causes or contributes to condition|head and neck carcinoma|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0002038
+PIK3CB|causes or contributes to condition|head and neck carcinoma|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0002038
+PIK3CA|causes or contributes to condition|Neoplasm of the lung|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0100526
+aflatoxin B1|is substance that treats|Neoplasm of the lung|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0100526
+PIK3CA|participates_in|Signaling by ERBB4|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236394
+gamma-aminobutyric acid receptor subunit gamma-2 (human)|participates_in|Signaling by ERBB4|http://purl.obolibrary.org/obo/PR_P18507|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236394
+gamma-aminobutyric acid receptor subunit beta-2 (human)|participates_in|Signaling by ERBB4|http://purl.obolibrary.org/obo/PR_P47870|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1236394
+protein kinase C zeta type (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q05513|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+protein kinase C zeta type (human)|participates_in|GPVI-mediated activation cascade|http://purl.obolibrary.org/obo/PR_Q05513|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+PIK3R2|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+PIK3R1|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/5295|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+PIK3CB|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/5291|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+PIK3CA|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/5290|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+valproic acid|interacts with|PIK3CG|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5294
+aflatoxin B1|interacts with|PIK3CG|http://purl.obolibrary.org/obo/CHEBI_2504|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5294
+PIK3CG|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+PIK3CG|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+GABRB1|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2560|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+GABRA5|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2558|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+PIK3R3|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+GABRA3|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2556|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+PIK3CG|participates_in|GPVI-mediated activation cascade|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-114604
+NTRK2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+serine/threonine-protein kinase N1 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_Q16512|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+serine/threonine-protein kinase N1 (human)|has function|PKC|http://purl.obolibrary.org/obo/PR_Q16512|http://purl.obolibrary.org/obo/RO_0000085|http://purl.obolibrary.org/obo/GO_0004697
+GABRA1|participates_in|Neurotransmitter receptors and postsynaptic signal transmission|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-112314
+JAK2|participates_in|Interleukin-6 signaling|http://www.ncbi.nlm.nih.gov/gene/3717|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1059683
+STAT3|participates_in|Interleukin-6 signaling|http://www.ncbi.nlm.nih.gov/gene/6774|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1059683
+ROCK1|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/6093|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+PTEN|participates_in|Innate Immune System|http://www.ncbi.nlm.nih.gov/gene/5728|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-168249
+RHOA|participates_in|RHO GTPases Activate ROCKs|http://www.ncbi.nlm.nih.gov/gene/387|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5627117
+ROCK1|participates_in|RHO GTPases Activate ROCKs|http://www.ncbi.nlm.nih.gov/gene/6093|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5627117
+RHOA|participates_in|Ovarian tumor domain proteases|http://www.ncbi.nlm.nih.gov/gene/387|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5689896
+PTEN|participates_in|Ovarian tumor domain proteases|http://www.ncbi.nlm.nih.gov/gene/5728|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-5689896
+NGFR|causes or contributes to condition|visual epilepsy|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001386
+SLC12A5 (human)|causes or contributes to condition|visual epilepsy|http://www.ncbi.nlm.nih.gov/gene/57468|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/MONDO_0001386
+NGFR|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+JAK2|participates_in|Signaling by NTRKs|http://www.ncbi.nlm.nih.gov/gene/3717|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-166520
+NGFR|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+ROCK1|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/6093|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+NGFR|participates_in|Axonal growth stimulation|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-209563
+RHOA|participates_in|Axonal growth stimulation|http://www.ncbi.nlm.nih.gov/gene/387|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-209563
+proBDNF|causes or contributes to condition|Neurodegeneration|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002180
+NGFR|causes or contributes to condition|Neurodegeneration|http://www.ncbi.nlm.nih.gov/gene/4804|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0002180
+SHC1|participates_in|Role of LAT2/NTAL/LAB on calcium mobilization|http://www.ncbi.nlm.nih.gov/gene/6464|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2730905
+CREB1|participates_in|Role of LAT2/NTAL/LAB on calcium mobilization|http://www.ncbi.nlm.nih.gov/gene/1385|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-2730905
+NTRK2|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+PLCG1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/5335|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+NTRK2|causes or contributes to condition|Status epilepticus without prominent motor symptoms|http://www.ncbi.nlm.nih.gov/gene/4915|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031475
+SLC12A5 (human)|causes or contributes to condition|Status epilepticus without prominent motor symptoms|http://www.ncbi.nlm.nih.gov/gene/57468|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031475
+mitogen-activated protein kinase 3 (human)|participates_in|Signaling by NTRK1 (TRKA)|http://purl.obolibrary.org/obo/PR_P27361|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+SHC1|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/6464|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+proBDNF|causes or contributes to condition|Status epilepticus without prominent motor symptoms|http://www.ncbi.nlm.nih.gov/gene/627|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0031475
+GABRA2|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2555|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+PIK3CG|participates_in|Metabolism of lipids|http://www.ncbi.nlm.nih.gov/gene/5294|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-556833
+AP2A2|participates_in|Metabolism of lipids|http://www.ncbi.nlm.nih.gov/gene/161|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-556833
+valproic acid|interacts with|PIK3R3|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/8503
+PIK3R2|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3R2|participates_in|Regulation of signaling by CBL|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-912631
+PIK3R2|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PIK3R2|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/5296|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+megalencephaly-polymicrogyria-polydactyly-hydrocephalus syndrome 1|disease has basis in dysfunction of|PIK3R2|http://purl.obolibrary.org/obo/MONDO_0011313|http://purl.obolibrary.org/obo/RO_0004020|http://www.ncbi.nlm.nih.gov/gene/5296
+megalencephaly-polymicrogyria-polydactyly-hydrocephalus syndrome 1|has phenotype|Seizure|http://purl.obolibrary.org/obo/MONDO_0011313|http://purl.obolibrary.org/obo/RO_0002200|http://purl.obolibrary.org/obo/HP_0001250
+GABRB2|causes or contributes to condition|Seizure|http://www.ncbi.nlm.nih.gov/gene/2561|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0001250
+gamma-aminobutyric acid receptor subunit beta-1 (human)|participates_in|Signal Transduction|http://purl.obolibrary.org/obo/PR_P18505|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+gamma-aminobutyric acid receptor subunit beta-1 (human)|has_gene_template|GABRB1|http://purl.obolibrary.org/obo/PR_P18505|http://purl.obolibrary.org/obo/pr#has_gene_template|http://www.ncbi.nlm.nih.gov/gene/2560
+diazinon|interacts with|PIK3R2|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002434|http://www.ncbi.nlm.nih.gov/gene/5296
+diazinon|is substance that treats|Depression|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000716
+GABRA6|causes or contributes to condition|Depression|http://www.ncbi.nlm.nih.gov/gene/2559|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000716
+diazinon|is substance that treats|Autism|http://purl.obolibrary.org/obo/CHEBI_34682|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0000717
+PIK3R3|participates_in|Signaling by NTRK1 (TRKA)|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-187037
+AP2B1|participates_in|Metabolism of lipids|http://www.ncbi.nlm.nih.gov/gene/163|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-556833
+AP2A1|participates_in|Metabolism of lipids|http://www.ncbi.nlm.nih.gov/gene/160|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-556833
+GABRA1|causes or contributes to condition|Autism|http://www.ncbi.nlm.nih.gov/gene/2554|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0000717
+PIK3R3|participates_in|G beta:gamma signalling through PI3Kgamma|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-392451
+PIK3R3|participates_in|Metabolism|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1430728
+PIK3R3|participates_in|Signal Transduction|http://www.ncbi.nlm.nih.gov/gene/8503|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-162582
+valproic acid|is substance that treats|Rubral tremor|http://purl.obolibrary.org/obo/CHEBI_39867|http://purl.obolibrary.org/obo/RO_0002606|http://purl.obolibrary.org/obo/HP_0030665
+GABRA4|causes or contributes to condition|Rubral tremor|http://www.ncbi.nlm.nih.gov/gene/2557|http://purl.obolibrary.org/obo/RO_0003302|http://purl.obolibrary.org/obo/HP_0030665
+CREB1|participates_in|BMAL1:CLOCK,NPAS2 activates circadian gene expression|http://www.ncbi.nlm.nih.gov/gene/1385|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1368108
+CREM (human)|participates_in|BMAL1:CLOCK,NPAS2 activates circadian gene expression|http://www.ncbi.nlm.nih.gov/gene/1390|http://purl.obolibrary.org/obo/RO_0000056|https://reactome.org/content/detail/R-HSA-1368108
