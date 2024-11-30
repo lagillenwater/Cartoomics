@@ -34,3 +34,5 @@ dependencies:
     - networkx==3.2.1
     - requests==2.31.0
     - oaklib==0.5.33
+    - torch==2.4.0
+    - transformers==4.44.0
