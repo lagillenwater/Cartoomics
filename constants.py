@@ -122,7 +122,7 @@ METAPATH_SEARCH_MAPS = {
     "metabolite" : "CHEBI",
     "disease" : "MONDO",
     "reaction" : "R-HSA",
-    "gene" : "gene",
+    "gene" : "HGNC",
     "all" : "%",
     "process" : "GO",
     "experimental_factor" : "EFO",

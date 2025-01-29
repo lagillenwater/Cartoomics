@@ -31,23 +31,24 @@ def duckdb_load_table(con, file, table_name, columns):
     con.execute(query)
 
     # Remove brackets
-    remove_character_from_table(
-            con,
-            table_name = "edges",
-            symbol = "<|>",
-            column_name = "subject"
-        )
-    remove_character_from_table(
-            con,
-            table_name = "edges",
-            symbol = "<|>",
-            column_name = "predicate"
-        )
-    remove_character_from_table(
-            con,
-            table_name = "edges",
-            symbol = "<|>",
-            column_name = "object"
+    if table_name == "edges":
+        remove_character_from_table(
+                con,
+                table_name = "edges",
+                symbol = "<|>",
+                column_name = "subject"
+            )
+        remove_character_from_table(
+                con,
+                table_name = "edges",
+                symbol = "<|>",
+                column_name = "predicate"
+            )
+        remove_character_from_table(
+                con,
+                table_name = "edges",
+                symbol = "<|>",
+                column_name = "object"
         )
 
 def create_subject_object_pair_table(con, table_name, base_table_name, subject, object, subject_prefix, predicate_prefix, object_prefix):
@@ -83,7 +84,7 @@ def join_tables_subject_object(con, base_table_name, compared_table_name, output
     print(query)
     con.execute(query)
 
-def create_filtered_subject_object_pair_table(con, base_table_name, compared_table_name, output_table_name, subject, object, subject_prefix, predicate_prefix, object_prefix):
+def create_filtered_subject_object_pair_table(con, base_table_name, compared_table_name, output_table_name, subject, object, subject_prefix, predicate_prefix, object_prefix, iteration):
 
     query = (
         f"""

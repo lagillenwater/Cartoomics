@@ -24,7 +24,7 @@ def main():
     g = create_graph(triples_list_file,labels_file, kg_type)
 
     # if weights == True:
-    #     #g = user_defined_edge_exclusion(g,kg_type)
+        # g = user_defined_edge_exclusion(g,kg_type)
     #     print("Excluding nodes and edges......")
     #     g = automatic_defined_edge_exclusion(g,kg_type)
     #     g = automatic_defined_node_exclusion(g,kg_type,'./wikipathways_graphs')
@@ -115,7 +115,7 @@ def main():
         #     duckdb_metapath_search(triples_list_file, triples_list, output_table_name, input_dir + "/metapaths")
 
         # Select paths that match
-        # subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath_Neighbors")
+        subgraph_cs,all_paths_cs_values,all_path_nodes = subgraph_prioritized_path_cs(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath_Neighbors")
         paths_dfs_list, all_path_nodes = subgraph_all_paths(s,g,weights,search_type,triples_list_file,output_dir,input_dir,embedding_dimensions,kg_type,"Metapath")
 
         print("paths_dfs_list")

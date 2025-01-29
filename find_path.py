@@ -812,10 +812,12 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
     duckdb_load_table(conn, triples_list_file, "edges", ["subject", "predicate", "object"])
 
     node1, node2 = convert_to_node_uris(node_pair,graph,kg_type)
-    if "gene" in node1:
-        node1,id_keys_df = convert_genes_to_proteins(conn,"edges",node1,id_keys_df,labels,kg_type)
-    if "gene" in node2:    
-        node2,id_keys_df = convert_genes_to_proteins(conn,"edges",node2,id_keys_df,labels,kg_type)
+    print(node1,node2)
+    print(triples_list)
+    # if "gene" in node1:
+    #     node1,id_keys_df = convert_genes_to_proteins(conn,"edges",node1,id_keys_df,labels,kg_type)
+    # if "gene" in node2:    
+    #     node2,id_keys_df = convert_genes_to_proteins(conn,"edges",node2,id_keys_df,labels,kg_type)
     if node1 is None or node2 is None:
         path_nodes = [[]]
 
@@ -838,6 +840,8 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
             tables = []
             # Go through each triple that is in the metapath
             for i, (s, p, o) in enumerate(m):
+                print(i)
+                print(s,p,o)
                 #if get_metapath_key(node1) == s and get_metapath_key(node2) == o:
                 # For last tables paired, use final node2 and previous filtered tables
                 if i == len(m) - 1:
@@ -846,7 +850,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         conn,
                         base_table_name = "edges",
                         compared_table_name = next_base_table_name,
-                        output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]),
+                        output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]) + "_" + str(i),
                         subject = re.sub(r'[/_]', '', s),
                         object = re.sub(r'[/_]', '', node2),
                         subject_prefix = "%" + s + "%",
@@ -854,11 +858,11 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         object_prefix = "%" + node2 + "%"
                     )
 
-                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]))
+                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]) + "_" + str(i))
                     print("num paths last triple: ",s,node2,ct)
 
                     if ct > 0:
-                        tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]))
+                        tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', node2)]) + "_" + str(i))
 
                     if ct == 0:
                         # read in table with this protein as s or o, r, and and PR_ as o or s
@@ -866,7 +870,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             conn,
                             base_table_name = "edges",
                             compared_table_name = next_base_table_name,
-                            output_table_name = "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]),
+                            output_table_name = "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]) + "_" + str(i),
                             subject = re.sub(r'[/_]', '', node2),
                             object = re.sub(r'[/_]', '', s),
                             subject_prefix = "%" + node2 + "%",
@@ -874,18 +878,23 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + s + "%"
                         )
 
-                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]))
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]) + "_" + str(i))
                         print("num paths last triple: ",node2,s,ct)
 
                         if ct > 0:
-                            tables.append("_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]))
+                            tables.append("_".join([re.sub(r'[/_]', '', node2),re.sub(r'[/_]', '', s)]) + "_" + str(i))
+
+                        else:
+                            path_nodes = [[]]
+                            print("no paths found")
+                            break
 
                 # For first tables paired, create original object pair table
                 elif i == 0:
                     # read in table with this protein as s or o, r, and and PR_ as o or s
                     new_table_name = create_subject_object_pair_table(
                         conn,
-                        table_name = "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]),
+                        table_name = "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]) + "_" + str(i),
                         base_table_name = "edges",
                         subject = re.sub(r'[/_]', '', node1),
                         object = re.sub(r'[/_]', '', o),
@@ -894,18 +903,18 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                         object_prefix = "%" + o + "%"
                     )
 
-                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
+                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]) + "_" + str(i))
                     print("num paths first triple: ",node1,o,ct)
 
                     if ct > 0:
-                        tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]))
+                        tables.append("_".join([re.sub(r'[/_]', '', node1),re.sub(r'[/_]', '', o)]) + "_" + str(i))
                         next_base_table_name = new_table_name
                     
                     if ct == 0:
                         # read in table with this protein as s or o, r, and and PR_ as o or s
                         new_table_name = create_subject_object_pair_table(
                             conn,
-                            table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]),
+                            table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]) + "_" + str(i),
                             base_table_name = "edges",
                             subject = re.sub(r'[/_]', '', o),
                             object = re.sub(r'[/_]', '', node1),
@@ -914,11 +923,16 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + node1 + "%"
                         )
 
-                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]) + "_" + str(i))
                         print("num paths first triple: ",o,node1,ct)
                         if ct > 0:
-                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]))
+                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', node1)]) + "_" + str(i))
                             next_base_table_name = new_table_name
+
+                        else:
+                            path_nodes = [[]]
+                            print("no paths found")
+                            break
 
                 # For middle tables paired, use previous subject and object pairs and filtered table
                 else:
@@ -926,7 +940,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             conn,
                             base_table_name = "edges",
                             compared_table_name = next_base_table_name,
-                            output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]),
+                            output_table_name = "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]) + "_" + str(i),
                             subject = re.sub(r'[/_]', '', s),
                             object = re.sub(r'[/_]', '', o),
                             subject_prefix = "%" + s + "%",
@@ -934,11 +948,11 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + o + "%"
                         )
 
-                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                    ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]) + "_" + str(i))
                     print("num paths middle triple: ",s,o,ct)
 
                     if ct > 0:
-                        tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]))
+                        tables.append("_".join([re.sub(r'[/_]', '', s),re.sub(r'[/_]', '', o)]) + "_" + str(i))
                         next_base_table_name = new_table_name
                     
                     if ct == 0:
@@ -947,7 +961,7 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             conn,
                             base_table_name = "edges",
                             compared_table_name = next_base_table_name,
-                            output_table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]),
+                            output_table_name = "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]) + "_" + str(i),
                             subject = re.sub(r'[/_]', '', o),
                             object = re.sub(r'[/_]', '', s),
                             subject_prefix = "%" + o + "%",
@@ -955,11 +969,16 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
                             object_prefix = "%" + s + "%"
                         )
 
-                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
+                        ct = get_table_count(conn, "_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]) + "_" + str(i))
                         print("num paths middle triple: ",o,s,ct)
                         if ct > 0:
-                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]))
+                            tables.append("_".join([re.sub(r'[/_]', '', o),re.sub(r'[/_]', '', s)]) + "_" + str(i))
                             next_base_table_name = new_table_name
+
+                        else:
+                            path_nodes = [[]]
+                            print("no paths found")
+                            break
 
             print("tables")
             print(tables)
@@ -1029,20 +1048,19 @@ def find_all_metapaths_duckdb(node_pair,graph,kg_type,input_dir,triples_list_fil
             
     # When more than 2 triples were involved, need to combine by object/subject aligning prefixes
     print("before combining")
-    print(all_path_nodes)
+    print(len(all_path_nodes))
     all_path_nodes = recursive_path_combination(all_path_nodes, tables_paired)
 
     print("after combining")
-    print(all_path_nodes)
+    print(len(all_path_nodes))
 
-    print("all_path_nodes")
-    print(all_path_nodes)
     # Don't know why this is necessary, removed for now
     # all_path_nodes = sorted(all_path_nodes,key = itemgetter(1))
     
     if len(all_path_nodes) == 0:
         all_path_nodes = [[]]
 
+    conn.close()
     return all_path_nodes,id_keys_df
 
 def recursive_path_combination(all_path_nodes,tables_paired):
@@ -1058,30 +1076,67 @@ def recursive_path_combination(all_path_nodes,tables_paired):
 
 def combine_paths_in_metapath(all_path_nodes,tables_paired):
     
+    print("combine_paths_in_metapath")
+
     combined_path_nodes = []
 
-    for i in range(len(tables_paired)-1):
+    for i in range(len(tables_paired) - 1):
         # Get common paired tables between 2 subpaths or combined triples
-        common_paired_table = list(set(tables_paired[i]) & set(tables_paired[i+1]))[0]
-        prefixes = common_paired_table.split("_")
+        common_paired_table = next(iter(set(tables_paired[i]) & set(tables_paired[i + 1])), None)
+        
+        if not common_paired_table:
+            continue  # Skip if no common table
+        
+        prefixes = [prefix + ":" for prefix in common_paired_table.split("_")]
+
         # Get paths from each table pair
         starting_paths = all_path_nodes[i]
-        ending_paths = all_path_nodes[i+1]
-        for s_p in starting_paths:
-            overlapping_start_prefixes = [value for value in s_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
-            for e_p in ending_paths:
-                overlapping_end_prefixes = [value for value in e_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
-                common_values = [val for val in overlapping_start_prefixes if val in overlapping_end_prefixes]
-                if len(common_values) == len(prefixes):
-                    # Find the indices of the common values in the list
-                    start_index = e_p.index(common_values[0]) if common_values[0] in e_p else -1
-                    end_index = e_p.index(common_values[-1]) if common_values[-1] in e_p else -1
+        ending_paths = all_path_nodes[i + 1]
 
-                    # Remove elements from start_index to end_index inclusive
-                    if start_index != -1 and end_index != -1 and start_index <= end_index:
-                        filtered_data = e_p[:start_index] + e_p[end_index + 1:]
-                        new_path = s_p + filtered_data
+        for s_p in tqdm(starting_paths):
+            # Use set comprehension for faster lookup
+            overlapping_start_prefixes = {value for value in s_p if any(value.startswith(p) for p in prefixes)}
+
+            for e_p in ending_paths:
+                overlapping_end_prefixes = {value for value in e_p if any(value.startswith(p) for p in prefixes)}
+
+                common_values = overlapping_start_prefixes & overlapping_end_prefixes  # Faster intersection check
+
+                if len(common_values) == len(prefixes):
+                    # Convert e_p to a dictionary for O(1) index lookups
+                    e_p_index_map = {val: idx for idx, val in enumerate(e_p)}
+
+                    # Get indices efficiently
+                    start_index = e_p_index_map.get(min(common_values, key=lambda x: e_p_index_map[x]), -1)
+                    end_index = e_p_index_map.get(max(common_values, key=lambda x: e_p_index_map[x]), -1)
+
+                    # Slice list instead of deleting elements one by one
+                    if 0 <= start_index <= end_index:
+                        new_path = s_p + e_p[:start_index] + e_p[end_index + 1:]
                         combined_path_nodes.append(new_path)
+
+    # for i in range(len(tables_paired)-1):
+    #     # Get common paired tables between 2 subpaths or combined triples
+    #     common_paired_table = list(set(tables_paired[i]) & set(tables_paired[i+1]))[0]
+    #     prefixes = common_paired_table.split("_")
+    #     # Get paths from each table pair
+    #     starting_paths = all_path_nodes[i]
+    #     ending_paths = all_path_nodes[i+1]
+    #     for s_p in tqdm(starting_paths):
+    #         overlapping_start_prefixes = [value for value in s_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
+    #         for e_p in ending_paths:
+    #             overlapping_end_prefixes = [value for value in e_p if any(value.startswith(prefix + ":") for prefix in prefixes)]
+    #             common_values = [val for val in overlapping_start_prefixes if val in overlapping_end_prefixes]
+    #             if len(common_values) == len(prefixes):
+    #                 # Find the indices of the common values in the list
+    #                 start_index = e_p.index(common_values[0]) if common_values[0] in e_p else -1
+    #                 end_index = e_p.index(common_values[-1]) if common_values[-1] in e_p else -1
+
+    #                 # Remove elements from start_index to end_index inclusive
+    #                 if start_index != -1 and end_index != -1 and start_index <= end_index:
+    #                     filtered_data = e_p[:start_index] + e_p[end_index + 1:]
+    #                     new_path = s_p + filtered_data
+    #                     combined_path_nodes.append(new_path)
 
     return combined_path_nodes
 
@@ -1143,4 +1198,5 @@ def expand_neighbors(input_nodes_df,input_dir,triples_list_file,id_keys_df,label
     # Remove duplicates that may come if multiple metapaths match start_node_uri
     input_nodes_df = input_nodes_df.drop_duplicates()
 
+    conn.close()
     return input_nodes_df,id_keys_df

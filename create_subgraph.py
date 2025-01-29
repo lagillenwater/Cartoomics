@@ -280,6 +280,8 @@ def subgraph_prioritized_path_cs(input_nodes_df,graph,weights,search_type,triple
         print("og input_nodes_df")
         print(input_nodes_df)
         input_nodes_df = input_nodes_df[~input_nodes_df["target_id"].str.contains("http:")]
+        # Remove disease target nodes from example_input -- NEED to update to work with only source input
+        input_nodes_df = input_nodes_df[input_nodes_df["target"] != input_nodes_df.iloc[0].loc["target"]]
         print("new input_nodes_df")
         print(input_nodes_df)
 

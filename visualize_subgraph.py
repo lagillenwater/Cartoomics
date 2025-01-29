@@ -124,7 +124,7 @@ def output_visualization(input_nodes_df,subgraph_df,output_dir,override_filename
     create_sif_file(subgraph_df,output_dir,override_filename)
 
     ##Not outputting graph visualization
-    ##create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
+    create_cytoscape_png(subgraph_df,subgraph_attributes_df,output_dir)
 
     logging.info('Subgraph visualization complete.')
 
